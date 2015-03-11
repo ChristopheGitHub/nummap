@@ -1,0 +1,19 @@
+{
+  "generator-jhipster": {
+    "baseName": "nummap",
+    "packageName": "com.numlab.nummap",
+    "packageFolder": "com/numlab/nummap",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "rememberMeKey": "3cecb2cb3dc81855c36724624177948278173a10"
+  }
+}
