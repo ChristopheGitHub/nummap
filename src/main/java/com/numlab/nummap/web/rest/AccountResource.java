@@ -60,9 +60,20 @@ public class AccountResource {
             .orElseGet(() -> userRepository.findOneByEmail(userDTO.getEmail())
                 .map(user -> new ResponseEntity<>("e-mail address already in use", HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> {
-                    User user = userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(),
-                    userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
-                    userDTO.getLangKey());
+                    User user = userService.createUserInformation(
+                        userDTO.getLogin(),
+                        userDTO.getPassword(),
+                        userDTO.getEmail().toLowerCase(),
+                        userDTO.getCategory(),
+                        userDTO.getDescription(),
+                        userDTO.getRaisonSociale(),
+                        userDTO.getPersonContactInformation(),
+                        userDTO.getCompanyContactInformation(),
+                        userDTO.getCompetencies(),
+                        userDTO.getSectors(),
+                        userDTO.getFields(),
+                        userDTO.getCustomers(),
+                        userDTO.getLangKey());
                     String baseUrl = request.getScheme() + // "http"
                     "://" +                                // "://"
                     request.getServerName() +              // "myhost"
@@ -112,10 +123,16 @@ public class AccountResource {
                 new UserDTO(
                     user.getLogin(),
                     null,
-                    user.getFirstName(),
-                    user.getLastName(),
                     user.getEmail(),
+                    user.getCategory(),
                     user.getDescription(),
+                    user.getRaisonSociale(),
+                    user.getPersonContactInformation(),
+                    user.getCompanyContactInformation(),
+                    user.getCompetencies(),
+                    user.getSectors(),
+                    user.getFields(),
+                    user.getCustomers(),
                     user.getLangKey(),
                     user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toList())),
                 HttpStatus.OK))
@@ -134,7 +151,16 @@ public class AccountResource {
             .findOneByLogin(userDTO.getLogin())
             .filter(u -> u.getLogin().equals(SecurityUtils.getCurrentLogin()))
             .map(u -> {
-                userService.updateUserInformation(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail());
+                userService.updateUserInformation(userDTO.  getEmail(),
+                                                    userDTO.getCategory(),
+                                                    userDTO.getDescription(),
+                                                    userDTO.getRaisonSociale(),
+                                                    userDTO.getPersonContactInformation(),
+                                                    userDTO.getCompanyContactInformation(),
+                                                    userDTO.getCompetencies(),
+                                                    userDTO.getSectors(),
+                                                    userDTO.getFields(),
+                                                    userDTO.getCustomers() );
                 return new ResponseEntity<String>(HttpStatus.OK);
             })
             .orElseGet(() -> new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));

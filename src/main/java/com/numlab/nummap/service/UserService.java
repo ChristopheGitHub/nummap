@@ -61,7 +61,7 @@ public class UserService {
         return Optional.empty();
     }
 
-    public User createUserInformation(String login, String password, String firstName, String lastName, String email,
+    public User createUserInformation(String login, String password, String email,
         CategoryEnum category, String description, String raisonSociale,
         PersonContactInformation personContactInformation, CompanyContactInformation companyContactInformation,
          List<String> competencies, List<SectorEnum> sectors,
@@ -95,13 +95,11 @@ public class UserService {
         return newUser;
     }
 
-    public void updateUserInformation(String firstName, String lastName, String email, CategoryEnum category
-        String description, String raisonSociale, PersonContactInformation personContactInformation, 
+    public void updateUserInformation(String email, CategoryEnum category,
+        String description, String raisonSociale, PersonContactInformation personContactInformation,
         CompanyContactInformation companyContactInformation, List<String> competencies, List<SectorEnum> sectors,
         List<FieldEnum> fields, List<CustomersTypeEnum> customers) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u -> {
-            u.setFirstName(firstName);
-            u.setLastName(lastName);
             u.setEmail(email);
             u.setCategory(category);
             u.setDescription(description);
