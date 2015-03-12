@@ -2,7 +2,20 @@
     "register": {
         "title": "Registration",
         "form": {
-            "button": "Register"
+            "button": "Register",
+            "category": {
+                "student": "Student",
+                "professor": "Professor",
+                "freelance": "Freelance",
+                "company": "Company"
+            },
+            "sector": {
+                "various": "Various",
+                "aviation": "Aviation",
+                "administration": "Administration",
+                "webSiteDesign": "Web site design",
+                "computerScience": "Computer science"
+            }
         },
         "messages": {
             "validate": {

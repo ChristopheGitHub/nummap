@@ -38,7 +38,34 @@
             "confirmpassword": "Confirmation du nouveau mot de passe",
             "confirmpassword.placeholder": "Confirmation du nouveau mot de passe",
             "email": "Email",
-            "email.placeholder": "Votre email"
+            "email.placeholder": "Votre email",
+            "description": "Description",
+            "description.placeholder": "Description",
+            "category": "Categorie",
+            "contactInformation": "Coordonnées",
+            "lastname": "Nom",
+            "lastname.placeholder": "Nom",
+            "firstname": "Prénom",
+            "firstname.placeholder": "Prénom",
+            "personMail": "E-mail de contact",
+            "personMail.placeholder": "E-mail de contact",
+            "personPhone": "Numéro de téléphone",
+            "personPhone.placeholder": "Numéro de téléphone",
+            "personAddress": "Adresse",
+            "personAddress.placeholder": "Adresse",
+            "personAdressComplement": "Adresse",
+            "personAdressComplement.placeholder": "Adresse",
+            "personPostOfficeBox": "Boite postale",
+            "personPostOfficeBox.placeholder": "Boite postale",
+            "personPostalCode": "Code postal",
+            "personPostalCode.placeholder": "Code postal",
+            "personCity": "Ville",
+            "personCity.placeholder": "Ville",
+            "field.systemIntegration": "Intégration système",
+            "field.consulting": "Conseil",
+            "field.outsourcing": "Externalisation",
+            "siren": "Numéro SIREN",
+            "siren.placeholder": "Numéro SIREN"
         },
         "messages": {
             "info": {
@@ -65,6 +92,36 @@
                     "minlength": "Votre email doit comporter au moins 5 caractères",
                     "maxlength": "Votre email ne doit pas comporter plus de 50 caractères",
                     "invalid": "Votre email n'est pas valide."
+                },
+                "description": {
+                    "required": "Votre description est requise.",
+                    "minlength": "Votre description doit comporter au moins 10 caractères",
+                    "maxlength": "Votre description ne doit pas comporter plus de 255 caractères"
+                },
+                "firstname": {
+                    "required": "Votre prénom est requis.",
+                    "minlength": "Votre prénom doit comporter au moins 2 caractères",
+                    "maxlength": "Votre prénom ne doit pas comporter plus de 50 caractères"
+                },
+                "lastname": {
+                    "required": "Votre nom est requis.",
+                    "minlength": "Votre nom doit comporter au moins 2 caractères",
+                    "maxlength": "Votre nom ne doit pas comporter plus de 50 caractères"
+                },
+                "personMail": {
+                    "required": "Votre e-mail de contact est requis.",
+                    "minlength": "Votre e-mail de contact doit comporter au moins 5 caractères",
+                    "maxlength": "Votre e-mail de contact ne doit pas comporter plus de 50 caractères",
+                    "invalid": "Votre email de contact n'est pas valide."
+                },
+                "personPhone": {
+                    "pattern": "Votre numéro de téléphone doit être composé de chiffres uniquement."
+                },
+                "personPostOfficeBox": {
+                    "pattern": "Votre boite postale doit être composé de 6 chiffres uniquement."
+                },
+                "personPostalCode": {
+                    "pattern": "Votre code postale doit être composé de 6 chiffres uniquement."
                 }
             }
         }

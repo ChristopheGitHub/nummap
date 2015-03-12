@@ -2,7 +2,20 @@
     "register": {
         "title": "Création de compte utilisateur",
         "form": {
-            "button": "Enregistrement"
+            "button": "Enregistrement",
+             "category": {
+                "student": "Étudiant",
+                "professor": "Professeur",
+                "freelance": "Freelance",
+                "company": "Enterprise"
+            },
+            "sector": {
+                "various": "Pas de secteur précis",
+                "aviation": "Aéronautique",
+                "administration": "Gestion",
+                "webSiteDesign": "Conception de site web",
+                "computerScience": "Informatique"
+            }
         },
         "messages": {
             "validate": {
