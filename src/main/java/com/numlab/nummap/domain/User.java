@@ -1,6 +1,11 @@
 package com.numlab.nummap.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.numlab.nummap.domain.enumerations.CategoryEnum;
+import com.numlab.nummap.domain.enumerations.CustomersTypeEnum;
+import com.numlab.nummap.domain.enumerations.FieldEnum;
+import com.numlab.nummap.domain.enumerations.SectorEnum;
+import com.numlab.nummap.domain.enumerations.RaisonSocialeEnum;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,6 +16,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -32,17 +38,27 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Size(min = 5, max = 100)
     private String password;
 
-    @Size(max = 50)
-    @Field("first_name")
-    private String firstName;
-
-    @Size(max = 50)
-    @Field("last_name")
-    private String lastName;
-
     @Email
     @Size(max = 100)
     private String email;
+
+    private CategoryEnum category;
+
+    private String description;
+
+    private String raisonSociale;
+
+    private PersonContactInformation personContactInformation;
+
+    private CompanyContactInformation companyContactInformation;
+
+    private List<String> competencies;
+
+    private List<SectorEnum> sectors;
+
+    private List<FieldEnum> fields;
+
+    private List<CustomersTypeEnum> customers;
 
     private boolean activated = false;
 
@@ -81,25 +97,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getEmail() {
         return email;
     }
+
+    public String getDescription() { return description ;}
 
     public void setEmail(String email) {
         this.email = email;
@@ -111,6 +113,74 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setActivated(boolean activated) {
         this.activated = activated;
+    }
+
+    public List<CustomersTypeEnum> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<CustomersTypeEnum> customers) {
+        this.customers = customers;
+    }
+
+    public List<FieldEnum> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<FieldEnum> fields) {
+        this.fields = fields;
+    }
+
+    public CategoryEnum getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEnum category) {
+        this.category = category;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRaisonSociale() {
+        return raisonSociale;
+    }
+
+    public void setRaisonSociale(String raisonSociale) {
+        this.raisonSociale = raisonSociale;
+    }
+
+    public PersonContactInformation getPersonContactInformation() {
+        return personContactInformation;
+    }
+
+    public void setPersonContactInformation(PersonContactInformation personContactInformation) {
+        this.personContactInformation = personContactInformation;
+    }
+
+    public CompanyContactInformation getCompanyContactInformation() {
+        return companyContactInformation;
+    }
+
+    public void setCompanyContactInformation(CompanyContactInformation companyContactInformation) {
+        this.companyContactInformation = companyContactInformation;
+    }
+
+    public List<String> getCompetencies() {
+        return competencies;
+    }
+
+    public void setCompetencies(List<String> competencies) {
+        this.competencies = competencies;
+    }
+
+    public List<SectorEnum> getSectors() {
+        return sectors;
+    }
+
+    public void setSectors(List<SectorEnum> sectors) {
+        this.sectors = sectors;
     }
 
     public String getActivationKey() {
@@ -163,14 +233,23 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", activated='" + activated + '\'' +
-                ", langKey='" + langKey + '\'' +
-                ", activationKey='" + activationKey + '\'' +
-                "}";
+            "id='" + id + '\'' +
+            ", login='" + login + '\'' +
+            ", password='" + password + '\'' +
+            ", email='" + email + '\'' +
+            ", category=" + category +
+            ", description='" + description + '\'' +
+            ", raisonSociale='" + raisonSociale + '\'' +
+            ", personContactInformation=" + personContactInformation +
+            ", companyContactInformation=" + companyContactInformation +
+            ", competencies=" + competencies +
+            ", sectors=" + sectors +
+            ", fields=" + fields +
+            ", customers=" + customers +
+            ", activated=" + activated +
+            ", langKey='" + langKey + '\'' +
+            ", activationKey='" + activationKey + '\'' +
+            ", authorities=" + authorities +
+            '}';
     }
 }

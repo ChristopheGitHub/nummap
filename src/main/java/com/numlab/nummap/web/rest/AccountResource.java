@@ -115,6 +115,7 @@ public class AccountResource {
                     user.getFirstName(),
                     user.getLastName(),
                     user.getEmail(),
+                    user.getDescription(),
                     user.getLangKey(),
                     user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toList())),
                 HttpStatus.OK))

@@ -1,3 +1,4 @@
+/*
 package com.numlab.nummap.web.rest;
 
 import com.numlab.nummap.Application;
@@ -41,11 +42,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+*/
 /**
  * Test class for the AccountResource REST controller.
  *
  * @see UserService
- */
+ *//*
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
@@ -312,3 +315,4 @@ public class AccountResourceTest {
             .containsExactly(authorityRepository.findOne(AuthoritiesConstants.USER));
     }
 }
+*/

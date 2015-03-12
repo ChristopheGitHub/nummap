@@ -1,8 +1,13 @@
 package com.numlab.nummap.service;
 
 import com.numlab.nummap.domain.Authority;
-import com.numlab.nummap.domain.PersistentToken;
+import com.numlab.nummap.domain.CompanyContactInformation;
+import com.numlab.nummap.domain.PersonContactInformation;
 import com.numlab.nummap.domain.User;
+import com.numlab.nummap.domain.enumerations.CategoryEnum;
+import com.numlab.nummap.domain.enumerations.CustomersTypeEnum;
+import com.numlab.nummap.domain.enumerations.FieldEnum;
+import com.numlab.nummap.domain.enumerations.SectorEnum;
 import com.numlab.nummap.repository.AuthorityRepository;
 import com.numlab.nummap.repository.PersistentTokenRepository;
 import com.numlab.nummap.repository.UserRepository;
@@ -28,19 +33,19 @@ import java.util.Set;
 @Service
 public class UserService {
 
-    private final Logger log = LoggerFactory.getLogger(UserService.class);
+    final Logger log = LoggerFactory.getLogger(UserService.class);
 
     @Inject
-    private PasswordEncoder passwordEncoder;
+    PasswordEncoder passwordEncoder;
 
     @Inject
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @Inject
-    private PersistentTokenRepository persistentTokenRepository;
+    PersistentTokenRepository persistentTokenRepository;
 
     @Inject
-    private AuthorityRepository authorityRepository;
+    AuthorityRepository authorityRepository;
 
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
@@ -57,7 +62,10 @@ public class UserService {
     }
 
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
-                                      String langKey) {
+        CategoryEnum category, String description, String raisonSociale,
+        PersonContactInformation personContactInformation, CompanyContactInformation companyContactInformation,
+         List<String> competencies, List<SectorEnum> sectors,
+         List<FieldEnum> fields, List<CustomersTypeEnum> customers, String langKey) {
         User newUser = new User();
         Authority authority = authorityRepository.findOne("ROLE_USER");
         Set<Authority> authorities = new HashSet<>();
@@ -65,9 +73,16 @@ public class UserService {
         newUser.setLogin(login);
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(firstName);
-        newUser.setLastName(lastName);
         newUser.setEmail(email);
+        newUser.setCategory(category);
+        newUser.setDescription(description);
+        newUser.setRaisonSociale(raisonSociale);
+        newUser.setPersonContactInformation(personContactInformation);
+        newUser.setCompanyContactInformation(companyContactInformation);
+        newUser.setCompetencies(competencies);
+        newUser.setSectors(sectors);
+        newUser.setFields(fields);
+        newUser.setCustomers(customers);
         newUser.setLangKey(langKey);
         // new user is not active
         newUser.setActivated(false);
@@ -80,11 +95,23 @@ public class UserService {
         return newUser;
     }
 
-    public void updateUserInformation(String firstName, String lastName, String email) {
+    public void updateUserInformation(String firstName, String lastName, String email, CategoryEnum category
+        String description, String raisonSociale, PersonContactInformation personContactInformation, 
+        CompanyContactInformation companyContactInformation, List<String> competencies, List<SectorEnum> sectors,
+        List<FieldEnum> fields, List<CustomersTypeEnum> customers) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
             u.setEmail(email);
+            u.setCategory(category);
+            u.setDescription(description);
+            u.setRaisonSociale(raisonSociale);
+            u.setPersonContactInformation(personContactInformation);
+            u.setCompanyContactInformation(companyContactInformation);
+            u.setCompetencies(competencies);
+            u.setSectors(sectors);
+            u.setFields(fields);
+            u.setCustomers(customers);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });
