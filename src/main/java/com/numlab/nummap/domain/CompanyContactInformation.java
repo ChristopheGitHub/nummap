@@ -3,6 +3,8 @@ package com.numlab.nummap.domain;
 import com.google.common.collect.Multimap;
 import com.numlab.nummap.domain.enumerations.SocialNetworkEnum;
 
+import java.util.List;
+
 /**
  * Created by christo on 11/03/15.
  */
@@ -12,11 +14,11 @@ public class CompanyContactInformation {
     private String email;
     private Address adress;
     private String website;
-    private Multimap<SocialNetworkEnum, String> SocialNetworkList;
+    private List<SocialNetwork> SocialNetworkList;
     private int siren;
 
     public CompanyContactInformation(String companyName, String phone, String email, Address adress, String website,
-                                     Multimap<SocialNetworkEnum, String> socialNetworkList, int siren) {
+                                     List<SocialNetwork> socialNetworkList, int siren) {
         this.companyName = companyName;
         this.phone = phone;
         this.email = email;
@@ -66,11 +68,11 @@ public class CompanyContactInformation {
         this.website = website;
     }
 
-    public Multimap<SocialNetworkEnum, String> getSocialNetworkList() {
+    public List<SocialNetwork> getSocialNetworkList() {
         return SocialNetworkList;
     }
 
-    public void setSocialNetworkList(Multimap<SocialNetworkEnum, String> socialNetworkList) {
+    public void setSocialNetworkList(List<SocialNetwork> socialNetworkList) {
         SocialNetworkList = socialNetworkList;
     }
 
