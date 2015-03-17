@@ -12,17 +12,17 @@ public class CompanyContactInformation {
     private String companyName;
     private String phone;
     private String email;
-    private Address adress;
+    private Address address;
     private String website;
     private List<SocialNetwork> SocialNetworkList;
     private int siren;
 
-    public CompanyContactInformation(String companyName, String phone, String email, Address adress, String website,
+    public CompanyContactInformation(String companyName, String phone, String email, Address address, String website,
                                      List<SocialNetwork> socialNetworkList, int siren) {
         this.companyName = companyName;
         this.phone = phone;
         this.email = email;
-        this.adress = adress;
+        this.address = address;
         this.website = website;
         SocialNetworkList = socialNetworkList;
         this.siren = siren;
@@ -52,12 +52,12 @@ public class CompanyContactInformation {
         this.email = email;
     }
 
-    public Address getAdress() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAdress(Address adress) {
-        this.adress = adress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getWebsite() {

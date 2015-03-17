@@ -1,13 +1,20 @@
 package com.numlab.nummap.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by christo on 11/03/15.
  */
 public class Address {
+
     private String city;
+
     private String street;
+
     private int postalCode;
+
     private int postalBox;
+
 
     public Address(String city, String street, int postalCode, int postalBox, String adressComplement) {
         this.city = city;

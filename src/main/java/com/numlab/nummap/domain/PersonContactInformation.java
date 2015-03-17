@@ -1,5 +1,6 @@
 package com.numlab.nummap.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.collect.Multimap;
 import com.numlab.nummap.domain.enumerations.SocialNetworkEnum;
 
@@ -9,13 +10,20 @@ import java.util.List;
  * Created by christo on 11/03/15.
  */
 public class PersonContactInformation {
+
     private String firstName;
+
     private String lastName;
+
     private String phone;
+
     private String email;
+
     private Address address;
+
     private String website;
-    private List<SocialNetwork> SocialNetworkList;
+
+    private List<SocialNetwork> socialNetworkList;
 
 
     public PersonContactInformation(String firstName, String lastName, String phone, String email, Address address,
@@ -26,7 +34,7 @@ public class PersonContactInformation {
         this.email = email;
         this.address = address;
         this.website = website;
-        SocialNetworkList = socialNetworkList;
+        this.socialNetworkList = socialNetworkList;
     }
 
     public String getFirstName() {
@@ -70,10 +78,10 @@ public class PersonContactInformation {
     }
 
     public List<SocialNetwork> getSocialNetworkList() {
-        return SocialNetworkList;
+        return socialNetworkList;
     }
 
     public void setSocialNetworkList(List<SocialNetwork> socialNetworkList) {
-        SocialNetworkList = socialNetworkList;
+        socialNetworkList = socialNetworkList;
     }
 }
