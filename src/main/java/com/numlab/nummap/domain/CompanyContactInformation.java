@@ -1,5 +1,7 @@
 package com.numlab.nummap.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Multimap;
 import com.numlab.nummap.domain.enumerations.SocialNetworkEnum;
 
@@ -17,8 +19,15 @@ public class CompanyContactInformation {
     private List<SocialNetwork> SocialNetworkList;
     private int siren;
 
-    public CompanyContactInformation(String companyName, String phone, String email, Address address, String website,
-                                     List<SocialNetwork> socialNetworkList, int siren) {
+    @JsonCreator
+    public CompanyContactInformation(
+        @JsonProperty("companyName") String companyName,
+        @JsonProperty("phone") String phone,
+        @JsonProperty("email") String email,
+        @JsonProperty("address") Address address,
+        @JsonProperty("website") String website,
+        @JsonProperty("socialNetworkList") List<SocialNetwork> socialNetworkList,
+        @JsonProperty("siren") int siren) {
         this.companyName = companyName;
         this.phone = phone;
         this.email = email;

@@ -1,6 +1,9 @@
 package com.numlab.nummap.web.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.numlab.nummap.domain.CompanyContactInformation;
 import com.numlab.nummap.domain.PersonContactInformation;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
@@ -12,6 +15,7 @@ import org.hibernate.validator.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.IOException;
 import java.util.List;
 
 public class UserDTO {
@@ -55,11 +59,23 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(String login, String password, String email, CategoryEnum category, String description,
-                   String raisonSociale, PersonContactInformation personContactInformation,
-                   CompanyContactInformation companyContactInformation, List<String> competencies,
-                   List<SectorEnum> sectors, List<FieldEnum> fields, List<CustomersTypeEnum> customers, String langKey,
-                   List<String> roles) {
+    @JsonCreator
+    public UserDTO(
+        @JsonProperty("login") String login,
+        @JsonProperty("password") String password,
+        @JsonProperty("email") String email,
+        @JsonProperty("category") CategoryEnum category,
+        @JsonProperty("description") String description,
+        @JsonProperty("raisonSociale") String raisonSociale,
+        @JsonProperty("PersonContactInformation") PersonContactInformation personContactInformation,
+        @JsonProperty("CompanyContactInformation") CompanyContactInformation companyContactInformation,
+        @JsonProperty("competencies") List<String> competencies,
+        @JsonProperty("sectors") List<SectorEnum> sectors,
+        @JsonProperty("fields") List<FieldEnum> fields,
+        @JsonProperty("customers") List<CustomersTypeEnum> customers,
+        @JsonProperty("langKey") String langKey,
+        @JsonProperty("role") List<String> roles
+    ) {
         this.login = login;
         this.password = password;
         this.email = email;
@@ -206,5 +222,17 @@ public class UserDTO {
             ", langKey='" + langKey + '\'' +
             ", roles=" + roles +
             '}';
+    }
+
+    public static UserDTO fromJsonToUserDTO(String json) {
+        ObjectMapper mapper = new ObjectMapper();
+        UserDTO userDTO = new UserDTO();
+        try {
+            final JsonNode responsePerson = mapper.readTree(json);
+            UserDTO user = mapper.reader(UserDTO.class).readValue(responsePerson);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return userDTO;
     }
 }
