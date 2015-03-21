@@ -65,7 +65,9 @@
             "field.consulting": "Consulting",
             "field.outsourcing": "Outsourcing",
             "siren": "SIREN number",
-            "siren.placeholder": "SIREN number"
+            "siren.placeholder": "SIREN number",
+            "personWebsite": "Website",
+            "personWebsite.placeholder": "Website"
         },
         "messages": {
             "info": {

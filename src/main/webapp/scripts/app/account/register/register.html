@@ -169,6 +169,10 @@
 
                     <label translate="global.form.contactInformation">Coordonnées</label>
 
+                    <p ng-if="registerAccount.category == 'STUDENT'">
+                      Vous êtes étudiant. Indiquez vos informations de contact. L'adresse est optionnelle.
+                    </p>
+
                     <p ng-if="registerAccount.category == 'COMPANY'">
                       Contact dans l'entreprise (secrétaire, RH, patron...).
                     </p>
@@ -383,6 +387,52 @@
 
                         </div>
                     </div>
+
+                    <!-- Website -->
+                   <div class="form-group">
+                      <label translate="global.form.personWebsite">Web site</label>
+                      <input type="url" class="form-control" name="personWebsite" placeholder="{{'global.form.personWebsite.placeholder' | translate}}"
+                             ng-model="registerAccount.PersonContactInformation.website" ng-minlength=10 ng-maxlength=255 required>
+                      <p>website valid : {{ form.personWebsite.$valid }}</p>
+                      <div ng-show="form.description.$dirty && form.description.$invalid">
+                          <p class="help-block"
+                                 ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
+                              Your description is required.
+                          </p>
+                          <p class="help-block"
+                                 ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
+                              Your description is required to be at least 255 characters
+                          </p>
+                          <p class="help-block"
+                                 ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
+                              Your description cannot be longer than 255 characters
+                          </p>
+                      </div>
+                  </div>
+
+                  <!-- Social Networks -->
+                  <div class="form-group">
+                      <label translate="global.form.personWebsite">Web site</label>
+                      <input type="url" class="form-control" name="personWebsite" placeholder="{{'global.form.personWebsite.placeholder' | translate}}"
+                             ng-model="registerAccount.PersonContactInformation.website" ng-minlength=10 ng-maxlength=255 required>
+                      <p>website valid : {{ form.personWebsite.$valid }}</p>
+                      <div ng-show="form.description.$dirty && form.description.$invalid">
+                          <p class="help-block"
+                                 ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
+                              Your description is required.
+                          </p>
+                          <p class="help-block"
+                                 ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
+                              Your description is required to be at least 255 characters
+                          </p>
+                          <p class="help-block"
+                                 ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
+                              Your description cannot be longer than 255 characters
+                          </p>
+                      </div>
+                  </div>
+
+
                 </div>
 
                 <!-- Company contact -->
