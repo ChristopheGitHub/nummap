@@ -27,18 +27,6 @@ public class PersonContactInformation {
 
     private List<SocialNetwork> socialNetworkList;
 
-
-    /*public PersonContactInformation(String firstName, String lastName, String phone, String email, Address address,
-                                    String website, List<SocialNetwork> socialNetworkList) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.website = website;
-        this.socialNetworkList = socialNetworkList;
-    }*/
-
     @JsonCreator
     public PersonContactInformation(
         @JsonProperty("firstName") String firstName,
