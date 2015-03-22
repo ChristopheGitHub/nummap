@@ -67,7 +67,9 @@
             "siren": "SIREN number",
             "siren.placeholder": "SIREN number",
             "personWebsite": "Website",
-            "personWebsite.placeholder": "Website"
+            "personWebsite.placeholder": "Website",
+            "personSocialNetwork": "Social Networks",
+            "personSocialNetwork.placeholder": "Social Networks"
         },
         "messages": {
             "info": {

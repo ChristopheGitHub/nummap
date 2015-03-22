@@ -229,7 +229,7 @@ public class UserDTO {
         UserDTO userDTO = new UserDTO();
         try {
             final JsonNode responsePerson = mapper.readTree(json);
-            UserDTO user = mapper.reader(UserDTO.class).readValue(responsePerson);
+            userDTO = mapper.reader(UserDTO.class).readValue(responsePerson);
         } catch (IOException e) {
             e.printStackTrace();
         }
