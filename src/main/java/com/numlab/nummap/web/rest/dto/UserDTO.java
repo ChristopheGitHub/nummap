@@ -51,7 +51,7 @@ public class UserDTO {
 
     private List<CustomersTypeEnum> customers;
 
-    private int siren;
+    private String siren;
 
     @Size(min = 2, max = 5)
     private String langKey;
@@ -75,7 +75,7 @@ public class UserDTO {
         @JsonProperty("sectors") List<SectorEnum> sectors,
         @JsonProperty("fields") List<FieldEnum> fields,
         @JsonProperty("customers") List<CustomersTypeEnum> customers,
-        @JsonProperty("siren") int siren,
+        @JsonProperty("siren") String siren,
         @JsonProperty("langKey") String langKey,
         @JsonProperty("role") List<String> roles
     ) {
@@ -192,11 +192,11 @@ public class UserDTO {
         this.customers = customers;
     }
 
-    public int getSiren() {
+    public String getSiren() {
         return siren;
     }
 
-    public void setSiren(int siren) {
+    public void setSiren(String siren) {
         this.siren = siren;
     }
 
