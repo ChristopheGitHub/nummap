@@ -60,6 +60,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     private List<CustomersTypeEnum> customers;
 
+    private int siren;
+
     private boolean activated = false;
 
     @Size(min = 2, max = 5)
@@ -181,6 +183,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setSectors(List<SectorEnum> sectors) {
         this.sectors = sectors;
+    }
+
+    public int getSiren() {
+        return siren;
+    }
+
+    public void setSiren(int siren) {
+        this.siren = siren;
     }
 
     public String getActivationKey() {

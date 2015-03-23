@@ -9,21 +9,15 @@ angular.module('nummapApp')
         $scope.registerAccount = {};
         $timeout(function (){angular.element('[ng-model="registerAccount.login"]').focus();});
 
-        // $scope.addSocial = function () {
-        //     $scope.registerAccount.socialNetworkList.push({
-        //         inlineChecked: false,
-        //         question: "",
-        //         questionPlaceholder: "foo",
-        //         text: ""
-        //     });
-        // };
-
-        $scope.socialNetworkList = [];
+        $scope.personSocialNetworkList = [];
+        $scope.companySocialNetworkList = [];
         
   
-        $scope.addElement = function() {
-            $scope.socialNetworkList.push({});
-            console.log($scope.socialNetworkList);
+        $scope.addElement = function(list) {
+            // $scope.socialNetworkList.push({});
+            list.push({});
+            // console.log($scope.socialNetworkList);
+            console.log(list);
         };
 
         $scope.register = function () {
@@ -37,8 +31,10 @@ angular.module('nummapApp')
                 $scope.errorEmailExists = null;
 
                 // Ajout de la liste de réseaux sociaux
-                // $scope.registerAccount.
-                $scope.registerAccount.PersonContactInformation.socialNetworkList = $scope.socialNetworkList ;
+                $scope.registerAccount.PersonContactInformation.socialNetworkList = $scope.personSocialNetworkList ;
+                if($scope.category === 'COMPANY') {
+                    $scope.registerAccount.CompanyContactInformation.socialNetworkList = $scope.companySocialNetworkList ;
+                }
 
                 Auth.createAccount($scope.registerAccount).then(function () {
                     $scope.success = 'OK';

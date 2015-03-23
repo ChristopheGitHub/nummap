@@ -68,8 +68,11 @@
             "siren.placeholder": "Numéro SIREN",
             "personWebsite": "Site web",
             "personWebsite.placeholder": "Site web",
-           "personSocialNetwork": "Réseaux sociaux",
-            "personSocialNetwork.placeholder": "Réseaux sociaux"
+            "socialNetwork": "Réseaux sociaux",
+            "socialNetwork.placeholder": "Réseaux sociaux",
+            "companyInformation":"Information de l'entreprise",
+            "companyCompanyName": "Nom de l'entreprise",
+            "companyCompanyName.placeholder": "Nom de l'entreprise"
         },
         "messages": {
             "info": {
