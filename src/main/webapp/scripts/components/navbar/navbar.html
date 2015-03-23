@@ -55,6 +55,10 @@
 
                         <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register"><span class="glyphicon glyphicon-plus-sign"></span>
                             &#xA0;<span translate="global.menu.account.register">Register</span></a></li>
+
+
+
+
                     </ul>
                 </li>
                 <li ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" ng-show="isInRole('ROLE_ADMIN')" class="dropdown pointer">
@@ -78,6 +82,9 @@
                             &#xA0;<span translate="global.menu.admin.logs">Logs</span></a></li>
                         <li ui-sref-active="active"><a ui-sref="docs"><span class="glyphicon glyphicon-book"></span>
                             &#xA0;<span translate="global.menu.admin.apidocs">API Docs</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="users"><span class="glyphicon glyphicon-blackboard"></span>
+                            &#xA0;<span translate="global.menu.admin.console">Console_Users</span></a></li>
+
                     </ul>
                 </li>
                 <li ui-sref-active="active" class="dropdown pointer" ng-controller="LanguageController">

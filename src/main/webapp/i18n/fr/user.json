@@ -1,0 +1,12 @@
+{
+    "user" : {
+        "delete": {
+            "question": "Etes-vous sûr de vouloir supprimer l'utilisation {{ login }}?"
+        },
+        "personContactInformation": {
+            "firstName": "First Name",
+            "lastName": "Last Name"
+        }
+    }
+
+}
