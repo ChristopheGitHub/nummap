@@ -56,4 +56,20 @@ public class UserResource {
                 .map(user -> new ResponseEntity<>(user, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+        /**
+        * GET  /users/:login -> get the "login" user.
+        */
+    @RequestMapping(value = "/users/{login}",
+            method = RequestMethod.DELETE)
+    @Timed
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
+    void deleteUser(@PathVariable String login){
+        log.debug("Rest request to Delete User : {}", login);
+        userRepository.deleteByLogin(login);
+        System.out.println("Suppression de l'utilisateur "+login);
+    }
+
+
+
 }
