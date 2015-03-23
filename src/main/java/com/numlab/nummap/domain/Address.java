@@ -17,21 +17,21 @@ public class Address {
 
     private int postalBox;
 
+    private String addressComplement;
+
     @JsonCreator
     public Address(
         @JsonProperty("city") String city,
         @JsonProperty("street") String street,
         @JsonProperty("postalCode") int postalCode,
         @JsonProperty("postalBox") int postalBox,
-        @JsonProperty("adressComplement") String adressComplement) {
+        @JsonProperty("addressComplement") String addressComplement) {
         this.city = city;
         this.street = street;
         this.postalCode = postalCode;
         this.postalBox = postalBox;
-        this.adressComplement = adressComplement;
+        this.addressComplement = addressComplement;
     }
-
-    private String adressComplement;
 
     public String getCity() {
         return city;
@@ -50,11 +50,11 @@ public class Address {
     }
 
     public String getAdressComplement() {
-        return adressComplement;
+        return addressComplement;
     }
 
     public void setAdressComplement(String adressComplement) {
-        this.adressComplement = adressComplement;
+        this.addressComplement = adressComplement;
     }
 
     public int getPostalCode() {
