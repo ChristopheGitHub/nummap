@@ -25,21 +25,26 @@
      </div>
    </div>
 
+    <span translate="user.search"> Recherche : </span>
 
+    <input type="text" id="query" ng-model="query"/>
 
     <div class="table-responsive">
     <table class="table table-striped">
         <thead>
         <tr>
             <th>Login</th>
+            <th translate="user.companyContactInformation.companyName">Company Name</th>
           <th translate="user.personContactInformation.firstName">First Name</th>
             <th translate="user.personContactInformation.lastName">Last Name</th>
-            <th></th>
+
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="user in users">
+        <tr ng-repeat="user in users | filter:{login:query}">
             <td><a ui-sref="userDetail({login:user.login})">{{user.login}}</a></td>
+
+            <td>{{user.companyContactInformation.companyName}}</td>
             <td>{{user.personContactInformation.lastName}}</td>
             <td>{{user.personContactInformation.firstName}}</td>
             <td>

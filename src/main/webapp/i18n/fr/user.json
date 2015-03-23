@@ -1,11 +1,15 @@
 {
     "user" : {
+        "search" : "Recherche :",
+        "companyContactInformation": {
+            "companyName": "Nom de l'entreprise"
+        },
         "delete": {
             "question": "Etes-vous sûr de vouloir supprimer l'utilisation {{ login }}?"
         },
         "personContactInformation": {
-            "firstName": "First Name",
-            "lastName": "Last Name"
+            "firstName": "Prénom",
+            "lastName": "Nom de famille"
         }
     }
 

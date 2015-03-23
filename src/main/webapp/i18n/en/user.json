@@ -1,5 +1,9 @@
 {
     "user" : {
+        "search" : "Search :",
+        "companyContactInformation": {
+            "companyName": "Company Name"
+        },
         "delete": {
             "question": "Are you sure you want to delete Auteur {{ login }}?"
         },

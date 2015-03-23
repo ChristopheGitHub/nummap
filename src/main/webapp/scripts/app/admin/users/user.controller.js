@@ -2,7 +2,6 @@
  * Created by eisti on 2/18/15.
  */
 'use strict';
-
 angular.module('nummapApp')
     .controller('UserController', function ($scope, User) {
         $scope.users = [];
@@ -49,9 +48,6 @@ angular.module('nummapApp')
          $scope.author = Author.get({id: id});
          $('#saveAuthorModal').modal('show');
          };
+        */
+     });
 
-
-
-
-         */
-    });
