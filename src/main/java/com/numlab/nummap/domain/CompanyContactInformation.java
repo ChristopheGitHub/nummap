@@ -1,5 +1,7 @@
 package com.numlab.nummap.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Multimap;
 import com.numlab.nummap.domain.enumerations.SocialNetworkEnum;
 
@@ -14,18 +16,22 @@ public class CompanyContactInformation {
     private String email;
     private Address address;
     private String website;
-    private List<SocialNetwork> SocialNetworkList;
-    private int siren;
+    private List<SocialNetwork> socialNetworkList;
 
-    public CompanyContactInformation(String companyName, String phone, String email, Address address, String website,
-                                     List<SocialNetwork> socialNetworkList, int siren) {
+    @JsonCreator
+    public CompanyContactInformation(
+        @JsonProperty("companyName") String companyName,
+        @JsonProperty("phone") String phone,
+        @JsonProperty("email") String email,
+        @JsonProperty("Address") Address address,
+        @JsonProperty("website") String website,
+        @JsonProperty("socialNetworkList") List<SocialNetwork> socialNetworkList) {
         this.companyName = companyName;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.website = website;
-        SocialNetworkList = socialNetworkList;
-        this.siren = siren;
+        this.socialNetworkList = socialNetworkList;
     }
 
     public String getCompanyName() {
@@ -69,18 +75,10 @@ public class CompanyContactInformation {
     }
 
     public List<SocialNetwork> getSocialNetworkList() {
-        return SocialNetworkList;
+        return socialNetworkList;
     }
 
     public void setSocialNetworkList(List<SocialNetwork> socialNetworkList) {
-        SocialNetworkList = socialNetworkList;
-    }
-
-    public int getSiren() {
-        return siren;
-    }
-
-    public void setSiren(int siren) {
-        this.siren = siren;
+        socialNetworkList = socialNetworkList;
     }
 }

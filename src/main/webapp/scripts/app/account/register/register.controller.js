@@ -9,6 +9,17 @@ angular.module('nummapApp')
         $scope.registerAccount = {};
         $timeout(function (){angular.element('[ng-model="registerAccount.login"]').focus();});
 
+        $scope.personSocialNetworkList = [];
+        $scope.companySocialNetworkList = [];
+        
+  
+        $scope.addElement = function(list) {
+            // $scope.socialNetworkList.push({});
+            list.push({});
+            // console.log($scope.socialNetworkList);
+            console.log(list);
+        };
+
         $scope.register = function () {
             if ($scope.registerAccount.password !== $scope.confirmPassword) {
                 $scope.doNotMatch = 'ERROR';
@@ -18,6 +29,12 @@ angular.module('nummapApp')
                 $scope.error = null;
                 $scope.errorUserExists = null;
                 $scope.errorEmailExists = null;
+
+                // Ajout de la liste de réseaux sociaux
+                $scope.registerAccount.PersonContactInformation.socialNetworkList = $scope.personSocialNetworkList ;
+                if($scope.category === 'COMPANY') {
+                    $scope.registerAccount.CompanyContactInformation.socialNetworkList = $scope.companySocialNetworkList ;
+                }
 
                 Auth.createAccount($scope.registerAccount).then(function () {
                     $scope.success = 'OK';

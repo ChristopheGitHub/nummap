@@ -1,6 +1,8 @@
 package com.numlab.nummap.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by christo on 11/03/15.
@@ -15,16 +17,21 @@ public class Address {
 
     private int postalBox;
 
+    private String addressComplement;
 
-    public Address(String city, String street, int postalCode, int postalBox, String adressComplement) {
+    @JsonCreator
+    public Address(
+        @JsonProperty("city") String city,
+        @JsonProperty("street") String street,
+        @JsonProperty("postalCode") int postalCode,
+        @JsonProperty("postalBox") int postalBox,
+        @JsonProperty("addressComplement") String addressComplement) {
         this.city = city;
         this.street = street;
         this.postalCode = postalCode;
         this.postalBox = postalBox;
-        this.adressComplement = adressComplement;
+        this.addressComplement = addressComplement;
     }
-
-    private String adressComplement;
 
     public String getCity() {
         return city;
@@ -43,11 +50,11 @@ public class Address {
     }
 
     public String getAdressComplement() {
-        return adressComplement;
+        return addressComplement;
     }
 
     public void setAdressComplement(String adressComplement) {
-        this.adressComplement = adressComplement;
+        this.addressComplement = adressComplement;
     }
 
     public int getPostalCode() {

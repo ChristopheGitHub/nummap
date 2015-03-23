@@ -18,44 +18,6 @@
             <form name="form" role="form" novalidate ng-submit="save()" show-validation>
 
                 <div class="form-group">
-                    <label translate="settings.form.firstname">First Name</label>
-                    <input type="text" class="form-control" name="firstName" placeholder="{{'settings.form.firstname.placeholder' | translate}}"
-                           ng-model="settingsAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
-                    <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
-                        <p class="help-block"
-                               ng-show="form.firstName.$error.required" translate="settings.messages.validate.firstname.required">
-                            Your first name is required.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.firstName.$error.minlength" translate="settings.messages.validate.firstname.minlength">
-                            Your first name is required to be at least 1 character
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.firstName.$error.maxlength" translate="settings.messages.validate.firstname.maxlength">
-                            Your first name cannot be longer than 50 characters
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label translate="settings.form.lastname">Last Name</label>
-                    <input type="text" class="form-control" name="lastName" placeholder="{{'settings.form.lastname.placeholder' | translate}}"
-                           ng-model="settingsAccount.lastName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
-                    <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
-                        <p class="help-block"
-                               ng-show="form.lastName.$error.required" translate="settings.messages.validate.lastname.required">
-                            Your last name is required.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.lastName.$error.minlength" translate="settings.messages.validate.lastname.minlength">
-                            Your last name is required to be at least 1 character
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.lastName.$error.maxlength" translate="settings.messages.validate.lastname.maxlength">
-                            Your last name cannot be longer than 50 characters
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label translate="global.form.email">E-mail</label>
                     <input type="email" class="form-control" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
                            ng-model="settingsAccount.email" ng-minlength=5 ng-maxlength=100 required maxlength="100">
@@ -77,6 +39,607 @@
                             Your e-mail cannot be longer than 100 characters
                         </p>
                     </div>
+                </div>
+
+                <!-- Description -->
+                 <div class="form-group">
+                    <label translate="global.form.description">Description</label>
+                    <input type="text" class="form-control" name="description" placeholder="{{'global.form.description.placeholder' | translate}}"
+                           ng-model="settingsAccount.description" ng-minlength=10 ng-maxlength=255 required>
+                    <p>description valid : {{ form.description.$valid }}</p>
+                    <div ng-show="form.description.$dirty && form.description.$invalid">
+                        <p class="help-block"
+                               ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
+                            Your description is required.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
+                            Your description is required to be at least 255 characters
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
+                            Your description cannot be longer than 255 characters
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Category -->
+                <div class="form-group">
+                    <label translate="global.form.category">Category</label><br/>
+                    <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-md-8">
+                              <input type="radio" ng-model="settingsAccount.category" value="STUDENT"><span translate="register.form.category.student">Étudiant</span>
+                          </div>
+                          <div class="col-md-4">
+                              <input type="radio" ng-model="settingsAccount.category" value="PROFESSOR"><span translate="register.form.category.professor">Professeur</span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-8">
+                              <input type="radio" ng-model="settingsAccount.category" value="FREELANCE"><span translate="register.form.category.freelance">Freelance</span>
+                          </div>
+                          <div class="col-md-4">
+                              <input type="radio" ng-model="settingsAccount.category" value="COMPANY"><span translate="register.form.category.company">Entreprise</span>
+                          </div>
+                        </div>
+                    </div>
+                    <p>Category : {{ settingsAccount.category }}</p>
+                </div>
+                
+                <!-- Person contact -->
+                <div class="form-group" ng-if="settingsAccount.category">
+
+                    <label translate="global.form.contactInformation">Coordonnées</label>
+
+                    <p ng-if="settingsAccount.category == 'STUDENT'">
+                      Vous êtes étudiant. Indiquez vos informations de contact. L'adresse est optionnelle.
+                    </p>
+
+                    <p ng-if="settingsAccount.category == 'COMPANY'">
+                      Contact dans l'entreprise (secrétaire, RH, patron...).
+                    </p>
+
+                    <!-- Lastname & Firstname -->
+                    <div class="row">
+
+                        <!-- Prenom -->
+                        <div class="col-md-2">
+                            <span translate="global.form.firstname">First name</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="firstname" placeholder="{{'global.form.firstname.placeholder' | translate}}"
+                                   ng-model="settingsAccount.personContactInformation.firstName" ng-minlength=2 ng-maxlength=50 required>
+                            <p>first name valid : {{ form.firstname.$valid }}</p>
+                            <div ng-show="form.firstname.$dirty && form.firstname.$invalid">
+                                <p class="help-block"
+                                       ng-show="form.firstname.$error.required" translate="global.messages.validate.firstname.required">
+                                    Your firstname is required.
+                                </p>
+                                <p class="help-block"
+                                       ng-show="form.firstname.$error.minlength" translate="global.messages.validate.firstname.minlength">
+                                    Your firstname is required to be at least 2 characters
+                                </p>
+                                <p class="help-block"
+                                       ng-show="form.firstname.$error.maxlength" translate="global.messages.validate.firstname.maxlength">
+                                    Your firstname cannot be longer than 50 characters
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <!-- Nom -->
+                        <div class="col-md-2">
+                            <span translate="global.form.lastname">Last name</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="lastname" placeholder="{{'global.form.lastname.placeholder' | translate}}"
+                                   ng-model="settingsAccount.personContactInformation.lastName" ng-minlength=2 ng-maxlength=50 required>
+                            <p>last name valid : {{ form.lastname.$valid }}</p>
+                            <div ng-show="form.lastname.$dirty && form.lastname.$invalid">
+                                <p class="help-block"
+                                       ng-show="form.lastname.$error.required" translate="global.messages.validate.lastname.required">
+                                    Your lastname is required.
+                                </p>
+                                <p class="help-block"
+                                       ng-show="form.lastname.$error.minlength" translate="global.messages.validate.lastname.minlength">
+                                    Your lastname is required to be at least 2 characters
+                                </p>
+                                <p class="help-block"
+                                       ng-show="form.lastname.$error.maxlength" translate="global.messages.validate.lastname.maxlength">
+                                    Your lastname cannot be longer than 50 characters
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <!-- Mail & Phone -->
+                    <div class="row">
+
+                        <!-- Mail -->
+                        <div class="col-md-2">
+                            <span translate="global.form.mail">E-mail</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="email" class="form-control" name="personMail" placeholder="{{'global.form.mail.placeholder' | translate}}"
+                                   ng-model="settingsAccount.personContactInformation.email" ng-minlength=5 ng-maxlength=50 required>
+                            <p>personMail valid : {{ form.personMail.$valid }}</p>
+                            <div ng-show="form.personMail.$dirty && form.personMail.$invalid">
+                                <p class="help-block"
+                                       ng-show="form.personMail.$error.required" translate="global.messages.validate.personMail.required">
+                                    Your contact e-mail is required.
+                                </p>
+                                <p class="help-block"
+                                       ng-show="form.personMail.$error.minlength" translate="global.messages.validate.personMail.minlength">
+                                    Your contact e-mail is required to be at least 5 characters
+                                </p>
+                                <p class="help-block"
+                                       ng-show="form.personMail.$error.maxlength" translate="global.messages.validate.personMail.maxlength">
+                                    Your contact e-mail cannot be longer than 50 characters
+                                </p>
+                                <p class="help-block"
+                                   ng-show="form.personMail.$error.email" translate="global.messages.validate.personMail.invalid">
+                                    Your contact e-mail is invalid.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <!-- Phone -->
+                        <div class="col-md-2">
+                            <span translate="global.form.phone">Phone</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="personPhone"
+                                placeholder="{{'global.form.phone.placeholder' | translate}}"
+                                ng-pattern="/^[0-9]{10}$/" ng-model="settingsAccount.personContactInformation.phone" required>
+                            <p>personPhone valid : {{ form.personPhone.$valid }}</p>
+                            <div ng-show="form.personPhone.$dirty && form.personPhone.$invalid">
+                               <p class="help-block"
+                                   ng-show="form.personPhone.$error.pattern" translate="global.messages.validate.personPhone.pattern">
+                                    Your phone number is invalid.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <!-- Address & Complement -->
+                    <div class="row">
+
+                        <!-- Address -->
+                        <div class="col-md-2">
+                            <span translate="global.form.address">Address</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="personAddress" placeholder="{{'global.form.address.placeholder' | translate}}"
+                                   ng-model="settingsAccount.personContactInformation.address.street" ng-minlength=5 ng-maxlength=50>
+                        </div>
+                        <br/>
+                        <p>personAddress valid : {{ form.personAddress.$valid }}</p>
+
+
+
+                        <!-- Complement -->
+                       <div ng-if="settingsAccount.personContactInformation.address.street">
+                            <div class="col-md-2">
+                               <span translate="global.form.address.complement.placeholder">Address complement</span>
+                            </div>
+
+                            <div class="col-md-4">
+                              <input type="text" class="form-control" name="personAdressComplement" placeholder="{{'global.form.address.complement.placeholder' | translate}}"
+                               ng-model="settingsAccount.personContactInformation.address.adressComplement">
+                            </div>
+                            <p>personAdressComplement valid : {{ form.personAdressComplement.$valid }}</p>
+
+                       </div>
+                    </div>
+
+                    <br/>
+
+                    <!-- BP & Postal code -->
+                    <div ng-if="settingsAccount.personContactInformation.address.street">
+                        <div class="row">
+
+                            <!-- BP -->
+                            <div class="col-md-2">
+                                <span translate="global.form.address.postOfficeBox">Post-office box</span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="personPostOfficeBox" placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
+                                ng-model="settingsAccount.personContactInformation.address.postalBox" ng-pattern="/^[0-9]{6}$/">
+
+                                <p>personPostOfficeBox valid : {{ form.personPostOfficeBox.$valid }}</p>
+
+
+                                <div ng-show="form.personPostOfficeBox.$dirty && form.personPostOfficeBox.$invalid">
+                                    <p class="help-block"
+                                           ng-show="form.personPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
+                                        Your post-office box must be 6 numbers.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <!-- Postal code -->
+                            <div class="col-md-2">
+                                <span translate="global.form.address.postalCode">Postal code</span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="personPostalCode" placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
+                                ng-model="settingsAccount.personContactInformation.address.postalCode" ng-pattern="/^[0-9]{6}$/" required>
+
+                                <p>personPostalCode valid : {{ form.personPostalCode.$valid }}</p>
+
+
+                                <div ng-show="form.personPostalCode.$dirty && form.personPostalCode.$invalid">
+                                    <p class="help-block"
+                                           ng-show="form.personPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
+                                        Your BP must be 6 numbers.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="row">
+
+                          <!-- City -->
+                          <div class="col-md-2">
+                              <span translate="global.form.address.city">City</span>
+                          </div>
+
+                          <p>personCity valid : {{ form.personCity.$valid }}</p>
+
+
+                          <div class="col-md-4">
+                              <input type="text" class="form-control" name="personCity" placeholder="{{'global.form.address.city.placeholder' | translate}}"
+                              ng-model="settingsAccount.personContactInformation.address.city" required>
+                          </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Website -->
+                   <div class="form-group">
+                      <label translate="global.form.website">Web site</label>
+                      <input type="url" class="form-control" name="personWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
+                             ng-model="settingsAccount.personContactInformation.website" ng-minlength=10 ng-maxlength=255 required>
+                      <p>website valid : {{ form.personWebsite.$valid }}</p>
+                      <div ng-show="form.description.$dirty && form.description.$invalid">
+                          <p class="help-block"
+                                 ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
+                              Your description is required.
+                          </p>
+                          <p class="help-block"
+                                 ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
+                              Your description is required to be at least 255 characters
+                          </p>
+                          <p class="help-block"
+                                 ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
+                              Your description cannot be longer than 255 characters
+                          </p>
+                      </div>
+                  </div>
+
+                  <!-- Social Networks -->
+                  <div class="form-group">
+                      <label translate="global.form.socialNetwork">Social Networks</label>
+
+                      <ul ng-form="itemsForm">
+                          <li ng-repeat="item in personSocialNetworkList" ng-form="itemForm">
+                              <label for="itemText">Entrée</label>
+                                <select ng-model="item.type">
+                                  <option value="FACEBOOK">Facebook</option>
+                                  <option value="TWITTER">Twitter</option>
+                                  <option value="LINKEDIN">LinkedIn</option>
+                                  <option value="GOOGLE_PLUS">Google Plus</option>
+                                  <option value="VIADEO">Viadeo</option>
+                              </select>
+                              <input name="itemText" type="text" ng-model="item.address" required />
+                              <ul ng-show="itemForm.$invalid && itemForm.$dirty">
+                                   <li ng-show="itemForm.itemText.$error.required">This field is required.</li>
+                               </ul>
+                           </li>
+                       </ul>
+
+                       <button ng-click="addElement(personSocialNetworkList)" ng-disabled="itemsForm.$invalid">Add an element</button>
+                      <p>social valid : {{ form.SocialNetwork.$valid }}</p>
+                  </div>
+
+
+                </div>
+
+                <!-- Company contact -->
+                <div class="form-group" ng-if="settingsAccount.category == 'COMPANY'">
+
+                    <label translate="global.form.companyInformation">Company information</label>
+
+                    <!-- Company name -->
+                    <div class="form-group">
+                       <label translate="global.form.companyName">Company name</label>
+                       <input type="text" class="form-control" name="companyCompanyName" placeholder="{{'global.form.companyName.placeholder' | translate}}"
+                              ng-model="settingsAccount.companyContactInformation.companyName" ng-minlength=10 ng-maxlength=50 required>
+                       <p> form.companyName valid : {{ form.companyName.$valid }}</p>
+                       <div ng-show="form.companyCompanyName.$dirty && form.companyCompanyName.$invalid">
+                           <p class="help-block"
+                                  ng-show="form.companyCompanyName.$error.required" translate="global.messages.validate.companyCompanyName.required">
+                               Your companyCompanyName is required.
+                           </p>
+                           <p class="help-block"
+                                  ng-show="form.companyCompanyName.$error.minlength" translate="global.messages.validate.companyCompanyName.minlength">
+                               Your companyCompanyName is required to be at least 50 characters
+                           </p>                           
+                       </div>
+                    </div>
+
+
+                    <br/>
+
+                    <!-- Mail & Phone -->
+                    <div class="row">
+
+                        <!-- Mail -->
+                        <div class="col-md-2">
+                            <span translate="global.form.mail">E-mail</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="email" class="form-control" name="companyMail" placeholder="{{'global.form.mail.placeholder' | translate}}"
+                                   ng-model="settingsAccount.companyContactInformation.email" ng-minlength=5 ng-maxlength=50 required>
+                            <p>companyMail valid : {{ form.companyMail.$valid }}</p>
+                            <div ng-show="form.companyMail.$dirty && form.companyMail.$invalid">
+                                <p class="help-block"
+                                       ng-show="form.companyMail.$error.required" translate="global.messages.validate.personMail.required">
+                                    Your contact e-mail is required.
+                                </p>
+                                <p class="help-block"
+                                       ng-show="form.companyMail.$error.minlength" translate="global.messages.validate.personMail.minlength">
+                                    Your contact e-mail is required to be at least 5 characters
+                                </p>
+                                <p class="help-block"
+                                       ng-show="form.companyMail.$error.maxlength" translate="global.messages.validate.personMail.maxlength">
+                                    Your contact e-mail cannot be longer than 50 characters
+                                </p>
+                                <p class="help-block"
+                                   ng-show="form.companyMail.$error.email" translate="global.messages.validate.personMail.invalid">
+                                    Your contact e-mail is invalid.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <!-- Phone -->
+                        <div class="col-md-2">
+                            <span translate="global.form.phone">Phone</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="companyPhone"
+                                placeholder="{{'global.form.phone.placeholder' | translate}}"
+                                ng-pattern="/^[0-9]{10}$/" ng-model="settingsAccount.companyContactInformation.phone" required>
+                            <p>companyPhone valid : {{ form.companyPhone.$valid }}</p>
+                            <div ng-show="form.companyPhone.$dirty && form.companyPhone.$invalid">
+                               <p class="help-block"
+                                   ng-show="form.companyPhone.$error.pattern" translate="global.messages.validate.companyPhone.pattern">
+                                    Your phone number is invalid.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <!-- Address & Complement -->
+                    <div class="row">
+
+                        <!-- Address -->
+                        <div class="col-md-2">
+                            <span translate="global.form.address">Address</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="companyAddress" placeholder="{{'global.form.address.placeholder' | translate}}"
+                                   ng-model="settingsAccount.companyContactInformation.Address.street" ng-minlength=5 ng-maxlength=50>
+                        </div>
+                        <br/>
+                        <p>companyAddress valid : {{ form.companyAddress.$valid }}</p>
+
+
+
+                        <!-- Complement -->
+                       <div ng-if="settingsAccount.companyContactInformation.Address.street">
+                            <div class="col-md-2">
+                               <span translate="global.form.address.complement.placeholder">Address complement</span>
+                            </div>
+
+                            <div class="col-md-4">
+                              <input type="text" class="form-control" name="companyAdressComplement" placeholder="{{'global.form.address.complement.placeholder' | translate}}"
+                               ng-model="settingsAccount.companyContactInformation.Address.adressComplement">
+                            </div>
+                            <p>companyAdressComplement valid : {{ form.companyAdressComplement.$valid }}</p>
+
+                       </div>
+                    </div>
+
+                    <br/>
+
+                    <!-- BP & Postal code -->
+                    <div ng-if="settingsAccount.companyContactInformation.Address.street">
+                        <div class="row">
+
+                            <!-- BP -->
+                            <div class="col-md-2">
+                                <span translate="global.form.address.postOfficeBox">Post-office box</span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="companyPostOfficeBox" placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
+                                ng-model="settingsAccount.companyContactInformation.Address.postalBox" ng-pattern="/^[0-9]{6}$/">
+
+                                <p>companyPostOfficeBox valid : {{ form.companyPostOfficeBox.$valid }}</p>
+
+
+                                <div ng-show="form.companyPostOfficeBox.$dirty && form.companyPostOfficeBox.$invalid">
+                                    <p class="help-block"
+                                           ng-show="form.companyPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
+                                        Your post-office box must be 6 numbers.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <!-- Postal code -->
+                            <div class="col-md-2">
+                                <span translate="global.form.address.postalCode">Postal code</span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="companyPostalCode" placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
+                                ng-model="settingsAccount.companyContactInformation.Address.postalCode" ng-pattern="/^[0-9]{6}$/" required>
+
+                                <p>companyPostalCode valid : {{ form.companyPostalCode.$valid }}</p>
+
+
+                                <div ng-show="form.companyPostalCode.$dirty && form.companyPostalCode.$invalid">
+                                    <p class="help-block"
+                                           ng-show="form.companyPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
+                                        Your BP must be 6 numbers.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="row">
+
+                          <!-- City -->
+                          <div class="col-md-2">
+                              <span translate="global.form.address.city">City</span>
+                          </div>
+
+                          <p>companyCity valid : {{ form.companyCity.$valid }}</p>
+
+
+                          <div class="col-md-4">
+                              <input type="number" class="form-control" name="companyCity" placeholder="{{'global.form.address.city.placeholder' | translate}}"
+                              ng-model="settingsAccount.companyContactInformation.Address.city" required>
+                          </div>
+
+                        </div>
+                    </div>
+
+                  <div class="form-group">
+                      <label translate="global.form.website">Web site</label>
+                      <input type="url" class="form-control" name="companyWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
+                             ng-model="settingsAccount.companyContactInformation.website" ng-minlength=10 ng-maxlength=255 required>
+                      <p>companyWebsite valid : {{ form.companyWebsite.$valid }}</p>
+                      <div ng-show="form.description.$dirty && form.description.$invalid">
+                          <p class="help-block"
+                                 ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
+                              Your description is required.
+                          </p>
+                          <p class="help-block"
+                                 ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
+                              Your description is required to be at least 255 characters
+                          </p>
+                          <p class="help-block"
+                                 ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
+                              Your description cannot be longer than 255 characters
+                          </p>
+                      </div>
+                  </div>
+
+                  <!-- Social Networks -->
+                  <div class="form-group">
+                      <label translate="global.form.socialNetwork">Social Networks</label>
+
+                      <ul ng-form="itemsForm">
+                          <li ng-repeat="item in companySocialNetworkList" ng-form="itemForm">
+                              <label for="itemText">Entrée</label>
+                                <select ng-model="item.type">
+                                  <option value="FACEBOOK">Facebook</option>
+                                  <option value="TWITTER">Twitter</option>
+                                  <option value="LINKEDIN">LinkedIn</option>
+                                  <option value="GOOGLE_PLUS">Google Plus</option>
+                                  <option value="VIADEO">Viadeo</option>
+                              </select>
+                              <input name="itemText" type="text" ng-model="item.address" required />
+                              <ul ng-show="itemForm.$invalid && itemForm.$dirty">
+                                   <li ng-show="itemForm.itemText.$error.required">This field is required.</li>
+                               </ul>
+                           </li>
+                       </ul>
+
+                       <button ng-click="addElement(companySocialNetworkList)" ng-disabled="itemsForm.$invalid">Add an element</button>
+                      <p>social valid : {{ form.SocialNetwork.$valid }}</p>
+                  </div>
+
+                </div>
+
+                <!-- SIREN -->
+                <div ng-if="settingsAccount.category == 'FREELANCE' || settingsAccount.category == 'COMPANY'"
+                class="form-group">
+                  <label translate="global.form.siren">SIREN</label>
+                  <input type="text" class="form-control" name="description" placeholder="{{'global.form.siren.placeholder' | translate}}"
+                         ng-model="settingsAccount.siren" ng-minlength=10 ng-maxlength=255 required>
+                  <p>siren valid : {{ form.description.$valid }}</p>
+                </div>
+                
+                <!-- Sector and domain -->
+                <div class="form-group">
+                  <label translate>Sector and domain</label><br/>
+                  <div class="row">
+
+                    <div class="col-md-4">
+                      <span translate="register.form.sector.various">various</span><br/>
+                      <span translate="register.form.sector.aviation">aviation</span><br/>
+                      <span translate="register.form.sector.administration">administration</span><br/>
+                      <span translate="register.form.sector.webSiteDesign">webSiteDesign</span><br/>
+                      <span translate="register.form.sector.computerScience">computerScience</span><br/>
+                    </div>
+
+                    <div class="col-md-2">
+                      <input type="checkbox" ng-model="settingsAccount.sector" ng-true-value="'various'" ng-false-value="null"><br/>
+                      <input type="checkbox" ng-model="settingsAccount.sector" ng-true-value="'aviation'" ng-false-value="null"><br/>
+                      <input type="checkbox" ng-model="settingsAccount.sector" ng-true-value="'administration'" ng-false-value="null"><br/>
+                      <input type="checkbox" ng-model="settingsAccount.sector" ng-true-value="'webSiteDesign'" ng-false-value="null"><br/>
+                      <input type="checkbox" ng-model="settingsAccount.sector" ng-true-value="'computerScience'" ng-false-value="null"><br/>
+                    </div>
+
+                    <div class="col-md-4">
+                      <span translate="global.form.field.systemIntegration">System integration</span><br/>
+                      <span translate="global.form.field.consulting">Consulting</span><br/>
+                      <span translate="global.form.field.outsourcing">Outsourcing</span><br/>
+                    </div>
+
+                    <div class="col-md-2">
+                      <input type="checkbox" ng-model="settingsAccount.fields" ng-true-value="'systemIntegration'" ng-false-value="null"><br/>
+                      <input type="checkbox" ng-model="settingsAccount.fields" ng-true-value="'consulting'" ng-false-value="null"><br/>
+                      <input type="checkbox" ng-model="settingsAccount.fields" ng-true-value="'outsourcing'" ng-false-value="null"><br/>
+                    </div>
+
+                  </div>
+                </div>
+                
+                <!-- Customers -->
+                <div class="form-group">
+                  <label translate>Competencies and customers</label><br/>
+                  <div class="row">
+
+                  </div>
                 </div>
 
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="settings.form.button">Save</button>

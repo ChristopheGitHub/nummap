@@ -54,8 +54,9 @@ public class AccountResource {
             method = RequestMethod.POST,
             produces = MediaType.TEXT_PLAIN_VALUE)
     @Timed
-    public ResponseEntity<?> registerAccount(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
-        System.out.println(userDTO);
+    public ResponseEntity<?> registerAccount(@Valid @RequestBody String json, HttpServletRequest request) {
+        System.out.println(json);
+        UserDTO userDTO = UserDTO.fromJsonToUserDTO(json);
         return userRepository.findOneByLogin(userDTO.getLogin())
             .map(user -> new ResponseEntity<>("login already in use", HttpStatus.BAD_REQUEST))
             .orElseGet(() -> userRepository.findOneByEmail(userDTO.getEmail())
@@ -127,13 +128,14 @@ public class AccountResource {
                     user.getEmail(),
                     user.getCategory(),
                     user.getDescription(),
-                    user.getRaisonSociale(),
+                    null,
                     user.getPersonContactInformation(),
                     user.getCompanyContactInformation(),
                     user.getCompetencies(),
                     user.getSectors(),
                     user.getFields(),
                     user.getCustomers(),
+                    user.getSiren(),
                     user.getLangKey(),
                     user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toList())),
                 HttpStatus.OK))
