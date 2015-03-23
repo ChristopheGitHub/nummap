@@ -6,7 +6,17 @@ angular.module('nummapApp')
         $scope.error = null;
         Principal.identity().then(function(account) {
             $scope.settingsAccount = account;
+
+            // Pour permettre l'affichage des listes de réseaux sociaux
+            $scope.personSocialNetworkList = $scope.settingsAccount.personContactInformation.socialNetworkList ;
+            if($scope.category === 'COMPANY') {
+                $scope.companySocialNetworkList = $scope.settingsAccount.companyContactInformation.socialNetworkList ;
+            }
+
+            console.log($scope.settingsAccount);
         });
+
+
 
         $scope.save = function () {
             Auth.updateAccount($scope.settingsAccount).then(function() {
