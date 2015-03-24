@@ -1,9 +1,6 @@
 package com.numlab.nummap.service;
 
-import com.numlab.nummap.domain.Authority;
-import com.numlab.nummap.domain.CompanyContactInformation;
-import com.numlab.nummap.domain.PersonContactInformation;
-import com.numlab.nummap.domain.User;
+import com.numlab.nummap.domain.*;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.domain.enumerations.CustomersTypeEnum;
 import com.numlab.nummap.domain.enumerations.FieldEnum;
@@ -61,7 +58,7 @@ public class UserService {
         return Optional.empty();
     }
 
-    public User createUserInformation(String login, String password, String email,
+    public User createUserInformation(String login, String password, String email, Location location,
         CategoryEnum category, String description, String raisonSociale,
         PersonContactInformation personContactInformation, CompanyContactInformation companyContactInformation,
          List<String> competencies, List<SectorEnum> sectors,
@@ -74,6 +71,7 @@ public class UserService {
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
         newUser.setEmail(email);
+        newUser.setLocation(location);
         newUser.setCategory(category);
         newUser.setDescription(description);
         newUser.setRaisonSociale(raisonSociale);

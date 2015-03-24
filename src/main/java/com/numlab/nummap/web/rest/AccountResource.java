@@ -1,12 +1,12 @@
 package com.numlab.nummap.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.numlab.nummap.domain.Authority;
-import com.numlab.nummap.domain.PersistentToken;
-import com.numlab.nummap.domain.User;
+import com.numlab.nummap.domain.*;
+import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.repository.PersistentTokenRepository;
 import com.numlab.nummap.repository.UserRepository;
 import com.numlab.nummap.security.SecurityUtils;
+import com.numlab.nummap.service.LocationService;
 import com.numlab.nummap.service.MailService;
 import com.numlab.nummap.service.UserService;
 import com.numlab.nummap.web.rest.dto.UserDTO;
@@ -47,6 +47,9 @@ public class AccountResource {
     @Inject
     private MailService mailService;
 
+    @Inject
+    private LocationService locationService;
+
     /**
      * POST  /register -> register the user.
      */
@@ -55,8 +58,20 @@ public class AccountResource {
             produces = MediaType.TEXT_PLAIN_VALUE)
     @Timed
     public ResponseEntity<?> registerAccount(@Valid @RequestBody String json, HttpServletRequest request) {
-        System.out.println(json);
+        /* Parsing du paramètre en UserDTO */
         UserDTO userDTO = UserDTO.fromJsonToUserDTO(json);
+
+        /* Récupération de l'adresse */
+        Address address ;
+        if (CategoryEnum.COMPANY.equals(userDTO.getCategory())){
+            address = userDTO.getCompanyContactInformation().getAddress();
+        } else {
+            address = userDTO.getPersonContactInformation().getAddress();
+        }
+
+        /* Récupération des coordonnées */
+        Location location = locationService.getLocationFromAddress(address);
+
         return userRepository.findOneByLogin(userDTO.getLogin())
             .map(user -> new ResponseEntity<>("login already in use", HttpStatus.BAD_REQUEST))
             .orElseGet(() -> userRepository.findOneByEmail(userDTO.getEmail())
@@ -66,6 +81,7 @@ public class AccountResource {
                         userDTO.getLogin(),
                         userDTO.getPassword(),
                         userDTO.getEmail().toLowerCase(),
+                        userDTO.getLocation(),
                         userDTO.getCategory(),
                         userDTO.getDescription(),
                         userDTO.getRaisonSociale(),
