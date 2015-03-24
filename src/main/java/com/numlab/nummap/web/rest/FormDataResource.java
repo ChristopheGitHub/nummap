@@ -28,7 +28,7 @@ public class FormDataResource {
     @Inject
     private DomainRepository domainRepository;
 
-    @RequestMapping(value = "/domain",
+    @RequestMapping(value = "/domains",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArrayList<Domain>> getDomains (){
