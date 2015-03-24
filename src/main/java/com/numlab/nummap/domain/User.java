@@ -42,26 +42,17 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Size(max = 100)
     private String email;
 
+    private Location location;
     private CategoryEnum category;
-
     private String description;
-
     private String raisonSociale;
-
     private PersonContactInformation personContactInformation;
-
     private CompanyContactInformation companyContactInformation;
-
     private List<String> competencies;
-
     private List<SectorEnum> sectors;
-
     private List<FieldEnum> fields;
-
     private List<CustomersTypeEnum> customers;
-
     private String siren;
-
     private boolean activated = false;
 
     @Size(min = 2, max = 5)
@@ -101,6 +92,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getDescription() { return description ;}
@@ -247,6 +246,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", login='" + login + '\'' +
             ", password='" + password + '\'' +
             ", email='" + email + '\'' +
+            ", location=" + location +
             ", category=" + category +
             ", description='" + description + '\'' +
             ", raisonSociale='" + raisonSociale + '\'' +
@@ -256,6 +256,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", sectors=" + sectors +
             ", fields=" + fields +
             ", customers=" + customers +
+            ", siren='" + siren + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +

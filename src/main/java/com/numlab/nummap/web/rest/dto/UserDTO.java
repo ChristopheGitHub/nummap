@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.numlab.nummap.domain.CompanyContactInformation;
+import com.numlab.nummap.domain.Location;
 import com.numlab.nummap.domain.PersonContactInformation;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.domain.enumerations.CustomersTypeEnum;
@@ -33,24 +34,16 @@ public class UserDTO {
     @Size(min = 5, max = 100)
     private String email;
 
+    private Location location;
     private CategoryEnum category;
-
     private String description;
-
     private String raisonSociale;
-
     private PersonContactInformation personContactInformation;
-
     private CompanyContactInformation companyContactInformation;
-
     private List<String> competencies;
-
     private List<SectorEnum> sectors;
-
     private List<FieldEnum> fields;
-
     private List<CustomersTypeEnum> customers;
-
     private String siren;
 
     @Size(min = 2, max = 5)
@@ -114,6 +107,14 @@ public class UserDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public void setEmail(String email) {
@@ -222,6 +223,7 @@ public class UserDTO {
             "login='" + login + '\'' +
             ", password='" + password + '\'' +
             ", email='" + email + '\'' +
+            ", location=" + location +
             ", category=" + category +
             ", description='" + description + '\'' +
             ", raisonSociale='" + raisonSociale + '\'' +
@@ -231,6 +233,7 @@ public class UserDTO {
             ", sectors=" + sectors +
             ", fields=" + fields +
             ", customers=" + customers +
+            ", siren='" + siren + '\'' +
             ", langKey='" + langKey + '\'' +
             ", roles=" + roles +
             '}';
