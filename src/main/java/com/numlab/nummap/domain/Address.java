@@ -73,4 +73,8 @@ public class Address {
         this.postalBox = postalBox;
     }
 
+    public String toMapSearchFormat(){
+        return street + ", " + postalCode + " " + city;
+    }
+
 }
