@@ -3,7 +3,7 @@
  */
 'use strict';
 angular.module('nummapApp')
-    .controller('UserController', function ($scope, User) {
+    .controller('UserController', function ($scope, User, Auth) {
         $scope.users = [];
         $scope.loadAll = function() {
             User.query(function(result) {
@@ -28,26 +28,46 @@ angular.module('nummapApp')
                 });
         };
 
-
         $scope.clear = function () {
             $scope.user = {"createdBy":null,"createdDate":null,"lastModifiedBy":null,"lastModifiedDate":null,"id":null,"login":null,"email":null,"category":null,"description":null,"raisonSociale":null,"personContactInformation":null,"companyContactInformation":null,"competencies":null,"sectors":null,"fields":null,"customers":null,"activated":true,"langKey":null,"activationKey":null};
         };
 
-        /* Fonction à implémenter */
-        /*
+    /*
          $scope.create = function () {
-         Author.save($scope.author,
+         User.save($scope.user,
          function () {
          $scope.loadAll();
-         $('#saveAuthorModal').modal('hide');
+         $('#saveUserModal').modal('hide');
          $scope.clear();
          });
          };
+    */
 
-         $scope.update = function (id) {
-         $scope.author = Author.get({id: id});
-         $('#saveAuthorModal').modal('show');
+        $scope.create = function () {
+            Auth.updateAccount($scope.user).then(function() {
+
+                $scope.error = null;
+                $scope.success = 'OK';
+                $scope.loadAll();
+                $('#saveUserModal').modal('hide');
+                $scope.clear();
+                Principal.identity().then(function(account) {
+                    $scope.user = account;
+                });
+            }).catch(function() {
+                $scope.success = null;
+                $scope.error = 'ERROR';
+            });
+        };
+
+
+
+
+         $scope.update = function (login) {
+         $scope.user = User.get({login: login});
+         $('#saveUserModal').modal('show');
          };
-        */
+
+
      });
 

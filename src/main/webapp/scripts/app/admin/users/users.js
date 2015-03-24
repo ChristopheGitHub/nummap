@@ -40,7 +40,7 @@ angular.module('nummapApp')
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('user');
+                        $translatePartialLoader.addPart('register');
                         return $translate.refresh();
                     }]
                 }
