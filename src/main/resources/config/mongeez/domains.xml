@@ -1,0 +1,38 @@
+<mongoChangeLog>
+    <changeSet changeId="ChangeSet-4" author="jhipster">
+        <script>
+            db.T_DOMAIN.insert(
+            {
+            "name" : "Various"
+            });
+            db.T_DOMAIN.insert(
+            {
+            "name" : "Aviation"
+            });
+            db.T_DOMAIN.insert(
+            {
+            "name" : "Administration"
+            });
+            db.T_DOMAIN.insert(
+            {
+            "name" : "Web site design"
+            });
+            db.T_DOMAIN.insert(
+            {
+            "name" : "Computer science"
+            });
+            db.T_DOMAIN.insert(
+            {
+            "name" : "System integration"
+            });
+            db.T_DOMAIN.insert(
+            {
+            "name" : "Consulting"
+            });
+            db.T_DOMAIN.insert(
+            {
+            "name" : "Outsourcing"
+            });
+        </script>
+    </changeSet>
+</mongoChangeLog>

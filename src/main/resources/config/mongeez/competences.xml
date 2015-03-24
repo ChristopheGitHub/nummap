@@ -1,0 +1,12 @@
+<mongoChangeLog>
+    <changeSet changeId="ChangeSet-3" author="jhipster">
+        <script>
+
+            db.T_COMPETENCE.insert(
+            {
+            "name" : "Java"
+            });
+
+        </script>
+    </changeSet>
+</mongoChangeLog>
