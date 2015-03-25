@@ -1,5 +1,6 @@
 package com.numlab.nummap.domain;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -7,10 +8,12 @@ import java.io.Serializable;
 /**
  * Created by eisti on 3/24/15.
  */
-
-
+/*public class Domain implements Serializable {*/
 @Document(collection = "T_DOMAIN")
-public class Domain extends AbstractAuditingEntity implements Serializable {
+public class Domain implements Serializable {
+
+    @Id
+    private String id;
 
     String name;
 
@@ -25,7 +28,8 @@ public class Domain extends AbstractAuditingEntity implements Serializable {
     @Override
     public String toString() {
         return "Domain{" +
-                "name='" + name + '\'' +
-                '}';
+            "name='" + name + '\'' +
+            '}';
     }
 }
+
