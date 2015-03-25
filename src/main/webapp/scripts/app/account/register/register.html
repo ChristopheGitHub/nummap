@@ -163,7 +163,7 @@
                     </div>
                     <p>Category : {{ registerAccount.category }}</p>
                 </div>
-                
+
                 <!-- Person contact -->
                 <div class="form-group" ng-if="registerAccount.category">
 
@@ -457,7 +457,7 @@
                            <p class="help-block"
                                   ng-show="form.companyCompanyName.$error.minlength" translate="global.messages.validate.companyCompanyName.minlength">
                                Your companyCompanyName is required to be at least 50 characters
-                           </p>                           
+                           </p>
                        </div>
                     </div>
 
@@ -674,50 +674,55 @@
                          ng-model="registerAccount.siren" ng-minlength=10 ng-maxlength=255 required>
                   <p>siren valid : {{ form.description.$valid }}</p>
                 </div>
-                
-                <!-- Sector and domain -->
+
+                <!-- Sectors -->
                 <div class="form-group">
-                  <label translate>Sector and domain</label><br/>
+                  <label>Sectors</label>
                   <div class="row">
-
-                    <div class="col-md-4">
-                      <span translate="register.form.sector.various">various</span><br/>
-                      <span translate="register.form.sector.aviation">aviation</span><br/>
-                      <span translate="register.form.sector.administration">administration</span><br/>
-                      <span translate="register.form.sector.webSiteDesign">webSiteDesign</span><br/>
-                      <span translate="register.form.sector.computerScience">computerScience</span><br/>
+                    
+                    <div ng-repeat="item in sectors">
+                      <div class="col-md-4">
+                        <span>{{ item.name }}</span><br/>
+                      </div>
+                      
+                      <div class="col-md-2">
+                        <input type="checkbox"
+                          ng-model="item.checked" 
+                          ng-true-value="true" 
+                          ng-false-value="false">
+                      </div>
                     </div>
-
-                    <div class="col-md-2">
-                      <input type="checkbox" ng-model="registerAccount.sector" ng-true-value="'various'" ng-false-value="null"><br/>
-                      <input type="checkbox" ng-model="registerAccount.sector" ng-true-value="'aviation'" ng-false-value="null"><br/>
-                      <input type="checkbox" ng-model="registerAccount.sector" ng-true-value="'administration'" ng-false-value="null"><br/>
-                      <input type="checkbox" ng-model="registerAccount.sector" ng-true-value="'webSiteDesign'" ng-false-value="null"><br/>
-                      <input type="checkbox" ng-model="registerAccount.sector" ng-true-value="'computerScience'" ng-false-value="null"><br/>
-                    </div>
-
-                    <div class="col-md-4">
-                      <span translate="global.form.field.systemIntegration">System integration</span><br/>
-                      <span translate="global.form.field.consulting">Consulting</span><br/>
-                      <span translate="global.form.field.outsourcing">Outsourcing</span><br/>
-                    </div>
-
-                    <div class="col-md-2">
-                      <input type="checkbox" ng-model="registerAccount.fields" ng-true-value="'systemIntegration'" ng-false-value="null"><br/>
-                      <input type="checkbox" ng-model="registerAccount.fields" ng-true-value="'consulting'" ng-false-value="null"><br/>
-                      <input type="checkbox" ng-model="registerAccount.fields" ng-true-value="'outsourcing'" ng-false-value="null"><br/>
-                    </div>
-
                   </div>
                 </div>
-                
-                <!-- Customers -->
+
+                <!-- Fields -->
                 <div class="form-group">
+                  <label>Fields</label>
+                  <div class="row">
+                    
+                    <div ng-repeat="item in fields">
+                      <div class="col-md-4">
+                        <span>{{ item.name }}</span><br/>
+                      </div>
+                      
+                      <div class="col-md-2">
+                        <input type="checkbox"
+                          ng-model="item.checked" 
+                          ng-true-value="true" 
+                          ng-false-value="false">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- Customers -->
+                <!-- <div class="form-group">
                   <label translate>Competencies and customers</label><br/>
                   <div class="row">
 
                   </div>
-                </div>
+                </div> -->
 
 
 
