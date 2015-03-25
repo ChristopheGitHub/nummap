@@ -11,14 +11,10 @@ import java.util.List;
  */
 
 @Document(collection = "T_COMPETENCE")
-public class Competence extends AbstractAuditingEntity implements Serializable {
+public class Competence implements Serializable {
 
     @Id
     String Id;
-
-    @Id
-    private String id;
-
 
     String name;
 

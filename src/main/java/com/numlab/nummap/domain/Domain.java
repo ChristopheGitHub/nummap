@@ -15,9 +15,6 @@ public class Domain implements Serializable {
     @Id
     private String id;
 
-    @Id
-    private String id;
-
     String name;
 
     public String getName() {

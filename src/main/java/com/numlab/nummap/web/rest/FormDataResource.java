@@ -69,8 +69,6 @@ public class FormDataResource {
     @RolesAllowed(AuthoritiesConstants.ADMIN)
     void addDomain(@RequestBody Domain domain){
         log.debug("Rest request to add Domain : {}", domain);
-        domain.setCreatedBy("Admin");
-        domain.setCreatedDate(new DateTime());
         domainRepository.save(domain);
         System.out.println("Ajout du domaine "+domain);
     }
@@ -86,8 +84,6 @@ public class FormDataResource {
     @RolesAllowed(AuthoritiesConstants.ADMIN)
     void addCompetence(@RequestBody Competence competence){
         log.debug("Rest request to add Competence : {}", competence);
-        competence.setCreatedBy("Admin");
-        competence.setCreatedDate(new DateTime());
         competenceRepository.save(competence);
         System.out.println("Ajout de la compétence "+competence);
     }
