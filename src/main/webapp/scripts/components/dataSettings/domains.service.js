@@ -5,7 +5,7 @@
 
 angular.module('nummapApp')
     .factory('Domains', function ($resource) {
-        return $resource('api/domains/:login', {}, {
+        return $resource('api/domains/:name', {}, {
             'query': {method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

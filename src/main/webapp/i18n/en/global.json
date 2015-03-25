@@ -27,7 +27,8 @@
                 "audits": "Audits",
                 "apidocs": "API",
                 "database": "Database",
-                "console" : "User Control Panel"
+                "console" : "User Control Panel",
+                "dataSettings" : "Data Settings"
             },
             "language": "Language"
         },

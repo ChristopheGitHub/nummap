@@ -17,53 +17,72 @@ angular.module('nummapApp')
         };
         $scope.loadAll();
 
-
-            /*
-        $scope.delete = function (login) {
-            $scope.user = User.get({login: login});
-            console.log($scope.user);
-            $('#deleteUserConfirmation').modal('show');
-        };
-
-        $scope.confirmDelete = function (login) {
-            User.delete({login: login},
+        $scope.createCompetence = function () {
+            Competencies.save($scope.competence,
                 function () {
                     $scope.loadAll();
-                    $('#deleteUserConfirmation').modal('hide');
+                    $('#saveCompetenceModal').modal('hide');
                     $scope.clear();
                 });
         };
 
-        $scope.clear = function () {
-            $scope.user = {"createdBy":null,"createdDate":null,"lastModifiedBy":null,"lastModifiedDate":null,"id":null,"login":null,"email":null,"category":null,"description":null,"raisonSociale":null,"personContactInformation":null,"companyContactInformation":null,"competencies":null,"sectors":null,"fields":null,"customers":null,"activated":true,"langKey":null,"activationKey":null};
-        };
+        $scope.createDomain = function () {
 
-        $scope.create = function () {
-            Auth.updateAccount($scope.user).then(function() {
-
-                $scope.error = null;
-                $scope.success = 'OK';
-                $scope.loadAll();
-                $('#saveUserModal').modal('hide');
-                $scope.clear();
-                Principal.identity().then(function(account) {
-                    $scope.user = account;
+            Domains.save($scope.domain,
+                function () {
+                    $scope.loadAll();
+                    $('#saveDomainModal').modal('hide');
+                    $scope.clear();
                 });
-            }).catch(function() {
-                $scope.success = null;
-                $scope.error = 'ERROR';
-            });
         };
 
 
-
-
-        $scope.update = function (login) {
-            $scope.user = User.get({login: login});
-            $('#saveUserModal').modal('show');
+        $scope.updateCompetence = function (name) {
+            $scope.competence = Competencies.get({name: name});
+            $('#saveCompetenceModal').modal('show');
         };
 
-        */
+        $scope.updateDomain = function (name) {
+            $scope.domain = Domains.get({name: name});
+            $('#saveDomainModal').modal('show');
+        };
+
+        $scope.deleteCompetence = function (name) {
+            $scope.competence = Competencies.get({name: name});
+            $('#deleteCompetenceConfirmation').modal('show');
+        };
+
+        $scope.deleteDomain = function (name) {
+            $scope.domain = Domains.get({name: name});
+            $('#deleteDomainConfirmation').modal('show');
+        };
+
+
+        $scope.confirmDeleteDomain = function (name) {
+            Domains.delete({name: name},
+                function () {
+                    $scope.loadAll();
+                    $('#deleteDomainConfirmation').modal('hide');
+                    $scope.clear();
+                });
+        };
+
+
+        $scope.confirmDeleteCompetence = function (name) {
+            Competencies.delete({name: name},
+                function () {
+                    $scope.loadAll();
+                    $('#deleteCompetenceConfirmation').modal('hide');
+                    $scope.clear();
+                });
+        };
+
+
+        $scope.clear = function () {
+            $scope.domain={"createdBy":null,"createdDate":null,"lastModifiedBy":null,"lastModifiedDate":null,"name":"null"};
+            $scope.competence = {"createdBy":null,"createdDate":null,"lastModifiedBy":null,"lastModifiedDate":null,"name":"null"};
+        };
+
     });
 
 

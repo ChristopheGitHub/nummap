@@ -1,7 +1,17 @@
 {
+   "dataSettings" : {
+       "Domain": {
+           "createLabel": "Create a new Domain",
+           "createOrEditLabel" : "Create or edir a Domain",
+           "deleteQuestion": "Are you sure you want to delete Domain {{ name }}?",
+           "name" : "Domain name"
 
-
-
-
-
+       },
+       "Competence": {
+           "createLabel": "Create a new Competence",
+           "deleteQuestion": "Are you sure you want to delete Competence {{ name }}?",
+           "createOrEditLabel" : "Create or edit a Competence,",
+           "name" : "Competence name"
+       }
+   }
 }

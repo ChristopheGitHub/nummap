@@ -2,7 +2,7 @@
 
 angular.module('nummapApp')
     .factory('Competencies', function ($resource) {
-        return $resource('api/competencies/:login', {}, {
+        return $resource('api/competencies/:name', {}, {
             'query': {method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
