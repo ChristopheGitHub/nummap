@@ -7,6 +7,7 @@ import com.numlab.nummap.domain.User;
 import com.numlab.nummap.repository.CompetenceRepository;
 import com.numlab.nummap.repository.DomainRepository;
 import com.numlab.nummap.security.AuthoritiesConstants;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -68,6 +69,8 @@ public class FormDataResource {
     @RolesAllowed(AuthoritiesConstants.ADMIN)
     void addDomain(@RequestBody Domain domain){
         log.debug("Rest request to add Domain : {}", domain);
+        domain.setCreatedBy("Admin");
+        domain.setCreatedDate(new DateTime());
         domainRepository.save(domain);
         System.out.println("Ajout du domaine "+domain);
     }
@@ -83,6 +86,8 @@ public class FormDataResource {
     @RolesAllowed(AuthoritiesConstants.ADMIN)
     void addCompetence(@RequestBody Competence competence){
         log.debug("Rest request to add Competence : {}", competence);
+        competence.setCreatedBy("Admin");
+        competence.setCreatedDate(new DateTime());
         competenceRepository.save(competence);
         System.out.println("Ajout de la compétence "+competence);
     }

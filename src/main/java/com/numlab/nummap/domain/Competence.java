@@ -1,5 +1,6 @@
 package com.numlab.nummap.domain;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -17,6 +18,10 @@ public class Competence extends AbstractAuditingEntity implements Serializable {
                 "name='" + name + '\'' +
                 '}';
     }
+
+    @Id
+    private String id;
+
 
     String name;
 

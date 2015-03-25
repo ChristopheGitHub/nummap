@@ -1,5 +1,6 @@
 package com.numlab.nummap.domain;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -11,6 +12,9 @@ import java.io.Serializable;
 
 @Document(collection = "T_DOMAIN")
 public class Domain extends AbstractAuditingEntity implements Serializable {
+
+    @Id
+    private String id;
 
     String name;
 

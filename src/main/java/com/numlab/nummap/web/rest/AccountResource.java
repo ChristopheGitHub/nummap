@@ -72,6 +72,7 @@ public class AccountResource {
         /* Récupération des coordonnées */
         Location location = locationService.getLocationFromAddress(address);
 
+
         return userRepository.findOneByLogin(userDTO.getLogin())
             .map(user -> new ResponseEntity<>("login already in use", HttpStatus.BAD_REQUEST))
             .orElseGet(() -> userRepository.findOneByEmail(userDTO.getEmail())
