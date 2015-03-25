@@ -79,8 +79,8 @@ angular.module('nummapApp')
 
 
         $scope.clear = function () {
-            $scope.domain={"createdBy":null,"createdDate":null,"lastModifiedBy":null,"lastModifiedDate":null,"name":null};
-            $scope.competence = {"createdBy":null,"createdDate":null,"lastModifiedBy":null,"lastModifiedDate":null,"name":null};
+            $scope.domain={"name":null};
+            $scope.competence = {"name":null};
         };
 
     });

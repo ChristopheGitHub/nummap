@@ -8,10 +8,12 @@ import java.io.Serializable;
 /**
  * Created by eisti on 3/24/15.
  */
-
-
+/*public class Domain implements Serializable {*/
 @Document(collection = "T_DOMAIN")
-public class Domain extends AbstractAuditingEntity implements Serializable {
+public class Domain implements Serializable {
+
+    @Id
+    private String id;
 
     @Id
     private String id;
@@ -29,7 +31,8 @@ public class Domain extends AbstractAuditingEntity implements Serializable {
     @Override
     public String toString() {
         return "Domain{" +
-                "name='" + name + '\'' +
-                '}';
+            "name='" + name + '\'' +
+            '}';
     }
 }
+

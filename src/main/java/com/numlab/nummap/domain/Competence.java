@@ -12,12 +12,9 @@ import java.util.List;
 
 @Document(collection = "T_COMPETENCE")
 public class Competence extends AbstractAuditingEntity implements Serializable {
-    @Override
-    public String toString() {
-        return "Competence{" +
-                "name='" + name + '\'' +
-                '}';
-    }
+
+    @Id
+    String Id;
 
     @Id
     private String id;
@@ -31,5 +28,12 @@ public class Competence extends AbstractAuditingEntity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Competence{" +
+            "name='" + name + '\'' +
+            '}';
     }
 }
