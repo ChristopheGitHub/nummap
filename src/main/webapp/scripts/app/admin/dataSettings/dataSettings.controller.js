@@ -4,6 +4,10 @@
 'use strict';
 angular.module('nummapApp')
     .controller('DataSettingsController', function ($scope, Domains, Competencies) {
+
+        $scope.queryCompetence = '';
+        $scope.querySector = '';
+
         $scope.domains = [];
         $scope.comptencies = [];
 
