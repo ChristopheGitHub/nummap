@@ -13,4 +13,5 @@ public interface DomainRepository extends MongoRepository<Domain, String> {
     List<Domain> findAll();
     long deleteByName(String name);
     Optional<Domain> findByName(String name);
+    Optional<Domain> findById(String id);
 }

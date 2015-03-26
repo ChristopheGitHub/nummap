@@ -5,6 +5,7 @@ import com.numlab.nummap.domain.*;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.repository.PersistentTokenRepository;
 import com.numlab.nummap.repository.UserRepository;
+import com.numlab.nummap.security.AuthoritiesConstants;
 import com.numlab.nummap.security.SecurityUtils;
 import com.numlab.nummap.service.LocationService;
 import com.numlab.nummap.service.MailService;
@@ -18,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -185,6 +187,37 @@ public class AccountResource {
             })
             .orElseGet(() -> new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
+
+
+    /**
+     * POST  /accountmanagement -> update the user information identified by login.
+     */
+    @RequestMapping(value = "/accountmanagement",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
+    @Timed
+    public ResponseEntity<String> updateAccount(@RequestBody UserDTO userDTO) {
+        return userRepository
+                .findOneByLogin(userDTO.getLogin())
+                .filter(u -> u.getLogin().equals(userDTO.getLogin()))
+                .map(u -> {
+                    userService.updateUserByAdminInformation(userDTO.getLogin(),
+                            userDTO.getEmail(),
+                            userDTO.getCategory(),
+                            userDTO.getDescription(),
+                            userDTO.getRaisonSociale(),
+                            userDTO.getPersonContactInformation(),
+                            userDTO.getCompanyContactInformation(),
+                            userDTO.getCompetencies(),
+                            userDTO.getSectors(),
+                            userDTO.getFields(),
+                            userDTO.getCustomers() );
+                    return new ResponseEntity<String>(HttpStatus.OK);
+                })
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
+    }
+
 
     /**
      * POST  /change_password -> changes the current user's password

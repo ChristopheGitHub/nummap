@@ -7,6 +7,7 @@ import com.numlab.nummap.domain.User;
 import com.numlab.nummap.repository.CompetenceRepository;
 import com.numlab.nummap.repository.DomainRepository;
 import com.numlab.nummap.security.AuthoritiesConstants;
+import com.numlab.nummap.security.SecurityUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * Created by christo on 24/03/15.
@@ -69,9 +71,22 @@ public class FormDataResource {
     @RolesAllowed(AuthoritiesConstants.ADMIN)
     void addDomain(@RequestBody Domain domain){
         log.debug("Rest request to add Domain : {}", domain);
-        domainRepository.save(domain);
-        System.out.println("Ajout du domaine "+domain);
+
+        Optional<Domain> opt = domainRepository.findById(domain.getId());
+        if(opt.isPresent()){
+            opt.map(d -> {
+                        d.setName(domain.getName());
+                        domainRepository.save(d);
+                        log.debug("Changed Information for Domain: {}", d);
+                        return new ResponseEntity<String>(HttpStatus.OK);
+        });
+        }
+        else{
+            domainRepository.save(domain);
+            System.out.println("Ajout du domaine "+domain);
+        }
     }
+
 
 
     /**
@@ -84,8 +99,20 @@ public class FormDataResource {
     @RolesAllowed(AuthoritiesConstants.ADMIN)
     void addCompetence(@RequestBody Competence competence){
         log.debug("Rest request to add Competence : {}", competence);
-        competenceRepository.save(competence);
-        System.out.println("Ajout de la compétence "+competence);
+
+        Optional<Competence> opt = competenceRepository.findById(competence.getId());
+        if(opt.isPresent()){
+            opt.map(c -> {
+                c.setName(competence.getName());
+                competenceRepository.save(c);
+                log.debug("Changed Information for Competence: {}", c);
+                return new ResponseEntity<String>(HttpStatus.OK);
+            });
+        }
+        else{
+            competenceRepository.save(competence);
+            System.out.println("Ajout de la Competence "+competence);
+        }
     }
 
 
@@ -125,6 +152,8 @@ public class FormDataResource {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
     }
+
+
 
 
 
