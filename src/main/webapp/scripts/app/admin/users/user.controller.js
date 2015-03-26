@@ -32,28 +32,15 @@ angular.module('nummapApp')
             $scope.user = {"createdBy":null,"createdDate":null,"lastModifiedBy":null,"lastModifiedDate":null,"id":null,"login":null,"email":null,"category":null,"description":null,"raisonSociale":null,"personContactInformation":null,"companyContactInformation":null,"competencies":null,"sectors":null,"fields":null,"customers":null,"activated":true,"langKey":null,"activationKey":null};
         };
 
-    /*
-         $scope.create = function () {
-         User.save($scope.user,
-         function () {
-         $scope.loadAll();
-         $('#saveUserModal').modal('hide');
-         $scope.clear();
-         });
-         };
-    */
 
         $scope.create = function () {
-            Auth.updateAccount($scope.user).then(function() {
+            Auth.manageAccount($scope.user).then(function() {
 
                 $scope.error = null;
                 $scope.success = 'OK';
                 $scope.loadAll();
                 $('#saveUserModal').modal('hide');
                 $scope.clear();
-                Principal.identity().then(function(account) {
-                    $scope.user = account;
-                });
             }).catch(function() {
                 $scope.success = null;
                 $scope.error = 'ERROR';

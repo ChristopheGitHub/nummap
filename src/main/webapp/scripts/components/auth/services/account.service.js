@@ -13,3 +13,17 @@ angular.module('nummapApp')
             }
         });
     });
+
+angular.module('nummapApp')
+    .factory('AccountManagement', function AccountManagement($resource) {
+        return $resource('api/accountmanagement', {}, {
+            'get': { method: 'GET', params: {}, isArray: false,
+                interceptor: {
+                    response: function(response) {
+                        // expose response
+                        return response;
+                    }
+                }
+            }
+        });
+    });

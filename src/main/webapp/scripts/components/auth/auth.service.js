@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .factory('Auth', function Auth($rootScope, $state, $q, $translate, Principal, AuthServerProvider, Account, Register, Activate, Password) {
+    .factory('Auth', function Auth($rootScope, $state, $q, $translate, Principal, AuthServerProvider, Account, Register, Activate, Password, AccountManagement) {
         return {
             login: function (credentials, callback) {
                 var cb = callback || angular.noop;
@@ -70,6 +70,19 @@ angular.module('nummapApp')
                 var cb = callback || angular.noop;
 
                 return Account.save(account,
+                    function () {
+                        return cb(account);
+                    },
+                    function (err) {
+                        return cb(err);
+                    }.bind(this)).$promise;
+            },
+
+            /* Fonction permettant aux admins de modifier les comptes utilisateurs */
+            manageAccount: function (account, callback) {
+                var cb = callback || angular.noop;
+
+                return AccountManagement.save(account,
                     function () {
                         return cb(account);
                     },

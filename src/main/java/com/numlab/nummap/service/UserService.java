@@ -93,11 +93,36 @@ public class UserService {
         return newUser;
     }
 
+    /* TODO : Mettre à jour les réseaux sociaux */
     public void updateUserInformation(String email, CategoryEnum category,
         String description, String raisonSociale, PersonContactInformation personContactInformation,
         CompanyContactInformation companyContactInformation, List<String> competencies, List<SectorEnum> sectors,
         List<FieldEnum> fields, List<CustomersTypeEnum> customers) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u -> {
+            u.setEmail(email);
+            u.setCategory(category);
+            u.setDescription(description);
+            u.setRaisonSociale(raisonSociale);
+            u.setPersonContactInformation(personContactInformation);
+            u.setCompanyContactInformation(companyContactInformation);
+            u.setCompetencies(competencies);
+            u.setSectors(sectors);
+            u.setFields(fields);
+            u.setCustomers(customers);
+            userRepository.save(u);
+            log.debug("Changed Information for User: {}", u);
+        });
+    }
+
+
+    /**
+     * Fonction permettant aux administrateurs de mettre à jour le profile des utilisateurs identifiés par le parametre String login
+     */
+    public void updateUserByAdminInformation(String login, String email, CategoryEnum category,
+                                             String description, String raisonSociale, PersonContactInformation personContactInformation,
+                                             CompanyContactInformation companyContactInformation, List<String> competencies, List<SectorEnum> sectors,
+                                             List<FieldEnum> fields, List<CustomersTypeEnum> customers) {
+        userRepository.findOneByLogin(login).ifPresent(u -> {
             u.setEmail(email);
             u.setCategory(category);
             u.setDescription(description);
