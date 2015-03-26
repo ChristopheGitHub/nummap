@@ -1,52 +1,62 @@
 <!-- Compétences -->
-<div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th translate="dataSettings.Competence.name">Competence name</th>
-        </tr>
-      </thead>
-  </table>
-  <div class="div-table-content">
-    <table class="table table-striped table-hover">
-        <tbody>
-          <tr ng-repeat="competence in competencies">
-              <td>{{competence.name}}</td>
-              <td>
-                  <button type="submit"
-                          ng-click="updateCompetence(competence.name)"
-                          class="btn btn-primary">
-                      <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
-                  </button>
-                  <button type="submit"
-                          ng-click="deleteCompetence(competence.name)"
-                          class="btn btn-danger">
-                      <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
-                  </button>
-              </td>
-          </tr>
-        </tbody>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="table-responsive">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th translate="dataSettings.Competence.name">Competence name</th>
+              <th><input type="text"></th>
+            </tr>
+          </thead>
       </table>
+      <div class="div-table-content">
+        <table class="table table-striped table-hover table-condensed">
+            <tbody>
+              <tr ng-repeat="competence in competencies">
+                  <td>{{competence.name}}</td>
+                  <td>
+                      <button type="submit"
+                              ng-click="updateCompetence(competence.name)"
+                              class="btn btn-primary">
+                          <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                      </button>
+                      <button type="submit"
+                              ng-click="deleteCompetence(competence.name)"
+                              class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                      </button>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
   </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCompetenceModal" ng-click="clear()">
+          <span class="glyphicon glyphicon-flash"></span> <span translate="dataSettings.Competence.createLabel">Create a new Competence</span>
+      </button>
+    </div>
 </div>
 
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCompetenceModal" ng-click="clear()">
-    <span class="glyphicon glyphicon-flash"></span> <span translate="dataSettings.Competence.createLabel">Create a new Competence</span>
-</button>
 
 <!-- Sectors -->
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th translate="dataSettings.Domain.name">Domain Name</th>
-      </tr>
-    </thead>
-  </table>
-  <div class="div-table-content">
-    <table class="table table-striped table-hover">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th translate="dataSettings.Domain.name">Domain Name</th>
+            <th><input type="text"></th>
+          </tr>
+        </thead>
+      </table>
+      <div class="div-table-content">
+        <table class="table table-striped table-hover table-condensed">
           <tbody>
-          <tr ng-repeat="domain in domains">
+            <tr ng-repeat="domain in domains">
               <td>{{domain.name}}</td>
               <td>
                   <button type="submit"
@@ -60,15 +70,19 @@
                       <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                   </button>
               </td>
-          </tr>
+            </tr>
           </tbody>
-      </table>
+        </table>
+      </div>
+    </div>
   </div>
+  
+ <div class="panel-footer">
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveDomainModal" ng-click="clear()">
+       <span class="glyphicon glyphicon-flash"></span> <span translate="dataSettings.Domain.createLabel">Create a new Domain</span>
+   </button>
+ </div>
 </div>
-
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveDomainModal" ng-click="clear()">
-    <span class="glyphicon glyphicon-flash"></span> <span translate="dataSettings.Domain.createLabel">Create a new Domain</span>
-</button>
 
 
 <!-- Fenetre pour ajouter une compétence -->
