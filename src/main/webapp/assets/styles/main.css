@@ -144,24 +144,8 @@ ul#strength {
 
 
 /* CSS PERS */
-.main-container {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    margin: 0;
-    padding: 0;
-}
 
-.main-well {
-    height: 100%;
-    margin: 0;
-    padding: 0; 
-}
-
-.main-footer {
+/*.main-footer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -170,11 +154,16 @@ ul#strength {
     margin: 0;
     text-align: center;
 }
-
+*/
 .sub-container {
-    position: relative;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
     top: 0;
-    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
 }
 
 .flex-container {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('MainController', function ($scope, Principal) {
+    .controller('MainController', function ($scope, $state, Principal) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
@@ -15,6 +15,8 @@ angular.module('nummapApp')
                 }
             }
         };
+
+        console.log("eeeeeeee" + $state.current.name);
 
         angular.extend($scope, {
             center: {
