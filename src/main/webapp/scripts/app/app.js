@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp', ['LocalStorageModule', 'tmh.dynamicLocale',
-    'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster'])
+    'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster', 'ngTagsInput'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Auth, Principal, Language, ENV, VERSION) {
         $rootScope.ENV = ENV;
@@ -45,7 +45,7 @@ angular.module('nummapApp', ['LocalStorageModule', 'tmh.dynamicLocale',
             }
         };
     })
-    
+
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, $translateProvider, tmhDynamicLocaleProvider, httpRequestInterceptorCacheBusterProvider) {
 
         //enable CSRF
@@ -77,7 +77,7 @@ angular.module('nummapApp', ['LocalStorageModule', 'tmh.dynamicLocale',
                 }]
             }
         });
-        
+
 
         // Initialize angular-translate
         $translateProvider.useLoader('$translatePartialLoader', {

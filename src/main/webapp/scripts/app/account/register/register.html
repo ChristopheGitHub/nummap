@@ -715,6 +715,21 @@
                   </div>
                 </div>
 
+                <!-- Competencies -->
+                <div class="form-group">
+                 <label>Competencies</label>
+                  <tags-input ng-model="competenciesSelected"
+                    display-property="name"
+                    placeholder="Add a competence / Ajouter une compétence"
+                    add-on-space="true"
+                    min-length="1">
+                    <auto-complete source="loadTags($query)"
+                      display-property="name"
+                      min-length="1"></auto-complete>
+                  </tags-input>
+                </div>
+
+
 
                 <!-- Customers -->
                 <!-- <div class="form-group">

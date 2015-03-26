@@ -29,8 +29,22 @@ angular.module('nummapApp')
             {name: 'Consulting'},
             {name: 'System Integration'}
         ];
-
-
+        
+        $scope.tags = [
+            { text: 'just' },
+            { text: 'some' },
+            { text: 'cool' },
+            { text: 'tags' }
+          ];
+          $scope.loadTags = function(query) {
+            var res = [];
+            $scope.competencies.forEach(function(element) {
+                if (element.name.includes(query)) {
+                    res.push(element);
+                }
+            });
+            return res;
+          };
 
         $scope.addElement = function(list) {
             list.push({});
@@ -47,31 +61,28 @@ angular.module('nummapApp')
                 $scope.errorUserExists = null;
                 $scope.errorEmailExists = null;
 
-                // Ajout de la liste de réseaux sociaux
-                // $scope.registerAccount.PersonContactInformation.socialNetworkList = $scope.personSocialNetworkList ;
-                // if($scope.category === 'COMPANY') {
-                //     $scope.registerAccount.CompanyContactInformation.socialNetworkList = $scope.companySocialNetworkList ;
-                // }
+                // re
 
                 // Ajout de la liste des domaines
-                $scope.registerAccount.sectors = [];
-                $scope.sectors.forEach(function(element) {
-                    if (element.checked) {
-                        $scope.registerAccount.sectors.push({name : element.name});
-                    }
-                });
+                // $scope.registerAccount.sectors = [];
+                // $scope.sectors.forEach(function(element) {
+                //     if (element.checked) {
+                //         $scope.registerAccount.sectors.push({name : element.name});
+                //     }
+                // });
 
                 // Ajout de la liste des domaines
-                $scope.registerAccount.fields = [];
-                $scope.fields.forEach(function(element) {
-                    if (element.checked) {
-                        $scope.registerAccount.sectors.push({name : element.name});
-                    }
-                });
+                // $scope.registerAccount.fields = [];
+                // $scope.fields.forEach(function(element) {
+                //     if (element.checked) {
+                //         $scope.registerAccount.sectors.push({name : element.name});
+                //     }
+                // });
 
-                console.log($scope.registerAccount.sectors);
-                console.log($scope.registerAccount.fields);
                 // console.log($scope.registerAccount.sectors);
+                // console.log($scope.registerAccount.fields);
+                // console.log($scope.registerAccount.competencies);
+                console.log($scope.competenciesSelected);
 
                 // Auth.createAccount($scope.registerAccount).then(function () {
                 //     $scope.success = 'OK';
