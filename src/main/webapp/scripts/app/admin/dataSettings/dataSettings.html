@@ -1,201 +1,202 @@
-<div>
+<!-- Compétences -->
+<div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th translate="dataSettings.Competence.name">Competence name</th>
+        </tr>
+      </thead>
+  </table>
+  <div class="div-table-content">
+    <table class="table table-striped table-hover">
+        <tbody>
+          <tr ng-repeat="competence in competencies">
+              <td>{{competence.name}}</td>
+              <td>
+                  <button type="submit"
+                          ng-click="updateCompetence(competence.name)"
+                          class="btn btn-primary">
+                      <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                  </button>
+                  <button type="submit"
+                          ng-click="deleteCompetence(competence.name)"
+                          class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                  </button>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
 
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th translate="dataSettings.Competence.name">Competence name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="competence in competencies">
-                <td>{{competence.name}}</td>
-                <td>
-                    <button type="submit"
-                            ng-click="updateCompetence(competence.name)"
-                            class="btn btn-primary">
-                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCompetenceModal" ng-click="clear()">
+    <span class="glyphicon glyphicon-flash"></span> <span translate="dataSettings.Competence.createLabel">Create a new Competence</span>
+</button>
+
+<!-- Sectors -->
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th translate="dataSettings.Domain.name">Domain Name</th>
+      </tr>
+    </thead>
+  </table>
+  <div class="div-table-content">
+    <table class="table table-striped table-hover">
+          <tbody>
+          <tr ng-repeat="domain in domains">
+              <td>{{domain.name}}</td>
+              <td>
+                  <button type="submit"
+                          ng-click="updateDomain(domain.name)"
+                          class="btn btn-primary">
+                      <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                  </button>
+                  <button type="submit"
+                          ng-click="deleteDomain(domain.name)"
+                          class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                  </button>
+              </td>
+          </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveDomainModal" ng-click="clear()">
+    <span class="glyphicon glyphicon-flash"></span> <span translate="dataSettings.Domain.createLabel">Create a new Domain</span>
+</button>
+
+
+<!-- Fenetre pour ajouter une compétence -->
+<div class="modal fade" id="saveCompetenceModal" tabindex="-1" role="dialog" aria-labelledby="myCompetenceLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="form" role="form" novalidate
+                  class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                  ng-submit="createCompetence()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            ng-click="clear()">&times;</button>
+                    <h4 class="modal-title" id="myCompetenceLabel" translate="dataSettings.Competence.createOrEditLabel">Create or edit a Competence</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label translate="dataSettings.Competence.name">Name</label>
+                        <input type="text" class="form-control"
+                               ng-model="competence.name">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                     </button>
-                    <button type="submit"
-                            ng-click="deleteCompetence(competence.name)"
-                            class="btn btn-danger">
-                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                    <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
                     </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-  <div>
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCompetenceModal" ng-click="clear()">
-        <span class="glyphicon glyphicon-flash"></span> <span translate="dataSettings.Competence.createLabel">Create a new Competence</span>
-    </button>
-
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th translate="dataSettings.Domain.name">Domain Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="domain in domains">
-                <td>{{domain.name}}</td>
-                <td>
-                    <button type="submit"
-                            ng-click="updateDomain(domain.name)"
-                            class="btn btn-primary">
-                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
-                    </button>
-                    <button type="submit"
-                            ng-click="deleteDomain(domain.name)"
-                            class="btn btn-danger">
-                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveDomainModal" ng-click="clear()">
-        <span class="glyphicon glyphicon-flash"></span> <span translate="dataSettings.Domain.createLabel">Create a new Domain</span>
-    </button>
 
 
-    <!-- Fenetre pour ajouter une compétence -->
-    <div class="modal fade" id="saveCompetenceModal" tabindex="-1" role="dialog" aria-labelledby="myCompetenceLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form name="form" role="form" novalidate
-                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
-                      ng-submit="createCompetence()">
+  <div class="modal fade" id="saveDomainModal" tabindex="-1" role="dialog" aria-labelledby="myDomainLabel"
+       aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <form name="form" role="form" novalidate
+                    class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                    ng-submit="createDomain()">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                ng-click="clear()">&times;</button>
-                        <h4 class="modal-title" id="myCompetenceLabel" translate="dataSettings.Competence.createOrEditLabel">Create or edit a Competence</h4>
-                    </div>
-                    <div class="modal-body">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                              ng-click="clear()">&times;</button>
+                      <h4 class="modal-title" id="myDomainLabel" translate="dataSettings.Domain.createOrEditLabel">Create or edit a Domain</h4>
+                  </div>
+                  <div class="modal-body">
 
-                        <div class="form-group">
-                            <label translate="dataSettings.Competence.name">Name</label>
-                            <input type="text" class="form-control"
-                                   ng-model="competence.name">
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-      <div class="modal fade" id="saveDomainModal" tabindex="-1" role="dialog" aria-labelledby="myDomainLabel"
-           aria-hidden="true">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <form name="form" role="form" novalidate
-                        class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
-                        ng-submit="createDomain()">
-
-                      <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                  ng-click="clear()">&times;</button>
-                          <h4 class="modal-title" id="myDomainLabel" translate="dataSettings.Domain.createOrEditLabel">Create or edit a Domain</h4>
+                      <div class="form-group">
+                          <label translate="dataSettings.Domain.name">Name</label>
+                          <input type="text" class="form-control"
+                                 ng-model="domain.name">
                       </div>
-                      <div class="modal-body">
 
-                          <div class="form-group">
-                              <label translate="dataSettings.Domain.name">Name</label>
-                              <input type="text" class="form-control"
-                                     ng-model="domain.name">
-                          </div>
-
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                              <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                          </button>
-                          <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">
-                              <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-                          </button>
-                      </div>
-                  </form>
-              </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                          <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                      </button>
+                      <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">
+                          <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                      </button>
+                  </div>
+              </form>
           </div>
       </div>
-
-
-      <div class="modal fade" id="deleteCompetenceConfirmation">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <form name="form" ng-submit="confirmDeleteCompetence(competence.name)">
-                      <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                  ng-click="clear()">&times;</button>
-                          <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
-                      </div>
-                      <div class="modal-body">
-                          <p translate="dataSettings.Competence.deleteQuestion" translate-values="{name: '{{competence.name}}'}">Are you sure you want to delete Competence {{competence.name}}?</p>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                              <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                          </button>
-                          <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger">
-                              <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
-                          </button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-
-
-
-      <div class="modal fade" id="deleteDomainConfirmation">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <form name="form" ng-submit="confirmDeleteDomain(domain.name)">
-                      <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                  ng-click="clear()">&times;</button>
-                          <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
-                      </div>
-                      <div class="modal-body">
-                          <p translate="dataSettings.Domain.deleteQuestion" translate-values="{name: '{{domain.name}}'}">Are you sure you want to delete Domain {{domain.name}}?</p>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                              <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-                          </button>
-                          <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger">
-                              <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
-                          </button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-
-
-
-
-
   </div>
+
+
+  <div class="modal fade" id="deleteCompetenceConfirmation">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <form name="form" ng-submit="confirmDeleteCompetence(competence.name)">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                              ng-click="clear()">&times;</button>
+                      <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p translate="dataSettings.Competence.deleteQuestion" translate-values="{name: '{{competence.name}}'}">Are you sure you want to delete Competence {{competence.name}}?</p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                          <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                      </button>
+                      <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+
+
+  <div class="modal fade" id="deleteDomainConfirmation">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <form name="form" ng-submit="confirmDeleteDomain(domain.name)">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                              ng-click="clear()">&times;</button>
+                      <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p translate="dataSettings.Domain.deleteQuestion" translate-values="{name: '{{domain.name}}'}">Are you sure you want to delete Domain {{domain.name}}?</p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                          <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                      </button>
+                      <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
 
 
 

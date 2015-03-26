@@ -191,3 +191,11 @@ ul#strength {
     z-index: 0;
 }
 
+table {
+    table-layout:fixed;
+}
+
+.div-table-content {
+  height:200px;
+  overflow-y:auto;
+}
