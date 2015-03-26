@@ -30,44 +30,46 @@
 
     <input type="text" id="query" ng-model="query"/>
 
-    <div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Login</th>
-            <th translate="user.companyContactInformation.companyName">Company Name</th>
-          <th translate="user.personContactInformation.firstName">First Name</th>
-            <th translate="user.personContactInformation.lastName">Last Name</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="user in users | filter : query">
-            <td><a ui-sref="userDetail({login:user.login})">{{user.login}}</a></td>
-
-            <td>{{user.companyContactInformation.companyName}}</td>
-            <td>{{user.personContactInformation.lastName}}</td>
-            <td>{{user.personContactInformation.firstName}}</td>
-            <td>
-                <button type="submit"
-                        ui-sref="userDetail({login:user.login})"
-                        class="btn btn-info">
-                    <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
-                </button>
-                <button type="submit"
-                        ng-click="update(user.login)"
-                        class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
-                </button>
-                <button type="submit"
-                        ng-click="delete(user.login)"
-                        class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
-                </button>
-            </td>
-         </tr>
-        </tbody>
-      </table>
+    <div class="div-table-content-users">
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Login</th>
+                        <th translate="user.companyContactInformation.companyName">Company Name</th>
+                        <th translate="user.personContactInformation.firstName">First Name</th>
+                        <th translate="user.personContactInformation.lastName">Last Name</th>
+                    </tr>
+                </thead>
+            </table>
+            <table class="table table-striped table-hover table-condensed">
+                <tbody>
+                    <tr ng-repeat="user in users | filter : query">
+                        <td><a ui-sref="userDetail({login:user.login})">{{user.login}}</a></td>
+                        <td>{{user.companyContactInformation.companyName}}</td>
+                        <td>{{user.personContactInformation.lastName}}</td>
+                        <td>{{user.personContactInformation.firstName}}</td>
+                        <td>
+                            <button type="submit"
+                                    ui-sref="userDetail({login:user.login})"
+                                    class="btn btn-info">
+                                <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                            </button>
+                            <button type="submit"
+                                    ng-click="update(user.login)"
+                                    class="btn btn-primary">
+                                <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                            </button>
+                            <button type="submit"
+                                    ng-click="delete(user.login)"
+                                    class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 

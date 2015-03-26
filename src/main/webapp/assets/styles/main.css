@@ -195,7 +195,12 @@ table {
     table-layout:fixed;
 }
 
-.div-table-content {
+.div-table-content-data-settings {
   height:200px;
+  overflow-y:auto;
+}
+
+.div-table-content-users {
+  height:600px;
   overflow-y:auto;
 }
