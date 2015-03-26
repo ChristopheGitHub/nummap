@@ -13,4 +13,5 @@ public interface CompetenceRepository extends MongoRepository<Competence, String
     List<Competence> findAll();
     long deleteByName(String name);
     Optional<Competence> findByName(String name);
+    Optional<Competence> findById(String id);
 }

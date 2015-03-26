@@ -5,6 +5,7 @@ import com.numlab.nummap.domain.*;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.repository.PersistentTokenRepository;
 import com.numlab.nummap.repository.UserRepository;
+import com.numlab.nummap.security.AuthoritiesConstants;
 import com.numlab.nummap.security.SecurityUtils;
 import com.numlab.nummap.service.LocationService;
 import com.numlab.nummap.service.MailService;
@@ -18,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -193,6 +195,7 @@ public class AccountResource {
     @RequestMapping(value = "/accountmanagement",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
     @Timed
     public ResponseEntity<String> updateAccount(@RequestBody UserDTO userDTO) {
         return userRepository

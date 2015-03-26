@@ -14,7 +14,7 @@ import java.util.List;
 public class Competence implements Serializable {
 
     @Id
-    String Id;
+    String id;
 
     String name;
 
@@ -31,5 +31,13 @@ public class Competence implements Serializable {
         return "Competence{" +
             "name='" + name + '\'' +
             '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
