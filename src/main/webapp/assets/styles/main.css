@@ -141,3 +141,64 @@ ul#strength {
     width:20px;
 }
 /* end Password strength bar style */
+
+
+/* CSS PERS */
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+}
+
+.main-well {
+    height: 100%;
+    margin: 0;
+    padding: 0; 
+}
+
+.main-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 60px;
+    margin: 0;
+    text-align: center;
+}
+
+.sub-container {
+    position: relative;
+    top: 0;
+    bottom: 0;
+}
+
+.flex-container {
+    display: flex;
+    height: 100%;
+}
+
+.flex-component.map-options {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 220px;
+    margin: 60px 20px 60px auto;
+    padding: 0 25px 0 25px;
+    border: 2px solid #050505;
+    box-shadow: 2px 2px 2px #888;
+    background-color: rgba(248, 248, 248, 0.8);
+}
+
+.flex-component.map {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+

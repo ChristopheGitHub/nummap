@@ -1,5 +1,15 @@
-<div ng-cloak>
-    <div class="row">
+<div class="flex-container sub-container" ng-cloak="">
+    <div class="flex-component map">
+        <leaflet
+            center="center"
+            width="100%" height="100%"
+            tiles="tiles"
+            defaults="defaults"></leaflet>
+    </div>
+    <div class="flex-component map-options">
+        <p>rectangle horzontale avec option de la carte</p>
+    </div>
+    <!--<div class="row">
         <div class="col-md-4">
             <span class="hipster img-responsive img-rounded"></span>
         </div>
@@ -38,5 +48,5 @@
              <span translate="main.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" translate="main.github">Github</a>!
             </p>
         </div>
-    </div>
+    </div>-->
 </div>
