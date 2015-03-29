@@ -9,12 +9,13 @@ angular.module('nummapApp')
         $scope.registerAccount = {};
         $timeout(function (){angular.element('[ng-model="registerAccount.login"]').focus();});
 
+        // Nécessaire pour le formulaire
         $scope.personSocialNetworkList = [];
         $scope.companySocialNetworkList = [];
-
         $scope.domainsSelected = [];
         $scope.competenciesSelected = [];
 
+        // Récupère la liste de secteurs et de compétences
         Domains.query(function(result) {
             $scope.sectors = result;
             console.log($scope.sectors);
@@ -24,10 +25,18 @@ angular.module('nummapApp')
             console.log($scope.competencies);
         });
 
+        // Valeurs pour le questionnaire
         $scope.fields = [
             {name: 'Outsourcing'},
             {name: 'Consulting'},
             {name: 'System Integration'}
+        ];
+        $scope.categories = [
+            {value: 'STUDENT', translationKey: 'register.form.category.student'},
+            {value: 'PROFESSOR', translationKey: 'register.form.category.professor'},
+            {value: 'FREELANCE', translationKey: 'register.form.category.freelance'},
+            {value: 'COMPANY', translationKey: 'register.form.category.company'},
+            {value: 'ASSOCIATION', translationKey: 'register.form.category.association'}
         ];
         
         $scope.tags = [

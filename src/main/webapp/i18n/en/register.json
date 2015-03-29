@@ -7,7 +7,8 @@
                 "student": "Student",
                 "professor": "Professor",
                 "freelance": "Freelance",
-                "company": "Company"
+                "company": "Company",
+                "association": "Association"
             },
             "sector": {
                 "various": "Various",
