@@ -481,7 +481,7 @@
                     
                     
                     <!-- Company contact -->
-                    <div class="panel panel-default" ng-if="registerAccount.category == 'COMPANY'">
+                    <div class="panel panel-default" ng-if="registerAccount.category == 'COMPANY' || registerAccount.category == 'ASSOCIATION'">
                       <div class="panel-heading">
                         <label translate="global.form.companyInformation">Company information</label>
                       </div>
@@ -489,8 +489,8 @@
                         <li class="list-group-item">
                           <!-- Company name -->
                           <div class="form-group">
-                             <label translate="global.form.companyName">Company name</label>
-                             <input type="text" class="form-control" name="companyCompanyName" placeholder="{{'global.form.companyName.placeholder' | translate}}"
+                             <label translate="global.form.name">Name</label>
+                             <input type="text" class="form-control" name="companyCompanyName" placeholder="{{'global.form.name.placeholder' | translate}}"
                                     ng-model="registerAccount.CompanyContactInformation.companyName" ng-minlength=10 ng-maxlength=50 required>
                              <p> form.companyName valid : {{ form.companyName.$valid }}</p>
                              <div ng-show="form.companyCompanyName.$dirty && form.companyCompanyName.$invalid">
@@ -716,10 +716,19 @@
                     <!-- SIREN -->
                     <div ng-if="registerAccount.category == 'FREELANCE' || registerAccount.category == 'COMPANY'"
                     class="form-group">
-                      <label translate="global.form.siren">SIREN</label>
-                      <input type="text" class="form-control" name="description" placeholder="{{'global.form.siren.placeholder' | translate}}"
+                      <label for="siren" translate="global.form.siren">SIREN</label>
+                      <input type="text" class="form-control" name="siren" placeholder="{{'global.form.siren.placeholder' | translate}}"
                              ng-model="registerAccount.siren" ng-minlength=10 ng-maxlength=255 required>
-                      <p>siren valid : {{ form.description.$valid }}</p>
+                      <p>siren valid : {{ form.siren.$valid }}</p>
+                    </div>
+
+                    <!-- Numéro déclaratif Association -->
+                    <div ng-if="registerAccount.category == 'ASSOCIATION'"
+                    class="form-group">
+                      <label for="associationNumber" translate="global.form.associationNumber">Association number</label>
+                      <input type="text" class="form-control" name="associationNumber" placeholder="{{'global.form.associationNumber.placeholder' | translate}}"
+                             ng-model="registerAccount.associationNumber" ng-minlength=10 ng-maxlength=255 required>
+                      <p>associationNumber valid : {{ form.associationNumber.$valid }}</p>
                     </div>
                   </div>
                 </div>

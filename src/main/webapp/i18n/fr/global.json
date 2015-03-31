@@ -68,13 +68,15 @@
             "field.outsourcing": "Externalisation",
             "siren": "Numéro SIREN",
             "siren.placeholder": "Numéro SIREN",
+            "associationNumber": "Numéro d'association",
+            "associationNumber.placeholder": "Numéro d'association",
             "website": "Site web",
             "website.placeholder": "Site web",
             "socialNetwork": "Réseaux sociaux",
             "socialNetwork.placeholder": "Réseaux sociaux",
             "companyInformation":"Information de l'entreprise",
-            "companyName": "Nom de l'entreprise",
-            "companyName.placeholder": "Nom de l'entreprise"
+            "name": "Nom",
+            "name.placeholder": "Nom"
         },
         "messages": {
             "info": {
