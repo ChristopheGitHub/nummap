@@ -35,7 +35,6 @@ angular.module('nummapApp')
 
         $scope.create = function () {
             Auth.manageAccount($scope.user).then(function() {
-
                 $scope.error = null;
                 $scope.success = 'OK';
                 $scope.loadAll();
