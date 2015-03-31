@@ -54,6 +54,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private List<CustomersTypeEnum> customers;
     private String siren;
     private boolean activated = false;
+    private boolean validatedByAdmin = false;
 
     @Size(min = 2, max = 5)
     @Field("lang_key")
@@ -262,5 +263,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", activationKey='" + activationKey + '\'' +
             ", authorities=" + authorities +
             '}';
+    }
+
+    public boolean isValidatedByAdmin() {
+        return validatedByAdmin;
+    }
+
+    public void setValidatedByAdmin(boolean validatedByAdmin) {
+        this.validatedByAdmin = validatedByAdmin;
     }
 }

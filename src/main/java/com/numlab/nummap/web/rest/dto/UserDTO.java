@@ -45,6 +45,7 @@ public class UserDTO {
     private List<FieldEnum> fields;
     private List<CustomersTypeEnum> customers;
     private String siren;
+    private boolean validatedByAdmin;
 
     @Size(min = 2, max = 5)
     private String langKey;
@@ -249,5 +250,13 @@ public class UserDTO {
             e.printStackTrace();
         }
         return userDTO;
+    }
+
+    public boolean isValidatedByAdmin() {
+        return validatedByAdmin;
+    }
+
+    public void setValidatedByAdmin(boolean validatedByAdmin) {
+        this.validatedByAdmin = validatedByAdmin;
     }
 }
