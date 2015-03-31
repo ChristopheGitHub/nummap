@@ -3,7 +3,7 @@
  */
 'use strict';
 angular.module('nummapApp')
-    .controller('UserController', function ($scope, User, Auth) {
+    .controller('UserController', function ($scope, User, Auth, $http) {
         $scope.users = [];
         $scope.loadAll = function() {
             User.query(function(result) {
@@ -46,13 +46,14 @@ angular.module('nummapApp')
             });
         };
 
-
-
-
          $scope.update = function (login) {
          $scope.user = User.get({login: login});
          $('#saveUserModal').modal('show');
          };
+
+        $scope.validate = function(login){
+           $http.post('api/users/validate/'+login, {});
+        }
 
 
      });

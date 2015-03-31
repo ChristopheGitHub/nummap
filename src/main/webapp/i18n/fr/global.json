@@ -140,6 +140,7 @@
             "back": "Retour",
             "cancel": "Annuler",
             "edit": "Editer",
+            "validate" : "Valider",
             "delete": "Supprimer",
             "save": "Sauvegarder",
             "view": "Voir"

@@ -15,7 +15,8 @@
                 "lang_key": "en",
                 "created_by": "system",
                 "created_date": new Date(),
-                "authorities": [{"_id": "ROLE_ADMIN"}, {"_id": "ROLE_USER"}]
+                "authorities": [{"_id": "ROLE_ADMIN"}, {"_id": "ROLE_USER"}],
+                "validatedByAdmin" : "true"
             });
             db.T_USER.insert(
             {
@@ -29,7 +30,8 @@
                 "lang_key": "en",
                 "created_by": "system",
                 "created_date": new Date(),
-                "authorities": []
+                "authorities": [],
+                "validatedByAdmin" : "true"
             });
             db.T_USER.insert(
             {
@@ -43,7 +45,8 @@
                 "lang_key": "en",
                 "created_by": "system",
                 "created_date": new Date(),
-                "authorities": [{"_id": "ROLE_ADMIN"}, {"_id": "ROLE_USER"}]
+                "authorities": [{"_id": "ROLE_ADMIN"}, {"_id": "ROLE_USER"}],
+               "validatedByAdmin" : "true"
             });
             db.T_USER.insert(
             {
@@ -58,6 +61,7 @@
                 "created_by": "system",
                 "created_date": new Date(),
                 "authorities": [{"_id": "ROLE_USER"}]
+                "validatedByAdmin" : "false"
             });
         </script>
     </changeSet>

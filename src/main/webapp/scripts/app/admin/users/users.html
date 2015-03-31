@@ -69,6 +69,12 @@
                                                 title="{{ 'entity.action.edit' | translate }}"></span>&nbsp;
                                         </button>
                                         <button type="submit"
+                                                ng-click="validate(user.login)"
+                                                class="btn btn-success">
+                                            <span class="glyphicon glyphicon-thumbs-up"
+                                                  title="{{ 'entity.action.validate' | translate }}"></span>&nbsp;
+                                        </button>
+                                        <button type="submit"
                                                 ng-click="delete(user.login)"
                                                 class="btn btn-danger">
                                             <span class="glyphicon glyphicon-remove-circle"

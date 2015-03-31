@@ -58,7 +58,7 @@ public class UserResource {
     }
 
         /**
-        * GET  /users/:login -> get the "login" user.
+        * DELETE  /users/:login -> DELETE the "login" user.
         */
     @RequestMapping(value = "/users/{login}",
             method = RequestMethod.DELETE)
@@ -69,6 +69,25 @@ public class UserResource {
         userRepository.deleteByLogin(login);
         System.out.println("Suppression de l'utilisateur "+login);
     }
+
+
+
+    /**
+     * POST  /users/validate/:login -> validate the "login" user.
+     */
+    @RequestMapping(value = "/users/validate/{login}",
+            method = RequestMethod.POST)
+    @Timed
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
+    void validateUser(@PathVariable String login){
+        log.debug("Rest request to Validate User : {}", login);
+        userRepository.findOneByLogin(login).ifPresent(u -> {
+            u.setValidatedByAdmin(true);
+            userRepository.save(u);
+            log.debug("User Validated : {}", u);
+        });
+    }
+
 
 
 
