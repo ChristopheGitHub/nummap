@@ -1,6 +1,6 @@
 <changeFiles>
     <file path="authorities.xml"/>
     <file path="users.xml"/>
-    <file path="domains.xml"/>
     <file path="competences.xml"/>
+    <file path="domains.xml"/>
 </changeFiles>
