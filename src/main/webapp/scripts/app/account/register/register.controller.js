@@ -27,9 +27,9 @@ angular.module('nummapApp')
 
         // Valeurs pour le questionnaire
         $scope.fields = [
-            {name: 'Outsourcing'},
-            {name: 'Consulting'},
-            {name: 'System Integration'}
+            {name: 'Outsourcing', value: 'OUTSOURCING'},
+            {name: 'Consulting', value: 'CONSULTING'},
+            {name: 'System Integration', value: 'SYSTEM_INTEGRATION'}
         ];
         $scope.categories = [
             {value: 'STUDENT', translationKey: 'register.form.category.student'},
@@ -39,21 +39,16 @@ angular.module('nummapApp')
             {value: 'ASSOCIATION', translationKey: 'register.form.category.association'}
         ];
         
-        $scope.tags = [
-            { text: 'just' },
-            { text: 'some' },
-            { text: 'cool' },
-            { text: 'tags' }
-          ];
-          $scope.loadTags = function(query) {
+        
+        $scope.loadTags = function(query) {
             var res = [];
             $scope.competencies.forEach(function(element) {
-                if (element.name.includes(query)) {
+                if (element.name.substr(0, query.length) === query) {
                     res.push(element);
                 }
             });
             return res;
-          };
+        };
 
         $scope.addElement = function(list) {
             list.push({});
@@ -70,41 +65,61 @@ angular.module('nummapApp')
                 $scope.errorUserExists = null;
                 $scope.errorEmailExists = null;
 
-                // re
+                // Ajout de la liste des domaines
+                $scope.registerAccount.sectors = [];
+                $scope.sectors.forEach(function(element) {
+                    if (element.checked) {
+                        $scope.registerAccount.sectors.push(element.name);
+                    }
+                });
 
                 // Ajout de la liste des domaines
-                // $scope.registerAccount.sectors = [];
-                // $scope.sectors.forEach(function(element) {
-                //     if (element.checked) {
-                //         $scope.registerAccount.sectors.push({name : element.name});
-                //     }
-                // });
+                $scope.registerAccount.fields = [];
+                $scope.fields.forEach(function(element) {
+                    if (element.checked) {
+                        $scope.registerAccount.fields.push(element.value);
+                    }
+                });
 
-                // Ajout de la liste des domaines
-                // $scope.registerAccount.fields = [];
-                // $scope.fields.forEach(function(element) {
-                //     if (element.checked) {
-                //         $scope.registerAccount.sectors.push({name : element.name});
-                //     }
-                // });
+                // Ajout des compétences
+                $scope.registerAccount.competencies = [];
+                $scope.competenciesSelected.forEach(function (element) {
+                    $scope.registerAccount.competencies.push(element.name);                 
+                });
 
+                // Ajout des réseaux sociaux
+                if ($scope.category === 'STUDENT' ||
+                    $scope.category === 'PROFESSOR' ||
+                    $scope.category === 'FREELANCE') {
+                    $scope.registerAccount.PersonContactInformation.socialNetworkList = $scope.personSocialNetworkList;
+                }
+
+                if ($scope.category === 'COMPANY' ||
+                    $scope.category === 'ASSOCIATION') {
+                    $scope.registerAccount.CompanyContactInformation.socialNetworkList = $scope.companySocialNetworkList;
+                }
+
+                // console.log('sectors : ');
                 // console.log($scope.registerAccount.sectors);
+                // console.log('fields : ');
                 // console.log($scope.registerAccount.fields);
+                // console.log('competencies : ');
                 // console.log($scope.registerAccount.competencies);
-                console.log($scope.competenciesSelected);
+                // console.log('competenciesSelected : ');
+                // console.log($scope.competenciesSelected);
 
-                // Auth.createAccount($scope.registerAccount).then(function () {
-                //     $scope.success = 'OK';
-                // }).catch(function (response) {
-                //     $scope.success = null;
-                //     if (response.status === 400 && response.data === 'login already in use') {
-                //         $scope.errorUserExists = 'ERROR';
-                //     } else if (response.status === 400 && response.data === 'e-mail address already in use') {
-                //         $scope.errorEmailExists = 'ERROR';
-                //     } else {
-                //         $scope.error = 'ERROR';
-                //     }
-                // });
+                Auth.createAccount($scope.registerAccount).then(function () {
+                    $scope.success = 'OK';
+                }).catch(function (response) {
+                    $scope.success = null;
+                    if (response.status === 400 && response.data === 'login already in use') {
+                        $scope.errorUserExists = 'ERROR';
+                    } else if (response.status === 400 && response.data === 'e-mail address already in use') {
+                        $scope.errorEmailExists = 'ERROR';
+                    } else {
+                        $scope.error = 'ERROR';
+                    }
+                });
             }
         };
     });
