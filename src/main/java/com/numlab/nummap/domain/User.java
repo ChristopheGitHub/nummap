@@ -240,30 +240,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
         return login.hashCode();
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-            "id='" + id + '\'' +
-            ", login='" + login + '\'' +
-            ", password='" + password + '\'' +
-            ", email='" + email + '\'' +
-            ", location=" + location +
-            ", category=" + category +
-            ", description='" + description + '\'' +
-            ", raisonSociale='" + raisonSociale + '\'' +
-            ", personContactInformation=" + personContactInformation +
-            ", companyContactInformation=" + companyContactInformation +
-            ", competencies=" + competencies +
-            ", sectors=" + sectors +
-            ", fields=" + fields +
-            ", customers=" + customers +
-            ", siren='" + siren + '\'' +
-            ", activated=" + activated +
-            ", langKey='" + langKey + '\'' +
-            ", activationKey='" + activationKey + '\'' +
-            ", authorities=" + authorities +
-            '}';
-    }
+
 
     public boolean isValidatedByAdmin() {
         return validatedByAdmin;
@@ -271,5 +248,31 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setValidatedByAdmin(boolean validatedByAdmin) {
         this.validatedByAdmin = validatedByAdmin;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", location=" + location +
+                ", category=" + category +
+                ", description='" + description + '\'' +
+                ", raisonSociale='" + raisonSociale + '\'' +
+                ", personContactInformation=" + personContactInformation +
+                ", companyContactInformation=" + companyContactInformation +
+                ", competencies=" + competencies +
+                ", sectors=" + sectors +
+                ", fields=" + fields +
+                ", customers=" + customers +
+                ", siren='" + siren + '\'' +
+                ", activated=" + activated +
+                ", validatedByAdmin=" + validatedByAdmin +
+                ", langKey='" + langKey + '\'' +
+                ", activationKey='" + activationKey + '\'' +
+                ", authorities=" + authorities +
+                '}';
     }
 }

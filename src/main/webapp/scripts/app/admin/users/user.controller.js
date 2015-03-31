@@ -53,6 +53,7 @@ angular.module('nummapApp')
 
         $scope.validate = function(login){
            $http.post('api/users/validate/'+login, {});
+           $scope.loadAll();
         }
 
 
