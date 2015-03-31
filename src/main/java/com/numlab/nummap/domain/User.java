@@ -2,9 +2,7 @@ package com.numlab.nummap.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
-import com.numlab.nummap.domain.enumerations.CustomersTypeEnum;
 import com.numlab.nummap.domain.enumerations.FieldEnum;
-import com.numlab.nummap.domain.enumerations.SectorEnum;
 import com.numlab.nummap.domain.enumerations.RaisonSocialeEnum;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.data.annotation.Id;
@@ -49,9 +47,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private PersonContactInformation personContactInformation;
     private CompanyContactInformation companyContactInformation;
     private List<String> competencies;
-    private List<SectorEnum> sectors;
+    private List<String> sectors;
     private List<FieldEnum> fields;
-    private List<CustomersTypeEnum> customers;
     private String siren;
     private boolean activated = false;
     private boolean validatedByAdmin = false;
@@ -117,14 +114,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.activated = activated;
     }
 
-    public List<CustomersTypeEnum> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<CustomersTypeEnum> customers) {
-        this.customers = customers;
-    }
-
     public List<FieldEnum> getFields() {
         return fields;
     }
@@ -177,11 +166,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.competencies = competencies;
     }
 
-    public List<SectorEnum> getSectors() {
+    public List<String> getSectors() {
         return sectors;
     }
 
-    public void setSectors(List<SectorEnum> sectors) {
+    public void setSectors(List<String> sectors) {
         this.sectors = sectors;
     }
 
@@ -253,26 +242,25 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", location=" + location +
-                ", category=" + category +
-                ", description='" + description + '\'' +
-                ", raisonSociale='" + raisonSociale + '\'' +
-                ", personContactInformation=" + personContactInformation +
-                ", companyContactInformation=" + companyContactInformation +
-                ", competencies=" + competencies +
-                ", sectors=" + sectors +
-                ", fields=" + fields +
-                ", customers=" + customers +
-                ", siren='" + siren + '\'' +
-                ", activated=" + activated +
-                ", validatedByAdmin=" + validatedByAdmin +
-                ", langKey='" + langKey + '\'' +
-                ", activationKey='" + activationKey + '\'' +
-                ", authorities=" + authorities +
-                '}';
+            "id='" + id + '\'' +
+            ", login='" + login + '\'' +
+            ", password='" + password + '\'' +
+            ", email='" + email + '\'' +
+            ", location=" + location +
+            ", category=" + category +
+            ", description='" + description + '\'' +
+            ", raisonSociale='" + raisonSociale + '\'' +
+            ", personContactInformation=" + personContactInformation +
+            ", companyContactInformation=" + companyContactInformation +
+            ", competencies=" + competencies +
+            ", sectors=" + sectors +
+            ", fields=" + fields +
+            ", siren='" + siren + '\'' +
+            ", activated=" + activated +
+            ", validatedByAdmin=" + validatedByAdmin +
+            ", langKey='" + langKey + '\'' +
+            ", activationKey='" + activationKey + '\'' +
+            ", authorities=" + authorities +
+            '}';
     }
 }

@@ -1,16 +1,128 @@
 <mongoChangeLog>
     <changeSet changeId="ChangeSet-9" author="jhipster">
         <script>
-
-            db.T_COMPETENCE.insert(
-            {
-            "name" : "Java"
-            });
-            db.T_COMPETENCE.insert(
-            {
-            "name" : "Zob"
-            });
-
+            db.T_COMPETENCE.insert({"name": "application development"});
+            db.T_COMPETENCE.insert({"name": "architecture"});
+            db.T_COMPETENCE.insert({"name": "business analytics"});
+            db.T_COMPETENCE.insert({"name": "business intelligence"});
+            db.T_COMPETENCE.insert({"name": "business process modeling"});
+            db.T_COMPETENCE.insert({"name": "cloud"});
+            db.T_COMPETENCE.insert({"name": "coding"});
+            db.T_COMPETENCE.insert({"name": "communication"});
+            db.T_COMPETENCE.insert({"name": "configuration"});
+            db.T_COMPETENCE.insert({"name": "customer support"});
+            db.T_COMPETENCE.insert({"name": "database"});
+            db.T_COMPETENCE.insert({"name": "data analysis"});
+            db.T_COMPETENCE.insert({"name": "data analytics"});
+            db.T_COMPETENCE.insert({"name": "data intelligence"});
+            db.T_COMPETENCE.insert({"name": "data mining"});
+            db.T_COMPETENCE.insert({"name": "data science"});
+            db.T_COMPETENCE.insert({"name": "data strategy"});
+            db.T_COMPETENCE.insert({"name": "data storage"});
+            db.T_COMPETENCE.insert({"name": "design"});
+            db.T_COMPETENCE.insert({"name": "desktop support"});
+            db.T_COMPETENCE.insert({"name": "developer"});
+            db.T_COMPETENCE.insert({"name": "development"});
+            db.T_COMPETENCE.insert({"name": "documentation"});
+            db.T_COMPETENCE.insert({"name": "emerging technologies"});
+            db.T_COMPETENCE.insert({"name": "file systems"});
+            db.T_COMPETENCE.insert({"name": "flexibility"});
+            db.T_COMPETENCE.insert({"name": "hardware"});
+            db.T_COMPETENCE.insert({"name": "help desk"});
+            db.T_COMPETENCE.insert({"name": "implementation"});
+            db.T_COMPETENCE.insert({"name": "internet"});
+            db.T_COMPETENCE.insert({"name": "information systems"});
+            db.T_COMPETENCE.insert({"name": "installation"});
+            db.T_COMPETENCE.insert({"name": "integrated technologies"});
+            db.T_COMPETENCE.insert({"name": "it optimization"});
+            db.T_COMPETENCE.insert({"name": "it security"});
+            db.T_COMPETENCE.insert({"name": "it solutions"});
+            db.T_COMPETENCE.insert({"name": "it support"});
+            db.T_COMPETENCE.insert({"name": "languages"});
+            db.T_COMPETENCE.insert({"name": "leadership"});
+            db.T_COMPETENCE.insert({"name": "linux"});
+            db.T_COMPETENCE.insert({"name": "maintenance"});
+            db.T_COMPETENCE.insert({"name": "management"});
+            db.T_COMPETENCE.insert({"name": "messaging"});
+            db.T_COMPETENCE.insert({"name": "methodology"});
+            db.T_COMPETENCE.insert({"name": "metrics"});
+            db.T_COMPETENCE.insert({"name": "microsoft office"});
+            db.T_COMPETENCE.insert({"name": "mobile applications"});
+            db.T_COMPETENCE.insert({"name": "networks"});
+            db.T_COMPETENCE.insert({"name": "network operations"});
+            db.T_COMPETENCE.insert({"name": "operating systems"});
+            db.T_COMPETENCE.insert({"name": "presentation"});
+            db.T_COMPETENCE.insert({"name": "programming"});
+            db.T_COMPETENCE.insert({"name": "product development"});
+            db.T_COMPETENCE.insert({"name": "product support"});
+            db.T_COMPETENCE.insert({"name": "product management"});
+            db.T_COMPETENCE.insert({"name": "product training"});
+            db.T_COMPETENCE.insert({"name": "project management"});
+            db.T_COMPETENCE.insert({"name": "repairs"});
+            db.T_COMPETENCE.insert({"name": "reporting"});
+            db.T_COMPETENCE.insert({"name": "security"});
+            db.T_COMPETENCE.insert({"name": "self motivated"});
+            db.T_COMPETENCE.insert({"name": "self starting"});
+            db.T_COMPETENCE.insert({"name": "servers"});
+            db.T_COMPETENCE.insert({"name": "software"});
+            db.T_COMPETENCE.insert({"name": "software development"});
+            db.T_COMPETENCE.insert({"name": "storage"});
+            db.T_COMPETENCE.insert({"name": "support"});
+            db.T_COMPETENCE.insert({"name": "systems software"});
+            db.T_COMPETENCE.insert({"name": "team oriented"});
+            db.T_COMPETENCE.insert({"name": "teamwork"});
+            db.T_COMPETENCE.insert({"name": "technology"});
+            db.T_COMPETENCE.insert({"name": "technical services"});
+            db.T_COMPETENCE.insert({"name": "technical support"});
+            db.T_COMPETENCE.insert({"name": "technical writing"});
+            db.T_COMPETENCE.insert({"name": "testing"});
+            db.T_COMPETENCE.insert({"name": "tools"});
+            db.T_COMPETENCE.insert({"name": "training"});
+            db.T_COMPETENCE.insert({"name": "troubleshooting"});
+            db.T_COMPETENCE.insert({"name": "user experience"});
+            db.T_COMPETENCE.insert({"name": "user experience design"});
+            db.T_COMPETENCE.insert({"name": "virtualization"});
+            db.T_COMPETENCE.insert({"name": "web"});
+            db.T_COMPETENCE.insert({"name": "web development"});
+            db.T_COMPETENCE.insert({"name": "work independently"});
+            db.T_COMPETENCE.insert({"name": "angularjs"});
+            db.T_COMPETENCE.insert({"name": "c"});
+            db.T_COMPETENCE.insert({"name": "java"});
+            db.T_COMPETENCE.insert({"name": "objective-c"});
+            db.T_COMPETENCE.insert({"name": "c++"});
+            db.T_COMPETENCE.insert({"name": "c#"});
+            db.T_COMPETENCE.insert({"name": "php"});
+            db.T_COMPETENCE.insert({"name": "javascript"});
+            db.T_COMPETENCE.insert({"name": "python"});
+            db.T_COMPETENCE.insert({"name": "visual basic .net"});
+            db.T_COMPETENCE.insert({"name": "visual basic"});
+            db.T_COMPETENCE.insert({"name": "f#"});
+            db.T_COMPETENCE.insert({"name": "perl"});
+            db.T_COMPETENCE.insert({"name": "delphi/object pascal"});
+            db.T_COMPETENCE.insert({"name": "transact-sql"});
+            db.T_COMPETENCE.insert({"name": "pascal"});
+            db.T_COMPETENCE.insert({"name": "abap"});
+            db.T_COMPETENCE.insert({"name": "pl/sql"});
+            db.T_COMPETENCE.insert({"name": "ruby"});
+            db.T_COMPETENCE.insert({"name": "matlab"});
+            db.T_COMPETENCE.insert({"name": "r"});
+            db.T_COMPETENCE.insert({"name": "sas"});
+            db.T_COMPETENCE.insert({"name": "logo"});
+            db.T_COMPETENCE.insert({"name": "swift"});
+            db.T_COMPETENCE.insert({"name": "cobol"});
+            db.T_COMPETENCE.insert({"name": "ml"});
+            db.T_COMPETENCE.insert({"name": "postscript"});
+            db.T_COMPETENCE.insert({"name": "openedge abl"});
+            db.T_COMPETENCE.insert({"name": "assembly"});
+            db.T_COMPETENCE.insert({"name": "fortran"});
+            db.T_COMPETENCE.insert({"name": "actionscript"});
+            db.T_COMPETENCE.insert({"name": "d"});
+            db.T_COMPETENCE.insert({"name": "lisp"});
+            db.T_COMPETENCE.insert({"name": "scratch"});
+            db.T_COMPETENCE.insert({"name": "ada"});
+            db.T_COMPETENCE.insert({"name": "scala"});
+            db.T_COMPETENCE.insert({"name": "groovy"});
+            db.T_COMPETENCE.insert({"name": "lua"});
         </script>
     </changeSet>
 </mongoChangeLog>

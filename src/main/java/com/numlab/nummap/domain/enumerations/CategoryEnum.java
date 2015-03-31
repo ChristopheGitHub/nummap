@@ -7,5 +7,6 @@ public enum CategoryEnum {
     STUDENT,
     FREELANCE,
     PROFESSOR,
-    COMPANY
+    COMPANY,
+    ASSOCIATION
 }
