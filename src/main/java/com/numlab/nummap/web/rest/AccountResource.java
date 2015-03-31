@@ -93,7 +93,6 @@ public class AccountResource {
                         userDTO.getCompetencies(),
                         userDTO.getSectors(),
                         userDTO.getFields(),
-                        userDTO.getCustomers(),
                         userDTO.getLangKey());
                     String baseUrl = request.getScheme() + // "http"
                     "://" +                                // "://"
@@ -153,7 +152,6 @@ public class AccountResource {
                     user.getCompetencies(),
                     user.getSectors(),
                     user.getFields(),
-                    user.getCustomers(),
                     user.getSiren(),
                     user.getLangKey(),
                     user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toList())),
@@ -181,8 +179,7 @@ public class AccountResource {
                                                     userDTO.getCompanyContactInformation(),
                                                     userDTO.getCompetencies(),
                                                     userDTO.getSectors(),
-                                                    userDTO.getFields(),
-                                                    userDTO.getCustomers() );
+                                                    userDTO.getFields());
                 return new ResponseEntity<String>(HttpStatus.OK);
             })
             .orElseGet(() -> new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
@@ -211,8 +208,7 @@ public class AccountResource {
                             userDTO.getCompanyContactInformation(),
                             userDTO.getCompetencies(),
                             userDTO.getSectors(),
-                            userDTO.getFields(),
-                            userDTO.getCustomers() );
+                            userDTO.getFields());
                     return new ResponseEntity<String>(HttpStatus.OK);
                 })
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));

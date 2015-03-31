@@ -2,9 +2,7 @@ package com.numlab.nummap.service;
 
 import com.numlab.nummap.domain.*;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
-import com.numlab.nummap.domain.enumerations.CustomersTypeEnum;
 import com.numlab.nummap.domain.enumerations.FieldEnum;
-import com.numlab.nummap.domain.enumerations.SectorEnum;
 import com.numlab.nummap.repository.AuthorityRepository;
 import com.numlab.nummap.repository.PersistentTokenRepository;
 import com.numlab.nummap.repository.UserRepository;
@@ -61,8 +59,8 @@ public class UserService {
     public User createUserInformation(String login, String password, String email, Location location,
         CategoryEnum category, String description, String raisonSociale,
         PersonContactInformation personContactInformation, CompanyContactInformation companyContactInformation,
-         List<String> competencies, List<SectorEnum> sectors,
-         List<FieldEnum> fields, List<CustomersTypeEnum> customers, String langKey) {
+         List<String> competencies, List<String> sectors,
+         List<FieldEnum> fields, String langKey) {
         User newUser = new User();
         Authority authority = authorityRepository.findOne("ROLE_USER");
         Set<Authority> authorities = new HashSet<>();
@@ -80,7 +78,6 @@ public class UserService {
         newUser.setCompetencies(competencies);
         newUser.setSectors(sectors);
         newUser.setFields(fields);
-        newUser.setCustomers(customers);
         newUser.setLangKey(langKey);
         // new user is not active
         newUser.setActivated(false);
@@ -96,8 +93,8 @@ public class UserService {
     /* TODO : Mettre à jour les réseaux sociaux */
     public void updateUserInformation(String email, CategoryEnum category,
         String description, String raisonSociale, PersonContactInformation personContactInformation,
-        CompanyContactInformation companyContactInformation, List<String> competencies, List<SectorEnum> sectors,
-        List<FieldEnum> fields, List<CustomersTypeEnum> customers) {
+        CompanyContactInformation companyContactInformation, List<String> competencies, List<String> sectors,
+        List<FieldEnum> fields) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u -> {
             u.setEmail(email);
             u.setCategory(category);
@@ -108,7 +105,6 @@ public class UserService {
             u.setCompetencies(competencies);
             u.setSectors(sectors);
             u.setFields(fields);
-            u.setCustomers(customers);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });
@@ -120,8 +116,8 @@ public class UserService {
      */
     public void updateUserByAdminInformation(String login, String email, CategoryEnum category,
                                              String description, String raisonSociale, PersonContactInformation personContactInformation,
-                                             CompanyContactInformation companyContactInformation, List<String> competencies, List<SectorEnum> sectors,
-                                             List<FieldEnum> fields, List<CustomersTypeEnum> customers) {
+                                             CompanyContactInformation companyContactInformation, List<String> competencies, List<String> sectors,
+                                             List<FieldEnum> fields) {
         userRepository.findOneByLogin(login).ifPresent(u -> {
             u.setEmail(email);
             u.setCategory(category);
@@ -132,7 +128,6 @@ public class UserService {
             u.setCompetencies(competencies);
             u.setSectors(sectors);
             u.setFields(fields);
-            u.setCustomers(customers);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });

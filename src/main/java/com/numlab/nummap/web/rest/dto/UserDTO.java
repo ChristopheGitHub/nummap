@@ -8,9 +8,7 @@ import com.numlab.nummap.domain.CompanyContactInformation;
 import com.numlab.nummap.domain.Location;
 import com.numlab.nummap.domain.PersonContactInformation;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
-import com.numlab.nummap.domain.enumerations.CustomersTypeEnum;
 import com.numlab.nummap.domain.enumerations.FieldEnum;
-import com.numlab.nummap.domain.enumerations.SectorEnum;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
@@ -41,9 +39,8 @@ public class UserDTO {
     private PersonContactInformation personContactInformation;
     private CompanyContactInformation companyContactInformation;
     private List<String> competencies;
-    private List<SectorEnum> sectors;
+    private List<String> sectors;
     private List<FieldEnum> fields;
-    private List<CustomersTypeEnum> customers;
     private String siren;
 
     @Size(min = 2, max = 5)
@@ -65,9 +62,8 @@ public class UserDTO {
         @JsonProperty("PersonContactInformation") PersonContactInformation personContactInformation,
         @JsonProperty("CompanyContactInformation") CompanyContactInformation companyContactInformation,
         @JsonProperty("competencies") List<String> competencies,
-        @JsonProperty("sectors") List<SectorEnum> sectors,
+        @JsonProperty("sectors") List<String> sectors,
         @JsonProperty("fields") List<FieldEnum> fields,
-        @JsonProperty("customers") List<CustomersTypeEnum> customers,
         @JsonProperty("siren") String siren,
         @JsonProperty("langKey") String langKey,
         @JsonProperty("role") List<String> roles
@@ -83,7 +79,6 @@ public class UserDTO {
         this.competencies = competencies;
         this.sectors = sectors;
         this.fields = fields;
-        this.customers = customers;
         this.langKey = langKey;
         this.roles = roles;
         this.siren = siren;
@@ -169,11 +164,11 @@ public class UserDTO {
         this.competencies = competencies;
     }
 
-    public List<SectorEnum> getSectors() {
+    public List<String> getSectors() {
         return sectors;
     }
 
-    public void setSectors(List<SectorEnum> sectors) {
+    public void setSectors(List<String> sectors) {
         this.sectors = sectors;
     }
 
@@ -183,14 +178,6 @@ public class UserDTO {
 
     public void setFields(List<FieldEnum> fields) {
         this.fields = fields;
-    }
-
-    public List<CustomersTypeEnum> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<CustomersTypeEnum> customers) {
-        this.customers = customers;
     }
 
     public String getSiren() {
@@ -232,7 +219,6 @@ public class UserDTO {
             ", competencies=" + competencies +
             ", sectors=" + sectors +
             ", fields=" + fields +
-            ", customers=" + customers +
             ", siren='" + siren + '\'' +
             ", langKey='" + langKey + '\'' +
             ", roles=" + roles +
