@@ -46,10 +46,14 @@ public class UserDTO {
     private List<CustomersTypeEnum> customers;
     private String siren;
 
+
     @Size(min = 2, max = 5)
     private String langKey;
 
     private List<String> roles;
+
+    public UserDTO() {
+    }
 
     @JsonCreator
     public UserDTO(
@@ -247,4 +251,5 @@ public class UserDTO {
         }
         return userDTO;
     }
+
 }
