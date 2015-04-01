@@ -52,6 +52,8 @@ public class AccountResource {
     @Inject
     private LocationService locationService;
 
+
+
     /**
      * POST  /register -> register the user.
      */
@@ -269,4 +271,24 @@ public class AccountResource {
                 .findAny().ifPresent(t -> persistentTokenRepository.delete(decodedSeries));
         });
     }
+
+
+    /**
+     * POST /reset -> reset the password
+     */
+    @RequestMapping(value = "/reset/{loginoremail}",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<?> resetPassword(@PathVariable String loginoremail, HttpServletRequest request){
+        log.debug("Rest request to reset the password for user with : {}", loginoremail);
+        String baseUrl = request.getScheme() + // "http"
+                "://" +                                // "://"
+                request.getServerName() +              // "myhost"
+                ":" +                                  // ":"
+                request.getServerPort();               // "80"
+
+        return(userService.resetPassword(loginoremail, baseUrl));
+    }
+
 }

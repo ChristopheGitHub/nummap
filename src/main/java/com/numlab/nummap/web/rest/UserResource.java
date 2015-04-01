@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -87,8 +88,5 @@ public class UserResource {
             log.debug("User Validated : {}", u);
         });
     }
-
-
-
 
 }

@@ -11,6 +11,7 @@
             "account": {
                 "main": "Account",
                 "settings": "Settings",
+                "resetpassword":"Reset Password",
                 "password": "Password",
                 "sessions": "Sessions",
                 "login": "Authenticate",
@@ -36,6 +37,8 @@
             "username": "Login",
             "username.placeholder": "Your login",
             "newpassword": "New password",
+            "resetpassword": "Enter your login or Email",
+            "resetpassword.placeholder":"Login or Email",
             "newpassword.placeholder": "New password",
             "confirmpassword": "New password confirmation",
             "confirmpassword.placeholder": "Confirm the new password",
@@ -81,7 +84,8 @@
         "messages": {
             "info": {
                 "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
-                "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>"
+                "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>",
+                "reset":"You have forgotten your password? <a href=\"#/resetpassword\">Reset your password</a>"
             },
             "error": {
                 "dontmatch" : "The password and its confirmation do not match!"

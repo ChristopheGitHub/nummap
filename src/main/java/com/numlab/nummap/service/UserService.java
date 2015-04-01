@@ -12,15 +12,15 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 /**
  * Service class for managing users.
@@ -41,6 +41,10 @@ public class UserService {
 
     @Inject
     AuthorityRepository authorityRepository;
+
+    @Inject
+    MailService mailService;
+
 
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
@@ -141,6 +145,38 @@ public class UserService {
             log.debug("Changed password for User: {}", u);
         });
     }
+
+
+    public ResponseEntity<?> resetPassword(String loginOrEmail, String baseUrl) {
+        String newPassword = UUID.randomUUID().toString();
+        String encryptedPassword = passwordEncoder.encode(newPassword);
+        Optional<User> opt = userRepository.findOneByLogin(loginOrEmail);
+        if(opt.isPresent()){
+            opt.map(u -> {
+                u.setPassword(encryptedPassword);
+                userRepository.save(u);
+                mailService.sendNewPassWordEmail(u, baseUrl, newPassword);
+                log.debug("Password changed for User: {}", u);
+                return new ResponseEntity<>(HttpStatus.OK);
+            });
+        }else{
+            opt = userRepository.findOneByEmail(loginOrEmail);
+            if(opt.isPresent()){
+                opt.map(u -> {
+                    u.setPassword(encryptedPassword);
+                    userRepository.save(u);
+                    mailService.sendNewPassWordEmail(u, baseUrl, newPassword);
+                    log.debug("Password changed for User: {}", u);
+                    return new ResponseEntity<>(HttpStatus.OK);
+                });
+            }else{
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+       return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
     public User getUserWithAuthorities() {
         User currentUser = userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).get();

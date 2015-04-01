@@ -14,6 +14,7 @@
                 "password": "Mot de passe",
                 "sessions": "Sessions",
                 "login": "S'authentifier",
+                "resetpassword":"Réinitialiser le mot de passe",
                 "logout": "Déconnexion",
                 "register": "Créer un compte"
             },
@@ -36,6 +37,8 @@
             "username": "Nom d'utilisateur",
             "username.placeholder": "Votre nom d'utilisateur",
             "newpassword": "Nouveau mot de passe",
+            "resetpassword": "Entrez votre login ou email",
+            "resetpassword.placeholder":"Login ou Email",
             "newpassword.placeholder": "Nouveau mot de passe",
             "confirmpassword": "Confirmation du nouveau mot de passe",
             "confirmpassword.placeholder": "Confirmation du nouveau mot de passe",
@@ -81,7 +84,8 @@
         "messages": {
             "info": {
                 "authenticated": "Si vous voulez vous <a href=\"#/login\">connecter</a>, vous pouvez utiliser les comptes par défaut : <br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\").",
-                "register": "Vous n'avez pas encore de compte ? <a href=\"#/register\">Créer un compte</a>"
+                "register": "Vous n'avez pas encore de compte ? <a href=\"#/register\">Créer un compte</a>",
+                "reset":"Vous avez perdu votre mot de passe? <a href=\"#/resetpassword\">Réinitialiser votre mot de passe</a>"
             },
             "error": {
                 "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux!"
