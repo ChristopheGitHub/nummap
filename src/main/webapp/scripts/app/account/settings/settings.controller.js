@@ -24,7 +24,12 @@ angular.module('nummapApp')
         
             Competencies.query(function(result) {
                 $scope.competencies = result;
-                // $scope.competencies
+            });
+
+
+            $scope.competenciesSelected = [];
+            $scope.settingsAccount.competencies.forEach( function (element) {
+                $scope.competenciesSelected.push(element);
             });
 
             $scope.fields = [
