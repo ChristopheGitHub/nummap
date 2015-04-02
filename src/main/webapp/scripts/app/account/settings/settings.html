@@ -293,7 +293,7 @@
                                   name="personAddress"
                                   id="personAddress"
                                   placeholder="{{'global.form.address.placeholder' | translate}}"
-                                  ng-model="settingsAccount.personContactInformation.Address.street" 
+                                  ng-model="settingsAccount.personContactInformation.address.street" 
                                   ng-minlength=5 ng-
                                   maxlength=50>
                               </div>
@@ -309,7 +309,7 @@
                                   name="personAdressComplement"
                                   id="personAdressComplement"
                                   placeholder="{{'global.form.address.complement.placeholder' | translate}}"
-                                  ng-model="settingsAccount.personContactInformation.Address.adressComplement">
+                                  ng-model="settingsAccount.personContactInformation.address.adressComplement">
                               </div>
                             </div>
                             <p>personAdressComplement valid : {{ form.personAdressComplement.$valid }}</p>
@@ -327,7 +327,7 @@
                                     name="personPostOfficeBox"
                                     id="personPostOfficeBox" 
                                     placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
-                                    ng-model="settingsAccount.personContactInformation.Address.postalBox" 
+                                    ng-model="settingsAccount.personContactInformation.address.postalBox" 
                                     ng-pattern="/^[0-9]{6}$/">
                                     <p>personPostOfficeBox valid : {{ form.personPostOfficeBox.$valid }}</p>
                                     <div ng-show="form.personPostOfficeBox.$dirty && form.personPostOfficeBox.$invalid">
@@ -349,7 +349,7 @@
                                     name="personPostalCode"
                                     id="personPostalCode"
                                     placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
-                                    ng-model="settingsAccount.personContactInformation.Address.postalCode" 
+                                    ng-model="settingsAccount.personContactInformation.address.postalCode" 
                                     ng-pattern="/^[0-9]{6}$/" 
                                     required>
                                   <p>personPostalCode valid : {{ form.personPostalCode.$valid }}</p>
@@ -371,7 +371,7 @@
                               name="personCity"
                               id="personCity" 
                               placeholder="{{'global.form.address.city.placeholder' | translate}}"
-                              ng-model="settingsAccount.personContactInformation.Address.city"
+                              ng-model="settingsAccount.personContactInformation.address.city"
                               required>
                           </div>
                           <p>personCity valid : {{ form.personCity.$valid }}</p>
@@ -529,7 +529,7 @@
                                     name="companyAddress" 
                                     id="companyAddress" 
                                     placeholder="{{'global.form.address.placeholder' | translate}}"
-                                    ng-model="settingsAccount.companyContactInformation.Address.street" 
+                                    ng-model="settingsAccount.companyContactInformation.address.street" 
                                     ng-minlength=5 
                                     ng-maxlength=50>
                                 </div>
@@ -545,7 +545,7 @@
                                     name="companyAdressComplement" 
                                     id="companyAdressComplement" 
                                     placeholder="{{'global.form.address.complement.placeholder' | translate}}"
-                                    ng-model="settingsAccount.companyContactInformation.Address.adressComplement">
+                                    ng-model="settingsAccount.companyContactInformation.address.adressComplement">
                                 </div>
                               </div>
                               <p>companyAdressComplement valid : {{ form.companyAdressComplement.$valid }}</p>
@@ -562,7 +562,7 @@
                                   name="companyPostOfficeBox" 
                                   id="companyPostOfficeBox" 
                                   placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
-                                  ng-model="settingsAccount.companyContactInformation.Address.postalBox" 
+                                  ng-model="settingsAccount.companyContactInformation.address.postalBox" 
                                   ng-pattern="/^[0-9]{6}$/">
                               </div>
                               <p>companyPostOfficeBox valid : {{ form.companyPostOfficeBox.$valid }}</p>
@@ -583,7 +583,7 @@
                                   name="companyPostalCode" 
                                   id="companyPostalCode" 
                                   placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
-                                  ng-model="settingsAccount.companyContactInformation.Address.postalCode" 
+                                  ng-model="settingsAccount.companyContactInformation.address.postalCode" 
                                   ng-pattern="/^[0-9]{6}$/" 
                                   required>
                               </div>
@@ -607,7 +607,7 @@
                               name="companyCity" 
                               id="companyCity" 
                               placeholder="{{'global.form.address.city.placeholder' | translate}}"
-                              ng-model="settingsAccount.companyContactInformation.Address.city" 
+                              ng-model="settingsAccount.companyContactInformation.address.city" 
                               required>
                             <p>companyCity valid : {{ form.companyCity.$valid }}</p>
                           </div>
