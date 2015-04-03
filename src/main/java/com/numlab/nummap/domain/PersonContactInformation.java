@@ -92,4 +92,12 @@ public class PersonContactInformation {
     public void setSocialNetworkList(List<SocialNetwork> socialNetworkList) {
         socialNetworkList = socialNetworkList;
     }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 }
