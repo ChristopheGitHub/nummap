@@ -54,17 +54,17 @@ angular.module('nummapApp')
                 $scope.settingsAccount.category === 'PROFESSOR' ||
                 $scope.settingsAccount.category === 'FREELANCE') {
                 $scope.personSocialNetworkList = $scope.settingsAccount.personContactInformation.socialNetworkList;
-                if ($scope.personSocialNetworkList == null) {
+                if ($scope.personSocialNetworkList === null) {
                     $scope.personSocialNetworkList = [];
-                };
+                }
             }
 
             if ($scope.settingsAccount.category === 'COMPANY' ||
                 $scope.settingsAccount.category === 'ASSOCIATION') {
                 $scope.companySocialNetworkList = $scope.settingsAccount.companyContactInformation.socialNetworkList;
-                if ($scope.companySocialNetworkList == null) {
+                if ($scope.companySocialNetworkList === null) {
                     $scope.companySocialNetworkList = []; 
-                };
+                }
             }
         });
 

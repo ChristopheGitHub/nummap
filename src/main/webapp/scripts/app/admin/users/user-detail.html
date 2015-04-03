@@ -17,8 +17,7 @@
                                     <!-- Login -->
                                     <div class="form-group">
                                         <label translate="global.form.username">Login</label>
-                                        <input type="text" class="form-control" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
-                                               ng-model="user.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[a-z0-9]*$/" required>
+                                        <input type="text" class="form-control" name="login" placeholder="{{'global.form.username.placeholder' | translate}} " readonly>
                                         <div ng-show="form.login.$dirty && form.login.$invalid">
                                             <p class="help-block"
                                                    ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
@@ -433,8 +432,8 @@
                                           <div class="form-group">
                                              <label translate="global.form.name">Name</label>
                                              <input type="text" class="form-control" name="companyCompanyName" placeholder="{{'global.form.name.placeholder' | translate}}"
-                                                    ng-model="user.companyContactInformation.companyName" ng-minlength=10 ng-maxlength=50 required>
-                                             <p> form.companyName valid : {{ form.companyName.$valid }}</p>
+                                                    ng-model="user.companyContactInformation.name" ng-minlength=10 ng-maxlength=50 required>
+                                             <p> form.name valid : {{ form.name.$valid }}</p>
                                              <div ng-show="form.companyCompanyName.$dirty && form.companyCompanyName.$invalid">
                                                  <p class="help-block"
                                                         ng-show="form.companyCompanyName.$error.required" translate="global.messages.validate.companyCompanyName.required">
