@@ -88,14 +88,14 @@ angular.module('nummapApp')
                 });
 
                 // Ajout des réseaux sociaux
-                if ($scope.category === 'STUDENT' ||
-                    $scope.category === 'PROFESSOR' ||
-                    $scope.category === 'FREELANCE') {
+                if ($scope.registerAccount.category === 'STUDENT' ||
+                    $scope.registerAccount.category === 'PROFESSOR' ||
+                    $scope.registerAccount.category === 'FREELANCE') {
                     $scope.registerAccount.PersonContactInformation.socialNetworkList = $scope.personSocialNetworkList;
                 }
 
-                if ($scope.category === 'COMPANY' ||
-                    $scope.category === 'ASSOCIATION') {
+                if ($scope.registerAccount.category === 'COMPANY' ||
+                    $scope.registerAccount.category === 'ASSOCIATION') {
                     $scope.registerAccount.CompanyContactInformation.socialNetworkList = $scope.companySocialNetworkList;
                 }
 

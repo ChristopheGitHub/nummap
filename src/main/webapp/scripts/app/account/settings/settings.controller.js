@@ -46,9 +46,30 @@ angular.module('nummapApp')
                 }
                 console.log(element.name +' : ' + element.checked);
             });
+
+            // Récupération des réseaux sociaux;
+            $scope.personSocialNetworkList = [];
+            $scope.companySocialNetworkList = [];
+            if ($scope.settingsAccount.category === 'STUDENT' ||
+                $scope.settingsAccount.category === 'PROFESSOR' ||
+                $scope.settingsAccount.category === 'FREELANCE') {
+                $scope.personSocialNetworkList = $scope.settingsAccount.personContactInformation.socialNetworkList;
+                if ($scope.personSocialNetworkList == null) {
+                    $scope.personSocialNetworkList = [];
+                };
+            }
+
+            if ($scope.settingsAccount.category === 'COMPANY' ||
+                $scope.settingsAccount.category === 'ASSOCIATION') {
+                $scope.companySocialNetworkList = $scope.settingsAccount.companyContactInformation.socialNetworkList;
+                if ($scope.companySocialNetworkList == null) {
+                    $scope.companySocialNetworkList = []; 
+                };
+            }
         });
 
-
+        $scope.personSocialNetworkList = [];
+        $scope.companySocialNetworkList = [];
         
         $scope.categories = [
             {value: 'STUDENT', translationKey: 'register.form.category.student'},
@@ -58,15 +79,30 @@ angular.module('nummapApp')
             {value: 'ASSOCIATION', translationKey: 'register.form.category.association'}
         ];
 
-        
-
-
-
         console.log($scope.settingsAccount);
 
-
+        $scope.addElement = function(list) {
+            list.push({});
+            console.log(list);
+        };
 
         $scope.save = function () {
+
+            // Ajout des réseaux sociaux
+            if ($scope.settingsAccount.category === 'STUDENT' ||
+                $scope.settingsAccount.category === 'PROFESSOR' ||
+                $scope.settingsAccount.category === 'FREELANCE') {
+                $scope.settingsAccount.personContactInformation.socialNetworkList = $scope.personSocialNetworkList;
+            }
+
+            if ($scope.settingsAccount.category === 'COMPANY' ||
+                $scope.settingsAccount.category === 'ASSOCIATION') {
+                $scope.settingsAccount.companyContactInformation.socialNetworkList = $scope.companySocialNetworkList;
+            }
+
+
+
+
             Auth.updateAccount($scope.settingsAccount).then(function() {
                 $scope.error = null;
                 $scope.success = 'OK';
