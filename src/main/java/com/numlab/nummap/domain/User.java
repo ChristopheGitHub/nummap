@@ -251,6 +251,28 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.validatedByAdmin = validatedByAdmin;
     }
 
+    /**
+     * Fonction transformant un User -> Marker sous forme Json
+     * @return
+     */
+    public Marker toMarker(){
+       Marker marker = null;
+       if(this.getCategory() != null && this.getLocation() != null && this.getDescription() != null) {
+           switch (this.getCategory()) {
+               case STUDENT:
+                   marker = new Marker(this.getLocation().getLatitude(), this.getLocation().getLongitude(), this.getDescription(), true, false);
+                   break;
+               default:
+
+                   break;
+           }
+       }
+       return(marker);
+    }
+
+
+
+
     @Override
     public String toString() {
         return "User{" +

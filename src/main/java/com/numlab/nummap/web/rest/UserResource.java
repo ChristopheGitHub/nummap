@@ -1,6 +1,7 @@
 package com.numlab.nummap.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.numlab.nummap.domain.Marker;
 import com.numlab.nummap.domain.User;
 import com.numlab.nummap.repository.UserRepository;
 import com.numlab.nummap.security.AuthoritiesConstants;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -43,6 +45,7 @@ public class UserResource {
         return userRepository.findAll();
     }
 
+
     /**
      * GET  /users/:login -> get the "login" user.
      */
@@ -58,7 +61,9 @@ public class UserResource {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-        /**
+
+
+    /**
         * DELETE  /users/:login -> DELETE the "login" user.
         */
     @RequestMapping(value = "/users/{login}",

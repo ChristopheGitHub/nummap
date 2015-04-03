@@ -1,11 +1,24 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('MainController', function ($scope, $state, Principal) {
+    .controller('MainController', function ($scope, $state, Principal, $http) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
+
+        $scope.markers = [];
+
+        $scope.loadAll = function() {
+            $http.get('api/markers', {})
+                .success(function(data){
+                    $scope.markers = data;
+                    $scope.success = 'OK';
+                });
+        };
+        $scope.loadAll();
+
+
 
         var tilesDict = {
             openstreetmap: {
@@ -16,7 +29,6 @@ angular.module('nummapApp')
             }
         };
 
-        console.log("eeeeeeee" + $state.current.name);
 
         angular.extend($scope, {
             center: {
@@ -24,9 +36,12 @@ angular.module('nummapApp')
                 lng: -0.289764404296875,
                 zoom: 9
             },
+            markers:
+              $scope.markers
+            ,
             tiles: tilesDict.openstreetmap,
             defaults: {
-                scrollWheelZoom: false,
+                scrollWheelZoom: true,
                 zoomControlPosition: 'bottomleft'
             }
         });

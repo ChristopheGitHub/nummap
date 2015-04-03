@@ -78,6 +78,7 @@ public class AccountResource {
 
         /* Récupération des coordonnées */
         Location location = locationService.getLocationFromAddress(address);
+        System.out.println("Location : "+location.toString());
 
 
         return userRepository.findOneByLogin(userDTO.getLogin())
@@ -89,7 +90,7 @@ public class AccountResource {
                         userDTO.getLogin(),
                         userDTO.getPassword(),
                         userDTO.getEmail().toLowerCase(),
-                        userDTO.getLocation(),
+                        location,
                         userDTO.getCategory(),
                         userDTO.getDescription(),
                         userDTO.getRaisonSociale(),
