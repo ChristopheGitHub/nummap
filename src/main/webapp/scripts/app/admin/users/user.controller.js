@@ -3,7 +3,7 @@
  */
 'use strict';
 angular.module('nummapApp')
-    .controller('UserController', function ($scope, User, Auth, $http) {
+    .controller('UserController', function ($scope, User, Auth, $http, Domains, $stateParams) {
         $scope.users = [];
         $scope.loadAll = function() {
             User.query(function(result) {
@@ -11,7 +11,6 @@ angular.module('nummapApp')
             });
         };
         $scope.loadAll();
-
 
         $scope.delete = function (login) {
             $scope.user = User.get({login: login});
@@ -29,7 +28,7 @@ angular.module('nummapApp')
         };
 
         $scope.clear = function () {
-            $scope.user = {"createdBy":null,"createdDate":null,"lastModifiedBy":null,"lastModifiedDate":null,"id":null,"login":null,"email":null,"category":null,"description":null,"raisonSociale":null,"personContactInformation":null,"companyContactInformation":null,"competencies":null,"sectors":null,"fields":null,"customers":null,"activated":true,"langKey":null,"activationKey":null};
+            $scope.user = {'createdBy':null,'createdDate':null,'lastModifiedBy':null,'lastModifiedDate':null,'id':null,'login':null,'email':null,'category':null,'description':null,'raisonSociale':null,'personContactInformation':null,'companyContactInformation':null,'competencies':null,'sectors':null,'fields':null,'customers':null,'activated':true,'langKey':null,'activationKey':null};
         };
 
 
@@ -46,15 +45,15 @@ angular.module('nummapApp')
             });
         };
 
-         $scope.update = function (login) {
-         $scope.user = User.get({login: login});
-         $('#saveUserModal').modal('show');
-         };
+        $scope.update = function (login) {
+            $scope.user = User.get({login: login});
+            $('#saveUserModal').modal('show');
+        };
 
         $scope.validate = function(login){
            $http.post('api/users/validate/'+login, {});
            $scope.loadAll();
-        }
+        };
 
 
      });

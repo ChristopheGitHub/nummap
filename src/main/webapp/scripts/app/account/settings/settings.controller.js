@@ -54,17 +54,17 @@ angular.module('nummapApp')
                 $scope.settingsAccount.category === 'PROFESSOR' ||
                 $scope.settingsAccount.category === 'FREELANCE') {
                 $scope.personSocialNetworkList = $scope.settingsAccount.personContactInformation.socialNetworkList;
-                if ($scope.personSocialNetworkList == null) {
+                if ($scope.personSocialNetworkList === null) {
                     $scope.personSocialNetworkList = [];
-                };
+                }
             }
 
             if ($scope.settingsAccount.category === 'COMPANY' ||
                 $scope.settingsAccount.category === 'ASSOCIATION') {
                 $scope.companySocialNetworkList = $scope.settingsAccount.companyContactInformation.socialNetworkList;
-                if ($scope.companySocialNetworkList == null) {
+                if ($scope.companySocialNetworkList === null) {
                     $scope.companySocialNetworkList = []; 
-                };
+                }
             }
         });
 
@@ -84,6 +84,16 @@ angular.module('nummapApp')
         $scope.addElement = function(list) {
             list.push({});
             console.log(list);
+        };
+
+        $scope.loadTags = function(query) {
+            var res = [];
+            $scope.competencies.forEach(function(element) {
+                if (element.name.substr(0, query.length) === query) {
+                    res.push(element);
+                }
+            });
+            return res;
         };
 
         $scope.save = function () {

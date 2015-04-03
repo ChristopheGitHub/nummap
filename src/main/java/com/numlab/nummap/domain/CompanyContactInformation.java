@@ -11,7 +11,7 @@ import java.util.List;
  * Created by christo on 11/03/15.
  */
 public class CompanyContactInformation {
-    private String companyName;
+    private String name;
     private String phone;
     private String email;
     private Address address;
@@ -20,13 +20,13 @@ public class CompanyContactInformation {
 
     @JsonCreator
     public CompanyContactInformation(
-        @JsonProperty("companyName") String companyName,
+        @JsonProperty("name") String name,
         @JsonProperty("phone") String phone,
         @JsonProperty("email") String email,
         @JsonProperty("Address") Address address,
         @JsonProperty("website") String website,
         @JsonProperty("socialNetworkList") List<SocialNetwork> socialNetworkList) {
-        this.companyName = companyName;
+        this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
@@ -34,12 +34,12 @@ public class CompanyContactInformation {
         this.socialNetworkList = socialNetworkList;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getName() {
+        return name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {

@@ -27,23 +27,35 @@ angular.module('nummapApp')
                 }
             })
             .state('userDetail', {
-                parent: 'admin',
-                url: '/user/:login',
+                parent: 'users',
+                url: '/?login&readonly',
                 data: {
                     roles: ['ROLE_ADMIN']
                 },
-                views: {
-                    'content@': {
-                        templateUrl: 'scripts/app/admin/users/user-detail.html',
-                        controller: 'UserDetailController'
-                    }
-                },
+                templateUrl: 'scripts/app/admin/users/user-detail.html',
+                controller: 'UserDetailController',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('register');
                         return $translate.refresh();
                     }]
-                }
+                },
+                onEnter: ['$state', function($state) {
+                  $(document).on('keyup', function(e) {
+                    if(e.keyCode == 27) {
+                      $(document).off('keyup');
+                      $state.go('users');
+                    }
+                  });
+             
+                  $(document).on('click', '.Modal-backdrop, .Modal-holder', function() {
+                    $state.go('users');
+                  });
+             
+                  $(document).on('click', '.Modal-box, .Modal-box *', function(e) {
+                    e.stopPropagation();
+                  });
+                }],
             });
 
     });
