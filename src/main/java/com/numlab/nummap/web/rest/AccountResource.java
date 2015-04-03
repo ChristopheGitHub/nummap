@@ -18,11 +18,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.*;
@@ -288,7 +291,23 @@ public class AccountResource {
                 ":" +                                  // ":"
                 request.getServerPort();               // "80"
 
-        return(userService.resetPassword(loginoremail, baseUrl));
+        return(userService.sendresetKey(loginoremail, baseUrl));
     }
+
+
+
+    /**
+     * GET /reset -> change the password
+     */
+    @RequestMapping(value = "/resetkey/{resetkey}/{newpassword}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public void resetPassword(@PathVariable("resetkey") String resetkey, @PathVariable("newpassword") String newpassword, HttpServletResponse response){
+        log.debug("Rest request to reset the password for user with : {}", newpassword);
+        ResponseEntity<?> responseEntity = userService.resetPassword(resetkey, newpassword);
+       // System.out.println("RESPONSE ENTITY"+responseEntity.getStatusCode());
+    }
+
 
 }

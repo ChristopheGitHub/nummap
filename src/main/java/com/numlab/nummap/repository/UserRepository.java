@@ -21,6 +21,8 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     Optional<User> findOneByLogin(String login);
 
+    Optional<User> findOneByResetKey(String resetKey);
+
     void delete(User t);
 
     long deleteByLogin(String login);

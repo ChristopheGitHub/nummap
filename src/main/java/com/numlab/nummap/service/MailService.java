@@ -86,13 +86,14 @@ public class MailService {
 
 
     @Async
-    public void sendNewPassWordEmail(User user, String baseUrl, String password) {
+    public void sendNewPassWordEmail(User user, String baseUrl, String password, String resetKey) {
         log.debug("Sending activation e-mail to '{}'", user.getEmail());
         Locale locale = Locale.forLanguageTag(user.getLangKey());
         Context context = new Context(locale);
         context.setVariable("user", user);
         context.setVariable("baseUrl", baseUrl);
         context.setVariable("newpassword", password);
+        context.setVariable("resetKey", resetKey);
         String content = templateEngine.process("newPassword", context);
         String subject = messageSource.getMessage("email.newpassword.title", null, locale);
         sendEmail(user.getEmail(), subject, content, false, true);

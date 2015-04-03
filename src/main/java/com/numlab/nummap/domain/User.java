@@ -61,6 +61,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Field("activation_key")
     private String activationKey;
 
+
+    /* Clé permettant la réinitialisation du mot de passe */
+    private String resetKey;
+
     @JsonIgnore
     private Set<Authority> authorities = new HashSet<>();
 
@@ -204,6 +208,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getResetKey() {
+        return resetKey;
+    }
+
+    public void setResetKey(String resetKey) {
+        this.resetKey = resetKey;
     }
 
     @Override

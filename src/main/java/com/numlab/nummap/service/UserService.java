@@ -146,27 +146,37 @@ public class UserService {
         });
     }
 
-
-    public ResponseEntity<?> resetPassword(String loginOrEmail, String baseUrl) {
+    /**
+     * Fonction créant une clé, cette clé permet à l'utilisateur de réinitialiser son mot de passe
+     * @param loginOrEmail
+     * @param baseUrl
+     * @return
+     */
+    public ResponseEntity<?> sendresetKey(String loginOrEmail, String baseUrl) {
         String newPassword = UUID.randomUUID().toString();
-        String encryptedPassword = passwordEncoder.encode(newPassword);
+        String tmpresetKey = UUID.randomUUID().toString();
+        final String resetKey;
+        /* Pour empecher le changement du mot de passe après plus d'un jour : */
+        LocalDate date = new LocalDate();
+        resetKey = tmpresetKey.concat(date.toString());
+
         Optional<User> opt = userRepository.findOneByLogin(loginOrEmail);
         if(opt.isPresent()){
             opt.map(u -> {
-                u.setPassword(encryptedPassword);
+                u.setResetKey(resetKey);
                 userRepository.save(u);
-                mailService.sendNewPassWordEmail(u, baseUrl, newPassword);
-                log.debug("Password changed for User: {}", u);
+                mailService.sendNewPassWordEmail(u, baseUrl, newPassword, resetKey);
+                log.debug("Password reset for User: {}", u);
                 return new ResponseEntity<>(HttpStatus.OK);
             });
         }else{
             opt = userRepository.findOneByEmail(loginOrEmail);
             if(opt.isPresent()){
                 opt.map(u -> {
-                    u.setPassword(encryptedPassword);
+                    u.setResetKey(resetKey);
                     userRepository.save(u);
-                    mailService.sendNewPassWordEmail(u, baseUrl, newPassword);
-                    log.debug("Password changed for User: {}", u);
+                    mailService.sendNewPassWordEmail(u, baseUrl, newPassword, resetKey);
+                    log.debug("Password reset for User: {}", u);
                     return new ResponseEntity<>(HttpStatus.OK);
                 });
             }else{
@@ -176,6 +186,36 @@ public class UserService {
        return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
+
+    public ResponseEntity<?> resetPassword(String resetKey, String newPassword) {
+        Optional<User> opt = userRepository.findOneByResetKey(resetKey);
+        String encryptedPassword  = passwordEncoder.encode(newPassword);
+        if(opt.isPresent() && checkDate(resetKey)){
+            opt.map(u -> {
+                u.setPassword(encryptedPassword);
+                u.setResetKey(null);
+                userRepository.save(u);
+                log.debug("Password changed for User: {}", u);
+                return new ResponseEntity<>(HttpStatus.OK);
+            });
+        }else{
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Fonction permettant de vérifier que la resetKey n'a pas été générée, il y a plus d'un jour
+     * @param resetKey
+     * @return
+     */
+    public boolean checkDate(String resetKey){
+        /* La date est sous la fome YYYY-DD-MM -> 10 caractère */
+        String resetDate = resetKey.substring(resetKey.length()-10, resetKey.length());
+        LocalDate date = new LocalDate();
+        return(resetDate.equals(date.toString()));
+    }
 
 
     public User getUserWithAuthorities() {
