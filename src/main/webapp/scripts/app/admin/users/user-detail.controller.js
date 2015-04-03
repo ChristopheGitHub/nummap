@@ -7,7 +7,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('UserDetailController', function ($scope, $stateParams, User, Domains, Competencies, Auth) {
+    .controller('UserDetailController', function ($scope, $state, $stateParams, User, Domains, Competencies, Auth) {
         $scope.user = {};
         // $scope.user = {};
         $scope.load = function (login) {
@@ -78,12 +78,24 @@ angular.module('nummapApp')
 
         $scope.load($stateParams.login);
 
+        $scope.readonly = $stateParams.readonly;
+
         $scope.personSocialNetworkList = [];
         $scope.companySocialNetworkList = [];
 
         $scope.addElement = function(list) {
             list.push({});
             console.log(list);
+        };
+
+        $scope.loadTags = function(query) {
+            var res = [];
+            $scope.competencies.forEach(function(element) {
+                if (element.name.substr(0, query.length) === query) {
+                    res.push(element);
+                }
+            });
+            return res;
         };
 
         $scope.categories = [
@@ -108,12 +120,37 @@ angular.module('nummapApp')
 	            $scope.user.companyContactInformation.socialNetworkList = $scope.companySocialNetworkList;
 	        }
 
+	        // Ajout de la liste des domaines
+            $scope.user.sectors = [];
+            $scope.sectors.forEach(function(element) {
+                if (element.checked) {
+                    $scope.user.sectors.push(element.name);
+                }
+            });
+
+            // Ajout de la liste des domaines
+            $scope.user.fields = [];
+            $scope.fields.forEach(function(element) {
+                if (element.checked) {
+                    $scope.user.fields.push(element.value);
+                }
+            });
+
+            // Ajout des compétences
+            $scope.user.competencies = [];
+            $scope.competenciesSelected.forEach(function (element) {
+                $scope.user.competencies.push(element.name);                 
+            });
+
             Auth.manageAccount($scope.user).then(function() {
                 $scope.error = null;
                 $scope.success = 'OK';
                 $scope.loadAll();
                 $('#saveUserModal').modal('hide');
                 $scope.clear();
+
+                // Renvoi à l'état parent, users.
+                $state.go('^');
             }).catch(function() {
                 $scope.success = null;
                 $scope.error = 'ERROR';

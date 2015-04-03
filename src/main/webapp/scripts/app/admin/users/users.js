@@ -28,7 +28,7 @@ angular.module('nummapApp')
             })
             .state('userDetail', {
                 parent: 'users',
-                url: '/:login',
+                url: '/?login&readonly',
                 data: {
                     roles: ['ROLE_ADMIN']
                 },

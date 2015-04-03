@@ -86,6 +86,16 @@ angular.module('nummapApp')
             console.log(list);
         };
 
+        $scope.loadTags = function(query) {
+            var res = [];
+            $scope.competencies.forEach(function(element) {
+                if (element.name.substr(0, query.length) === query) {
+                    res.push(element);
+                }
+            });
+            return res;
+        };
+
         $scope.save = function () {
 
             // Ajout des réseaux sociaux

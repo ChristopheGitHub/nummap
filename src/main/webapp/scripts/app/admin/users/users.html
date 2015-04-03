@@ -57,13 +57,13 @@
                                 <td>
                                     <div class="btn-group" role="group" aria-label="...">
                                         <button type="submit"
-                                                ui-sref="userDetail()"
+                                                ui-sref="userDetail({login:user.login, readonly:'true'})"
                                                 class="btn btn-info">
                                             <span class="glyphicon glyphicon-eye-open"
                                                 title="{{ 'entity.action.view' | translate }}"></span>&nbsp;
                                         </button>
                                         <button type="submit"
-                                                ui-sref="userDetail({login:user.login})"
+                                                ui-sref="userDetail({login:user.login, readonly:'false'})"
                                                 
                                                 class="btn btn-primary">
                                             <span class="glyphicon glyphicon-pencil"
