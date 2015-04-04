@@ -32,7 +32,6 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <input type="text" class="form-control" id="query" ng-model="query" placeholder="Search..."/>
-            <input type="radio" name="validerByAdmin" ng-model="query.user.validatedByAdmin" value="validerByAdmin">Female
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -50,7 +49,7 @@
                 <div class="div-table-content-users">
                     <table class="table table-striped table-hover table-condensed table-bordered">
                         <tbody>
-                            <tr ng-repeat="user in users | filter : query">
+                            <tr ng-repeat="user in users | filter:query">
                                 <td><a ui-sref="userDetail({login:user.login})" ng-class="{'text-danger' : !user.validatedByAdmin, 'text-success' : user.validatedByAdmin}" ><strong>{{user.login}}</strong></a></td>
                                 <td>{{user.companyContactInformation.companyName}}</td>
                                 <td>{{user.personContactInformation.lastName}}</td>
