@@ -258,14 +258,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public Marker toMarker(){
        Marker marker = null;
        if(this.getCategory() != null && this.getLocation() != null && this.getDescription() != null) {
-           switch (this.getCategory()) {
-               case STUDENT:
-                   marker = new Marker(this.getLocation().getLatitude(), this.getLocation().getLongitude(), this.getDescription(), true, false);
-                   break;
-               default:
-
-                   break;
-           }
+           marker = new Marker(this.getLocation().getLatitude(), this.getLocation().getLongitude(), this.getDescription(), false, false, this.getCategory());
        }
        return(marker);
     }
