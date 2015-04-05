@@ -1,17 +1,22 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('MainController', function ($scope, $state, Principal, $http) {
+    .controller('MainController', function ($scope, $state, Principal, $http, $filter) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
 
+        /* Déclaration des tableaux */
         $scope.markers = [];
+        $scope.Filtered = [];
+
+
 
         /* Fonction permettant de set les icons */
         $scope.setIcons = function(){
             $scope.markers.forEach(function(element){
+                element.hidden = false;
             console.log(element.message);
                 if(element.category == "STUDENT"){
                   element.icon = local_icons.STUDENT;
@@ -32,13 +37,15 @@ angular.module('nummapApp')
             });
         }
 
-        /* Récupération de l'ensemble des markers */
+        /* Récupération de l'ensemble des markers au chargement de la page */
         $scope.loadAll = function() {
             $http.get('api/markers', {})
                 .success(function(data){
                     $scope.markers = data;
                     $scope.success = 'OK';
                     $scope.setIcons();
+                    /* Tant qu'aucun filtre n'a été appliqué les markersfiltered sont égaux à l'ensenble des markers */
+                    $scope.markersFiltered = $scope.markers;
                 });
         };
         $scope.loadAll();
@@ -84,8 +91,7 @@ angular.module('nummapApp')
                 lng: -0.289764404296875,
                 zoom: 9
             },
-            markers:
-              $scope.markers
+           markers:  $scope.markers
             ,
             tiles: tilesDict.openstreetmap,
             defaults: {
@@ -93,6 +99,13 @@ angular.module('nummapApp')
                 zoomControlPosition: 'bottomleft'
             }
         });
+
+        $scope.$watch("markerFilter", function(newText, oldText) {
+            $scope.markersFiltered = $filter('filter')($scope.markers, newText);
+            console.log("taile markers : "+$scope.markers.length);
+            console.log("taille markers filteted : "+$scope.markersFiltered.length);
+        },true);
+
 
 
 
