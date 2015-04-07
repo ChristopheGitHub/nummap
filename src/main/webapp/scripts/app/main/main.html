@@ -11,9 +11,36 @@
     </div>
 
     <div class="flex-component map-options">
-        <p>rectangle horzontale avec option de la carte</p>
+
         <form>
-           <input type="text" placeholder="Search" ng-model="markerFilter">
+           <input type="text" class="search-input" placeholder="Search" ng-model="markerFilter">
+            <div>
+
+                <div class="markerslist" ng-repeat="marker in markersFiltered">
+
+
+                    <div class="markerIcon"> <a href=""><img src="{{marker.icon.iconUrl}}"/></a>  </div>
+
+                    <div class="markerBlock">
+
+                            <!-- Title -->
+                            <div class="markerTitle" ng-if="null != marker.companyContactInformation">{{marker.companyContactInformation.name}}
+
+                            </div>
+
+                            <!-- Title -->
+                            <div class="markerTitle" ng-if="null != marker.personContactInformation">{{marker.personContactInformation.firstName}} {{marker.personContactInformation.lastName}}
+
+                            </div>
+
+                            <!-- Description -->
+                             <div class="markerDescription" >{{marker.description}}</div>
+
+                            <!-- Adresse -->
+                            <div class="markerAdresse">{{marker.adresse}}</div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 

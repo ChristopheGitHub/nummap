@@ -9,15 +9,13 @@ angular.module('nummapApp')
 
         /* Déclaration des tableaux */
         $scope.markers = [];
-        $scope.Filtered = [];
+        $scope.markersFiltered = [];
 
 
 
         /* Fonction permettant de set les icons */
         $scope.setIcons = function(){
             $scope.markers.forEach(function(element){
-                element.hidden = false;
-            console.log(element.message);
                 if(element.category == "STUDENT"){
                   element.icon = local_icons.STUDENT;
                 }
@@ -44,6 +42,7 @@ angular.module('nummapApp')
                     $scope.markers = data;
                     $scope.success = 'OK';
                     $scope.setIcons();
+                    console.log("Taille markers : "+$scope.markers.length);
                     /* Tant qu'aucun filtre n'a été appliqué les markersfiltered sont égaux à l'ensenble des markers */
                     $scope.markersFiltered = $scope.markers;
                 });
@@ -56,20 +55,20 @@ angular.module('nummapApp')
         var local_icons = {
             default_icon: {},
             STUDENT: {
-                iconUrl: 'scripts/app/images/etudiant-icon.png',
-                iconAnchor:   [32, 32] // point of the icon which will correspond to marker's location
+                iconUrl: 'scripts/app/images/university.png',
+                iconAnchor:   [0, 0] // point of the icon which will correspond to marker's location
             },
             PROFESSOR: {
-                iconUrl: 'scripts/app/images/prof-icon.png',
-                iconAnchor:   [32, 32] // point of the icon which will correspond to marker's location
+                iconUrl: 'scripts/app/images/highschool.png',
+                iconAnchor:   [0, 0] // point of the icon which will correspond to marker's location
             },
             COMPANY:{
-                iconUrl: 'scripts/app/images/entierprise-icon.png',
-                iconSize:     [32, 32]
+                iconUrl: 'scripts/app/images/office-building.png',
+                iconAnchor:     [0, 0]
             },
             FREELANCE:{
-                iconUrl: 'scripts/app/images/freelance.png',
-                iconSize:     [32, 32]
+                iconUrl: 'scripts/app/images/workoffice.png',
+                iconAnchor:     [0, 0]
             }
         };
 
@@ -102,8 +101,6 @@ angular.module('nummapApp')
 
         $scope.$watch("markerFilter", function(newText, oldText) {
             $scope.markersFiltered = $filter('filter')($scope.markers, newText);
-            console.log("taile markers : "+$scope.markers.length);
-            console.log("taille markers filteted : "+$scope.markersFiltered.length);
         },true);
 
 

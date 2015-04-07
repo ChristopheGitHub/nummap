@@ -50,7 +50,6 @@ public class MarkerResource {
             if(!(user.toMarker() == null) && user.getActivated() && user.isValidatedByAdmin())
                 listMarkers.add(user.toMarker());
         }
-
         return(listMarkers);
     }
 

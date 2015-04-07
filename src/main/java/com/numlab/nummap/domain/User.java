@@ -3,7 +3,6 @@ package com.numlab.nummap.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.domain.enumerations.FieldEnum;
-import com.numlab.nummap.domain.enumerations.RaisonSocialeEnum;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,6 +15,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+
 
 /**
  * A user.
@@ -241,8 +242,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
         return login.hashCode();
     }
 
-
-
     public boolean isValidatedByAdmin() {
         return validatedByAdmin;
     }
@@ -257,37 +256,43 @@ public class User extends AbstractAuditingEntity implements Serializable {
      */
     public Marker toMarker(){
        Marker marker = null;
-       if(this.getCategory() != null && this.getLocation() != null && this.getDescription() != null) {
-           marker = new Marker(this.getLocation().getLatitude(), this.getLocation().getLongitude(), this.getDescription(), false, false, this.getCategory());
+       if(isDisplayable()) {
+           marker = new Marker(this);
        }
        return(marker);
     }
 
 
-
+    /**
+     * Si l'utilisateur ne possède pas de location, il ne sera pas affiché
+     * @return
+     */
+    public boolean isDisplayable(){
+        return(this.getLocation() != null && this.getCategory() != null);
+    }
 
     @Override
     public String toString() {
         return "User{" +
-            "id='" + id + '\'' +
-            ", login='" + login + '\'' +
-            ", password='" + password + '\'' +
-            ", email='" + email + '\'' +
-            ", location=" + location +
-            ", category=" + category +
-            ", description='" + description + '\'' +
-            ", raisonSociale='" + raisonSociale + '\'' +
-            ", personContactInformation=" + personContactInformation +
-            ", companyContactInformation=" + companyContactInformation +
-            ", competencies=" + competencies +
-            ", sectors=" + sectors +
-            ", fields=" + fields +
-            ", siren='" + siren + '\'' +
-            ", activated=" + activated +
-            ", validatedByAdmin=" + validatedByAdmin +
-            ", langKey='" + langKey + '\'' +
-            ", activationKey='" + activationKey + '\'' +
-            ", authorities=" + authorities +
-            '}';
+                "id='" + id + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", location=" + location +
+                ", category=" + category +
+                ", description='" + description + '\'' +
+                ", raisonSociale='" + raisonSociale + '\'' +
+                ", personContactInformation=" + personContactInformation +
+                ", companyContactInformation=" + companyContactInformation +
+                ", competencies=" + competencies +
+                ", sectors=" + sectors +
+                ", fields=" + fields +
+                ", siren='" + siren + '\'' +
+                ", activated=" + activated +
+                ", validatedByAdmin=" + validatedByAdmin +
+                ", langKey='" + langKey + '\'' +
+                ", activationKey='" + activationKey + '\'' +
+                ", authorities=" + authorities +
+                '}';
     }
 }

@@ -45,6 +45,23 @@ Browser Upgrade Prompt
     padding: 0.2em 0;
 }
 
+.search-input {
+    width: 100%;
+    color: #BABABA;
+    font-size: 16px;
+    font-weight: 300;
+    float: left;
+    border-left: 1px solid #eeeeee;
+}
+
+.search {
+    width: 15%;
+    cursor: pointer;
+
+}
+
+
+
 .hero-unit {
     margin: 50px auto 0 auto;
     width: 300px;
@@ -177,12 +194,15 @@ ul#strength {
     right: 0;
     bottom: 0;
     z-index: 1;
-    width: 220px;
-    margin: 60px 20px 60px auto;
-    padding: 0 25px 0 25px;
-    border: 2px solid #050505;
+    width: 300px;
+    margin: 60px 10px 20px auto;
+    padding: 0 0px 0 0px;
+    border: 1px solid #eeeeee;
     box-shadow: 2px 2px 2px #888;
-    background-color: rgba(248, 248, 248, 0.8);
+  /*  background-color: rgba(248, 248, 248, 0.8); */
+    background-color: white;
+    overflow-y: scroll
+
 }
 
 .flex-component.map {
@@ -217,7 +237,49 @@ table {
  z-index: 1;
  opacity: 0.5;
 }
- 
+
+.markerIcon{
+
+    float: left;
+    margin-left: 5px
+}
+
+.markerBlock {
+    margin-left: 45px
+
+    /* padding-top: 15px; */
+
+}
+
+.markerAdresse{
+    color: #777777;
+    margin-bottom: 10px;
+}
+
+.markerTitle{
+    font-size: 20px;
+    color: #999999;
+    margin-bottom: 10px;
+
+}
+
+.markerDescription{
+    margin-bottom: 10px;
+    color: #777777;
+}
+
+.markerWebSite{
+
+}
+
+.markerslist{
+
+    border-bottom: 1px solid #eeeeee;
+    margin-bottom: 10px;
+}
+
+
+
 .modal-holder
 {
   position: absolute; 
