@@ -107,13 +107,13 @@ public class Marker {
            message = "<div class=\"markerTitle\">"+user.getCompanyContactInformation().getName()+"</div>";
            message += "<div class=\"markerAdresse\">"+makeAdresse(user)+"</div>";
             if(user.getCompanyContactInformation().getWebsite() != null){
-                message += "<div class=\"markerWebSite\"><a href=\""+user.getCompanyContactInformation().getWebsite()+"\">"+user.getCompanyContactInformation().getWebsite()+"</a></div>";
+                message += "<div class=\"markerWebSite\"><a class=\"link\" href=\""+user.getCompanyContactInformation().getWebsite()+"\">"+user.getCompanyContactInformation().getWebsite()+"</a></div>";
             }
         }else if(user.getPersonContactInformation() != null){
             message = "<div class=\"markerTitle\">"+user.getPersonContactInformation().getFirstName()+" "+user.getPersonContactInformation().getLastName()+"</div>";
             message += "<div class=\"markerAdresse\">"+makeAdresse(user)+"</div>";
             if(user.getPersonContactInformation().getWebsite() != null){
-                message += "<div class=\"markerWebSite\"><a href=\""+user.getPersonContactInformation().getWebsite()+"\">"+user.getPersonContactInformation().getWebsite()+"</a></div>";
+                message += "<div class=\"markerWebSite\"><a class=\"link\" href=\""+user.getPersonContactInformation().getWebsite()+"\">"+user.getPersonContactInformation().getWebsite()+"</a></div>";
             }
         }
         return(message);

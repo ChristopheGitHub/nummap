@@ -19,7 +19,7 @@
                 <div class="markerslist" ng-repeat="marker in markersFiltered">
 
 
-                    <div class="markerIcon"> <a href=""><img src="{{marker.icon.iconUrl}}"/></a>  </div>
+                    <div class="markerIcon"> <img ng-click="goToMarker(marker)" src="{{marker.icon.iconMenuUrl}}"/>  </div>
 
                     <div class="markerBlock">
 
@@ -38,6 +38,17 @@
 
                             <!-- Adresse -->
                             <div class="markerAdresse">{{marker.adresse}}</div>
+
+                            <!-- Website -->
+                            <div class="markerWebSite" ng-if="null != marker.companyContactInformation && null != marker.companyContactInformation.website">
+                                Web :
+                               <a class="link" href="{{marker.companyContactInformation.website}}">{{marker.companyContactInformation.website}} </a>
+                            </div>
+                            <div class="markerWebSite" ng-if="null != marker.personContactInformation && null != marker.personContactInformation.website">
+                                Web :
+                                <a class="link" href="{{marker.personContactInformation.website}}">{{marker.personContactInformation.website}} </a>
+                            </div>
+
                     </div>
                 </div>
             </div>

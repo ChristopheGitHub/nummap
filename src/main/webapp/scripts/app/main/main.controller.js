@@ -7,11 +7,16 @@ angular.module('nummapApp')
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
 
+        /* Position de la "camera" sur la carte */
+        $scope.center = {
+            lat: 43.28520334369384,
+            lng: -0.289764404296875,
+            zoom: 9
+        }
+
         /* Déclaration des tableaux */
         $scope.markers = [];
         $scope.markersFiltered = [];
-
-
 
         /* Fonction permettant de set les icons */
         $scope.setIcons = function(){
@@ -28,12 +33,21 @@ angular.module('nummapApp')
                 else if(element.category == "COMPANY"){
                   element.icon = local_icons.COMPANY;
                 }
-                else if(element.category == " ASSOCIATION"){
-                    element.icon = local_icons.COMPANY;
+                else if(element.category == "ASSOCIATION"){
+                    element.icon = local_icons.ASSOCIATION;
                 }
 
             });
-        }
+        };
+
+        /* Centrage de la carte sur le marker sur lequel on a cliqué dans le menu */
+        $scope.goToMarker = function(marker){
+           console.log(marker);
+           $scope.center.lat = marker.lat;
+           $scope.center.lng = marker.lng;
+           $scope.center.zoom = 35
+           marker.focus = true;
+        };
 
         /* Récupération de l'ensemble des markers au chargement de la page */
         $scope.loadAll = function() {
@@ -56,19 +70,33 @@ angular.module('nummapApp')
             default_icon: {},
             STUDENT: {
                 iconUrl: 'scripts/app/images/university.png',
-                iconAnchor:   [0, 0] // point of the icon which will correspond to marker's location
+                iconMenuUrl : 'scripts/app/images/universityMenu.png',
+                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+                popupAnchor:  [15, 5]
             },
             PROFESSOR: {
                 iconUrl: 'scripts/app/images/highschool.png',
-                iconAnchor:   [0, 0] // point of the icon which will correspond to marker's location
+                iconMenuUrl : 'scripts/app/images/highschoolMenu.png',
+                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+                popupAnchor:  [15, 5]
             },
             COMPANY:{
                 iconUrl: 'scripts/app/images/office-building.png',
-                iconAnchor:     [0, 0]
+                iconMenuUrl : 'scripts/app/images/office-buildingMenu.png',
+                iconAnchor:     [0, 0],
+                popupAnchor:  [15, 5]
             },
             FREELANCE:{
                 iconUrl: 'scripts/app/images/workoffice.png',
-                iconAnchor:     [0, 0]
+                iconMenuUrl : 'scripts/app/images/workofficeMenu.png',
+                iconAnchor:     [0, 0],
+                popupAnchor:  [15, 5]
+            },
+           ASSOCIATION:{
+                iconUrl: 'scripts/app/images/museum_science.png',
+               iconMenuUrl : 'scripts/app/images/museum_scienceMenu.png',
+                iconAnchor:     [0, 0],
+               popupAnchor:  [15, 5]
             }
         };
 
@@ -83,15 +111,9 @@ angular.module('nummapApp')
             }
         };
 
-
         angular.extend($scope, {
-            center: {
-                lat: 43.28520334369384,
-                lng: -0.289764404296875,
-                zoom: 9
-            },
-           markers:  $scope.markers
-            ,
+            center: $scope.center,
+           markers:  $scope.markers,
             tiles: tilesDict.openstreetmap,
             defaults: {
                 scrollWheelZoom: true,

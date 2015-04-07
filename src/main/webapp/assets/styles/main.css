@@ -254,6 +254,7 @@ table {
 .markerAdresse{
     color: #777777;
     margin-bottom: 10px;
+    font-size: 13px;
 }
 
 .markerTitle{
@@ -266,16 +267,23 @@ table {
 .markerDescription{
     margin-bottom: 10px;
     color: #777777;
+    font-size: 12px;
 }
 
 .markerWebSite{
-
+    color: silver;
+    font-size: 14px;
 }
 
 .markerslist{
 
     border-bottom: 1px solid #eeeeee;
     margin-bottom: 10px;
+}
+
+.link{
+    color: #EB6565;
+
 }
 
 
