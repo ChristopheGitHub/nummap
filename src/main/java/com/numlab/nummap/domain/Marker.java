@@ -9,6 +9,7 @@ import java.util.List;
  * Created by eisti on 4/3/15.
  */
 public class Marker {
+    private String name;
     private Double lat;
     private Double lng;
     private String message;
@@ -29,6 +30,7 @@ public class Marker {
      * @param user
      */
     public Marker(User user){
+        this.setName(user.getLogin());
         /* On set la location */
         this.setLat(user.getLocation().getLatitude());
         this.setLng(user.getLocation().getLongitude());
@@ -226,5 +228,13 @@ public class Marker {
 
     public void setCompanyContactInformation(CompanyContactInformation companyContactInformation) {
         this.companyContactInformation = companyContactInformation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

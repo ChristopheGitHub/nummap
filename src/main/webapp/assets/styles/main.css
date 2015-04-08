@@ -251,6 +251,38 @@ table {
 
 }
 
+.markerCompetence{
+    color: silver;
+    margin-bottom: 10px;
+}
+
+.competenceList{
+    color: DeepSkyBLue;
+    font-size: 12px;
+
+}
+
+.markerSector{
+    color: silver;
+    margin-bottom: 10px;
+}
+
+.sectorList{
+    color: DeepSkyBLue;
+    font-size: 12px;
+}
+
+.markerDomain{
+    color: silver;
+    margin-bottom: 10px;
+}
+
+.domainList{
+    color: DeepSkyBLue;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
 .markerAdresse{
     color: #777777;
     margin-bottom: 10px;
@@ -273,6 +305,7 @@ table {
 .markerWebSite{
     color: silver;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .markerslist{

@@ -3,8 +3,6 @@
         <leaflet
                 center="center"
                 width="100%" height="100%"
-                tiles="tiles"
-                defaults="defaults"
                 markers="markersFiltered">
         </leaflet>
 
@@ -15,23 +13,16 @@
         <form>
            <input type="text" class="search-input" placeholder="Search" ng-model="markerFilter">
             <div>
-
                 <div class="markerslist" ng-repeat="marker in markersFiltered">
 
+                    <div class="markerIcon"> <img  ng-mouseleave="marker.detail = false" ng-mouseover="marker.detail = true" ng-click="goToMarker(marker)" src="{{marker.icon.iconMenuUrl}}"/>  </div>
 
-                    <div class="markerIcon"> <img ng-click="goToMarker(marker)" src="{{marker.icon.iconMenuUrl}}"/>  </div>
-
-                    <div class="markerBlock">
-
-                            <!-- Title -->
-                            <div class="markerTitle" ng-if="null != marker.companyContactInformation">{{marker.companyContactInformation.name}}
-
-                            </div>
+                    <div class="markerBlock" id="{{marker.name}}">
 
                             <!-- Title -->
-                            <div class="markerTitle" ng-if="null != marker.personContactInformation">{{marker.personContactInformation.firstName}} {{marker.personContactInformation.lastName}}
-
-                            </div>
+                            <div class="markerTitle" ng-if="null != marker.companyContactInformation">{{marker.companyContactInformation.name}} </div>
+                            <!-- Title -->
+                            <div class="markerTitle" ng-if="null != marker.personContactInformation">{{marker.personContactInformation.firstName}} {{marker.personContactInformation.lastName}}</div>
 
                             <!-- Description -->
                              <div class="markerDescription" >{{marker.description}}</div>
@@ -49,6 +40,27 @@
                                 <a class="link" href="{{marker.personContactInformation.website}}">{{marker.personContactInformation.website}} </a>
                             </div>
 
+
+                            <!-- Details -->
+                              <div ng-show="marker.detail">
+                                <div class="markerCompetence" ng-if="marker.competencies.length != 0">Compétences :
+                                    <div ng-repeat="competence in marker.competencies">
+                                        <div class="competenceList">{{competence}}</div>
+                                    </div>
+                              </div>
+
+                               <div class="markerSector" ng-if="marker.sectors.length != 0">Secteurs :
+                                    <div ng-repeat="sector in marker.sectors">
+                                        <div class="sectorList">{{sector}}</div>
+                                    </div>
+                               </div>
+
+                               <div class="markerDomain" ng-if="marker.fields.length != 0">Domaines :
+                                    <div ng-repeat="field in marker.fields">
+                                        <div class="domainList">{{field | capitalize }}</div>
+                                    </div>
+                               </div>
+                            </div>
                     </div>
                 </div>
             </div>

@@ -21,6 +21,7 @@ angular.module('nummapApp')
         /* Fonction permettant de set les icons */
         $scope.setIcons = function(){
             $scope.markers.forEach(function(element){
+                element.group = 'numlab';
                 if(element.category == "STUDENT"){
                   element.icon = local_icons.STUDENT;
                 }
@@ -40,30 +41,49 @@ angular.module('nummapApp')
             });
         };
 
+        /* Fonction permettant d'ajouter à tous les markers la propriété detail, qui permettra d'afficher des details sur le marker */
+        $scope.setBoolDetail = function(){
+            $scope.markers.forEach(function(element){
+                element.detail = false;
+            });
+        };
+
+
+        $scope.$on('leafletDirectiveMarker.click', function(e, args) {
+            if (typeof  $scope.markersFiltered[args.markerName] !== 'undefined') {
+                $scope.markersFiltered[args.markerName].detail = true;
+                document.getElementById($scope.markersFiltered[args.markerName].name).scrollIntoView( true );
+            }
+        });
+
+        $scope.$on('leafletDirectiveMarker.popupclose', function(e, args) {
+            if (typeof  $scope.markersFiltered[args.markerName] !== 'undefined') {
+                $scope.markersFiltered[args.markerName].detail = false;
+            }
+        });
+
         /* Centrage de la carte sur le marker sur lequel on a cliqué dans le menu */
         $scope.goToMarker = function(marker){
-           console.log(marker);
            $scope.center.lat = marker.lat;
            $scope.center.lng = marker.lng;
-           $scope.center.zoom = 35
+           $scope.center.zoom = 35;
            marker.focus = true;
         };
+
 
         /* Récupération de l'ensemble des markers au chargement de la page */
         $scope.loadAll = function() {
             $http.get('api/markers', {})
                 .success(function(data){
                     $scope.markers = data;
-                    $scope.success = 'OK';
+                    /* Ajout des incones */
                     $scope.setIcons();
-                    console.log("Taille markers : "+$scope.markers.length);
-                    /* Tant qu'aucun filtre n'a été appliqué les markersfiltered sont égaux à l'ensenble des markers */
+                    /* Ajout du boolean details permettant l'affichage en détails de l'element */
+                    $scope.setBoolDetail();
                     $scope.markersFiltered = $scope.markers;
                 });
         };
         $scope.loadAll();
-
-
 
         /* Icones pour l'affichage des markers */
         var local_icons = {
@@ -100,8 +120,6 @@ angular.module('nummapApp')
             }
         };
 
-
-
         var tilesDict = {
             openstreetmap: {
                 url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -113,7 +131,6 @@ angular.module('nummapApp')
 
         angular.extend($scope, {
             center: $scope.center,
-           markers:  $scope.markers,
             tiles: tilesDict.openstreetmap,
             defaults: {
                 scrollWheelZoom: true,
@@ -123,9 +140,12 @@ angular.module('nummapApp')
 
         $scope.$watch("markerFilter", function(newText, oldText) {
             $scope.markersFiltered = $filter('filter')($scope.markers, newText);
+            /* Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null*/
+            var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+            $scope.markersFiltered.forEach(function(element) {
+            element.group = rand_str;
+            });
         },true);
-
-
 
 
 
