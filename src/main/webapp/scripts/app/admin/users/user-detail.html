@@ -105,8 +105,247 @@
                             </select>
                             <p>Category : {{ user.category }}</p>
                         </div>
+
+                        <!-- Company contact -->
+                        <div class="panel panel-default" ng-if="user.category == 'COMPANY' || user.category == 'ASSOCIATION'">
+                          <div class="panel-heading">
+                            <label translate="global.form.companyInformation">Company information</label>
+                          </div>
+                          <ul class="list-group">
+                            <li class="list-group-item">
+                              <!-- Company name -->
+                              <div class="form-group">
+                                 <label translate="global.form.name">Name</label>
+                                 <input type="text" class="form-control" name="companyCompanyName" placeholder="{{'global.form.name.placeholder' | translate}}"
+                                        ng-model="user.companyContactInformation.name" ng-minlength=10 ng-maxlength=50 ng-readonly="{{readonly}}" required>
+                                 <p> form.name valid : {{ form.name.$valid }}</p>
+                                 <div ng-show="form.companyCompanyName.$dirty && form.companyCompanyName.$invalid">
+                                     <p class="help-block"
+                                            ng-show="form.companyCompanyName.$error.required" translate="global.messages.validate.companyCompanyName.required">
+                                         Your companyCompanyName is required.
+                                     </p>
+                                     <p class="help-block"
+                                            ng-show="form.companyCompanyName.$error.minlength" translate="global.messages.validate.companyCompanyName.minlength">
+                                         Your companyCompanyName is required to be at least 50 characters
+                                     </p>
+                                 </div>
+                              </div>
+                            </li>
+                            <li class="list-group-item">
+                              <!-- Mail & Phone -->
+                              <div class="row">
+                                <!-- Mail -->
+                                <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="companyMail" translate="global.form.mail">E-mail</label>
+                                    <input type="email"
+                                       class="form-control" 
+                                       name="companyMail" 
+                                       id="companyMail" 
+                                       placeholder="{{'global.form.mail.placeholder' | translate}}"
+                                       ng-model="user.companyContactInformation.email" 
+                                       ng-minlength=5 
+                                       ng-maxlength=50
+                                       ng-readonly="{{readonly}}"
+                                       required>
+                                 </div>
+                                    <p>companyMail valid : {{ form.companyMail.$valid }}</p>
+                                    <div ng-show="form.companyMail.$dirty && form.companyMail.$invalid">
+                                        <p class="help-block"
+                                               ng-show="form.companyMail.$error.required" translate="global.messages.validate.personMail.required">
+                                            Your contact e-mail is required.
+                                        </p>
+                                        <p class="help-block"
+                                               ng-show="form.companyMail.$error.minlength" translate="global.messages.validate.personMail.minlength">
+                                            Your contact e-mail is required to be at least 5 characters
+                                        </p>
+                                        <p class="help-block"
+                                               ng-show="form.companyMail.$error.maxlength" translate="global.messages.validate.personMail.maxlength">
+                                            Your contact e-mail cannot be longer than 50 characters
+                                        </p>
+                                        <p class="help-block"
+                                           ng-show="form.companyMail.$error.email" translate="global.messages.validate.personMail.invalid">
+                                            Your contact e-mail is invalid.
+                                        </p>
+                                    </div>
+                                </div>
+                                                    
+                                                    
+                                <!-- Phone -->
+                                <div class="col-lg-6">
+                                  <div class="form-group">
+                                    <label for="companyPhone" translate="global.form.phone">Phone</label>
+                                    <input type="text" 
+                                      class="form-control" 
+                                      name="companyPhone"
+                                      id="companyPhone"
+                                      placeholder="{{'global.form.phone.placeholder' | translate}}"
+                                      ng-pattern="/^[0-9]{10}$/" 
+                                      ng-model="user.companyContactInformation.phone" 
+                                      ng-readonly="{{readonly}}"
+                                      required>
+                                  </div>
+                                    <p>companyPhone valid : {{ form.companyPhone.$valid }}</p>
+                                    <div ng-show="form.companyPhone.$dirty && form.companyPhone.$invalid">
+                                       <p class="help-block"
+                                           ng-show="form.companyPhone.$error.pattern" translate="global.messages.validate.companyPhone.pattern">
+                                            Your phone number is invalid.
+                                        </p>
+                                    </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="list-group-item">
+                              <!-- Address & Complement -->
+                              <div class="row">
+                                  <!-- Address -->
+                                  <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label for="companyAddress" translate="global.form.address">Address</label>
+                                      <input type="text" 
+                                        class="form-control" 
+                                        name="companyAddress" 
+                                        id="companyAddress" 
+                                        placeholder="{{'global.form.address.placeholder' | translate}}"
+                                        ng-model="user.companyContactInformation.address.street" 
+                                        ng-readonly="{{readonly}}"
+                                        ng-minlength=5 
+                                        ng-maxlength=50>
+                                    </div>
+                                    <p>companyAddress valid : {{ form.companyAddress.$valid }}</p>
+                                  </div>
+                                                    
+                                  <!-- Complement -->
+                                  <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label for="companyAdressComplement" translate="global.form.address.complement.placeholder">Address complement</label>
+                                      <input type="text" 
+                                        class="form-control" 
+                                        name="companyAdressComplement" 
+                                        id="companyAdressComplement" 
+                                        placeholder="{{'global.form.address.complement.placeholder' | translate}}"
+                                        ng-model="user.companyContactInformation.address.adressComplement" ng-readonly="{{readonly}}">
+                                    </div>
+                                  </div>
+                                  <p>companyAdressComplement valid : {{ form.companyAdressComplement.$valid }}</p>
+                              </div>
+                                                    
+                              <!-- BP & Postal code -->
+                              <div class="row">
+                                <!-- BP -->
+                                <div class="col-lg-6">
+                                  <div class="form-group">
+                                    <label for="companyPostOfficeBox" translate="global.form.address.postOfficeBox">Post-office box</label>
+                                    <input type="number" 
+                                      class="form-control" 
+                                      name="companyPostOfficeBox" 
+                                      id="companyPostOfficeBox" 
+                                      placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
+                                      ng-model="user.companyContactInformation.address.postalBox" 
+                                      ng-readonly="{{readonly}}"
+                                      ng-pattern="/^[0-9]{5}$/">
+                                  </div>
+                                  <p>companyPostOfficeBox valid : {{ form.companyPostOfficeBox.$valid }}</p>
+                                  <div ng-show="form.companyPostOfficeBox.$dirty && form.companyPostOfficeBox.$invalid">
+                                      <p class="help-block"
+                                             ng-show="form.companyPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
+                                          Your post-office box must be 5 numbers.
+                                      </p>
+                                  </div>
+                                </div>
+                                                
+                                <!-- Postal code -->
+                                <div class="col-lg-6">
+                                  <div class="form-group">
+                                    <label for="companyPostalCode" translate="global.form.address.postalCode">Postal code</label>
+                                    <input type="number" 
+                                      class="form-control" 
+                                      name="companyPostalCode" 
+                                      id="companyPostalCode" 
+                                      placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
+                                      ng-model="user.companyContactInformation.address.postalCode" 
+                                      ng-pattern="/^[0-9]{5}$/" 
+                                      ng-readonly="{{readonly}}"
+                                      required>
+                                  </div>
+                                              
+                                    <p>companyPostalCode valid : {{ form.companyPostalCode.$valid }}</p>
+                                    <div ng-show="form.companyPostalCode.$dirty && form.companyPostalCode.$invalid">
+                                        <p class="help-block"
+                                               ng-show="form.companyPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
+                                            Your BP must be 5 numbers.
+                                        </p>
+                                    </div>
+                                </div>
+                              </div>
+                                                                                              
+                                                
+                              <!-- City -->
+                              <div class="form-group">
+                                <label for="companyCity" translate="global.form.address.city">City</label>
+                                <input type="text" 
+                                  class="form-control" 
+                                  name="companyCity" 
+                                  id="companyCity" 
+                                  placeholder="{{'global.form.address.city.placeholder' | translate}}"
+                                  ng-model="user.companyContactInformation.address.city"
+                                  ng-readonly="{{readonly}}" 
+                                  required>
+                                <p>companyCity valid : {{ form.companyCity.$valid }}</p>
+                              </div>
+                            </li>
+                            <li class="list-group-item">                                                  
+                              <div class="form-group">
+                                <label translate="global.form.website">Web site</label>
+                                <input type="url" class="form-control" name="companyWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
+                                       ng-model="user.companyContactInformation.website" ng-minlength=10 ng-maxlength=255 ng-readonly="{{readonly}}" required>
+                                <p>companyWebsite valid : {{ form.companyWebsite.$valid }}</p>
+                                <div ng-show="form.description.$dirty && form.description.$invalid">
+                                    <p class="help-block"
+                                           ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
+                                        Your description is required.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
+                                        Your description is required to be at least 255 characters
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
+                                        Your description cannot be longer than 255 characters
+                                    </p>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="list-group-item">                        
+                              <!-- Social Networks -->
+                              <div class="form-group">
+                                <label translate="global.form.socialNetwork">Social Networks</label>
+                                                    
+                                <ul ng-form="itemsForm">
+                                    <li ng-repeat="item in companySocialNetworkList" ng-form="itemForm">
+                                        <label for="itemText">Entrée</label>
+                                          <select ng-model="item.type" ng-disabled="{{readonly}}">
+                                            <option value="FACEBOOK">Facebook</option>
+                                            <option value="TWITTER">Twitter</option>
+                                            <option value="LINKEDIN">LinkedIn</option>
+                                            <option value="GOOGLE_PLUS">Google Plus</option>
+                                            <option value="VIADEO">Viadeo</option>
+                                        </select>
+                                        <input name="itemText" type="text" ng-model="item.address" required ng-readonly="{{readonly}}"/>
+                                        <ul ng-show="itemForm.$invalid && itemForm.$dirty">
+                                             <li ng-show="itemForm.itemText.$error.required">This field is required.</li>
+                                         </ul>
+                                     </li>
+                                 </ul>
+                                                    
+                                 <button ng-click="addElement(companySocialNetworkList)" ng-disabled="itemsForm.$invalid || {{readonly}}">Add an element</button>
+                                <p>social valid : {{ form.SocialNetwork.$valid }}</p>
+                              </div>
+                            </li>
+                          </ul>    
+                        </div>
         
-                        <!-- Company -->
+                        <!-- Personal information question -->
                         <div ng-show="user.category == 'COMPANY' || user.category == 'ASSOCIATION'">
                           <div class="checkbox">
                             <label>
@@ -433,244 +672,7 @@
                           
                         
                         
-                        <!-- Company contact -->
-                        <div class="panel panel-default" ng-if="user.category == 'COMPANY' || user.category == 'ASSOCIATION'">
-                          <div class="panel-heading">
-                            <label translate="global.form.companyInformation">Company information</label>
-                          </div>
-                          <ul class="list-group">
-                            <li class="list-group-item">
-                              <!-- Company name -->
-                              <div class="form-group">
-                                 <label translate="global.form.name">Name</label>
-                                 <input type="text" class="form-control" name="companyCompanyName" placeholder="{{'global.form.name.placeholder' | translate}}"
-                                        ng-model="user.companyContactInformation.name" ng-minlength=10 ng-maxlength=50 ng-readonly="{{readonly}}" required>
-                                 <p> form.name valid : {{ form.name.$valid }}</p>
-                                 <div ng-show="form.companyCompanyName.$dirty && form.companyCompanyName.$invalid">
-                                     <p class="help-block"
-                                            ng-show="form.companyCompanyName.$error.required" translate="global.messages.validate.companyCompanyName.required">
-                                         Your companyCompanyName is required.
-                                     </p>
-                                     <p class="help-block"
-                                            ng-show="form.companyCompanyName.$error.minlength" translate="global.messages.validate.companyCompanyName.minlength">
-                                         Your companyCompanyName is required to be at least 50 characters
-                                     </p>
-                                 </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- Mail & Phone -->
-                              <div class="row">
-                                <!-- Mail -->
-                                <div class="col-lg-6">
-                                 <div class="form-group">
-                                    <label for="companyMail" translate="global.form.mail">E-mail</label>
-                                    <input type="email"
-                                       class="form-control" 
-                                       name="companyMail" 
-                                       id="companyMail" 
-                                       placeholder="{{'global.form.mail.placeholder' | translate}}"
-                                       ng-model="user.companyContactInformation.email" 
-                                       ng-minlength=5 
-                                       ng-maxlength=50
-                                       ng-readonly="{{readonly}}"
-                                       required>
-                                 </div>
-                                    <p>companyMail valid : {{ form.companyMail.$valid }}</p>
-                                    <div ng-show="form.companyMail.$dirty && form.companyMail.$invalid">
-                                        <p class="help-block"
-                                               ng-show="form.companyMail.$error.required" translate="global.messages.validate.personMail.required">
-                                            Your contact e-mail is required.
-                                        </p>
-                                        <p class="help-block"
-                                               ng-show="form.companyMail.$error.minlength" translate="global.messages.validate.personMail.minlength">
-                                            Your contact e-mail is required to be at least 5 characters
-                                        </p>
-                                        <p class="help-block"
-                                               ng-show="form.companyMail.$error.maxlength" translate="global.messages.validate.personMail.maxlength">
-                                            Your contact e-mail cannot be longer than 50 characters
-                                        </p>
-                                        <p class="help-block"
-                                           ng-show="form.companyMail.$error.email" translate="global.messages.validate.personMail.invalid">
-                                            Your contact e-mail is invalid.
-                                        </p>
-                                    </div>
-                                </div>
-                                                    
-                                                    
-                                <!-- Phone -->
-                                <div class="col-lg-6">
-                                  <div class="form-group">
-                                    <label for="companyPhone" translate="global.form.phone">Phone</label>
-                                    <input type="text" 
-                                      class="form-control" 
-                                      name="companyPhone"
-                                      id="companyPhone"
-                                      placeholder="{{'global.form.phone.placeholder' | translate}}"
-                                      ng-pattern="/^[0-9]{10}$/" 
-                                      ng-model="user.companyContactInformation.phone" 
-                                      ng-readonly="{{readonly}}"
-                                      required>
-                                  </div>
-                                    <p>companyPhone valid : {{ form.companyPhone.$valid }}</p>
-                                    <div ng-show="form.companyPhone.$dirty && form.companyPhone.$invalid">
-                                       <p class="help-block"
-                                           ng-show="form.companyPhone.$error.pattern" translate="global.messages.validate.companyPhone.pattern">
-                                            Your phone number is invalid.
-                                        </p>
-                                    </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- Address & Complement -->
-                              <div class="row">
-                                  <!-- Address -->
-                                  <div class="col-lg-6">
-                                    <div class="form-group">
-                                      <label for="companyAddress" translate="global.form.address">Address</label>
-                                      <input type="text" 
-                                        class="form-control" 
-                                        name="companyAddress" 
-                                        id="companyAddress" 
-                                        placeholder="{{'global.form.address.placeholder' | translate}}"
-                                        ng-model="user.companyContactInformation.address.street" 
-                                        ng-readonly="{{readonly}}"
-                                        ng-minlength=5 
-                                        ng-maxlength=50>
-                                    </div>
-                                    <p>companyAddress valid : {{ form.companyAddress.$valid }}</p>
-                                  </div>
-                                                    
-                                  <!-- Complement -->
-                                  <div class="col-lg-6">
-                                    <div class="form-group">
-                                      <label for="companyAdressComplement" translate="global.form.address.complement.placeholder">Address complement</label>
-                                      <input type="text" 
-                                        class="form-control" 
-                                        name="companyAdressComplement" 
-                                        id="companyAdressComplement" 
-                                        placeholder="{{'global.form.address.complement.placeholder' | translate}}"
-                                        ng-model="user.companyContactInformation.address.adressComplement" ng-readonly="{{readonly}}">
-                                    </div>
-                                  </div>
-                                  <p>companyAdressComplement valid : {{ form.companyAdressComplement.$valid }}</p>
-                              </div>
-                                                    
-                              <!-- BP & Postal code -->
-                              <div class="row">
-                                <!-- BP -->
-                                <div class="col-lg-6">
-                                  <div class="form-group">
-                                    <label for="companyPostOfficeBox" translate="global.form.address.postOfficeBox">Post-office box</label>
-                                    <input type="number" 
-                                      class="form-control" 
-                                      name="companyPostOfficeBox" 
-                                      id="companyPostOfficeBox" 
-                                      placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
-                                      ng-model="user.companyContactInformation.address.postalBox" 
-                                      ng-readonly="{{readonly}}"
-                                      ng-pattern="/^[0-9]{5}$/">
-                                  </div>
-                                  <p>companyPostOfficeBox valid : {{ form.companyPostOfficeBox.$valid }}</p>
-                                  <div ng-show="form.companyPostOfficeBox.$dirty && form.companyPostOfficeBox.$invalid">
-                                      <p class="help-block"
-                                             ng-show="form.companyPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
-                                          Your post-office box must be 5 numbers.
-                                      </p>
-                                  </div>
-                                </div>
-                                                
-                                <!-- Postal code -->
-                                <div class="col-lg-6">
-                                  <div class="form-group">
-                                    <label for="companyPostalCode" translate="global.form.address.postalCode">Postal code</label>
-                                    <input type="number" 
-                                      class="form-control" 
-                                      name="companyPostalCode" 
-                                      id="companyPostalCode" 
-                                      placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
-                                      ng-model="user.companyContactInformation.address.postalCode" 
-                                      ng-pattern="/^[0-9]{5}$/" 
-                                      ng-readonly="{{readonly}}"
-                                      required>
-                                  </div>
-                                              
-                                    <p>companyPostalCode valid : {{ form.companyPostalCode.$valid }}</p>
-                                    <div ng-show="form.companyPostalCode.$dirty && form.companyPostalCode.$invalid">
-                                        <p class="help-block"
-                                               ng-show="form.companyPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
-                                            Your BP must be 5 numbers.
-                                        </p>
-                                    </div>
-                                </div>
-                              </div>
-                                                                                              
-                                                
-                              <!-- City -->
-                              <div class="form-group">
-                                <label for="companyCity" translate="global.form.address.city">City</label>
-                                <input type="text" 
-                                  class="form-control" 
-                                  name="companyCity" 
-                                  id="companyCity" 
-                                  placeholder="{{'global.form.address.city.placeholder' | translate}}"
-                                  ng-model="user.companyContactInformation.address.city"
-                                  ng-readonly="{{readonly}}" 
-                                  required>
-                                <p>companyCity valid : {{ form.companyCity.$valid }}</p>
-                              </div>
-                            </li>
-                            <li class="list-group-item">                                                  
-                              <div class="form-group">
-                                <label translate="global.form.website">Web site</label>
-                                <input type="url" class="form-control" name="companyWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
-                                       ng-model="user.companyContactInformation.website" ng-minlength=10 ng-maxlength=255 ng-readonly="{{readonly}}" required>
-                                <p>companyWebsite valid : {{ form.companyWebsite.$valid }}</p>
-                                <div ng-show="form.description.$dirty && form.description.$invalid">
-                                    <p class="help-block"
-                                           ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
-                                        Your description is required.
-                                    </p>
-                                    <p class="help-block"
-                                           ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
-                                        Your description is required to be at least 255 characters
-                                    </p>
-                                    <p class="help-block"
-                                           ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
-                                        Your description cannot be longer than 255 characters
-                                    </p>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">                        
-                              <!-- Social Networks -->
-                              <div class="form-group">
-                                <label translate="global.form.socialNetwork">Social Networks</label>
-                                                    
-                                <ul ng-form="itemsForm">
-                                    <li ng-repeat="item in companySocialNetworkList" ng-form="itemForm">
-                                        <label for="itemText">Entrée</label>
-                                          <select ng-model="item.type" ng-disabled="{{readonly}}">
-                                            <option value="FACEBOOK">Facebook</option>
-                                            <option value="TWITTER">Twitter</option>
-                                            <option value="LINKEDIN">LinkedIn</option>
-                                            <option value="GOOGLE_PLUS">Google Plus</option>
-                                            <option value="VIADEO">Viadeo</option>
-                                        </select>
-                                        <input name="itemText" type="text" ng-model="item.address" required ng-readonly="{{readonly}}"/>
-                                        <ul ng-show="itemForm.$invalid && itemForm.$dirty">
-                                             <li ng-show="itemForm.itemText.$error.required">This field is required.</li>
-                                         </ul>
-                                     </li>
-                                 </ul>
-                                                    
-                                 <button ng-click="addElement(companySocialNetworkList)" ng-disabled="itemsForm.$invalid || {{readonly}}">Add an element</button>
-                                <p>social valid : {{ form.SocialNetwork.$valid }}</p>
-                              </div>
-                            </li>
-                          </ul>    
-                        </div>
+                        
         
                         <!-- SIREN -->
                         <div ng-if="user.category == 'FREELANCE' || user.category == 'COMPANY'"
