@@ -4,7 +4,10 @@
     <div class="modal-box">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">I'm a modal!</h3>
+                <center>
+                  <h3 class="modal-title" ng-hide="{{readonly}}">Modification</h3>
+                  <h3 class="modal-title" ng-show="{{readonly}}">Visualisation</h3>
+                </center>
             </div>
             <div class="modal-body">
                 <form name="form" role="form" novalidate ng-submit="save()" show-validation>
