@@ -151,6 +151,7 @@ public class AccountResource {
                     user.getLogin(),
                     null,
                     user.getEmail(),
+                    user.getLocation(),
                     user.getCategory(),
                     user.getDescription(),
                     null,

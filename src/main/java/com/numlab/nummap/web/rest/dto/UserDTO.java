@@ -1,6 +1,7 @@
 package com.numlab.nummap.web.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Size;
 import java.io.IOException;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDTO {
 
     @Pattern(regexp = "^[a-z0-9]*$")
@@ -57,6 +59,7 @@ public class UserDTO {
         @JsonProperty("login") String login,
         @JsonProperty("password") String password,
         @JsonProperty("email") String email,
+        @JsonProperty("Location") Location location,
         @JsonProperty("category") CategoryEnum category,
         @JsonProperty("description") String description,
         @JsonProperty("raisonSociale") String raisonSociale,
@@ -72,6 +75,7 @@ public class UserDTO {
         this.login = login;
         this.password = password;
         this.email = email;
+        this.location = location;
         this.category = category;
         this.description = description;
         this.raisonSociale = raisonSociale;

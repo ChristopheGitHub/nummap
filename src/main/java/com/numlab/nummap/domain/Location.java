@@ -1,5 +1,8 @@
 package com.numlab.nummap.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by christo on 24/03/15.
  */
@@ -7,7 +10,10 @@ public class Location {
     private double latitude;
     private double longitude;
 
-    public Location(double latitude, double longitude) {
+    @JsonCreator
+    public Location(
+        @JsonProperty("latitude") double latitude,
+        @JsonProperty("longitude") double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
