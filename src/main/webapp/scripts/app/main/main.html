@@ -25,7 +25,6 @@
 
                             <div class="markerBlock" id="{{marker.name}}">
 
-
                             <!-- Si le marker est une celui d'une entreprise -->
                                 <div ng-if="null != marker.companyContactInformation">
                                     <!-- Title -->
@@ -41,6 +40,11 @@
                                     <div class="markerWebSite" ng-if="null != marker.companyContactInformation && null != marker.companyContactInformation.website">
                                         Web :
                                         <a class="link" href="{{marker.companyContactInformation.website}}">{{marker.companyContactInformation.website}} </a>
+                                    </div>
+
+                                    <!-- Social Network -->
+                                    <div ng-show="marker.detail" class="socialNetWork" ng-repeat="socialNetwork in marker.companyContactInformation.socialNetworkList">
+                                        <div>{{socialNetwork.type | capitalize }} : {{socialNetwork.address}} </div>
                                     </div>
 
                                     <!-- Contact -->
@@ -65,6 +69,12 @@
                                       Web :
                                     <a class="link" href="{{marker.personContactInformation.website}}">{{marker.personContactInformation.website}} </a>
                                     </div>
+
+                                    <!-- Social Network -->
+                                    <div ng-show="marker.detail" class="socialNetWork" ng-repeat="socialNetwork in marker.personContactInformation.socialNetworkList">
+                                        <div>{{socialNetwork.type | capitalize }} : {{socialNetwork.address}} </div>
+                                    </div>
+
 
                                 </div>
 

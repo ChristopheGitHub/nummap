@@ -211,12 +211,12 @@ ul#strength {
     height:92%;
     overflow-y :scroll;
     overflow-x:hidden;
-
-
-
-
 }
 
+.socialNetWork{
+    color: silver;
+    margin-bottom: 10px;
+}
 
 .resultDiv{
     color: silver;
