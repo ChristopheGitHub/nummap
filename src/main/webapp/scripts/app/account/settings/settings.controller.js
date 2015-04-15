@@ -98,6 +98,28 @@ angular.module('nummapApp')
 
         $scope.save = function () {
 
+            // Ajout de la liste des secteurs
+            $scope.settingsAccount.sectors = [];
+            $scope.sectors.forEach(function(element) {
+                if (element.checked) {
+                    $scope.settingsAccount.sectors.push(element.name);
+                }
+            });
+
+            // Ajout de la liste des domaines
+            $scope.settingsAccount.fields = [];
+            $scope.fields.forEach(function(element) {
+                if (element.checked) {
+                    $scope.settingsAccount.fields.push(element.value);
+                }
+            });
+
+            // Ajout des compétences
+            $scope.settingsAccount.competencies = [];
+            $scope.competenciesSelected.forEach(function (element) {
+                $scope.settingsAccount.competencies.push(element.name);                 
+            });
+
             // Ajout des réseaux sociaux
             if ($scope.settingsAccount.category === 'STUDENT' ||
                 $scope.settingsAccount.category === 'PROFESSOR' ||
@@ -109,9 +131,6 @@ angular.module('nummapApp')
                 $scope.settingsAccount.category === 'ASSOCIATION') {
                 $scope.settingsAccount.companyContactInformation.socialNetworkList = $scope.companySocialNetworkList;
             }
-
-
-
 
             Auth.updateAccount($scope.settingsAccount).then(function() {
                 $scope.error = null;
