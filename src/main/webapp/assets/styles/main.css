@@ -299,13 +299,13 @@ table {
    /* color: DeepSkyBLue; */
     font-size: 12px;
     color: silver;
-    background: white;
-    border: 1px  ;
+    border: solid 1px #acacac;
+    background-color: #f8f8f9;
+    border: 2px  ;
     padding: 2px;
     border-color: #777777;
-    box-shadow: inset 0px 0px 1px silver,0 0 8px silver;
-
-
+   /* box-shadow: inset 0px 0px 1px silver,0 0 8px silver; */
+    box-shadow: 0px 1px 2px #bcbcbc;
 }
 
 .markerSector{
