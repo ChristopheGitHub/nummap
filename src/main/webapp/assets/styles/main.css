@@ -188,7 +188,7 @@ ul#strength {
     height: 100%;
 }
 
-.flex-component.map-options {
+.flex-component.map-options{
     position: absolute;
     top: 0;
     right: 0;
@@ -201,8 +201,42 @@ ul#strength {
     box-shadow: 2px 2px 2px #888;
   /*  background-color: rgba(248, 248, 248, 0.8); */
     background-color: white;
-    overflow-y: scroll
 
+
+}
+
+.scrollBlock{
+
+    width:100%;
+    height:92%;
+    overflow-y :scroll;
+    overflow-x:hidden;
+}
+
+.socialNetWork{
+    color: silver;
+    margin-bottom: 10px;
+}
+
+.resultDiv{
+    color: silver;
+    font-size: 19px;
+}
+
+.result{
+    float: right;
+}
+
+.markersfilteredResult{
+
+}
+
+
+.markersResult{
+
+    font-weight: 800;
+    font-size: 20px;
+    color: #EB6565;
 }
 
 .flex-component.map {
@@ -251,14 +285,26 @@ table {
 
 }
 
+.markerGrayInput{
+    color: silver;
+    margin-bottom: 10px;
+}
+
 .markerCompetence{
     color: silver;
     margin-bottom: 10px;
 }
 
 .competenceList{
-    color: DeepSkyBLue;
+   /* color: DeepSkyBLue; */
     font-size: 12px;
+    color: silver;
+    background: white;
+    border: 1px  ;
+    padding: 2px;
+    border-color: #777777;
+    box-shadow: inset 0px 0px 1px silver,0 0 8px silver;
+
 
 }
 
@@ -309,8 +355,7 @@ table {
 }
 
 .markerslist{
-
-    border-bottom: 1px solid #eeeeee;
+border-bottom: 1px solid #eeeeee;
     margin-bottom: 10px;
 }
 

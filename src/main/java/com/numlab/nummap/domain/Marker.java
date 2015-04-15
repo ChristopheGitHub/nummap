@@ -3,6 +3,7 @@ package com.numlab.nummap.domain;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.domain.enumerations.FieldEnum;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -80,16 +81,7 @@ public class Marker {
 
     public String makeAdresse(User user){
         String adresse = "";
-        if(user.getPersonContactInformation() != null){
-            Address address = user.getPersonContactInformation().getAddress();
-            if(address != null) {
-                if ((address.getPostalBox() == new Integer(0).intValue())) {
-                    adresse = address.getStreet() + ", " + address.getPostalCode() + ", " + address.getCity();
-                } else {
-                    adresse = address.getStreet() + ", " + address.getPostalCode() + ", " + address.getCity() + ", " + address.getPostalBox();
-                }
-            }
-        }else if(user.getCompanyContactInformation() != null) {
+        if(user.getCompanyContactInformation() != null) {
             Address address = user.getCompanyContactInformation().getAddress();
             if (address != null) {
                 if ((address.getPostalBox() == new Integer(0).intValue())) {
@@ -99,6 +91,17 @@ public class Marker {
                 }
             }
         }
+        else if(user.getPersonContactInformation() != null){
+        Address address = user.getPersonContactInformation().getAddress();
+        if(address != null) {
+                if ((address.getPostalBox() == new Integer(0).intValue())) {
+                    adresse = address.getStreet() + ", " + address.getPostalCode() + ", " + address.getCity();
+                } else {
+                    adresse = address.getStreet() + ", " + address.getPostalCode() + ", " + address.getCity() + ", " + address.getPostalBox();
+                }
+           }
+        }
+
         return(adresse);
     }
 

@@ -305,11 +305,17 @@ public class AccountResource {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public void resetPassword(@PathVariable("resetkey") String resetkey, @PathVariable("newpassword") String newpassword, HttpServletResponse response){
+    public String resetPassword(@PathVariable("resetkey") String resetkey, @PathVariable("newpassword") String newpassword, HttpServletResponse response){
         log.debug("Rest request to reset the password for user with : {}", newpassword);
         ResponseEntity<?> responseEntity = userService.resetPassword(resetkey, newpassword);
        // System.out.println("RESPONSE ENTITY"+responseEntity.getStatusCode());
+        String retour = "";
+        /* TODO Le equals se fait mal */
+        if(responseEntity.equals(HttpStatus.INTERNAL_SERVER_ERROR)){
+            retour = "<strong>Le mot de passe n'a pas pu être réinitialisé</strong> ";
+        }else if(responseEntity.equals(HttpStatus.OK)){
+            retour = "<strong>Mot de passe Réinitialisé!</strong>";
+        }
+        return(retour);
     }
-
-
 }
