@@ -65,7 +65,7 @@ angular.module('nummapApp')
                 $scope.errorUserExists = null;
                 $scope.errorEmailExists = null;
 
-                // Ajout de la liste des domaines
+                // Ajout de la liste des secteurs
                 $scope.registerAccount.sectors = [];
                 $scope.sectors.forEach(function(element) {
                     if (element.checked) {

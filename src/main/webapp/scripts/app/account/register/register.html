@@ -379,12 +379,12 @@
                                     id="personPostOfficeBox" 
                                     placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
                                     ng-model="registerAccount.PersonContactInformation.Address.postalBox" 
-                                    ng-pattern="/^[0-9]{6}$/">
+                                    ng-pattern="/^[0-9]{5}$/">
                                     <p>personPostOfficeBox valid : {{ form.personPostOfficeBox.$valid }}</p>
                                     <div ng-show="form.personPostOfficeBox.$dirty && form.personPostOfficeBox.$invalid">
                                         <p class="help-block"
                                                ng-show="form.personPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
-                                            Your post-office box must be 6 numbers.
+                                            Your post-office box must be 5 numbers.
                                         </p>
                                     </div>
                                 </div>
@@ -401,13 +401,13 @@
                                     id="personPostalCode"
                                     placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
                                     ng-model="registerAccount.PersonContactInformation.Address.postalCode" 
-                                    ng-pattern="/^[0-9]{6}$/" 
+                                    ng-pattern="/^[0-9]{5}$/" 
                                     required>
                                   <p>personPostalCode valid : {{ form.personPostalCode.$valid }}</p>
                                   <div ng-show="form.personPostalCode.$dirty && form.personPostalCode.$invalid">
                                       <p class="help-block"
                                              ng-show="form.personPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
-                                          Your BP must be 6 numbers.
+                                          Your BP must be 5 numbers.
                                       </p>
                                   </div>
                                 </div>
@@ -614,13 +614,13 @@
                                   id="companyPostOfficeBox" 
                                   placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
                                   ng-model="registerAccount.CompanyContactInformation.Address.postalBox" 
-                                  ng-pattern="/^[0-9]{6}$/">
+                                  ng-pattern="/^[0-9]{5}$/">
                               </div>
                               <p>companyPostOfficeBox valid : {{ form.companyPostOfficeBox.$valid }}</p>
                               <div ng-show="form.companyPostOfficeBox.$dirty && form.companyPostOfficeBox.$invalid">
                                   <p class="help-block"
                                          ng-show="form.companyPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
-                                      Your post-office box must be 6 numbers.
+                                      Your post-office box must be 5 numbers.
                                   </p>
                               </div>
                             </div>
@@ -635,7 +635,7 @@
                                   id="companyPostalCode" 
                                   placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
                                   ng-model="registerAccount.CompanyContactInformation.Address.postalCode" 
-                                  ng-pattern="/^[0-9]{6}$/" 
+                                  ng-pattern="/^[0-9]{5}$/" 
                                   required>
                               </div>
                                           
@@ -643,7 +643,7 @@
                                 <div ng-show="form.companyPostalCode.$dirty && form.companyPostalCode.$invalid">
                                     <p class="help-block"
                                            ng-show="form.companyPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
-                                        Your BP must be 6 numbers.
+                                        Your BP must be 5 numbers.
                                     </p>
                                 </div>
                             </div>
