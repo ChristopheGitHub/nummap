@@ -10,62 +10,87 @@
 
     <div class="flex-component map-options">
 
-        <form>
-           <input type="text" class="search-input" placeholder="Search" ng-model="markerFilter">
-            <div>
-                <div class="markerslist" ng-repeat="marker in markersFiltered">
+            <!-- Affichage du nombre de résultats -->
+           <div class="resultDiv">
+            Résultat : <div class="result"><span class="markersfilteredResult">{{markersFiltered.length}}</span> / <span class="markersResult">{{markers.length}} </span></div>
+           </div>
 
-                    <div class="markerIcon"> <img  ng-mouseleave="marker.detail = false" ng-mouseover="marker.detail = true" ng-click="goToMarker(marker)" src="{{marker.icon.iconMenuUrl}}"/>  </div>
+                    <input type="text" class="search-input" placeholder="Search" ng-model="markerFilter">
 
-                    <div class="markerBlock" id="{{marker.name}}">
+                <div class="scrollBlock">
 
-                            <!-- Title -->
-                            <div class="markerTitle" ng-if="null != marker.companyContactInformation">{{marker.companyContactInformation.name}} </div>
-                            <!-- Title -->
-                            <div class="markerTitle" ng-if="null != marker.personContactInformation">{{marker.personContactInformation.firstName}} {{marker.personContactInformation.lastName}}</div>
+                    <div class="markerslist" ng-repeat="marker in markersFiltered">
 
-                            <!-- Description -->
-                             <div class="markerDescription" >{{marker.description}}</div>
+                        <div class="markerIcon"> <img  ng-mouseleave="marker.detail = false" ng-mouseover="marker.detail = true" ng-click="goToMarker(marker)" src="{{marker.icon.iconMenuUrl}}"/> </div>
 
-                            <!-- Adresse -->
-                            <div class="markerAdresse">{{marker.adresse}}</div>
-
-                            <!-- Website -->
-                            <div class="markerWebSite" ng-if="null != marker.companyContactInformation && null != marker.companyContactInformation.website">
-                                Web :
-                               <a class="link" href="{{marker.companyContactInformation.website}}">{{marker.companyContactInformation.website}} </a>
-                            </div>
-                            <div class="markerWebSite" ng-if="null != marker.personContactInformation && null != marker.personContactInformation.website">
-                                Web :
-                                <a class="link" href="{{marker.personContactInformation.website}}">{{marker.personContactInformation.website}} </a>
-                            </div>
+                            <div class="markerBlock" id="{{marker.name}}">
 
 
-                            <!-- Details -->
-                              <div ng-show="marker.detail">
-                                <div class="markerCompetence" ng-if="marker.competencies.length != 0">Compétences :
-                                    <div ng-repeat="competence in marker.competencies">
-                                        <div class="competenceList">{{competence}}</div>
+                            <!-- Si le marker est une celui d'une entreprise -->
+                                <div ng-if="null != marker.companyContactInformation">
+                                    <!-- Title -->
+                                    <div class="markerTitle" ng-if="null != marker.companyContactInformation">{{marker.companyContactInformation.name}} </div>
+
+                                    <!-- Description -->
+                                    <div class="markerDescription" >{{marker.description}}</div>
+
+                                    <!-- Adresse -->
+                                    <div class="markerAdresse">{{marker.adresse}}</div>
+
+                                    <!-- Website -->
+                                    <div class="markerWebSite" ng-if="null != marker.companyContactInformation && null != marker.companyContactInformation.website">
+                                        Web :
+                                        <a class="link" href="{{marker.companyContactInformation.website}}">{{marker.companyContactInformation.website}} </a>
                                     </div>
-                              </div>
 
-                               <div class="markerSector" ng-if="marker.sectors.length != 0">Secteurs :
-                                    <div ng-repeat="sector in marker.sectors">
-                                        <div class="sectorList">{{sector}}</div>
+                                    <!-- Contact -->
+                                    <div class="markerGrayInput" ng-if="null != marker.personContactInformation"> Contact : {{marker.personContactInformation.firstName}} {{marker.personContactInformation.lastName}}</div>
+
+                                </div>
+
+                            <!-- Si le marker est celui d'un freelance, professeur, étudiant -->
+                                <div ng-if="null == marker.companyContactInformation">
+                                     <div class="markerTitle" ng-if="null != marker.personContactInformation">{{marker.personContactInformation.firstName}} {{marker.personContactInformation.lastName}}</div>
+
+                                    <!-- Description -->
+                                    <div class="markerDescription" >{{marker.description}}</div>
+
+                                    <!-- Adresse -->
+                                    <div class="markerAdresse">{{marker.adresse}}</div>
+
+                                    <div class="markerGrayInput">{{marker.personContactInformation.email}}</div>
+
+                                    <!-- Website -->
+                                    <div class="markerWebSite" ng-if="null != marker.personContactInformation && null != marker.personContactInformation.website">
+                                      Web :
+                                    <a class="link" href="{{marker.personContactInformation.website}}">{{marker.personContactInformation.website}} </a>
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Details -->
+                                <div ng-show="marker.detail">
+                                    <div class="markerCompetence" ng-if="marker.competencies.length != 0">Compétences :
+                                            <span ng-repeat="competence in marker.competencies">
+                                                <span class="competenceList">{{competence}}</span>
+                                            </span>
+                                    </div>
+
+                                    <div class="markerSector" ng-if="marker.sectors.length != 0">Secteurs :
+                                            <span ng-repeat="sector in marker.sectors">
+                                                <span class="competenceList">{{sector}}</span>
+                                            </span>
+                                    </div>
+
+                                    <div class="markerDomain" ng-if="marker.fields.length != 0">Domaines :
+                                            <span ng-repeat="field in marker.fields">
+                                                <span class="competenceList">{{field | capitalize }}</span>
+                                            </span>
                                     </div>
                                </div>
-
-                               <div class="markerDomain" ng-if="marker.fields.length != 0">Domaines :
-                                    <div ng-repeat="field in marker.fields">
-                                        <div class="domainList">{{field | capitalize }}</div>
-                                    </div>
-                               </div>
-                            </div>
+                          </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
-
-
+          </div>
 </div>
