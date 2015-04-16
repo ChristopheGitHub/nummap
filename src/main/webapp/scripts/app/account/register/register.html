@@ -174,17 +174,17 @@
                           <!-- Company name -->
                           <div class="form-group">
                              <label translate="global.form.name">Name</label>
-                             <input type="text" class="form-control" name="companyCompanyName" placeholder="{{'global.form.name.placeholder' | translate}}"
-                                    ng-model="registerAccount.CompanyContactInformation.companyName" ng-minlength=10 ng-maxlength=50 required>
+                             <input type="text" class="form-control" name="companyName" placeholder="{{'global.form.name.placeholder' | translate}}"
+                                    ng-model="registerAccount.CompanyContactInformation.name" ng-minlength=1 ng-maxlength=50 required>
                              <p> form.companyName valid : {{ form.companyName.$valid }}</p>
-                             <div ng-show="form.companyCompanyName.$dirty && form.companyCompanyName.$invalid">
+                             <div ng-show="form.companyName.$dirty && form.companyName.$invalid">
                                  <p class="help-block"
-                                        ng-show="form.companyCompanyName.$error.required" translate="global.messages.validate.companyCompanyName.required">
-                                     Your companyCompanyName is required.
+                                        ng-show="form.companyName.$error.required" translate="global.messages.validate.name.required">
+                                     Your company / association name is required.
                                  </p>
                                  <p class="help-block"
-                                        ng-show="form.companyCompanyName.$error.minlength" translate="global.messages.validate.companyCompanyName.minlength">
-                                     Your companyCompanyName is required to be at least 50 characters
+                                        ng-show="form.companyName.$error.minlength" translate="global.messages.validate.name.minlength">
+                                     Your company / association name is required to be at maximum 50 characters.
                                  </p>
                              </div>
                           </div>
