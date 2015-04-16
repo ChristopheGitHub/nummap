@@ -18,6 +18,7 @@ angular.module('nummapApp')
                 resolve: {
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('main');
+                        $translatePartialLoader.addPart('register');
                         return $translate.refresh();
                     }]
                 }

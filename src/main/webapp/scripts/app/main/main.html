@@ -15,9 +15,54 @@
             Résultat : <div class="result"><span class="markersfilteredResult">{{markersFiltered.length}}</span> / <span class="markersResult">{{markers.length}} </span></div>
            </div>
 
-                    <input type="text" class="search-input" placeholder="Search" ng-model="markerFilter">
+                <input type="text" class="search-input" placeholder="Search" ng-model="markerFilter">
+
 
                 <div class="scrollBlock">
+                    
+                    
+                    <ul class="list-group">
+                        
+                        <li class="list-group-item" ng-click="isCollapsed = !isCollapsed">
+                            <center>
+                                <h4 class="list-group-item-heading">Options</h4>
+                            </center>
+                        </li>
+
+                        <div collapse="isCollapsed">
+                            
+                            <li class="list-group-item"
+                                ng-click="isCollapsedCat = !isCollapsedCat">
+                                <h4 class="list-group-item-heading">Categories</h4>
+                            </li>
+                            
+                            <div collapse="isCollapsedCat">
+                                <li class="list-group-item"
+                                    ng-class="{active: cat.checked=='true'}"
+                                    ng-repeat="cat in categories"
+                                    ng-click="selectCategory($index)">
+                                    <div ng-class="{active: cat.checked=='true'}">{{ cat.translationKey | translate }}</div>
+                                </li>
+                            </div>
+
+                            <li class="list-group-item" ng-click="isCollapsedField = !isCollapsedField">
+                                <h4 class="list-group-item-heading">Domaines</h4>
+                            </li>
+
+                            <div collapse="isCollapsedField">
+                                <li class="list-group-item"
+                                    ng-class="{active: field.checked==true}"
+                                    ng-repeat="field in fields"
+                                    ng-click="selectField($index)">
+                                    {{ field.name }}
+                                </li>
+                            </div>
+
+
+                        </div>
+                        
+            
+                    </ul>
 
                     <div class="markerslist" ng-repeat="marker in markersFiltered">
 
