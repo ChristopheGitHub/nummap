@@ -41,7 +41,7 @@ angular.module('nummapApp')
             });
         };
 
-        /* Fonction permettant d'ajouter à tous les markers la propriété detail, qui permettra d'afficher des details sur le marker */
+        /* Fonction permettant d'ajouter à tous les  markers la propriété detail, qui permettra d'afficher des details sur le marker */
         $scope.setBoolDetail = function(){
             $scope.markers.forEach(function(element){
                 element.detail = false;

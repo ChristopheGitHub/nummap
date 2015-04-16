@@ -68,9 +68,10 @@ public class AccountResource {
         /* Parsing du paramètre en UserDTO */
         UserDTO userDTO = UserDTO.fromJsonToUserDTO(json);
 
+
         /* Récupération de l'adresse */
         Address address ;
-        if (CategoryEnum.COMPANY.equals(userDTO.getCategory())){
+        if (CategoryEnum.COMPANY.equals(userDTO.getCategory()) ||CategoryEnum.ASSOCIATION.equals(userDTO.getCategory())){
             address = userDTO.getCompanyContactInformation().getAddress();
         } else {
             address = userDTO.getPersonContactInformation().getAddress();
