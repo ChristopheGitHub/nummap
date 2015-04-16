@@ -4,6 +4,7 @@
         "form": {
             "button": "Enregistrement",
              "category": {
+                "all": "Toutes",
                 "student": "Étudiant",
                 "professor": "Professeur",
                 "freelance": "Freelance",
