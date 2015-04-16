@@ -7,12 +7,83 @@ angular.module('nummapApp')
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
 
+        /* Etat de la zone de recherche */
+        $scope.isCollapsed = true;
+        $scope.isCollapsedCat = true;
+        $scope.isCollapsedField = true;
+        
+
+        /* Pour la recherche */
+        $scope.categories = [
+            {value: 'ALL', translationKey: 'register.form.category.all', checked: 'false'},
+            {value: 'STUDENT', translationKey: 'register.form.category.student', checked: 'false'},
+            {value: 'PROFESSOR', translationKey: 'register.form.category.professor', checked: 'false'},
+            {value: 'FREELANCE', translationKey: 'register.form.category.freelance', checked: 'false'},
+            {value: 'COMPANY', translationKey: 'register.form.category.company', checked: 'false'},
+            {value: 'ASSOCIATION', translationKey: 'register.form.category.association', checked: 'false'}
+        ];
+
+        $scope.fields = [
+            {name: 'All', value: 'ALL', checked: 'false'},
+            {name: 'Outsourcing', value: 'OUTSOURCING', checked: 'false'},
+            {name: 'Consulting', value: 'CONSULTING', checked: 'false'},
+            {name: 'System Integration', value: 'SYSTEM_INTEGRATION', checked: 'false'}
+        ];
+
+        $scope.choosenCategories = [];
+        $scope.choosenFields = [];
+
+        $scope.selectCategory = function(index) {
+            if (index === 0) {
+                $scope.choosenCategories = [];
+                $scope.categories.forEach(function (element) {
+                    element.checked = 'false';
+                    // On sélectionne toutes les catégories
+                    $scope.choosenCategories.push(element.value);
+                });
+                $scope.categories[0].checked = 'true';    
+            } else {
+                // On déselectionne 'ALL'
+                $scope.categories[0].checked = 'false';
+                if ($scope.choosenCategories.indexOf('ALL') !== -1){
+                    $scope.choosenCategories = [];
+                }
+
+                // Si selectionné, on le déselectionne et on le retire des choosenCategories
+                if ($scope.categories[index].checked === 'true') {
+                    $scope.categories[index].checked = 'false';
+                    $scope.choosenCategories.splice($scope.choosenCategories.indexOf($scope.categories[index].value),1);
+                }
+                // Sinon, on le selectionne et on le push dans les choosenCategories
+                else {
+                    console.log('ici');
+                    $scope.categories[index].checked = 'true';
+                    $scope.choosenCategories.push($scope.categories[index].value);
+                }
+            }
+            console.log($scope.choosenCategories);
+        };
+
+        $scope.selectField = function(index) {
+            if (index === 0) {
+                $scope.fields.forEach(function (element) {
+                    element.checked = false;
+                    // On sélectionne toutes les catégories
+                    $scope.choosenFields.push(element.value);
+                });
+                $scope.fields[0].checked = true;
+            } else {
+                $scope.fields[0].checked =false;
+                $scope.fields[index].checked = !$scope.fields[index].checked;
+            }
+        };
+
         /* Position de la "camera" sur la carte */
         $scope.center = {
             lat: 43.28520334369384,
             lng: -0.289764404296875,
             zoom: 9
-        }
+        };
 
         /* Déclaration des tableaux */
         $scope.markers = [];
@@ -47,7 +118,6 @@ angular.module('nummapApp')
                 element.detail = false;
             });
         };
-
 
         $scope.$on('leafletDirectiveMarker.click', function(e, args) {
             if (typeof  $scope.markersFiltered[args.markerName] !== 'undefined') {
@@ -138,8 +208,9 @@ angular.module('nummapApp')
             }
         });
 
-        $scope.$watch("markerFilter", function(newText, oldText) {
-            $scope.markersFiltered = $filter('filter')($scope.markers, newText);
+        $scope.$watch('markerFilter', function(newText) {
+            $scope.markersFiltered2 = $filter('markers')($scope.markers, $scope.choosenCategories); 
+            $scope.markersFiltered = $filter('filter')($scope.markersFiltered2, newText);
             /* Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null*/
             var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
             $scope.markersFiltered.forEach(function(element) {
@@ -147,6 +218,15 @@ angular.module('nummapApp')
             });
         },true);
 
+        $scope.$watch('choosenCategories', function(newText) {
+            $scope.markersFiltered2 = $filter('filter')($scope.markers, $scope.markerFilter);
+            $scope.markersFiltered = $filter('markers')($scope.markersFiltered2, newText);
+            // Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null
+            var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+            $scope.markersFiltered.forEach(function(element) {
+                element.group = rand_str;
+            });
+        },true);
 
 
     });

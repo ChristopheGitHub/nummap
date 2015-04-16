@@ -4,6 +4,7 @@
         "form": {
             "button": "Register",
             "category": {
+                "all": "All",
                 "student": "Student",
                 "professor": "Professor",
                 "freelance": "Freelance",
