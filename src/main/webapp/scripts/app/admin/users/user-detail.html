@@ -81,7 +81,6 @@
                             <label translate="global.form.description">Description</label>
                             <input type="text" class="form-control" name="description" placeholder="{{'global.form.description.placeholder' | translate}}" 
                                    ng-model="user.description" ng-readonly="{{readonly}}" ng-minlength=10 ng-maxlength=255 required>
-                            <p>description valid : {{ form.description.$valid }}</p>
                             <div ng-show="form.description.$dirty && form.description.$invalid">
                                 <p class="help-block"
                                        ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
@@ -121,7 +120,6 @@
                                  <label translate="global.form.name">Name</label>
                                  <input type="text" class="form-control" name="companyCompanyName" placeholder="{{'global.form.name.placeholder' | translate}}"
                                         ng-model="user.companyContactInformation.name" ng-minlength=10 ng-maxlength=50 ng-readonly="{{readonly}}" required>
-                                 <p> form.name valid : {{ form.name.$valid }}</p>
                                  <div ng-show="form.companyCompanyName.$dirty && form.companyCompanyName.$invalid">
                                      <p class="help-block"
                                             ng-show="form.companyCompanyName.$error.required" translate="global.messages.validate.companyCompanyName.required">
@@ -152,7 +150,6 @@
                                        ng-readonly="{{readonly}}"
                                        required>
                                  </div>
-                                    <p>companyMail valid : {{ form.companyMail.$valid }}</p>
                                     <div ng-show="form.companyMail.$dirty && form.companyMail.$invalid">
                                         <p class="help-block"
                                                ng-show="form.companyMail.$error.required" translate="global.messages.validate.personMail.required">
@@ -188,7 +185,6 @@
                                       ng-readonly="{{readonly}}"
                                       required>
                                   </div>
-                                    <p>companyPhone valid : {{ form.companyPhone.$valid }}</p>
                                     <div ng-show="form.companyPhone.$dirty && form.companyPhone.$invalid">
                                        <p class="help-block"
                                            ng-show="form.companyPhone.$error.pattern" translate="global.messages.validate.companyPhone.pattern">
@@ -215,7 +211,6 @@
                                         ng-minlength=5 
                                         ng-maxlength=50>
                                     </div>
-                                    <p>companyAddress valid : {{ form.companyAddress.$valid }}</p>
                                   </div>
                                                     
                                   <!-- Complement -->
@@ -230,7 +225,6 @@
                                         ng-model="user.companyContactInformation.address.adressComplement" ng-readonly="{{readonly}}">
                                     </div>
                                   </div>
-                                  <p>companyAdressComplement valid : {{ form.companyAdressComplement.$valid }}</p>
                               </div>
                                                     
                               <!-- BP & Postal code -->
@@ -248,7 +242,6 @@
                                       ng-readonly="{{readonly}}"
                                       ng-pattern="/^[0-9]{5}$/">
                                   </div>
-                                  <p>companyPostOfficeBox valid : {{ form.companyPostOfficeBox.$valid }}</p>
                                   <div ng-show="form.companyPostOfficeBox.$dirty && form.companyPostOfficeBox.$invalid">
                                       <p class="help-block"
                                              ng-show="form.companyPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
@@ -272,7 +265,6 @@
                                       required>
                                   </div>
                                               
-                                    <p>companyPostalCode valid : {{ form.companyPostalCode.$valid }}</p>
                                     <div ng-show="form.companyPostalCode.$dirty && form.companyPostalCode.$invalid">
                                         <p class="help-block"
                                                ng-show="form.companyPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
@@ -294,7 +286,6 @@
                                   ng-model="user.companyContactInformation.address.city"
                                   ng-readonly="{{readonly}}" 
                                   required>
-                                <p>companyCity valid : {{ form.companyCity.$valid }}</p>
                               </div>
                             </li>
                             <li class="list-group-item">                                                  
@@ -302,7 +293,6 @@
                                 <label translate="global.form.website">Web site</label>
                                 <input type="url" class="form-control" name="companyWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
                                        ng-model="user.companyContactInformation.website" ng-minlength=10 ng-maxlength=255 ng-readonly="{{readonly}}" required>
-                                <p>companyWebsite valid : {{ form.companyWebsite.$valid }}</p>
                                 <div ng-show="form.description.$dirty && form.description.$invalid">
                                     <p class="help-block"
                                            ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
@@ -342,7 +332,6 @@
                                  </ul>
                                                     
                                  <button ng-click="addElement(companySocialNetworkList)" ng-disabled="itemsForm.$invalid || {{readonly}}">Add an element</button>
-                                <p>social valid : {{ form.SocialNetwork.$valid }}</p>
                               </div>
                             </li>
                           </ul>    
@@ -405,7 +394,6 @@
                                           ng-maxlength=50
                                           required
                                           ng-readonly="{{readonly}}">
-                                        <p>first name valid : {{ form.firstname.$valid }}</p>
                                         <div ng-show="form.firstname.$dirty && form.firstname.$invalid">
                                             <p class="help-block"
                                                    ng-show="form.firstname.$error.required" translate="global.messages.validate.firstname.required">
@@ -438,7 +426,6 @@
                                         ng-maxlength=50
                                         ng-readonly="{{readonly}}" 
                                         required>
-                                        <p>last name valid : {{ form.lastname.$valid }}</p>
                                         <div ng-show="form.lastname.$dirty && form.lastname.$invalid">
                                             <p class="help-block"
                                                    ng-show="form.lastname.$error.required" translate="global.messages.validate.lastname.required">
@@ -474,7 +461,6 @@
                                       ng-maxlength=50
                                       ng-readonly="{{readonly}}"
                                       required>
-                                      <p>personMail valid : {{ form.personMail.$valid }}</p>
                                       <div ng-show="form.personMail.$dirty && form.personMail.$invalid">
                                           <p class="help-block"
                                                  ng-show="form.personMail.$error.required" translate="global.messages.validate.personMail.required">
@@ -509,7 +495,6 @@
                                       ng-model="user.personContactInformation.phone"
                                       ng-readonly="{{readonly}}"
                                       required>
-                                      <p>personPhone valid : {{ form.personPhone.$valid }}</p>
                                       <div ng-show="form.personPhone.$dirty && form.personPhone.$invalid">
                                          <p class="help-block"
                                              ng-show="form.personPhone.$error.pattern" translate="global.messages.validate.personPhone.pattern">
@@ -538,7 +523,6 @@
                                       maxlength=50
                                       ng-readonly="{{readonly}}">
                                   </div>
-                                  <p>personAddress valid : {{ form.personAddress.$valid }}</p>
                                 </div>
                                 <!-- Complement -->
                                 <div class="col-lg-6">
@@ -554,7 +538,6 @@
                                       ng-readonly="{{readonly}}">
                                   </div>
                                 </div>
-                                <p>personAdressComplement valid : {{ form.personAdressComplement.$valid }}</p>
                               </div>
                               <!-- BP & Postal code -->
                               <div class="row">
@@ -572,7 +555,6 @@
                                         ng-model="user.personContactInformation.address.postalBox" 
                                         ng-pattern="/^[0-9]{5}$/"
                                         ng-readonly="{{readonly}}">
-                                        <p>personPostOfficeBox valid : {{ form.personPostOfficeBox.$valid }}</p>
                                         <div ng-show="form.personPostOfficeBox.$dirty && form.personPostOfficeBox.$invalid">
                                             <p class="help-block"
                                                    ng-show="form.personPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
@@ -596,7 +578,6 @@
                                         ng-pattern="/^[0-9]{5}$/" 
                                         ng-readonly="{{readonly}}"
                                         required>
-                                      <p>personPostalCode valid : {{ form.personPostalCode.$valid }}</p>
                                       <div ng-show="form.personPostalCode.$dirty && form.personPostalCode.$invalid">
                                           <p class="help-block"
                                                  ng-show="form.personPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
@@ -619,7 +600,6 @@
                                   ng-readonly="{{readonly}}"
                                   required>
                               </div>
-                              <p>personCity valid : {{ form.personCity.$valid }}</p>
                             </li>
                             <li class="list-group-item">                
                               <!-- Website -->
@@ -627,7 +607,6 @@
                                 <label translate="global.form.website">Web site</label>
                                 <input type="url" class="form-control" name="personWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
                                        ng-model="user.personContactInformation.website" ng-minlength=10 ng-maxlength=255 ng-readonly="{{readonly}}" required>
-                                <p>website valid : {{ form.personWebsite.$valid }}</p>
                                 <div ng-show="form.description.$dirty && form.description.$invalid">
                                     <p class="help-block"
                                            ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
@@ -667,7 +646,6 @@
                                    </ul>
                             
                                    <button ng-click="addElement(personSocialNetworkList)" ng-disabled="itemsForm.$invalid || {{ readonly }}">Add an element</button>
-                                  <p>social valid : {{ form.SocialNetwork.$valid }}</p>
                               </div>
                             </li>
                           </ul>
@@ -683,7 +661,6 @@
                           <label for="siren" translate="global.form.siren">SIREN</label>
                           <input type="text" class="form-control" name="siren" placeholder="{{'global.form.siren.placeholder' | translate}}"
                                  ng-model="user.siren" ng-minlength=10 ng-maxlength=255 ng-readonly="{{readonly}}" required>
-                          <p>siren valid : {{ form.siren.$valid }}</p>
                         </div>
         
                         <!-- Numéro déclaratif Association -->
@@ -692,7 +669,6 @@
                           <label for="associationNumber" translate="global.form.associationNumber">Association number</label>
                           <input type="text" class="form-control" name="associationNumber" placeholder="{{'global.form.associationNumber.placeholder' | translate}}"
                                  ng-model="user.associationNumber" ng-minlength=10 ng-maxlength=255 ng-readonly="{{readonly}}" required>
-                          <p>associationNumber valid : {{ form.associationNumber.$valid }}</p>
                         </div>
                       </div>
                     </div>
