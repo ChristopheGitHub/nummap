@@ -10,17 +10,36 @@ angular.module('nummapApp').filter('capitalize', function(){
     };
 });
 
-angular.module('nummapApp').filter('markers', function() {
+angular.module('nummapApp').filter('categories', function() {
 
 	return function (input, categories) {
 		var res = [];
 
-		angular.forEach(input, function(marker){
+		angular.forEach(input, function (marker){
 			if(categories.indexOf(marker.category) !== -1) {	
 				res.push(marker);
 			}
 		});
 
+		return res;
+	};
+});
+
+angular.module('nummapApp').filter('fields', function() {
+
+	return function (input, fields) {
+		var res = [];
+
+		angular.forEach(input, function (marker){
+			var keepGoing = true;
+			angular.forEach(marker.fields, function (field) {
+				if(fields.indexOf(field) !== -1 && keepGoing) {
+					res.push(marker);
+					keepGoing = false;
+				}
+			});
+		});
+		console.log(res);
 		return res;
 	};
 });

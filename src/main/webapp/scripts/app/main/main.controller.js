@@ -15,7 +15,7 @@ angular.module('nummapApp')
 
         /* Pour la recherche */
         $scope.categories = [
-            {value: 'ALL', translationKey: 'register.form.category.all', checked: 'false'},
+            {value: 'ALL', translationKey: 'register.form.category.all', checked: 'true'},
             {value: 'STUDENT', translationKey: 'register.form.category.student', checked: 'false'},
             {value: 'PROFESSOR', translationKey: 'register.form.category.professor', checked: 'false'},
             {value: 'FREELANCE', translationKey: 'register.form.category.freelance', checked: 'false'},
@@ -24,14 +24,14 @@ angular.module('nummapApp')
         ];
 
         $scope.fields = [
-            {name: 'All', value: 'ALL', checked: 'false'},
+            {name: 'All', value: 'ALL', checked: 'true'},
             {name: 'Outsourcing', value: 'OUTSOURCING', checked: 'false'},
             {name: 'Consulting', value: 'CONSULTING', checked: 'false'},
             {name: 'System Integration', value: 'SYSTEM_INTEGRATION', checked: 'false'}
         ];
 
-        $scope.choosenCategories = [];
-        $scope.choosenFields = [];
+        $scope.choosenCategories = ['ALL', 'STUDENT', 'PROFESSOR', 'FREELANCE', 'COMPANY', 'ASSOCIATION'];
+        $scope.choosenFields = ['ALL', 'OUTSOURCING', 'CONSULTING', 'SYSTEM_INTEGRATION'];
 
         $scope.selectCategory = function(index) {
             if (index === 0) {
@@ -66,16 +66,33 @@ angular.module('nummapApp')
 
         $scope.selectField = function(index) {
             if (index === 0) {
+                $scope.choosenFields = [];
                 $scope.fields.forEach(function (element) {
-                    element.checked = false;
+                    element.checked = 'false';
                     // On sélectionne toutes les catégories
                     $scope.choosenFields.push(element.value);
                 });
-                $scope.fields[0].checked = true;
+                $scope.fields[0].checked = 'true';    
             } else {
-                $scope.fields[0].checked =false;
-                $scope.fields[index].checked = !$scope.fields[index].checked;
+                // On déselectionne 'ALL'
+                $scope.fields[0].checked = 'false';
+                if ($scope.choosenFields.indexOf('ALL') !== -1){
+                    $scope.choosenFields = [];
+                }
+
+                // Si selectionné, on le déselectionne et on le retire des choosenFields
+                if ($scope.fields[index].checked === 'true') {
+                    $scope.fields[index].checked = 'false';
+                    $scope.choosenFields.splice($scope.choosenFields.indexOf($scope.fields[index].value),1);
+                }
+                // Sinon, on le selectionne et on le push dans les choosenFields
+                else {
+                    console.log('ici');
+                    $scope.fields[index].checked = 'true';
+                    $scope.choosenFields.push($scope.fields[index].value);
+                }
             }
+            console.log($scope.choosenFields);
         };
 
         /* Position de la "camera" sur la carte */
@@ -209,7 +226,8 @@ angular.module('nummapApp')
         });
 
         $scope.$watch('markerFilter', function(newText) {
-            $scope.markersFiltered2 = $filter('markers')($scope.markers, $scope.choosenCategories); 
+            $scope.markersFiltered1 = $filter('categories')($scope.markers, $scope.choosenCategories); 
+            $scope.markersFiltered2 = $filter('fields')($scope.markersFiltered1, $scope.choosenFields); 
             $scope.markersFiltered = $filter('filter')($scope.markersFiltered2, newText);
             /* Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null*/
             var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
@@ -219,8 +237,20 @@ angular.module('nummapApp')
         },true);
 
         $scope.$watch('choosenCategories', function(newText) {
-            $scope.markersFiltered2 = $filter('filter')($scope.markers, $scope.markerFilter);
-            $scope.markersFiltered = $filter('markers')($scope.markersFiltered2, newText);
+            $scope.markersFiltered1 = $filter('filter')($scope.markers, $scope.markerFilter);
+            $scope.markersFiltered2 = $filter('fields')($scope.markersFiltered1, $scope.choosenFields);
+            $scope.markersFiltered = $filter('categories')($scope.markersFiltered2, newText);
+            // Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null
+            var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+            $scope.markersFiltered.forEach(function(element) {
+                element.group = rand_str;
+            });
+        },true);
+
+        $scope.$watch('choosenFields', function(newText) {
+            $scope.markersFiltered1 = $filter('filter')($scope.markers, $scope.markerFilter);
+            $scope.markersFiltered2 = $filter('categories')($scope.markersFiltered1, $scope.choosenCategories);
+            $scope.markersFiltered = $filter('fields')($scope.markersFiltered2, newText);
             // Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null
             var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
             $scope.markersFiltered.forEach(function(element) {

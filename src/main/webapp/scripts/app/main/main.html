@@ -41,7 +41,9 @@
                                     ng-class="{active: cat.checked=='true'}"
                                     ng-repeat="cat in categories"
                                     ng-click="selectCategory($index)">
-                                    <div ng-class="{active: cat.checked=='true'}">{{ cat.translationKey | translate }}</div>
+                                    <div ng-class="{active: cat.checked=='true'}">
+                                        {{ cat.translationKey | translate }}
+                                    </div>
                                 </li>
                             </div>
 
@@ -51,10 +53,12 @@
 
                             <div collapse="isCollapsedField">
                                 <li class="list-group-item"
-                                    ng-class="{active: field.checked==true}"
+                                    ng-class="{active: field.checked=='true'}"
                                     ng-repeat="field in fields"
                                     ng-click="selectField($index)">
-                                    {{ field.name }}
+                                    <div ng-class="{active: field.checked=='true'}">
+                                        {{ field.name }}
+                                    </div>
                                 </li>
                             </div>
 
