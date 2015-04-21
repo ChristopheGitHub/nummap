@@ -259,19 +259,6 @@ table {
   overflow-y:auto;
 }
 
-
-.modal-backdrop
-{
- position: fixed;
- top: 0px;
- left: 0px;
- height:100%;
- width:100%;
- background: #000;
- z-index: 1;
- opacity: 0.5;
-}
-
 .markerIcon{
 
     float: left;
