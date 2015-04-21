@@ -3,7 +3,7 @@
  */
 'use strict';
 angular.module('nummapApp')
-    .controller('UserController', function ($scope, User, Auth, $http, Domains, $stateParams) {
+    .controller('UserController', function ($scope, User, Auth, $http, Domains, $stateParams, $modal) {
         $scope.users = [];
         $scope.loadAll = function() {
             User.query(function(result) {
@@ -53,6 +53,28 @@ angular.module('nummapApp')
         $scope.validate = function(login){
            $http.post('api/users/validate/'+login, {});
            $scope.loadAll();
+        };
+
+        $scope.open = function (user, readonly) {
+            var readonly = (readonly) ? 'true' : 'false';
+
+            console.log('readonly is ' + readonly);
+
+
+            var modalUser = $modal.open({
+                templateUrl: 'scripts/app/admin//users/user-detail.html',
+                controller: 'UserDetailController',
+                size: 'lg',
+                resolve: {
+                    user: function () {
+                        return user;
+                    },
+                    readonly: function () {
+                        return readonly;
+                    }
+
+                }
+            });
         };
 
 
