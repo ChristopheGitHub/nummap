@@ -3,6 +3,11 @@
         "title": "Registration",
         "form": {
             "button": "Register",
+            "panelHeading": {
+                    "connectionInformation": "Connection information. These information won't be visible.",
+                    "mapInformation": "These information will be visible on the map by the website visitors.",
+                    "professionnalInformation": "Professional information."
+            },
             "category": {
                 "all": "All",
                 "student": "Student",

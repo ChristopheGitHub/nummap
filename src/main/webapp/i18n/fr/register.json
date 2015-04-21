@@ -3,6 +3,11 @@
         "title": "Création de compte utilisateur",
         "form": {
             "button": "Enregistrement",
+            "panelHeading": {
+                "connectionInformation": "Informations de connexion. Ces informations ne seront pas visibles.",
+                "mapInformation": "Ces informations seront visibles sur la carte par les visiteurs du site.",
+                "professionnalInformation": "Informations professionnelles."
+            },
              "category": {
                 "all": "Toutes",
                 "student": "Étudiant",
