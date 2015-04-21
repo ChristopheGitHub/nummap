@@ -29,7 +29,8 @@
                 "apidocs": "API",
                 "database": "Database",
                 "console" : "User Control Panel",
-                "dataSettings" : "Data Settings"
+                "dataSettings" : "Data Settings",
+                "csvImport" : "CSV Import"
             },
             "language": "Language"
         },

@@ -51,7 +51,7 @@
                         <tbody>
                             <tr ng-repeat="user in users | filter:query">
                                 <td><a ui-sref="userDetail({login:user.login, readonly:'true'})" ng-class="{'text-danger' : !user.validatedByAdmin, 'text-success' : user.validatedByAdmin}" ><strong>{{user.login}}</strong></a></td>
-                                <td>{{user.companyContactInformation.companyName}}</td>
+                                <td>{{user.companyContactInformation.name}}</td>
                                 <td>{{user.personContactInformation.lastName}}</td>
                                 <td>{{user.personContactInformation.firstName}}</td>
                                 <td>

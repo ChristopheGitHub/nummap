@@ -1,0 +1,537 @@
+{
+    "_id" : ObjectId("55265a219d125db5079f4b4d"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "random",
+    "password" : "$2a$10$2Kpb8zqabehaoWpAb9W/SubNSL8GpKQAE0iUTS1HU/Ce/wnb4fHrO",
+    "email" : "pouliquenl@eisti.eu",
+    "location" : {
+        "latitude" : 43.32269669999999,
+        "longitude" : -0.3653037
+    },
+    "category" : "STUDENT",
+    "description" : "Elève-Ingénieur de troisième année, Option ICC Ecole Internationale des Sciences du Traitement de l'Information. Option ingénierie du Cloud Computing.",
+    "personContactInformation" : {
+        "firstName" : "Louis",
+        "lastName" : "Pouliquen",
+        "address" : {
+            "city" : "Pau",
+            "street" : "296 boulevard de la Paix",
+            "postalCode" : 0,
+            "postalBox" : 0
+        },
+        "website" : "http://louis.com",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Various", 
+        "Web site design"
+    ],
+    "fields" : [ 
+        "OUTSOURCING", 
+        "SYSTEM_INTEGRATION"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "en",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-09T10:53:21.752Z"),
+    "last_modified_by" : "anonymousUser",
+    "last_modified_date  " : ISODate("2015-04-09T11:07:11.090Z")
+}
+
+
+
+
+{
+    "_id" : ObjectId("55265a219d145db5079f4b4d"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "christop",
+    "password" : "$2a$10$2Kpb8zqabehaoWpAb9W/SubNSL8GpKQAE0iUTS1HU/Ce/wnb4fHrO",
+    "email" : "chris@eisti.eu",
+    "location" : {
+        "latitude" : 43.313559,
+        "longitude" : -0.3575054
+    },
+    "category" : "STUDENT",
+    "description" : "Elève-Ingénieur de troisième année, Option ICC Ecole Internationale des Sciences du Traitement de l'Information",
+    "personContactInformation" : {
+        "firstName" : "Christophe",
+        "lastName" : "Guillonnet",
+        "address" : {
+            "city" : "Pau",
+            "street" : "14 avenue pierre masse",
+            "postalCode" : 64000,
+            "postalBox" : 0
+        },
+        "website" : "http://chris.com",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Various", 
+        "Web site design"
+    ],
+    "fields" : [ 
+        "OUTSOURCING", 
+        "SYSTEM_INTEGRATION"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "en",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-09T10:53:21.752Z"),
+    "last_modified_by" : "anonymousUser",
+    "last_modified_date  " : ISODate("2015-04-09T11:07:11.090Z")
+}
+
+
+
+
+{
+    "_id" : ObjectId("55265a219d145db5089f4b4d"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "nnynny",
+    "password" : "$2a$10$2Kpb8zqabehaoWpAb9W/SubNSL8GpKQAE0iUTS1HU/Ce/wnb4fHrO",
+    "email" : "yadavnitya@eisti.eu",
+    "location" : {
+        "latitude" : 43.315196,
+        "longitude" : -0.368372
+    },
+    "category" : "STUDENT",
+    "description" : "Elève-Ingénieur de troisième année, Option ICC Ecole Internationale des Sciences du Traitement de l'Information",
+    "personContactInformation" : {
+        "firstName" : "Nityanand",
+        "lastName" : "Yadav",
+        "address" : {
+            "city" : "Pau",
+            "street" : "12 avenue du doyen poplawski",
+            "postalCode" : 64000,
+            "postalBox" : 0
+        },
+        "website" : "http://nny.com",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Various", 
+        "Web site design",
+		"cloud"
+    ],
+    "fields" : [ 
+        "OUTSOURCING", 
+        "SYSTEM_INTEGRATION"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "en",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-09T10:53:21.752Z"),
+    "last_modified_by" : "anonymousUser",
+    "last_modified_date  " : ISODate("2015-04-09T11:07:11.090Z")
+}
+
+
+
+
+
+{
+    "_id" : ObjectId("152105f2f0d43ee28572d78d"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "airox",
+    "password" : "$2a$10$g4ZmBxtfQJmB9GIFSPkYyeB7HwEPZa1uq/gUtYZtb4l4OXCvEej3C",
+    "email" : "airox@gmail.com",
+    "location" : {
+        "latitude" : 43.2964147,
+        "longitude" : -0.3668714
+    },
+    "category" : "COMPANY",
+    "description" : "AIROX, société par actions simplifiée est en activité depuis 22 ans. Etablie à PAU (64000), elle est spécialisée dans le secteur d'activité de la recherche-développement en autres sciences physiques et naturelles.",
+    "companyContactInformation" : {
+        "website" : "http://www.airox.fr",
+        "name" : "Airox",
+        "phone" : "0559140202",
+        "email" : "contact@airox.fr",
+        "address" : {
+            "city" : "Pau",
+            "street" : "2 rue du 18 Juin 1940",
+            "postalCode" : 64000,
+            "postalBox" : 0
+        },
+        "socialNetworkList" : []
+    },
+    "personContactInformation" : {
+        "firstName" : "Christopher",
+        "lastName" : "Hutchison",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Recherche-développement", 
+        "Sciences physiques"
+    ],
+    "fields" : [ 
+        "SYSTEM_INTEGRATION"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "fr",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-05T17:50:42.970Z"),
+    "last_modified_by" : "admin",
+    "last_modified_date  " : ISODate("2015-04-05T17:52:39.660Z")
+}
+
+
+
+
+{
+    "_id" : ObjectId("152105f2f0d43ee28572dbcd"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "camom",
+    "password" : "$2a$10$g4ZmBxtfQJmB9GIFSPkYyeB7HwEPZa1uq/gUtYZtb4l4OXCvEej3C",
+    "email" : "camom@gmail.com",
+    "location" : {
+        "latitude" : 43.391538,
+        "longitude" : -0.5640153
+    },
+    "category" : "COMPANY",
+    "description" : "CAMOM, société par actions simplifiée est en activité depuis 22 ans. Etablie à PAU (64000), elle est spécialisée dans le secteur d'activité de la recherche-développement en autres sciences physiques et naturelles.",
+    "companyContactInformation" : {
+        "website" : "http://www.camom.com",
+        "name" : "Camom",
+        "phone" : "055983828",
+        "email" : "michel.lassus@saipem-sa.com",
+        "address" : {
+            "city" : "Artix",
+            "street" : "Avenue de l'aulouze",
+            "postalCode" : 64170,
+            "postalBox" : 0
+        },
+        "socialNetworkList" : []
+    },
+    "personContactInformation" : {
+        "firstName" : "Mascre",
+        "lastName" : "Jose",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Recherche", 
+        "Physiques"
+    ],
+    "fields" : [ 
+        "SYSTEM_INTEGRATION"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "fr",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-05T17:50:42.970Z"),
+    "last_modified_by" : "admin",
+    "last_modified_date  " : ISODate("2015-04-05T17:52:39.660Z")
+}
+
+
+{
+    "_id" : ObjectId("152105f2f0d43ee28572dedd"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "micronprecision",
+    "password" : "$2a$10$g4ZmBxtfQJmB9GIFSPkYyeB7HwEPZa1uq/gUtYZtb4l4OXCvEej3C",
+    "email" : "contact@micron.fr",
+    "location" : {
+        "latitude" : 43.242484,
+        "longitude" : -0.309512
+    },
+    "category" : "COMPANY",
+    "description" : "MICRON PRECISION, Ventana est né en 2003 puis s’est fortement développé de façon organique tout en élargissant ses compétences technologiques.",
+    "companyContactInformation" : {
+        "website" : "http://www.micron.fr",
+        "name" : "MICRON PRECISION",
+        "phone" : "0559821144",
+        "email" : "contact@micron.fr",
+        "address" : {
+            "city" : "Narcastet",
+            "street" : "Qurtier du pont",
+            "postalCode" : 64510,
+            "postalBox" : 0
+        },
+        "socialNetworkList" : []
+    },
+    "personContactInformation" : {
+        "firstName" : "Kilhoffer",
+        "lastName" : "Guy",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Mécanicien", 
+        "Power"
+    ],
+    "fields" : [ 
+        "SYSTEM_INTEGRATION"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "fr",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-05T17:50:42.970Z"),
+    "last_modified_by" : "admin",
+    "last_modified_date  " : ISODate("2015-04-05T17:52:39.660Z")
+}
+
+
+
+
+{
+    "_id" : ObjectId("152105f2f0d43ee28572decd"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "semofmex",
+    "password" : "$2a$10$g4ZmBxtfQJmB9GIFSPkYyeB7HwEPZa1uq/gUtYZtb4l4OXCvEej3C",
+    "email" : "jh.chassaigne@ogen.net",
+    "location" : {
+        "latitude" : 43.167122,
+        "longitude" : -0.497489
+    },
+    "category" : "COMPANY",
+    "description" : "SEMOFLEX PYRENEES, Construction en 2007 de SEMOFLEX TRANSYLVANIE pour servir l’Europe Centrale.",
+    "companyContactInformation" : {
+        "website" : "http://www.semoflex.com",
+        "name" : "SEMOFLEX PYRENEES",
+        "phone" : "0559349027",
+        "email" : "jh.chassaigne@ogen.net",
+        "address" : {
+            "city" : "Ogeu les bains",
+            "street" : "quartier les fontaines parc d'activites des tembous",
+            "postalCode" : 64680,
+            "postalBox" : 0
+        },
+        "socialNetworkList" : []
+    },
+    "personContactInformation" : {
+        "firstName" : "Chassaigne",
+        "lastName" : "Jean",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Mécanicien", 
+        "Packaging"
+    ],
+    "fields" : [ 
+        "SYSTEM_INTEGRATION"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "fr",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-05T17:50:42.970Z"),
+    "last_modified_by" : "admin",
+    "last_modified_date  " : ISODate("2015-04-05T17:52:39.660Z")
+}
+
+
+
+
+
+{
+    "_id" : ObjectId("152105f2f0d43ee28572d2cd"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "susbielles",
+    "password" : "$2a$10$g4ZmBxtfQJmB9GIFSPkYyeB7HwEPZa1uq/gUtYZtb4l4OXCvEej3C",
+    "email" : "contact@tedesco.fr",
+    "location" : {
+        "latitude" : 43.312101,
+        "longitude" : -0.419433
+    },
+    "category" : "COMPANY",
+    "description" : "TEDESCO, nous vous  proposons des solutions adaptées à votre budget tant au plan technique qu' au plan esthétique.",
+    "companyContactInformation" : {
+        "website" : "http://www.tedesco.fr",
+        "name" : "TEDESCO",
+        "phone" : "0559343427",
+        "email" : "contact@tedesco.fr",
+        "address" : {
+            "city" : "Lons",
+            "street" : "avenue des freres lumiere zone industrielle induspal",
+            "postalCode" : 64140,
+            "postalBox" : 0
+        },
+        "socialNetworkList" : []
+    },
+    "personContactInformation" : {
+        "firstName" : "Subbielles",
+        "lastName" : "Michel",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Technique", 
+        "Design"
+    ],
+    "fields" : [ 
+        "OUTSOURCING"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "fr",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-05T17:50:42.970Z"),
+    "last_modified_by" : "admin",
+    "last_modified_date  " : ISODate("2015-04-05T17:52:39.660Z")
+}
+
+
+
+
+
+{
+    "_id" : ObjectId("152105f2f0d43ee28272d2cd"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "brunet",
+    "password" : "$2a$10$g4ZmBxtfQJmB9GIFSPkYyeB7HwEPZa1uq/gUtYZtb4l4OXCvEej3C",
+    "email" : "contact@junior-aei.com",
+    "location" : {
+        "latitude" : 44.8061495,
+        "longitude" : -0.6075512
+    },
+    "category" : "COMPANY",
+    "description" : "AEI, Un groupe de personnes engagées dans la volonté de concilier agriculture et qualité de l'environnement.",
+    "companyContactInformation" : {
+        "website" : "http://www.aei.fr",
+        "name" : "AEI",
+        "phone" : "0552543436",
+        "email" : "contact@junior-aei.com",
+        "address" : {
+            "city" : "Talence",
+            "street" : "1 avenue du Docteur Schweitzer",
+            "postalCode" : 33400,
+            "postalBox" : 0
+        },
+        "socialNetworkList" : []
+    },
+    "personContactInformation" : {
+        "firstName" : "Nicolas",
+        "lastName" : "Brunet",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Agriculture", 
+        "Ecology"
+    ],
+    "fields" : [ 
+        "OUTSOURCING"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "fr",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-05T17:50:42.970Z"),
+    "last_modified_by" : "admin",
+    "last_modified_date  " : ISODate("2015-04-05T17:52:39.660Z")
+}
+
+
+
+
+
+
+{
+    "_id" : ObjectId("152123f2f0d43ee28272d2cd"),
+    "_class" : "com.numlab.nummap.domain.User",
+    "login" : "bullbordeaux",
+    "password" : "$2a$10$g4ZmBxtfQJmB9GIFSPkYyeB7HwEPZa1uq/gUtYZtb4l4OXCvEej3C",
+    "email" : "contact@junior-aei.com",
+    "location" : {
+        "latitude" : 44.865066,
+        "longitude" : -0.574811
+    },
+    "category" : "COMPANY",
+    "description" : "BULL, Grâce à la marque Bull, nous avons de nouvelles compétences. Avec plus + de 80 ans d’expertise et d’innovation technologique, Bull est le hub des développements technologiques au cœur de notre famille de Business Technologists. Cette marque contribue au positionnement d’Atos, en tant que société globale de premier rang.",
+    "companyContactInformation" : {
+        "website" : "http://www.bull.fr",
+        "name" : "BULL",
+        "phone" : "0556437800",
+        "email" : "contact@bull.net",
+        "address" : {
+            "city" : "Bordeaux",
+            "street" : "207 crs du medoc",
+            "postalCode" : 33080,
+            "postalBox" : 0
+        },
+        "socialNetworkList" : []
+    },
+    "personContactInformation" : {
+        "firstName" : "Paul",
+        "lastName" : "Conche",
+        "socialNetworkList" : []
+    },
+    "competencies" : [],
+    "sectors" : [ 
+        "Software", 
+        "Technologies"
+    ],
+    "fields" : [ 
+        "OUTSOURCING",
+		"CONSULTING",
+		"SYSTEM_INTEGRATION"
+    ],
+    "activated" : true,
+    "validatedByAdmin" : true,
+    "lang_key" : "fr",
+    "authorities" : [ 
+        {
+            "_id" : "ROLE_USER"
+        }
+    ],
+    "created_by" : "anonymousUser",
+    "created_date" : ISODate("2015-04-05T17:50:42.970Z"),
+    "last_modified_by" : "admin",
+    "last_modified_date  " : ISODate("2015-04-05T17:52:39.660Z")
+}

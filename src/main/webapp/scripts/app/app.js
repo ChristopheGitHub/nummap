@@ -2,7 +2,7 @@
 
 angular.module('nummapApp', ['LocalStorageModule', 'tmh.dynamicLocale',
     'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster', 'ngTagsInput',
-    'leaflet-directive', 'ui.bootstrap'])
+    'leaflet-directive', 'ui.bootstrap', 'angularFileUpload'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Auth, Principal, Language, ENV, VERSION) {
         $rootScope.ENV = ENV;

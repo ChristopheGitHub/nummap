@@ -3,22 +3,22 @@
 angular.module('nummapApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('csvImport', {
+            .state('csvimport', {
                 parent: 'admin',
-                url: '/configuration',
+                url: '/csvimport',
                 data: {
                     roles: ['ROLE_ADMIN'],
-                    pageTitle: 'configuration.title'
+                    pageTitle: 'csvImport.title'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/admin/configuration/configuration.html',
-                        controller: 'ConfigurationController'
+                        templateUrl: 'scripts/app/admin/csvImport/csvImport.html',
+                        controller: 'csvImportController'
                     }
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('configuration');
+                        $translatePartialLoader.addPart('csvImport');
                         return $translate.refresh();
                     }]
                 }
