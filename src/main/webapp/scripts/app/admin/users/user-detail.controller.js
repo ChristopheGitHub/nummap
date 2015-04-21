@@ -156,5 +156,8 @@ angular.module('nummapApp')
             });
         };
 
+        $scope.send = function (form) {
+            console.log(form);
+        };
 
     });
