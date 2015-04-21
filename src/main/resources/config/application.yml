@@ -13,6 +13,11 @@ async:
     maxPoolSize: 50
     queueCapacity: 10000
 
+multipart:
+    file-size-threshold: 10Mb
+    max-file-size: 1Mb
+    max-request-size: 10Mb
+
 spring:
     mail:
         host: smtp.gmail.com
@@ -26,6 +31,9 @@ spring:
 
     messageSource:
         cacheSeconds: 1
+
+
+
 
 swagger:
     title: nummap API
