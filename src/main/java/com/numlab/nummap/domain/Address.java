@@ -33,6 +33,14 @@ public class Address {
         this.addressComplement = addressComplement;
     }
 
+    public Address(){
+        this.city = null;
+        this.street = null;
+        this.postalBox = 0;
+        this.postalCode = 0;
+        this.addressComplement = null;
+    }
+
     public String getCity() {
         return city;
     }
