@@ -129,6 +129,9 @@ public class ParsingService {
         String PostalBox = hashMap.get(key+".address.postalBox");
         String AdressComplement =  hashMap.get(key+".address.adressComplement");
 
+        System.out.println(hashMap.get(("Login")));
+        System.out.println("City"+City);
+
         Address address = new Address();
 
         if(AdressComplement == null){
@@ -139,8 +142,8 @@ public class ParsingService {
             PostalBox = "0";
         }
 
-        if(Street == null ||City == null ||PostalCode == null){
-            throw new NullPointerException("Street, City or PostalCode null");
+        if(Street == null || City.equals("") ||City == null ||Street.equals("")||PostalCode == null || PostalCode.equals("")){
+            //throw new NullPointerException("Street, City or PostalCode null");
         }else{
             address.setCity(City);
             address.setStreet(Street);
