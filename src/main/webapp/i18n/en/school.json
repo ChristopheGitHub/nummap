@@ -1,0 +1,27 @@
+{
+	"schoolName": "School name",
+	"addSchool": "Add school",
+	"modal": {
+		"title": {
+			"creation": "Registering a school"
+		}
+	},
+	"form": {
+		"name": "Name",
+		"name.placeholder": "Name",
+		"completeName": "Complete Name",
+		"completeName.placeholder": "Complete Name",
+		"description": "Description",
+		"description.placeholder": "Description",
+		"address":  {
+			"street": "Street",
+			"street.placeholder": "Street",
+			"complemement": "Complement",
+			"complemement.placeholder": "Complement",
+			"postalCode": "Postal code",
+			"postalCode.placeholder": "Postal code",
+			"city": "City",
+			"city.placeholder": "City"
+		}
+	}
+}

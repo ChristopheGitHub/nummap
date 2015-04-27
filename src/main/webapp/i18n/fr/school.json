@@ -1,0 +1,27 @@
+{
+	"schoolName": "Nom de l'école",
+	"addSchool": "Ajouter une école",
+	"modal": {
+		"title": {
+			"creation": "Enregistrement d'une école"
+		}
+	},
+	"form": {
+		"name": "Nom",
+		"name.placeholder": "Nom",
+		"completeName": "Nom complet",
+		"completeName.placeholder": "Nom complet",
+		"description": "Description",
+		"description.placeholder": "Description",
+		"address":  {
+			"street": "Rue",
+			"street.placeholder": "Rue",
+			"complemement": "Complément",
+			"complemement.placeholder": "Complément",
+			"postalCode": "Code postal",
+			"postalCode.placeholder": "Code postal",
+			"city": "Ville",
+			"city.placeholder": "Ville"
+		}
+	}
+}

@@ -1,0 +1,171 @@
+<div class="modal-header">
+	<center>
+		<h3>{{title | translate}}</h3>
+	</center>
+</div>
+<div class="modal-body">
+	
+    <form name="form" role="form" novalidate ng-submit="save()" show-validation>
+
+		<ul class="list-group">
+			<!-- Name -->
+			<li class="list-group-item">
+		        <div class="form-group">
+		            <label translate="form.name">Name</label>
+		            <input type="text" class="form-control" name="name" placeholder="{{'form.name.placeholder' | translate}} " ng-model="school.name"	>
+		            <!-- <div ng-show="form.login.$dirty && form.login.$invalid">
+		                <p class="help-block"
+		                       ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+		                    Your login is required.
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+		                    Your login is required to be at least 1 character
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+		                    Your login cannot be longer than 50 characters
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.pattern" translate="register.messages.validate.login.pattern">
+		                    Your login can only contain lower-case letters and digits
+		            </p>
+		            </div> -->
+		        </div>
+		    </li>
+			
+			<!-- Complete name -->
+			<li class="list-group-item">
+		        <div class="form-group">
+		            <label translate="form.completeName">Complete name</label>
+		            <input type="text" class="form-control" name="completeName" placeholder="{{'form.completeName.placeholder' | translate}} " ng-model="school.completeName">
+		            <!-- <div ng-show="form.login.$dirty && form.login.$invalid">
+		                <p class="help-block"
+		                       ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+		                    Your login is required.
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+		                    Your login is required to be at least 1 character
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+		                    Your login cannot be longer than 50 characters
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.pattern" translate="register.messages.validate.login.pattern">
+		                    Your login can only contain lower-case letters and digits
+		            </p>
+		            </div> -->
+		        </div>
+		    </li>
+			
+			<!-- Description -->
+			<li class="list-group-item">
+		        <div class="form-group">
+		            <label translate="form.description">Description</label>
+		            <textarea class="form-control" name="description" placeholder="{{'form.description.placeholder' | translate}} " ng-model="school.description" rows="3" >
+		            </textarea>
+		            <!-- <div ng-show="form.login.$dirty && form.login.$invalid">
+		                <p class="help-block"
+		                       ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
+		                    Your login is required.
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.minlength" translate="register.messages.validate.login.minlength">
+		                    Your login is required to be at least 1 character
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.maxlength" translate="register.messages.validate.login.maxlength">
+		                    Your login cannot be longer than 50 characters
+		                </p>
+		                <p class="help-block"
+		                       ng-show="form.login.$error.pattern" translate="register.messages.validate.login.pattern">
+		                    Your login can only contain lower-case letters and digits
+		            </p>
+		            </div> -->
+		        </div>
+		    </li>
+
+			<!-- Adresse -->
+			<li class="list-group-item">
+	          <!-- Address & Complement -->
+	          <div class="row">
+	              <!-- Address -->
+	              <div class="col-lg-6">
+	                <div class="form-group">
+	                  <label for="street" translate="form.address.street">Address</label>
+	                  <input type="text" 
+	                    class="form-control" 
+	                    name="street" 
+	                    id="street" 
+	                    placeholder="{{'form.address.placeholder' | translate}}"
+	                    ng-model="school.address.street" 
+	                    ng-readonly="{{readonly}}"
+	                    ng-minlength=5 
+	                    ng-maxlength=50>
+	                </div>
+	              </div>
+	                                
+	              <!-- Complement -->
+	              <div class="col-lg-6">
+	                <div class="form-group">
+	                  <label for="complement" translate="form.address.complement">Address complement</label>
+	                  <input type="text" 
+	                    class="form-control" 
+	                    name="complement" 
+	                    id="complement" 
+	                    placeholder="{{'form.address.complement.placeholder' | translate}}"
+	                    ng-model="school.address.adressComplement" ng-readonly="{{readonly}}">
+	                </div>
+	              </div>
+	          </div>
+	                                
+	          <!-- BP & Postal code -->
+	          <div class="row">
+	            <!-- Postal code -->
+	            <div class="col-lg-6">
+	              <div class="form-group">
+	                <label for="companyPostalCode" translate="form.address.postalCode">Postal code</label>
+	                <input type="number" 
+	                  class="form-control" 
+	                  name="companyPostalCode" 
+	                  id="companyPostalCode" 
+	                  placeholder="{{'form.address.postalCode.placeholder' | translate}}"
+	                  ng-model="school.address.postalCode" 
+	                  ng-pattern="/^[0-9]{5}$/" 
+	                  ng-readonly="{{readonly}}"
+	                  required>
+	              </div>
+	                          
+	                <!-- <div ng-show="form.companyPostalCode.$dirty && form.companyPostalCode.$invalid">
+	                    <p class="help-block"
+	                           ng-show="form.companyPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
+	                        Your BP must be 5 numbers.
+	                    </p>
+	                </div> -->
+	            </div>
+	          </div>
+	                                                                          
+	                            
+	          <!-- City -->
+	          <div class="form-group">
+	            <label for="companyCity" translate="global.form.address.city">City</label>
+	            <input type="text" 
+	              class="form-control" 
+	              name="companyCity" 
+	              id="companyCity" 
+	              placeholder="{{'form.address.city.placeholder' | translate}}"
+	              ng-model="school.address.city"
+	              ng-readonly="{{readonly}}" 
+	              required>
+	          </div>
+	        </li>
+		</ul>
+
+	</form>
+</div>
+
+<div class="modal-footer">
+	<button type="submit" ng-click="save()" class="btn btn-primary">Save</button>
+</div>

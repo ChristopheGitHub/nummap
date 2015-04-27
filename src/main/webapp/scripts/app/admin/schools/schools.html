@@ -1,0 +1,45 @@
+<!-- Compétences -->
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="table-responsive">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th translate="schoolName">School name</th>
+              <th>
+                <input type="text"
+                  ng-model="querySchool"
+                  class="form-control"
+                  placeholder="Search..."></th>
+            </tr>
+          </thead>
+      </table>
+      <div class="div-table-content-data-settings">
+        <table class="table table-striped table-hover table-condensed">
+            <tbody>
+              <tr ng-repeat="school in schools | filter:{name: querySchool} | orderBy: 'name'">
+                  <td>{{school.name}}</td>
+                  <td>
+                      <button type="submit"
+                              ng-click="updateSchool(school.name)"
+                              class="btn btn-primary">
+                          <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                      </button>
+                      <button type="submit"
+                              ng-click="deleteSchool(school.name)"
+                              class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                      </button>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCompetenceModal" ng-click="create()">
+          <span class="glyphicon glyphicon-flash"></span> <span translate="createSchool">Add a new school</span>
+      </button>
+    </div>
+</div>
