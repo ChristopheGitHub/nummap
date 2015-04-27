@@ -30,7 +30,8 @@
                 "database": "Database",
                 "console" : "User Control Panel",
                 "dataSettings" : "Data Settings",
-                "csvImport" : "CSV Import"
+                "csvImport" : "CSV Import",
+                "schools": "Schools settings"
             },
             "language": "Language"
         },

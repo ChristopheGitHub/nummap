@@ -30,7 +30,8 @@
                 "database": "Base de données",
                 "console" : "Panneau de contrôle",
                 "dataSettings" : "Paramétrage des données",
-                "csvImport" : "Import par CSV"
+                "csvImport" : "Import par CSV",
+                "schools": "Écoles"
             },
             "language": "Langue"
         },
