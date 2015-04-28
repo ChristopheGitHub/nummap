@@ -3,7 +3,9 @@
 	"addSchool": "Add school",
 	"modal": {
 		"title": {
-			"creation": "Registering a school"
+			"creation": "Registering a school",
+			"edit": "Editing a school",
+			"view": "Visualizing a school"
 		}
 	},
 	"form": {

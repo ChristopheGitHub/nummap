@@ -16,18 +16,29 @@ angular.module('nummapApp')
 
 		$scope.load();
 
-		$scope.create = function () {
+		$scope.open = function (goal, school, readonly) {
+			var readonly = (readonly) ? 'true' : 'false';
+
+            console.log('readonly is ' + readonly);
+
+
 			var modalSchool = $modal.open({
 				templateUrl: 'scripts/app/admin/schools/school-detail.html',
 				controller: 'SchoolDetailController',
 				size: 'lg',
 				resolve: {
-					title: function () {
-						return "modal.title.creation";
+					goal: function () {
+						return goal;
+					},
+					school: function () {
+						return school;
+					},
+					readonly: function () {
+
 					}
 				}
-			});
-		};
+			})
+		}
 
 
 

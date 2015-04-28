@@ -62,7 +62,7 @@ angular.module('nummapApp')
 
 
             var modalUser = $modal.open({
-                templateUrl: 'scripts/app/admin//users/user-detail.html',
+                templateUrl: 'scripts/app/admin/users/user-detail.html',
                 controller: 'UserDetailController',
                 size: 'lg',
                 resolve: {

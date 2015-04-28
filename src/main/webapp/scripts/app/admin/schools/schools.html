@@ -20,16 +20,27 @@
               <tr ng-repeat="school in schools | filter:{name: querySchool} | orderBy: 'name'">
                   <td>{{school.name}}</td>
                   <td>
-                      <button type="submit"
-                              ng-click="updateSchool(school.name)"
-                              class="btn btn-primary">
-                          <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
-                      </button>
-                      <button type="submit"
-                              ng-click="deleteSchool(school.name)"
-                              class="btn btn-danger">
-                          <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
-                      </button>
+                      <div class="btn-group" role="group" aria-label="...">
+                        <button type="submit"
+                                ng-click="open('view', school)"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"
+                                title="{{ 'entity.action.view' | translate }}"></span>&nbsp;
+                        </button>
+                        <button type="submit"
+                                ng-click="open('edit', school)"
+                                
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"
+                                title="{{ 'entity.action.edit' | translate }}"></span>&nbsp;
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(school.login)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"
+                                title="{{ 'entity.action.delete' | translate }}"></span>&nbsp;
+                        </button>
+                    </div>
                   </td>
               </tr>
             </tbody>
@@ -38,7 +49,7 @@
     </div>
   </div>
     <div class="panel-footer">
-      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCompetenceModal" ng-click="create()">
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveCompetenceModal" ng-click="open('create')">
           <span class="glyphicon glyphicon-flash"></span> <span translate="createSchool">Add a new school</span>
       </button>
     </div>

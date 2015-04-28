@@ -3,7 +3,9 @@
 	"addSchool": "Ajouter une école",
 	"modal": {
 		"title": {
-			"creation": "Enregistrement d'une école"
+			"creation": "Enregistrement d'une école",
+			"edit": "Modification d'une école",
+			"view": "Affichage d'une école"
 		}
 	},
 	"form": {

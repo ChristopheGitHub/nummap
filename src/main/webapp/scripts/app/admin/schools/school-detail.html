@@ -12,7 +12,7 @@
 			<li class="list-group-item">
 		        <div class="form-group">
 		            <label translate="form.name">Name</label>
-		            <input type="text" class="form-control" name="name" placeholder="{{'form.name.placeholder' | translate}} " ng-model="school.name"	>
+		            <input type="text" class="form-control" name="name" placeholder="{{'form.name.placeholder' | translate}} " ng-model="school.name" ng-readonly="{{readonly}}">
 		            <!-- <div ng-show="form.login.$dirty && form.login.$invalid">
 		                <p class="help-block"
 		                       ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
@@ -38,7 +38,7 @@
 			<li class="list-group-item">
 		        <div class="form-group">
 		            <label translate="form.completeName">Complete name</label>
-		            <input type="text" class="form-control" name="completeName" placeholder="{{'form.completeName.placeholder' | translate}} " ng-model="school.completeName">
+		            <input type="text" class="form-control" name="completeName" placeholder="{{'form.completeName.placeholder' | translate}} " ng-model="school.completeName" ng-readonly="{{readonly}}">
 		            <!-- <div ng-show="form.login.$dirty && form.login.$invalid">
 		                <p class="help-block"
 		                       ng-show="form.login.$error.required" translate="register.messages.validate.login.required">
@@ -64,7 +64,7 @@
 			<li class="list-group-item">
 		        <div class="form-group">
 		            <label translate="form.description">Description</label>
-		            <textarea class="form-control" name="description" placeholder="{{'form.description.placeholder' | translate}} " ng-model="school.description" rows="3" >
+		            <textarea class="form-control" name="description" placeholder="{{'form.description.placeholder' | translate}} " ng-model="school.description" rows="3" ng-readonly="{{readonly}}">
 		            </textarea>
 		            <!-- <div ng-show="form.login.$dirty && form.login.$invalid">
 		                <p class="help-block"
@@ -145,21 +145,24 @@
 	                    </p>
 	                </div> -->
 	            </div>
-	          </div>
+		          
+		        <!-- City -->
+		        <div class="col-lg-6">
+		         <div class="form-group">
+		          	<label for="companyCity" translate="global.form.address.city">City</label>
+		          	<input type="text" 
+		          	  class="form-control" 
+		          	  name="companyCity" 
+		          	  id="companyCity" 
+		          	  placeholder="{{'form.address.city.placeholder' | translate}}"
+		          	  ng-model="school.address.city"
+		          	  ng-readonly="{{readonly}}" 
+		          	  required>
+		         </div>
+		        </div>
 	                                                                          
-	                            
-	          <!-- City -->
-	          <div class="form-group">
-	            <label for="companyCity" translate="global.form.address.city">City</label>
-	            <input type="text" 
-	              class="form-control" 
-	              name="companyCity" 
-	              id="companyCity" 
-	              placeholder="{{'form.address.city.placeholder' | translate}}"
-	              ng-model="school.address.city"
-	              ng-readonly="{{readonly}}" 
-	              required>
 	          </div>
+	                            
 	        </li>
 		</ul>
 
