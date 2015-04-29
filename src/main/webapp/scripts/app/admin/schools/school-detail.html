@@ -170,6 +170,8 @@
 </div>
 
 <div class="modal-footer">
+	<button type="submit" ng-show="goal === 'create' || goal === 'edit'" ng-click="cancel()" class="btn btn-warning">Cancel</button>
+	<button type="submit" ng-show="goal === 'view'" ng-click="ok()" class="btn btn-primary">Ok</button>
 	<button type="submit" ng-show="goal === 'create'" ng-click="save()" class="btn btn-primary">Save</button>
 	<button type="submit" ng-show="goal === 'edit'" ng-click="update()" class="btn btn-primary">Update</button>
 </div>

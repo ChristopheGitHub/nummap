@@ -16,13 +16,9 @@ angular.module('nummapApp')
 
 		$scope.load();
 
-		$scope.open = function (goal, school, readonly) {
-			var readonly = (readonly) ? 'true' : 'false';
+		$scope.open = function (goal, school) {
 
-            console.log('readonly is ' + readonly);
-
-
-			var modalSchool = $modal.open({
+			var modalSchoolInstance = $modal.open({
 				templateUrl: 'scripts/app/admin/schools/school-detail.html',
 				controller: 'SchoolDetailController',
 				size: 'lg',
@@ -32,17 +28,29 @@ angular.module('nummapApp')
 					},
 					school: function () {
 						return school;
-					},
-					readonly: function () {
-
 					}
 				}
 			})
 		};
 
 		$scope.delete = function (schoolName) {
-			School.delete({name: schoolName}, function () {
-				$scope.load();
+			var modalDeleteSchoolInstance = $modal.open({
+				templateUrl: 'scripts/app/admin/schools/school-delete.html',
+				controller: 'SchoolDeleteController',
+				size: 'sm',
+				resolve: {
+					schoolName: function () {
+						return schoolName;
+					}
+				}
+			})
+
+			modalDeleteSchoolInstance.result.then(function (deleteSchool) {
+				if (deleteSchool) {
+					School.delete({name: schoolName}, function () {
+						$scope.load();
+					});
+				}	
 			});
 		};
 		

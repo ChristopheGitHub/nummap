@@ -24,13 +24,18 @@ angular.module('nummapApp')
 			break;
 		}
 
-		
+		$scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        }
 
-		console.log($scope.title);
+        $scope.ok = function () {
+        	$modalInstance.dismiss('ok');
+        }
 
 		$scope.save = function () {
 			console.log($scope.school);
 			School.save($scope.school);
+			$modalInstanceInstance.close();
 		};
 
 		$scope.update = function () {
