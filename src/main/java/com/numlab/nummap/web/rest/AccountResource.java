@@ -157,6 +157,7 @@ public class AccountResource {
                     null,
                     user.getPersonContactInformation(),
                     user.getCompanyContactInformation(),
+                    user.getSchool(),
                     user.getCompetencies(),
                     user.getSectors(),
                     user.getFields(),

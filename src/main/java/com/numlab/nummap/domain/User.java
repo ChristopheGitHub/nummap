@@ -47,6 +47,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String raisonSociale;
     private PersonContactInformation personContactInformation;
     private CompanyContactInformation companyContactInformation;
+    private String schoolId;
     private List<String> competencies;
     private List<String> sectors;
     private List<FieldEnum> fields;
@@ -161,6 +162,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setCompanyContactInformation(CompanyContactInformation companyContactInformation) {
         this.companyContactInformation = companyContactInformation;
+    }
+
+    public String getSchool() {
+        return schoolId;
+    }
+
+    public void setSchool(String schoolId) {
+        this.schoolId = schoolId;
     }
 
     public List<String> getCompetencies() {
@@ -284,6 +293,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
                 ", raisonSociale='" + raisonSociale + '\'' +
                 ", personContactInformation=" + personContactInformation +
                 ", companyContactInformation=" + companyContactInformation +
+                ", schoolId=" + schoolId +
                 ", competencies=" + competencies +
                 ", sectors=" + sectors +
                 ", fields=" + fields +

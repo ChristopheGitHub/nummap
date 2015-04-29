@@ -40,6 +40,7 @@ public class UserDTO {
     private String raisonSociale;
     private PersonContactInformation personContactInformation;
     private CompanyContactInformation companyContactInformation;
+    private String schoolId;
     private List<String> competencies;
     private List<String> sectors;
     private List<FieldEnum> fields;
@@ -65,6 +66,7 @@ public class UserDTO {
         @JsonProperty("raisonSociale") String raisonSociale,
         @JsonProperty("PersonContactInformation") PersonContactInformation personContactInformation,
         @JsonProperty("CompanyContactInformation") CompanyContactInformation companyContactInformation,
+        @JsonProperty("schoolId") String schoolId,
         @JsonProperty("competencies") List<String> competencies,
         @JsonProperty("sectors") List<String> sectors,
         @JsonProperty("fields") List<FieldEnum> fields,
@@ -81,6 +83,7 @@ public class UserDTO {
         this.raisonSociale = raisonSociale;
         this.personContactInformation = personContactInformation;
         this.companyContactInformation = companyContactInformation;
+        this.schoolId = schoolId;
         this.competencies = competencies;
         this.sectors = sectors;
         this.fields = fields;
@@ -161,6 +164,14 @@ public class UserDTO {
         this.companyContactInformation = companyContactInformation;
     }
 
+    public String getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(String schoolId) {
+        this.schoolId = schoolId;
+    }
+
     public List<String> getCompetencies() {
         return competencies;
     }
@@ -221,6 +232,7 @@ public class UserDTO {
             ", raisonSociale='" + raisonSociale + '\'' +
             ", personContactInformation=" + personContactInformation +
             ", companyContactInformation=" + companyContactInformation +
+            ", schoolId=" + schoolId +
             ", competencies=" + competencies +
             ", sectors=" + sectors +
             ", fields=" + fields +

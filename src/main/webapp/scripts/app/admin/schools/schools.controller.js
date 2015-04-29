@@ -18,10 +18,13 @@ angular.module('nummapApp')
 
 		$scope.open = function (goal, school) {
 
+			var backdrop = (goal === 'create') ? 'static' : 'false';
+
 			var modalSchoolInstance = $modal.open({
 				templateUrl: 'scripts/app/admin/schools/school-detail.html',
 				controller: 'SchoolDetailController',
 				size: 'lg',
+				backdrop: backdrop,
 				resolve: {
 					goal: function () {
 						return goal;
@@ -31,6 +34,10 @@ angular.module('nummapApp')
 					}
 				}
 			})
+
+			modalSchoolInstance.result.then(function () {
+				$scope.load();
+			});
 		};
 
 		$scope.delete = function (schoolName) {
