@@ -38,7 +38,14 @@ angular.module('nummapApp')
 					}
 				}
 			})
-		}
+		};
+
+		$scope.delete = function (schoolName) {
+			School.delete({name: schoolName}, function () {
+				$scope.load();
+			});
+		};
+		
 
 
 

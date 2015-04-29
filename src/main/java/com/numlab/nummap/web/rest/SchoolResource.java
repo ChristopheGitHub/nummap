@@ -73,18 +73,26 @@ public class SchoolResource {
 
         log.debug("Rest request to add school : {}", school);
 
-        Optional<School> opt = schoolRepository.findOneByName(school.getName());
+        Optional<School> opt = schoolRepository.findOneById(school.getId());
         if(opt.isPresent()){
             opt.map(s -> {
                 s.setName(school.getName());
+                s.setCompleteName(school.getCompleteName());
+                s.setDescription(school.getDescription());
+                s.setWebsite(school.getWebsite());
+                s.setAddress(school.getAddress());
+
+                s.setLocation(locationService.getLocationFromAddress(school.getAddress()));
+
                 schoolRepository.save(s);
-                log.debug("Changed Information for Domain: {}", s);
+                log.debug("Changed Information for school: {}", s);
                 return new ResponseEntity<String>(HttpStatus.OK);
             });
         }
         else{
+            school.setLocation(locationService.getLocationFromAddress(school.getAddress()));
             schoolRepository.save(school);
-            System.out.println("Ajout du schoole "+school);
+            System.out.println("Ajout du school "+school);
         }
     }
 

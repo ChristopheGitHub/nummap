@@ -31,5 +31,9 @@ angular.module('nummapApp')
 		$scope.save = function () {
 			console.log($scope.school);
 			School.save($scope.school);
-		}
+		};
+
+		$scope.update = function () {
+			School.save($scope.school);
+		};
 	})

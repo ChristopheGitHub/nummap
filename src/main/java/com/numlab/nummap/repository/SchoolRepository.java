@@ -15,6 +15,8 @@ public interface SchoolRepository extends MongoRepository<School, String> {
 
     Optional<School> findOneByName(String name);
 
+    Optional <School> findOneById(String id);
+
     void delete(School school);
 
     long deleteByName(String name);
