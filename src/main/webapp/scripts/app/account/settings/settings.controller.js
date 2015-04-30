@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('SettingsController', function ($scope, Principal, Auth, Domains, Competencies) {
+    .controller('SettingsController', function ($scope, Principal, Auth, Domains, Competencies, School) {
         $scope.success = null;
         $scope.error = null;
         Principal.identity().then(function(account) {
@@ -20,6 +20,11 @@ angular.module('nummapApp')
                         element.checked = true;
                     }
                 });
+            });
+
+            School.query(function(result) {
+                $scope.schools = result;
+                console.log($scope.schools);
             });
         
             Competencies.query(function(result) {
