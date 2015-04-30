@@ -243,10 +243,11 @@ angular.module('nummapApp')
             $scope.markersFiltered1 = $filter('filter')($scope.markers, text);
             $scope.markersFiltered2 = $filter('categories')($scope.markersFiltered1, categories);
             $scope.markersFiltered = $filter('fields')($scope.markersFiltered2, fields);
-            // Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null
-            var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
-            $scope.markersFiltered.forEach(function(element) {
-                element.group = rand_str;
+            $scope.markers.forEach(function (element) {
+                element.group = "totalité";
+            });
+            $scope.markersFiltered.forEach(function (element) {
+                element.group = "triés";
             });
         };
 
