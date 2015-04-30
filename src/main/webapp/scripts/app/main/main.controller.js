@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('MainController', function ($scope, $state, Principal, $http, $filter) {
+    .controller('MainController', function ($scope, $state, Principal, $http, $filter, leafletMarkersHelpers) {
         Principal.identity().then(function(account) {
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
@@ -219,44 +219,44 @@ angular.module('nummapApp')
         angular.extend($scope, {
             center: $scope.center,
             tiles: tilesDict.openstreetmap,
+            markers: $scope.markersFiltered,
             defaults: {
                 scrollWheelZoom: true,
                 zoomControlPosition: 'bottomleft'
             }
         });
-
+        
         $scope.$watch('markerFilter', function(newText) {
-            $scope.markersFiltered1 = $filter('categories')($scope.markers, $scope.choosenCategories); 
-            $scope.markersFiltered2 = $filter('fields')($scope.markersFiltered1, $scope.choosenFields); 
-            $scope.markersFiltered = $filter('filter')($scope.markersFiltered2, newText);
-            /* Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null*/
-            var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
-            $scope.markersFiltered.forEach(function(element) {
-            element.group = rand_str;
-            });
-        },true);
+            change(newText, $scope.choosenCategories, $scope.choosenFields);
+        }, true);
 
         $scope.$watch('choosenCategories', function(newText) {
-            $scope.markersFiltered1 = $filter('filter')($scope.markers, $scope.markerFilter);
-            $scope.markersFiltered2 = $filter('fields')($scope.markersFiltered1, $scope.choosenFields);
-            $scope.markersFiltered = $filter('categories')($scope.markersFiltered2, newText);
-            // Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null
-            var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
-            $scope.markersFiltered.forEach(function(element) {
-                element.group = rand_str;
-            });
-        },true);
+            change($scope.markerFilter, newText, $scope.choosenFields);
+        }, true);
 
         $scope.$watch('choosenFields', function(newText) {
-            $scope.markersFiltered1 = $filter('filter')($scope.markers, $scope.markerFilter);
-            $scope.markersFiltered2 = $filter('categories')($scope.markersFiltered1, $scope.choosenCategories);
-            $scope.markersFiltered = $filter('fields')($scope.markersFiltered2, newText);
+            change($scope.markerFilter, $scope.choosenCategories, newText);
+        }, true);
+
+
+        var change = function (text, categories, fields) {
+            $scope.markersFiltered1 = $filter('filter')($scope.markers, text);
+            $scope.markersFiltered2 = $filter('categories')($scope.markersFiltered1, categories);
+            $scope.markersFiltered = $filter('fields')($scope.markersFiltered2, fields);
             // Pour créer un nouveau cluster avec un nom différent et ne pas avoir d'érreur de cluster null
             var rand_str = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
             $scope.markersFiltered.forEach(function(element) {
                 element.group = rand_str;
             });
-        },true);
+        };
 
+        $scope.button = function () {
+            console.log('e');
+            change($scope.markerFilter, $scope.choosenCategories, $scope.choosenFields);
+        };
+
+        $scope.$on('$destroy', function () {
+            leafletMarkersHelpers.resetCurrentGroups();
+        });
 
     });
