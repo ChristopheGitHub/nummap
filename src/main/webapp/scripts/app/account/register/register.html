@@ -422,6 +422,20 @@
                       </div>
                       
                       <ul class="list-group">
+                        <li class="list-group-item" ng-show="registerAccount.category === 'STUDENT' ||
+                          registerAccount.category === 'PROFESSOR'">
+                          
+                           <!-- Ecole -->
+                            <div class="form-group">
+                                <!-- <label translate="global.form.category">Ecole</label><br/> -->
+                                <label>Ecole</label><br/>
+                                <select class="form-control"
+                                  ng-model="registerAccount.schoolId"
+                                  ng-options="school.id as school.name for school in schools">
+                                </select>
+                            </div>
+
+                        </li>
                         <li class="list-group-item">
                           <!-- Lastname & Firstname -->
                           <div class="row">

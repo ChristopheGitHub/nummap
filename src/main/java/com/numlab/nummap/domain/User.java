@@ -164,11 +164,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.companyContactInformation = companyContactInformation;
     }
 
-    public String getSchool() {
+    public String getSchoolId() {
         return schoolId;
     }
 
-    public void setSchool(String schoolId) {
+    public void setSchoolId(String schoolId) {
         this.schoolId = schoolId;
     }
 

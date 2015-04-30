@@ -7,7 +7,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('UserDetailController', function ($scope, $state, $stateParams, User, Domains, Competencies, Auth, user, readonly, $modalInstance) {
+    .controller('UserDetailController', function ($scope, $state, $stateParams, User, Domains, Competencies, School, Auth, user, readonly, $modalInstance) {
         $scope.user = user;
         $scope.readonly = readonly;
 
@@ -29,6 +29,11 @@ angular.module('nummapApp')
                         element.checked = true;
                     }
                 });
+            });
+
+            School.query(function(result) {
+                $scope.schools = result;
+                console.log($scope.schools);
             });
 
             Competencies.query(function(result) {
@@ -145,6 +150,8 @@ angular.module('nummapApp')
             $scope.competenciesSelected.forEach(function (element) {
                 $scope.user.competencies.push(element.name);                 
             });
+
+            console.log($scope.user.schoolId);
 
             Auth.manageAccount($scope.user).then(function() {
                 $scope.error = null;

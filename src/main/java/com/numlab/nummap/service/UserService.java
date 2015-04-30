@@ -63,7 +63,7 @@ public class UserService {
     public User createUserInformation(String login, String password, String email, Location location,
         CategoryEnum category, String description, String raisonSociale,
         PersonContactInformation personContactInformation, CompanyContactInformation companyContactInformation,
-         List<String> competencies, List<String> sectors,
+         String schoolId, List<String> competencies, List<String> sectors,
          List<FieldEnum> fields, String langKey) {
         User newUser = new User();
         Authority authority = authorityRepository.findOne("ROLE_USER");
@@ -79,6 +79,7 @@ public class UserService {
         newUser.setRaisonSociale(raisonSociale);
         newUser.setPersonContactInformation(personContactInformation);
         newUser.setCompanyContactInformation(companyContactInformation);
+        newUser.setSchoolId(schoolId);
         newUser.setCompetencies(competencies);
         newUser.setSectors(sectors);
         newUser.setFields(fields);
@@ -97,7 +98,7 @@ public class UserService {
     /* TODO : Mettre à jour les réseaux sociaux */
     public void updateUserInformation(String email, CategoryEnum category,
         String description, String raisonSociale, PersonContactInformation personContactInformation,
-        CompanyContactInformation companyContactInformation, List<String> competencies, List<String> sectors,
+        CompanyContactInformation companyContactInformation, String schoolId, List<String> competencies, List<String> sectors,
         List<FieldEnum> fields) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u -> {
             u.setEmail(email);
@@ -106,6 +107,7 @@ public class UserService {
             u.setRaisonSociale(raisonSociale);
             u.setPersonContactInformation(personContactInformation);
             u.setCompanyContactInformation(companyContactInformation);
+            u.setSchoolId(schoolId);
             u.setCompetencies(competencies);
             u.setSectors(sectors);
             u.setFields(fields);
@@ -120,7 +122,7 @@ public class UserService {
      */
     public void updateUserByAdminInformation(String login, String email, CategoryEnum category,
                                              String description, String raisonSociale, PersonContactInformation personContactInformation,
-                                             CompanyContactInformation companyContactInformation, List<String> competencies, List<String> sectors,
+                                             CompanyContactInformation companyContactInformation, String schoolId, List<String> competencies, List<String> sectors,
                                              List<FieldEnum> fields) {
         userRepository.findOneByLogin(login).ifPresent(u -> {
             u.setEmail(email);
@@ -129,6 +131,7 @@ public class UserService {
             u.setRaisonSociale(raisonSociale);
             u.setPersonContactInformation(personContactInformation);
             u.setCompanyContactInformation(companyContactInformation);
+            u.setSchoolId(schoolId);
             u.setCompetencies(competencies);
             u.setSectors(sectors);
             u.setFields(fields);

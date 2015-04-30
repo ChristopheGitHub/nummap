@@ -97,6 +97,7 @@ public class AccountResource {
                         userDTO.getRaisonSociale(),
                         userDTO.getPersonContactInformation(),
                         userDTO.getCompanyContactInformation(),
+                        userDTO.getSchoolId(),
                         userDTO.getCompetencies(),
                         userDTO.getSectors(),
                         userDTO.getFields(),
@@ -157,7 +158,7 @@ public class AccountResource {
                     null,
                     user.getPersonContactInformation(),
                     user.getCompanyContactInformation(),
-                    user.getSchool(),
+                    user.getSchoolId(),
                     user.getCompetencies(),
                     user.getSectors(),
                     user.getFields(),
@@ -186,6 +187,7 @@ public class AccountResource {
                                                     userDTO.getRaisonSociale(),
                                                     userDTO.getPersonContactInformation(),
                                                     userDTO.getCompanyContactInformation(),
+                                                    userDTO.getSchoolId(),
                                                     userDTO.getCompetencies(),
                                                     userDTO.getSectors(),
                                                     userDTO.getFields());
@@ -215,6 +217,7 @@ public class AccountResource {
                             userDTO.getRaisonSociale(),
                             userDTO.getPersonContactInformation(),
                             userDTO.getCompanyContactInformation(),
+                            userDTO.getSchoolId(),
                             userDTO.getCompetencies(),
                             userDTO.getSectors(),
                             userDTO.getFields());

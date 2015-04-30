@@ -372,6 +372,23 @@
               </div>
               
               <ul class="list-group">
+                <li class="list-group-item" ng-show="user.category === 'STUDENT' ||
+                          user.category === 'PROFESSOR'">
+                          
+                           <!-- Ecole -->
+                            <div class="form-group">
+                                <!-- <label translate="global.form.category">Ecole</label><br/> -->
+                                <label>Ecole</label><br/>
+                                <select class="form-control"
+                                  ng-disabled="{{readonly}}"
+                                  ng-init="user._school = {id : user.schoolId}"
+                                  ng-change="user.schoolId = user._school.id"
+                                  ng-model="user._school"
+                                  ng-options="school.completeName for school in schools track by school.id">
+                                </select>
+                            </div>
+
+                        </li>
                 <li class="list-group-item">
                   <!-- Lastname & Firstname -->
                   <div class="row">
