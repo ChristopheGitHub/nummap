@@ -82,7 +82,7 @@ public class Address {
     }
 
     public String toMapSearchFormat(){
-        return street + ", " + postalCode + " " + city;
+        return street + ", " + postalCode + " " + city + " France";
     }
 
 }
