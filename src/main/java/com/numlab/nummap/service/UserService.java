@@ -85,6 +85,8 @@ public class UserService {
         newUser.setFields(fields);
         newUser.setLangKey(langKey);
         // new user is not active
+        System.out.println(newUser.getLogin());
+        System.out.println(newUser);
         newUser.setActivated(false);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
