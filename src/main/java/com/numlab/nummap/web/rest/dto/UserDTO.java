@@ -52,7 +52,7 @@ public class UserDTO {
 
     private List<String> roles;
 
-
+    public UserDTO() {}
 
     @JsonCreator
     public UserDTO(
