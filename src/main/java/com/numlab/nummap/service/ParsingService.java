@@ -63,6 +63,7 @@ public class ParsingService {
                 if(acc != 0) {
                 /* Ajout de la map correspondant à un utililsateur dans la liste */
                     linkedList.add(ParsingLine(ligne.split(";")));
+
                 }
                 acc++;
             }
@@ -203,13 +204,10 @@ public class ParsingService {
         LinkedList<String> Str_List = new LinkedList<>();
 
         if(!str.equals("") && str != null){
-            System.out.println("STR NOT NULL");
             String[] arrayString = str.split(",");
-            System.out.println("SPLIT sur un élement");
             for(String string: arrayString){
                 System.out.println(string);
                 Str_List.add(string);
-                System.out.println("Ajout dans a liste");
             }
         }
         return(Str_List);
@@ -249,17 +247,16 @@ public class ParsingService {
     }
 
     private HashMap<String, String> ParsingLine(String[] line){
+        log.debug("Parsing Line");
         HashMap<String , String> mapString = new HashMap<>();
         mapString.put("login" , line[0]);
         mapString.put("email", line[1]);
         mapString.put("category", line[2]);
         mapString.put("description", line[3]);
         mapString.put("siren", line[4]);
-
         mapString.put("competencies", line[28]);
         mapString.put("sectors", line[29]);
         mapString.put("fields", line[30]);
-
         mapString.put("personContactInformation.firstName", line[5]);
         mapString.put("personContactInformation.lastName", line[6]);
         mapString.put("personContactInformation.phone", line[7]);
@@ -272,7 +269,6 @@ public class ParsingService {
         mapString.put("personContactInformation.address.postalCode", line[14]);
         mapString.put("personContactInformation.address.postalbox", line[15]);
         mapString.put("personContactInformation.address.adressComplement", line[16]);
-
         mapString.put("companyContactInformation.name", line[17]);
         mapString.put("companyContactInformation.phone", line[18]);
         mapString.put("companyContactInformation.email", line[19]);
@@ -284,11 +280,11 @@ public class ParsingService {
         mapString.put("companyContactInformation.address.postalCode", line[25]);
         mapString.put("companyContactInformation.address.postalbox", line[26]);
         mapString.put("companyContactInformation.address.adressComplement", line[27]);
-
         return(mapString);
     }
 
     private UserDTO hashMapToUserDTO(HashMap<String, String> hashMap){
+        log.debug("hashMapToUserDTO");
      PersonContactInformation personContactInformation = null;
      CompanyContactInformation companyContactInformation = null;
 
@@ -303,9 +299,9 @@ public class ParsingService {
      String login = hashMap.get("login");
      String email = hashMap.get("email");
 
-     if(login == null || email == null){
-         throw new NullPointerException("Login or Email NULL");
-     }
+     if(login.equals("")){
+            login = setNewLogin(hashMap);
+      }
 
      CategoryEnum category;
 
@@ -317,7 +313,7 @@ public class ParsingService {
 
      String password = UUID.randomUUID().toString().substring(0,6);
      String description = hashMap.get("description");
-     Location location = null;
+     Location location;
 
      if(hasCompanyContactInformation(hashMap)){
          location = locationService.getLocationFromAddress(getAddressFormHashMap(hashMap, "companyContactInformation"));
@@ -335,6 +331,7 @@ public class ParsingService {
  }
 
     private ResponseEntity<?> registerUser(UserDTO userDTO){
+        log.debug("registerUser");
         return userRepository.findOneByLogin(userDTO.getLogin())
                 .map(user -> new ResponseEntity<>("login already in use", HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> userRepository.findOneByEmail(userDTO.getEmail())
@@ -360,11 +357,88 @@ public class ParsingService {
                                             ":" +                                  // ":"
                                             ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getServerPort();               // "80"
 
-                                    mailService.sendActivationEmail(user, baseUrl);
+                                    mailService.sendActivationEmailWithPassword(user, baseUrl, userDTO.getPassword());
                                     return new ResponseEntity<>(HttpStatus.CREATED);
                                 })
                 );
 
     }
+
+
+    private boolean loginAlreadyinUse(String login){
+        return(userRepository.findOneByLogin(login).map(user -> new Boolean(true)).orElse(new Boolean(false)));
+    }
+
+    /**
+     * Cette fonction permet de sélectionner les caractères du nom de la Company ou du nom de famille de l'utilisateur
+     * pouvant être intégré dans le nouveau login. On supprime les espaces ainsi que les caractères ne respectant pas les regex : [a-z] ou [0-9]
+     * (ex : Windows Corp -> windowscorp, De la tour -> Delatour
+     * @param login
+     * @return
+     */
+    private String selectCaractFormLogin(String login){
+        String tmpLogin = "";
+        String newLogin = "";
+        /* On élimite les espaces */
+        String[] splittedLogin = login.split("\\s+");
+        int splittedLoginSize = splittedLogin.length;
+        int i;
+
+        for(i = 0 ; i<splittedLoginSize;++i){
+            tmpLogin = tmpLogin.concat(splittedLogin[i]);
+        }
+
+        String caract;
+        i = 0;
+
+        /* Le maximum de caractère pour le login est de 50 */
+        while(i < tmpLogin.length() && newLogin.length() < 50){
+            caract = tmpLogin.substring(i,i+1);
+            ++i;
+            if(caract.matches("[a-z]") || caract.matches(("[0-9]"))){
+                newLogin = newLogin.concat(caract);
+            }
+        }
+        return(newLogin);
+
+    }
+
+
+    /**
+     * L'objectif de créer un login, si il n'est pas renseigné dans le csv, ou si le login est déja pris.
+     * La stratégie adopté est la suivante : On récupère le nom de la company si il existe sinon le lastName du contact.
+     * On enlève les espaces dans la string récupérée, et on rajoute un certain nombre de chiffre jusqua trouver un login qui n'est pas déja utilisé
+     * @param hashMap
+     * @return
+     */
+    private String setNewLogin(HashMap<String, String> hashMap){
+        String newLogin;
+
+        /*TODO Il faut prendre seulement les caractères permettant à la string de respecter le regex */
+            if(hasCompanyContactInformation(hashMap)){
+                newLogin = hashMap.get("companyContactInformation.name");
+            }else{
+                newLogin = hashMap.get("personContactInformation.lastName");
+            }
+
+          newLogin = selectCaractFormLogin(newLogin.toLowerCase());
+
+            while(loginAlreadyinUse(newLogin) && newLogin.length() < 50) {
+                int size = newLogin.length();
+                String lastCaract = newLogin.substring(size - 1, size);
+
+                if (lastCaract.matches("[a-z]")) {
+                    newLogin = newLogin.concat("0");
+                } else if (lastCaract.equals("9")) {
+                    newLogin = newLogin.substring(0, size - 1);
+                    newLogin = newLogin.concat("00");
+                } else {
+                    newLogin = newLogin.substring(0, size - 1);
+                    newLogin = newLogin.concat(String.valueOf(Integer.parseInt(lastCaract) + 1));
+                }
+            }
+    return(newLogin);
+    }
+
 
 }
