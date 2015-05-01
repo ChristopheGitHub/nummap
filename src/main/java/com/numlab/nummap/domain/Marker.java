@@ -1,5 +1,6 @@
 package com.numlab.nummap.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.domain.enumerations.FieldEnum;
 
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by eisti on 4/3/15.
  */
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Marker {
     private String name;
     private Double lat;
@@ -31,213 +33,95 @@ public class Marker {
      * @param user
      */
     public Marker(User user){
-        this.setName(user.getLogin());
+        this.name = user.getLogin();
         /* On set la location */
-        this.setLat(user.getLocation().getLatitude());
-        this.setLng(user.getLocation().getLongitude());
-        this.setCategory(user.getCategory());
+        this.lat = user.getLocation().getLatitude();
+        this.lng = user.getLocation().getLongitude();
+        this.category =  user.getCategory();
 
         /* Par default draggable et focus sont à false */
-        this.setDraggable(false);
-        this.setFocus(false);
+        this.draggable = false;
+        this.focus = false;
 
         /* Description */
-        this.setDescription(user.getDescription());
+        this.description = user.getDescription();
 
         /*Adresse*/
-        this.setAdresse(makeAdresse(user));
+        this.adresse = createAddress(user);
 
         /* Création du message */
-        this.setMessage(setMessage(user));
+        this.message = createMessage(user);
 
 
         /* Liste des compétences */
         if(user.getCompetencies() != null){
-            this.setCompetencies(user.getCompetencies());
+            this.competencies = user.getCompetencies();
         }
 
           /* Liste des sectors */
         if(user.getSectors() != null){
-            this.setSectors(user.getSectors());
+            this.sectors = user.getSectors();
         }
 
           /* Liste des fields */
         if(user.getFields() != null){
-            this.setFields(user.getFields());
+            this.fields = user.getFields();
         }
 
         /* PersonContactInformation */
        if(user.getCompanyContactInformation() != null){
-           this.setCompanyContactInformation(user.getCompanyContactInformation());
+           this.companyContactInformation = user.getCompanyContactInformation();
        }
 
         /* CompanyContactInformation */
         if(user.getPersonContactInformation() != null){
-           this.setPersonContactInformation(user.getPersonContactInformation());
+           this.personContactInformation = user.getPersonContactInformation();
         }
 
     }
 
 
-    public String makeAdresse(User user){
-        String adresse = "";
-        if(user.getCompanyContactInformation() != null) {
+    public String createAddress(User user){
+        String res = "";
+        if(category.equals(CategoryEnum.COMPANY) || category.equals(CategoryEnum.ASSOCIATION)) {
+            return user.getCompanyContactInformation().getAddress().toPostalFormat();
+        /*} else if (category.equals(CategoryEnum.PROFESSOR) || category.equals(CategoryEnum.STUDENT) ||*/
+            /*category.equals(CategoryEnum.FREELANCE)) {*/
+        } else {
+            return user.getPersonContactInformation().getAddress().toPostalFormat();
+        }
+        /*if(user.getCompanyContactInformation() != null) {
             Address address = user.getCompanyContactInformation().getAddress();
             if (address != null) {
-                if ((address.getPostalBox() == new Integer(0).intValue())) {
-                    adresse = address.getStreet() + ", " + address.getPostalCode() + ", " + address.getCity();
-                } else {
-                    adresse = address.getStreet() + ", " + address.getPostalCode() + ", " + address.getCity() + ", " + address.getPostalBox();
-                }
+                res = address.toPostalFormat();
             }
         }
         else if(user.getPersonContactInformation() != null){
-        Address address = user.getPersonContactInformation().getAddress();
-        if(address != null) {
-                if ((address.getPostalBox() == new Integer(0).intValue())) {
-                    adresse = address.getStreet() + ", " + address.getPostalCode() + ", " + address.getCity();
-                } else {
-                    adresse = address.getStreet() + ", " + address.getPostalCode() + ", " + address.getCity() + ", " + address.getPostalBox();
-                }
-           }
+            Address address = user.getPersonContactInformation().getAddress();
+            if(address != null) {
+                res = address.toPostalFormat();
+            }
         }
 
-        return(adresse);
+        return(adresse);*/
     }
 
-    public String setMessage(User user){
+    public String createMessage(User user){
         String message = "";
 
         if(user.getCompanyContactInformation() != null){
            message = "<div class=\"markerTitle\">"+user.getCompanyContactInformation().getName()+"</div>";
-           message += "<div class=\"markerAdresse\">"+makeAdresse(user)+"</div>";
+           message += "<div class=\"markerAdresse\">"+createAddress(user)+"</div>";
             if(user.getCompanyContactInformation().getWebsite() != null){
                 message += "<div class=\"markerWebSite\"><a class=\"link\" href=\""+user.getCompanyContactInformation().getWebsite()+"\" target=\"_blank\">"+user.getCompanyContactInformation().getWebsite()+"</a></div>";
             }
         }else if(user.getPersonContactInformation() != null){
             message = "<div class=\"markerTitle\">"+user.getPersonContactInformation().getFirstName()+" "+user.getPersonContactInformation().getLastName()+"</div>";
-            message += "<div class=\"markerAdresse\">"+makeAdresse(user)+"</div>";
+            message += "<div class=\"markerAdresse\">"+createAddress(user)+"</div>";
             if(user.getPersonContactInformation().getWebsite() != null){
                 message += "<div class=\"markerWebSite\"><a class=\"link\" href=\""+user.getPersonContactInformation().getWebsite()+"\" target=\"_blank\">"+user.getPersonContactInformation().getWebsite()+"</a></div>";
             }
         }
         return(message);
-    }
-
-
-
-
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getLat() {
-        return lat;
-    }
-
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
-
-    public Double getLng() {
-        return lng;
-    }
-
-    public void setLng(Double lng) {
-        this.lng = lng;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public boolean isFocus() {
-        return focus;
-    }
-
-    public void setFocus(boolean focus) {
-        this.focus = focus;
-    }
-
-    public boolean isDraggable() {
-        return draggable;
-    }
-
-    public void setDraggable(boolean draggable) {
-        this.draggable = draggable;
-    }
-
-    public CategoryEnum getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryEnum category) {
-        this.category = category;
-    }
-
-    public List<String> getCompetencies() {
-        return competencies;
-    }
-
-    public void setCompetencies(List<String> competencies) {
-        this.competencies = competencies;
-    }
-
-    public List<String> getSectors() {
-        return sectors;
-    }
-
-    public void setSectors(List<String> sectors) {
-        this.sectors = sectors;
-    }
-
-    public List<FieldEnum> getFields() {
-        return fields;
-    }
-
-    public void setFields(List<FieldEnum> fields) {
-        this.fields = fields;
-    }
-
-    public PersonContactInformation getPersonContactInformation() {
-        return personContactInformation;
-    }
-
-    public void setPersonContactInformation(PersonContactInformation personContactInformation) {
-        this.personContactInformation = personContactInformation;
-    }
-
-    public CompanyContactInformation getCompanyContactInformation() {
-        return companyContactInformation;
-    }
-
-    public void setCompanyContactInformation(CompanyContactInformation companyContactInformation) {
-        this.companyContactInformation = companyContactInformation;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
