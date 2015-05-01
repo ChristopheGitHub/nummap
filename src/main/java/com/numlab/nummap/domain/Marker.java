@@ -25,7 +25,7 @@ public class Marker {
     private PersonContactInformation personContactInformation;
     private CompanyContactInformation companyContactInformation;
     private String description;
-    private String adresse;
+    private String address;
 
 
     /**
@@ -38,32 +38,28 @@ public class Marker {
         this.lat = user.getLocation().getLatitude();
         this.lng = user.getLocation().getLongitude();
         this.category =  user.getCategory();
+        this.description = user.getDescription();
+        this.address = createAddress(user);
 
         /* Par default draggable et focus sont à false */
         this.draggable = false;
         this.focus = false;
 
-        /* Description */
-        this.description = user.getDescription();
 
         /*Adresse*/
-        this.adresse = createAddress(user);
 
         /* Création du message */
         this.message = createMessage(user);
 
 
-        /* Liste des compétences */
         if(user.getCompetencies() != null){
             this.competencies = user.getCompetencies();
         }
 
-          /* Liste des sectors */
         if(user.getSectors() != null){
             this.sectors = user.getSectors();
         }
 
-          /* Liste des fields */
         if(user.getFields() != null){
             this.fields = user.getFields();
         }
@@ -90,20 +86,6 @@ public class Marker {
         } else {
             return user.getPersonContactInformation().getAddress().toPostalFormat();
         }
-        /*if(user.getCompanyContactInformation() != null) {
-            Address address = user.getCompanyContactInformation().getAddress();
-            if (address != null) {
-                res = address.toPostalFormat();
-            }
-        }
-        else if(user.getPersonContactInformation() != null){
-            Address address = user.getPersonContactInformation().getAddress();
-            if(address != null) {
-                res = address.toPostalFormat();
-            }
-        }
-
-        return(adresse);*/
     }
 
     public String createMessage(User user){
@@ -111,13 +93,13 @@ public class Marker {
 
         if(user.getCompanyContactInformation() != null){
            message = "<div class=\"markerTitle\">"+user.getCompanyContactInformation().getName()+"</div>";
-           message += "<div class=\"markerAdresse\">"+createAddress(user)+"</div>";
+           message += "<div class=\"markerAdresse\">"+address+"</div>";
             if(user.getCompanyContactInformation().getWebsite() != null){
                 message += "<div class=\"markerWebSite\"><a class=\"link\" href=\""+user.getCompanyContactInformation().getWebsite()+"\" target=\"_blank\">"+user.getCompanyContactInformation().getWebsite()+"</a></div>";
             }
         }else if(user.getPersonContactInformation() != null){
             message = "<div class=\"markerTitle\">"+user.getPersonContactInformation().getFirstName()+" "+user.getPersonContactInformation().getLastName()+"</div>";
-            message += "<div class=\"markerAdresse\">"+createAddress(user)+"</div>";
+            message += "<div class=\"markerAdresse\">"+address+"</div>";
             if(user.getPersonContactInformation().getWebsite() != null){
                 message += "<div class=\"markerWebSite\"><a class=\"link\" href=\""+user.getPersonContactInformation().getWebsite()+"\" target=\"_blank\">"+user.getPersonContactInformation().getWebsite()+"</a></div>";
             }

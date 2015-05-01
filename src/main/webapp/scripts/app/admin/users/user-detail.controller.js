@@ -113,9 +113,11 @@ angular.module('nummapApp')
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
-        }
+        };
 
         $scope.save = function () {
+
+            console.log($scope.user);
 	        
 	        // Ajout des réseaux sociaux
 	        if ($scope.user.category === 'STUDENT' ||
