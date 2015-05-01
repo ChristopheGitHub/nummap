@@ -135,8 +135,8 @@
                     <!-- Description -->
                      <div class="form-group">
                         <label translate="global.form.description">Description</label>
-                        <input type="text" class="form-control" name="description" placeholder="{{'global.form.description.placeholder' | translate}}"
-                               ng-model="registerAccount.description" ng-minlength=10 ng-maxlength=255 required>
+                        <textarea class="form-control" name="description" placeholder="{{'global.form.description.placeholder' | translate}}"
+                               ng-model="registerAccount.description" ng-minlength=10 ng-maxlength=255 rows="5" required></textarea>
                         <div ng-show="form.description.$dirty && form.description.$invalid">
                             <p class="help-block"
                                    ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
