@@ -11,6 +11,13 @@ angular.module('nummapApp')
         $scope.user = user;
         $scope.readonly = readonly;
 
+        if($scope.user.companyContactInformation === null) {
+            $scope.user.companyContactInformation = {};
+        }
+        if($scope.user.personContactInformation === null) {
+            $scope.user.personContactInformation = {};
+        }
+
         // Permet de setter tout les éléments du formulaire :
         // - sette les secteurs de l'utilisateur
         // - sette les domaines 
@@ -45,6 +52,7 @@ angular.module('nummapApp')
                 $scope.competenciesSelected.push(element);
             });
 
+            // Récupération et mise en places des domaines.
             $scope.fields = [
                 {name: 'Outsourcing', value: 'OUTSOURCING'},
                 {name: 'Consulting', value: 'CONSULTING'},

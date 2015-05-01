@@ -81,8 +81,6 @@ public class Marker {
         String res = "";
         if(category.equals(CategoryEnum.COMPANY) || category.equals(CategoryEnum.ASSOCIATION)) {
             return user.getCompanyContactInformation().getAddress().toPostalFormat();
-        /*} else if (category.equals(CategoryEnum.PROFESSOR) || category.equals(CategoryEnum.STUDENT) ||*/
-            /*category.equals(CategoryEnum.FREELANCE)) {*/
         } else {
             return user.getPersonContactInformation().getAddress().toPostalFormat();
         }

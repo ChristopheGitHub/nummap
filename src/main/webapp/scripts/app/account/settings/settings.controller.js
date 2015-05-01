@@ -8,6 +8,14 @@ angular.module('nummapApp')
             $scope.settingsAccount = account;
             console.log('settings');
             console.log($scope.settingsAccount);
+
+            
+            if($scope.settingsAccount.companyContactInformation === null) {
+                $scope.settingsAccount.companyContactInformation = {};
+            }
+            if($scope.settingsAccount.personContactInformation === null) {
+                $scope.settingsAccount.personContactInformation = {};
+            }
             
             Domains.query(function(result) {
                 $scope.sectors = result;

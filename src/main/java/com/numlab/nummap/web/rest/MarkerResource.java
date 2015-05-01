@@ -34,7 +34,7 @@ public class MarkerResource {
 
 
     /**
-     * GET  /users -> get all markers.
+     * GET  /markers -> get all markers.
      */
     @RequestMapping(value = "/markers",
             method = RequestMethod.GET,
@@ -46,7 +46,7 @@ public class MarkerResource {
         List<Marker> listMarkers = new LinkedList<>();
 
         for(User user : listUser){
-           /* Pour ne pas inclure les utilisateurs qui n'ont pas de localisation, par example les admins */
+           /* Pour ne pas inclure les utilisateurs qui n'ont pas de localisation, par exemple les admins */
             if(!(user.toMarker() == null) && user.getActivated() && user.isValidatedByAdmin())
                 listMarkers.add(user.toMarker());
         }

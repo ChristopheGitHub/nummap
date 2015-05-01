@@ -15,7 +15,7 @@ angular.module('nummapApp')
         $scope.domainsSelected = [];
         $scope.competenciesSelected = [];
 
-        // Récupère la liste de secteurs et de compétences
+        // Récupère la liste de secteurs, compétences et écoles
         Domains.query(function(result) {
             $scope.sectors = result;
             console.log($scope.sectors);
