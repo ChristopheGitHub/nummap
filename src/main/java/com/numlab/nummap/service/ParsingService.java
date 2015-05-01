@@ -299,7 +299,7 @@ public class ParsingService {
      String login = hashMap.get("login");
      String email = hashMap.get("email");
 
-     if(login.equals("")){
+     if(login.equals("") ||loginAlreadyinUse(login)){
             login = setNewLogin(hashMap);
       }
 
@@ -326,7 +326,7 @@ public class ParsingService {
      List<FieldEnum> fields = getFieldList(hashMap);
      String siren = hashMap.get("siren");
 
-     return(new UserDTO(login, password, email, location, category, description, null, personContactInformation, companyContactInformation,
+     return(new UserDTO(login, password, email, location, category, description, null, personContactInformation, companyContactInformation, null,
      competencies, sectors, fields, siren, "fr", null));
  }
 
@@ -347,6 +347,7 @@ public class ParsingService {
                                             userDTO.getRaisonSociale(),
                                             userDTO.getPersonContactInformation(),
                                             userDTO.getCompanyContactInformation(),
+                                            null,
                                             userDTO.getCompetencies(),
                                             userDTO.getSectors(),
                                             userDTO.getFields(),
