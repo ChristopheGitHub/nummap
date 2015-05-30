@@ -7,13 +7,13 @@ angular.module('nummapApp')
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
 
-        /* Etat de la zone de recherche */
+        /* Initializatio of the sidebar state */
         $scope.isCollapsed = true;
         $scope.isCollapsedCat = true;
         $scope.isCollapsedField = true;
         
 
-        /* Pour la recherche */
+        /* Fields initialization for the research sidebar */
         $scope.categories = [
             {value: 'ALL', translationKey: 'register.form.category.all', checked: 'true'},
             {value: 'STUDENT', translationKey: 'register.form.category.student', checked: 'false'},
@@ -125,7 +125,6 @@ angular.module('nummapApp')
                 else if(element.category == "ASSOCIATION"){
                     element.icon = local_icons.ASSOCIATION;
                 }
-
             });
         };
 
@@ -158,7 +157,7 @@ angular.module('nummapApp')
         };
 
 
-        /* Récupération de l'ensemble des markers au chargement de la page */
+        /* Retrieves all the markers */
         $scope.loadAll = function() {
             $http.get('api/markers', {})
                 .success(function(data){
@@ -207,6 +206,7 @@ angular.module('nummapApp')
             }
         };
 
+        // The map background
         var tilesDict = {
             openstreetmap: {
                 url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -226,6 +226,7 @@ angular.module('nummapApp')
             }
         });
         
+        // Here we watch for changement in the options of the sidebar
         $scope.$watch('markerFilter', function(newText) {
             change(newText, $scope.choosenCategories, $scope.choosenFields);
         }, true);
@@ -238,24 +239,27 @@ angular.module('nummapApp')
             change($scope.markerFilter, $scope.choosenCategories, newText);
         }, true);
 
-
+        // Re-evaluate the markers clusters when triggered by a change on the parameters. 
         var change = function (text, categories, fields) {
             $scope.markersFiltered1 = $filter('filter')($scope.markers, text);
             $scope.markersFiltered2 = $filter('categories')($scope.markersFiltered1, categories);
             $scope.markersFiltered = $filter('fields')($scope.markersFiltered2, fields);
             $scope.markers.forEach(function (element) {
-                element.group = "totalité";
+                element.group = 'totalité';
             });
             $scope.markersFiltered.forEach(function (element) {
-                element.group = "triés";
+                element.group = 'triés';
             });
         };
 
         $scope.button = function () {
-            console.log('e');
             change($scope.markerFilter, $scope.choosenCategories, $scope.choosenFields);
         };
 
+        /**
+         * Quick fix, for the angular-leaflet-directive had an unresolved yet bug.
+         * Here is the link : https://github.com/tombatossals/angular-leaflet-directive/issues/381
+         */
         $scope.$on('$destroy', function () {
             leafletMarkersHelpers.resetCurrentGroups();
         });
