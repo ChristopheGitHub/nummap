@@ -97,9 +97,9 @@ angular.module('nummapApp')
 
         /* Position de la "camera" sur la carte */
         $scope.center = {
-            lat: 43.28520334369384,
-            lng: -0.289764404296875,
-            zoom: 9
+            lat: 43.3811,
+            lng: -0.6345,
+            zoom: 10
         };
 
         /* Déclaration des tableaux */
