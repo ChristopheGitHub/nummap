@@ -7,6 +7,41 @@ angular.module('nummapApp')
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
 
+        // Icons
+        var local_icons = {
+            default_icon: {},
+            STUDENT: {
+                iconUrl: 'scripts/app/images/university.png',
+                iconMenuUrl : 'scripts/app/images/universityMenu.png',
+                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+                popupAnchor:  [15, 5]
+            },
+            PROFESSOR: {
+                iconUrl: 'scripts/app/images/highschool.png',
+                iconMenuUrl : 'scripts/app/images/highschoolMenu.png',
+                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+                popupAnchor:  [15, 5]
+            },
+            COMPANY:{
+                iconUrl: 'scripts/app/images/office-building.png',
+                iconMenuUrl : 'scripts/app/images/office-buildingMenu.png',
+                iconAnchor:     [0, 0],
+                popupAnchor:  [15, 5]
+            },
+            FREELANCE:{
+                iconUrl: 'scripts/app/images/workoffice.png',
+                iconMenuUrl : 'scripts/app/images/workofficeMenu.png',
+                iconAnchor:     [0, 0],
+                popupAnchor:  [15, 5]
+            },
+           ASSOCIATION:{
+                iconUrl: 'scripts/app/images/museum_science.png',
+               iconMenuUrl : 'scripts/app/images/museum_scienceMenu.png',
+                iconAnchor:     [0, 0],
+               popupAnchor:  [15, 5]
+            }
+        };
+
         /* Etat de la zone de recherche */
         $scope.isCollapsed = true;
         $scope.isCollapsedCat = true;
@@ -16,11 +51,11 @@ angular.module('nummapApp')
         /* Pour la recherche */
         $scope.categories = [
             {value: 'ALL', translationKey: 'register.form.category.all', checked: 'true'},
-            {value: 'STUDENT', translationKey: 'register.form.category.student', checked: 'false'},
-            {value: 'PROFESSOR', translationKey: 'register.form.category.professor', checked: 'false'},
-            {value: 'FREELANCE', translationKey: 'register.form.category.freelance', checked: 'false'},
-            {value: 'COMPANY', translationKey: 'register.form.category.company', checked: 'false'},
-            {value: 'ASSOCIATION', translationKey: 'register.form.category.association', checked: 'false'}
+            {value: 'STUDENT', translationKey: 'register.form.category.student', checked: 'false', icon: local_icons.STUDENT.iconMenuUrl},
+            {value: 'PROFESSOR', translationKey: 'register.form.category.professor', checked: 'false', icon: local_icons.PROFESSOR.iconMenuUrl},
+            {value: 'FREELANCE', translationKey: 'register.form.category.freelance', checked: 'false', icon: local_icons.FREELANCE.iconMenuUrl},
+            {value: 'COMPANY', translationKey: 'register.form.category.company', checked: 'false', icon: local_icons.COMPANY.iconMenuUrl},
+            {value: 'ASSOCIATION', translationKey: 'register.form.category.association', checked: 'false', icon: local_icons.ASSOCIATION.iconMenuUrl}
         ];
 
         $scope.fields = [
@@ -157,7 +192,6 @@ angular.module('nummapApp')
            marker.focus = true;
         };
 
-
         /* Récupération de l'ensemble des markers au chargement de la page */
         $scope.loadAll = function() {
             $http.get('api/markers', {})
@@ -173,39 +207,7 @@ angular.module('nummapApp')
         $scope.loadAll();
 
         /* Icones pour l'affichage des markers */
-        var local_icons = {
-            default_icon: {},
-            STUDENT: {
-                iconUrl: 'scripts/app/images/university.png',
-                iconMenuUrl : 'scripts/app/images/universityMenu.png',
-                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-                popupAnchor:  [15, 5]
-            },
-            PROFESSOR: {
-                iconUrl: 'scripts/app/images/highschool.png',
-                iconMenuUrl : 'scripts/app/images/highschoolMenu.png',
-                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-                popupAnchor:  [15, 5]
-            },
-            COMPANY:{
-                iconUrl: 'scripts/app/images/office-building.png',
-                iconMenuUrl : 'scripts/app/images/office-buildingMenu.png',
-                iconAnchor:     [0, 0],
-                popupAnchor:  [15, 5]
-            },
-            FREELANCE:{
-                iconUrl: 'scripts/app/images/workoffice.png',
-                iconMenuUrl : 'scripts/app/images/workofficeMenu.png',
-                iconAnchor:     [0, 0],
-                popupAnchor:  [15, 5]
-            },
-           ASSOCIATION:{
-                iconUrl: 'scripts/app/images/museum_science.png',
-               iconMenuUrl : 'scripts/app/images/museum_scienceMenu.png',
-                iconAnchor:     [0, 0],
-               popupAnchor:  [15, 5]
-            }
-        };
+        
 
         var tilesDict = {
             openstreetmap: {

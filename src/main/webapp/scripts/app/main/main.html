@@ -43,6 +43,7 @@
                                     ng-repeat="cat in categories"
                                     ng-click="selectCategory($index)">
                                     <div ng-class="{active: cat.checked=='true'}">
+                                        <img ng-src="{{ cat.icon }}">
                                         {{ cat.translationKey | translate }}
                                     </div>
                                 </li>
