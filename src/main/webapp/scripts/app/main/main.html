@@ -72,7 +72,7 @@
 
                     <div class="markerslist" ng-repeat="marker in markersFiltered">
 
-                        <div class="markerIcon"> <img  ng-mouseleave="marker.detail = false" ng-mouseover="marker.detail = true" ng-click="goToMarker(marker)" src="{{marker.icon.iconMenuUrl}}"/> </div>
+                        <div class="markerIcon"> <img ng-mouseover="marker.detail = true" ng-click="goToMarker(marker); marker.detail = true" src="{{marker.icon.iconMenuUrl}}"/> </div>
 
                             <div class="markerBlock" id="{{marker.name}}">
 

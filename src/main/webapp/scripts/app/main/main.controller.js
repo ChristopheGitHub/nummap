@@ -186,10 +186,11 @@ angular.module('nummapApp')
 
         /* Centrage de la carte sur le marker sur lequel on a cliqué dans le menu */
         $scope.goToMarker = function(marker){
+            console.log(marker);
            $scope.center.lat = marker.lat;
            $scope.center.lng = marker.lng;
            $scope.center.zoom = 35;
-           marker.focus = true;
+          // marker.focus = true;
         };
 
         /* Récupération de l'ensemble des markers au chargement de la page */
@@ -247,6 +248,7 @@ angular.module('nummapApp')
             $scope.markersFiltered = $filter('fields')($scope.markersFiltered2, fields);
             $scope.markers.forEach(function (element) {
                 element.group = "totalité";
+                element.detail = false;
             });
             $scope.markersFiltered.forEach(function (element) {
                 element.group = "triés";
