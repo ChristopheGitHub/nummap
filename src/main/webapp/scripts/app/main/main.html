@@ -76,7 +76,7 @@
 
                             <div class="markerBlock" id="{{marker.name}}">
 
-                            <!-- Si le marker est une celui d'une entreprise -->
+                                <!-- Si le marker est une celui d'une entreprise -->
                                 <div ng-if="null != marker.companyContactInformation">
                                     <!-- Title -->
                                     <div class="markerTitle" ng-if="null != marker.companyContactInformation">{{marker.companyContactInformation.name}} </div>
@@ -103,9 +103,11 @@
 
                                 </div>
 
-                            <!-- Si le marker est celui d'un freelance, professeur, étudiant -->
+                                <!-- Si le marker est celui d'un freelance, professeur, étudiant -->
                                 <div ng-if="null == marker.companyContactInformation">
-                                     <div class="markerTitle" ng-if="null != marker.personContactInformation">{{marker.personContactInformation.firstName}} {{marker.personContactInformation.lastName}}</div>
+                                     <div class="markerTitle" ng-if="null != marker.personContactInformation">
+                                        {{marker.personContactInformation.firstName}} {{marker.personContactInformation.lastName}}
+                                     </div>
 
                                     <!-- Description -->
                                     <div class="markerDescription" >{{marker.description}}</div>
@@ -133,21 +135,30 @@
                                 <!-- Details -->
                                 <div ng-show="marker.detail">
                                     <div class="markerCompetence" ng-if="marker.competencies.length != 0">Compétences :
-                                            <span ng-repeat="competence in marker.competencies">
-                                                <span class="competenceList">{{competence}}</span>
+                                        <span ng-repeat="competence in marker.competencies">
+                                            <span ng-click="search(competence, null, null)" 
+                                            class="competenceList">
+                                                {{competence}}
                                             </span>
+                                        </span>
                                     </div>
 
                                     <div class="markerSector" ng-if="marker.sectors.length != 0">Secteurs :
-                                            <span ng-repeat="sector in marker.sectors">
-                                                <span class="competenceList">{{sector}}</span>
+                                        <span ng-repeat="sector in marker.sectors">
+                                            <span ng-click="search(null, sector, null)"
+                                            class="competenceList">
+                                                {{sector}}
                                             </span>
+                                        </span>
                                     </div>
 
                                     <div class="markerDomain" ng-if="marker.fields.length != 0">Domaines :
-                                            <span ng-repeat="field in marker.fields">
-                                                <span class="competenceList">{{field | capitalize }}</span>
+                                        <span ng-repeat="field in marker.fields">
+                                            <span ng-click="search(null, null, field)"
+                                            class="competenceList">
+                                                {{field | capitalize }}
                                             </span>
+                                        </span>
                                     </div>
                                </div>
                           </div>

@@ -241,6 +241,26 @@ angular.module('nummapApp')
             change($scope.markerFilter, $scope.choosenCategories, newText);
         }, true);
 
+        /**
+         * Trigger a search from click on people's field, sector or competency
+         * @param  {String} competency
+         * @param  {String} sector
+         * @param  {String} field
+         */
+        $scope.search = function(competency, sector, field) {
+            if (field) {
+                console.log('on y passe : ' + 'field');
+                $scope.isCollapsed = false;
+                // Needed for the animation
+                setTimeout(function() {
+                    console.log('On y est ; 2');
+                    $scope.isCollapsedField = false;
+                }, 100);
+                $scope.choosenFields = [];
+                $scope.choosenFields.push(field);
+                change($scope.markerFilter, $scope.choosenCategories, field);
+            }
+        };
 
         var change = function (text, categories, fields) {
             $scope.markersFiltered1 = $filter('filter')($scope.markers, text);
