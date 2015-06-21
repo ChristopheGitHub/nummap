@@ -99,7 +99,7 @@ angular.module('nummapApp')
             console.log($scope.choosenCategories);
         };
 
-        $scope.selectField = function(index) {
+        $scope.selectField = function(index, callback) {
             if (index === 0) {
                 $scope.choosenFields = [];
                 $scope.fields.forEach(function (element) {
@@ -128,6 +128,9 @@ angular.module('nummapApp')
                 }
             }
             console.log($scope.choosenFields);
+            if (callback) {
+                callback();
+            }
         };
 
         /* Position de la "camera" sur la carte */
@@ -241,6 +244,45 @@ angular.module('nummapApp')
             change($scope.markerFilter, $scope.choosenCategories, newText);
         }, true);
 
+        /**
+         * Trigger a search from click on people's field, sector or competency
+         * @param  {String} competency
+         * @param  {String} sector
+         * @param  {String} field
+         */
+        $scope.search = function(competency, sector, field) {
+            function trouveIndex(field) {
+                for (var i = 0; i < $scope.fields.length; i++) {
+                    if ($scope.fields[i].value === field) {
+                        console.log('inde : ' + i);
+                        return i;
+                    }
+                }
+            }
+            if (field) {
+               (function() {
+                    $scope.choosenFields = [];
+                    $scope.fields.forEach(function (element) {
+                        element.checked = 'false';
+                        // On sélectionne toutes les catégories
+                        $scope.choosenFields.push(element.value);
+                    });
+                })();
+                $scope.isCollapsed = false;
+                // Needed for the animation
+                setTimeout(function() {
+                    console.log('On y est ; 2');
+                    $scope.isCollapsedField = false;
+                }, 100);
+                var i = trouveIndex(field);
+                $scope.selectField(i, function() {
+                    setTimeout(function() {
+                        $scope.$apply($scope.isCollapsed = true);
+                        $scope.isCollapsedField = true;
+                    }, 1000);
+                });
+            }
+        };
 
         var change = function (text, categories, fields) {
             $scope.markersFiltered1 = $filter('filter')($scope.markers, text);
