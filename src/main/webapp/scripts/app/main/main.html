@@ -17,58 +17,58 @@
 
                 <input type="text" class="search-input" placeholder="Search" ng-model="markerFilter">
 
+                <!-- Liste d'options -->
+                <ul class="list-group">
+                    <!-- Déclenche l'ouverture / fermeture du block d'option -->
+                    <li class="list-group-item" ng-click="isCollapsed = !isCollapsed">
+                        <center>
+                            <h4 class="list-group-item-heading">Options</h4>
+                        </center>
+                    </li>
+
+                    <!-- Sorting Criterias -->
+                    <div collapse="isCollapsed">
+                        
+                        <li class="list-group-item"
+                            ng-click="isCollapsedCat = !isCollapsedCat">
+                            <h4 class="list-group-item-heading">Categories</h4>
+                        </li>
+                        
+                        <div collapse="isCollapsedCat">
+                            <li class="list-group-item"
+                                ng-class="{active: cat.checked=='true'}"
+                                ng-repeat="cat in categories"
+                                ng-click="selectCategory($index)">
+                                <div ng-class="{active: cat.checked=='true'}">
+                                    <img ng-src="{{ cat.icon }}">
+                                    {{ cat.translationKey | translate }}
+                                </div>
+                            </li>
+                        </div>
+
+                        <li class="list-group-item" ng-click="isCollapsedField = !isCollapsedField">
+                            <h4 class="list-group-item-heading">Domaines</h4>
+                        </li>
+
+                        <div collapse="isCollapsedField">
+                            <li class="list-group-item"
+                                ng-class="{active: field.checked=='true'}"
+                                ng-repeat="field in fields"
+                                ng-click="selectField($index)">
+                                <div ng-class="{active: field.checked=='true'}">
+                                    {{ field.name }}
+                                </div>
+                            </li>
+                        </div>
+
+
+                    </div>
+                    
+        
+                </ul>
 
                 <div class="scrollBlock">
                     
-                    <!-- Liste d'options -->
-                    <ul class="list-group">
-                        <!-- Déclenche l'ouverture / fermeture du block d'option -->
-                        <li class="list-group-item" ng-click="isCollapsed = !isCollapsed">
-                            <center>
-                                <h4 class="list-group-item-heading">Options</h4>
-                            </center>
-                        </li>
-
-                        <!-- Sorting Criterias -->
-                        <div collapse="isCollapsed">
-                            
-                            <li class="list-group-item"
-                                ng-click="isCollapsedCat = !isCollapsedCat">
-                                <h4 class="list-group-item-heading">Categories</h4>
-                            </li>
-                            
-                            <div collapse="isCollapsedCat">
-                                <li class="list-group-item"
-                                    ng-class="{active: cat.checked=='true'}"
-                                    ng-repeat="cat in categories"
-                                    ng-click="selectCategory($index)">
-                                    <div ng-class="{active: cat.checked=='true'}">
-                                        <img ng-src="{{ cat.icon }}">
-                                        {{ cat.translationKey | translate }}
-                                    </div>
-                                </li>
-                            </div>
-
-                            <li class="list-group-item" ng-click="isCollapsedField = !isCollapsedField">
-                                <h4 class="list-group-item-heading">Domaines</h4>
-                            </li>
-
-                            <div collapse="isCollapsedField">
-                                <li class="list-group-item"
-                                    ng-class="{active: field.checked=='true'}"
-                                    ng-repeat="field in fields"
-                                    ng-click="selectField($index)">
-                                    <div ng-class="{active: field.checked=='true'}">
-                                        {{ field.name }}
-                                    </div>
-                                </li>
-                            </div>
-
-
-                        </div>
-                        
-            
-                    </ul>
 
                     <div class="markerslist" ng-repeat="marker in markersFiltered">
 
