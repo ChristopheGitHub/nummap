@@ -208,7 +208,7 @@ ul#strength {
 .scrollBlock{
 
     width:100%;
-    height:92%;
+    height:84%;
     overflow-y :scroll;
     overflow-x:hidden;
 }

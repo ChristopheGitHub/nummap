@@ -8,6 +8,41 @@ angular.module('nummapApp')
         });
 
         /* Initializatio of the sidebar state */
+        var local_icons = {
+            default_icon: {},
+            STUDENT: {
+                iconUrl: 'scripts/app/images/university.png',
+                iconMenuUrl : 'scripts/app/images/universityMenu.png',
+                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+                popupAnchor:  [15, 5]
+            },
+            PROFESSOR: {
+                iconUrl: 'scripts/app/images/highschool.png',
+                iconMenuUrl : 'scripts/app/images/highschoolMenu.png',
+                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+                popupAnchor:  [15, 5]
+            },
+            COMPANY:{
+                iconUrl: 'scripts/app/images/office-building.png',
+                iconMenuUrl : 'scripts/app/images/office-buildingMenu.png',
+                iconAnchor:     [0, 0],
+                popupAnchor:  [15, 5]
+            },
+            FREELANCE:{
+                iconUrl: 'scripts/app/images/workoffice.png',
+                iconMenuUrl : 'scripts/app/images/workofficeMenu.png',
+                iconAnchor:     [0, 0],
+                popupAnchor:  [15, 5]
+            },
+           ASSOCIATION:{
+                iconUrl: 'scripts/app/images/museum_science.png',
+               iconMenuUrl : 'scripts/app/images/museum_scienceMenu.png',
+                iconAnchor:     [0, 0],
+               popupAnchor:  [15, 5]
+            }
+        };
+
+        /* Etat de la zone de recherche */
         $scope.isCollapsed = true;
         $scope.isCollapsedCat = true;
         $scope.isCollapsedField = true;
@@ -16,11 +51,11 @@ angular.module('nummapApp')
         /* Fields initialization for the research sidebar */
         $scope.categories = [
             {value: 'ALL', translationKey: 'register.form.category.all', checked: 'true'},
-            {value: 'STUDENT', translationKey: 'register.form.category.student', checked: 'false'},
-            {value: 'PROFESSOR', translationKey: 'register.form.category.professor', checked: 'false'},
-            {value: 'FREELANCE', translationKey: 'register.form.category.freelance', checked: 'false'},
-            {value: 'COMPANY', translationKey: 'register.form.category.company', checked: 'false'},
-            {value: 'ASSOCIATION', translationKey: 'register.form.category.association', checked: 'false'}
+            {value: 'STUDENT', translationKey: 'register.form.category.student', checked: 'false', icon: local_icons.STUDENT.iconMenuUrl},
+            {value: 'PROFESSOR', translationKey: 'register.form.category.professor', checked: 'false', icon: local_icons.PROFESSOR.iconMenuUrl},
+            {value: 'FREELANCE', translationKey: 'register.form.category.freelance', checked: 'false', icon: local_icons.FREELANCE.iconMenuUrl},
+            {value: 'COMPANY', translationKey: 'register.form.category.company', checked: 'false', icon: local_icons.COMPANY.iconMenuUrl},
+            {value: 'ASSOCIATION', translationKey: 'register.form.category.association', checked: 'false', icon: local_icons.ASSOCIATION.iconMenuUrl}
         ];
 
         $scope.fields = [
@@ -64,7 +99,7 @@ angular.module('nummapApp')
             console.log($scope.choosenCategories);
         };
 
-        $scope.selectField = function(index) {
+        $scope.selectField = function(index, callback) {
             if (index === 0) {
                 $scope.choosenFields = [];
                 $scope.fields.forEach(function (element) {
@@ -93,6 +128,9 @@ angular.module('nummapApp')
                 }
             }
             console.log($scope.choosenFields);
+            if (callback) {
+                callback();
+            }
         };
 
         /* Position de la "camera" sur la carte */
@@ -150,10 +188,11 @@ angular.module('nummapApp')
 
         /* Centrage de la carte sur le marker sur lequel on a cliqué dans le menu */
         $scope.goToMarker = function(marker){
+            console.log(marker);
            $scope.center.lat = marker.lat;
            $scope.center.lng = marker.lng;
            $scope.center.zoom = 35;
-           marker.focus = true;
+          // marker.focus = true;
         };
 
 
@@ -170,41 +209,6 @@ angular.module('nummapApp')
                 });
         };
         $scope.loadAll();
-
-        /* Icones pour l'affichage des markers */
-        var local_icons = {
-            default_icon: {},
-            STUDENT: {
-                iconUrl: 'scripts/app/images/university.png',
-                iconMenuUrl : 'scripts/app/images/universityMenu.png',
-                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-                popupAnchor:  [15, 5]
-            },
-            PROFESSOR: {
-                iconUrl: 'scripts/app/images/highschool.png',
-                iconMenuUrl : 'scripts/app/images/highschoolMenu.png',
-                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-                popupAnchor:  [15, 5]
-            },
-            COMPANY:{
-                iconUrl: 'scripts/app/images/office-building.png',
-                iconMenuUrl : 'scripts/app/images/office-buildingMenu.png',
-                iconAnchor:     [0, 0],
-                popupAnchor:  [15, 5]
-            },
-            FREELANCE:{
-                iconUrl: 'scripts/app/images/workoffice.png',
-                iconMenuUrl : 'scripts/app/images/workofficeMenu.png',
-                iconAnchor:     [0, 0],
-                popupAnchor:  [15, 5]
-            },
-           ASSOCIATION:{
-                iconUrl: 'scripts/app/images/museum_science.png',
-               iconMenuUrl : 'scripts/app/images/museum_scienceMenu.png',
-                iconAnchor:     [0, 0],
-               popupAnchor:  [15, 5]
-            }
-        };
 
         // The map background
         var tilesDict = {
@@ -239,13 +243,52 @@ angular.module('nummapApp')
             change($scope.markerFilter, $scope.choosenCategories, newText);
         }, true);
 
-        // Re-evaluate the markers clusters when triggered by a change on the parameters. 
+        /**
+         * Trigger a search from click on people's field, sector or competency
+         * @param  {String} competency
+         * @param  {String} sector
+         * @param  {String} field
+         */
+        $scope.search = function(competency, sector, field) {
+            function trouveIndex(field) {
+                for (var i = 0; i < $scope.fields.length; i++) {
+                    if ($scope.fields[i].value === field) {
+                        console.log('inde : ' + i);
+                        return i;
+                    }
+                }
+            }
+            if (field) {
+               (function() {
+                    $scope.choosenFields = [];
+                    $scope.fields.forEach(function (element) {
+                        element.checked = 'false';
+                        // On sélectionne toutes les catégories
+                        $scope.choosenFields.push(element.value);
+                    });
+                })();
+                $scope.isCollapsed = false;
+                // Needed for the animation
+                setTimeout(function() {
+                    console.log('On y est ; 2');
+                    $scope.isCollapsedField = false;
+                }, 100);
+                var i = trouveIndex(field);
+                $scope.selectField(i, function() {
+                    setTimeout(function() {
+                        $scope.$apply($scope.isCollapsed = true);
+                        $scope.isCollapsedField = true;
+                    }, 1000);
+                });
+            }
+        };
         var change = function (text, categories, fields) {
             $scope.markersFiltered1 = $filter('filter')($scope.markers, text);
             $scope.markersFiltered2 = $filter('categories')($scope.markersFiltered1, categories);
             $scope.markersFiltered = $filter('fields')($scope.markersFiltered2, fields);
             $scope.markers.forEach(function (element) {
-                element.group = 'totalité';
+                element.group = "totalité";
+                element.detail = false;
             });
             $scope.markersFiltered.forEach(function (element) {
                 element.group = 'triés';
