@@ -3,6 +3,7 @@ package com.numlab.nummap.domain;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.numlab.nummap.domain.enumerations.CategoryEnum;
 import com.numlab.nummap.domain.enumerations.FieldEnum;
+import com.numlab.nummap.domain.enumerations.SocialNetworkEnum;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,8 +49,7 @@ public class Marker {
 
         /*Adresse*/
 
-        /* Création du message */
-        this.message = createMessage(user);
+
 
 
         if(user.getCompetencies() != null){
@@ -74,6 +74,10 @@ public class Marker {
            this.personContactInformation = user.getPersonContactInformation();
         }
 
+          /* Création du message */
+        this.message = createMessage(user);
+
+
     }
 
 
@@ -95,13 +99,92 @@ public class Marker {
             if(user.getCompanyContactInformation().getWebsite() != null){
                 message += "<div class=\"markerWebSite\"><a class=\"link\" href=\""+user.getCompanyContactInformation().getWebsite()+"\" target=\"_blank\">"+user.getCompanyContactInformation().getWebsite()+"</a></div>";
             }
-        }else if(user.getPersonContactInformation() != null){
-            message = "<div class=\"markerTitle\">"+user.getPersonContactInformation().getFirstName()+" "+user.getPersonContactInformation().getLastName()+"</div>";
-            message += "<div class=\"markerAdresse\">"+address+"</div>";
-            if(user.getPersonContactInformation().getWebsite() != null){
-                message += "<div class=\"markerWebSite\"><a class=\"link\" href=\""+user.getPersonContactInformation().getWebsite()+"\" target=\"_blank\">"+user.getPersonContactInformation().getWebsite()+"</a></div>";
+            /* Affichage du Contact de l'entreprise */
+          if(user.getPersonContactInformation() != null){
+                message += "<div class=\"markerGrayInput \"> Contact : "+user.getPersonContactInformation().getFirstName()+" "+user.getPersonContactInformation().getLastName()+"</div>";
+
+          }
+
+           /* Affichage du des réseaux sociaux de l'entreprise */
+            if(user.getCompanyContactInformation().getSocialNetworkList() != null){
+                List<SocialNetwork> socialNetworkEnumList = user.getCompanyContactInformation().getSocialNetworkList();
+                for(SocialNetwork social : socialNetworkEnumList){
+                    message += "<div class=\"socialNetWork\">";
+                    message += "  <div>"+toLowerCaseButFirstChar(social.getType().toString())+" : "+social.getAddress()+" </div>";
+                    message += "</div>";
+                }
+
             }
+
+        }else if(user.getPersonContactInformation() != null) {
+            message = "<div class=\"markerTitle\">" + user.getPersonContactInformation().getFirstName() + " " + user.getPersonContactInformation().getLastName() + "</div>";
+            message += "<div class=\"markerAdresse\">" + address + "</div>";
+            if (user.getPersonContactInformation().getWebsite() != null) {
+                message += "<div class=\"markerWebSite\"><a class=\"link\" href=\"" + user.getPersonContactInformation().getWebsite() + "\" target=\"_blank\">" + user.getPersonContactInformation().getWebsite() + "</a></div>";
+
+            }
+
+                  /* Affichage du des réseaux sociaux du contact de l'entreprise */
+            if(user.getPersonContactInformation().getSocialNetworkList() != null){
+                List<SocialNetwork> socialNetworkEnumList = user.getPersonContactInformation().getSocialNetworkList();
+                for(SocialNetwork social : socialNetworkEnumList){
+                    message += "<div class=\"socialNetWork\">";
+                    message += "  <div>"+toLowerCaseButFirstChar(social.getType().toString())+" : "+social.getAddress()+" </div>";
+                    message += "</div>";
+                }
+            }
+
+
+
         }
+
+
+
+
+
+      /* Ajout des compétences */
+        if(this.competencies.size() != 0){
+            message += "<div class=\"markerDomain\">Compétences :";
+
+            for(String competence : this.competencies){
+              message +=  "<span class=\"competenceList\">"+competence+"</span><span> </span>";
+            }
+            message += "</div>";
+        }
+
+           /* Ajout des secteurs */
+        if(this.sectors.size() != 0){
+            message += "<div class=\"markerDomain\">Secteurs : ";
+            for(String sector : this.sectors){
+                message +=  "<span class=\"competenceList\">"+sector+"</span><span> </span>";
+            }
+            message += "</div>";
+        }
+
+    /* Ajout des Domaines*/
+        if(this.fields.size() != 0){
+            message += "<div class=\"markerDomain\">Domaines :";
+            for(FieldEnum domain : this.fields){
+                message +=  "<span class=\"competenceList\">"+toLowerCaseButFirstChar(domain.toString())+"</span><span> </span>";
+            }
+            message += "</div>";
+        }
+
         return(message);
     }
+
+    /**
+     * Fonction pour mettre la String en minuscule sauf la première lettre, notamment pour les Domaines
+     * @param str
+     * @return
+     */
+    String toLowerCaseButFirstChar(String str){
+        str  = str.toLowerCase();
+        String newString = Character.toString(str.charAt(0)).toUpperCase()+str.substring(1);
+        return(newString);
+    }
+
+
 }
+
+

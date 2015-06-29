@@ -155,7 +155,7 @@ angular.module('nummapApp')
            $scope.center.lat = marker.lat;
            $scope.center.lng = marker.lng;
            $scope.center.zoom = 35;
-          // marker.focus = true;
+           marker.focus = true;
         };
 
 
