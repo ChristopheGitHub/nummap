@@ -9,6 +9,8 @@ spring:
             host: localhost
             port: 27017
             database: nummap
+            username: nummap
+            password: nummap
 
     mail:
         baseUrl: http://localhost:8080
