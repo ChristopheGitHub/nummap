@@ -18,8 +18,8 @@
 		"address":  {
 			"street": "Street",
 			"street.placeholder": "Street",
-			"complemement": "Complement",
-			"complemement.placeholder": "Complement",
+			"complement": "Complement",
+			"complement.placeholder": "Complement",
 			"postalCode": "Postal code",
 			"postalCode.placeholder": "Postal code",
 			"city": "City",
