@@ -226,7 +226,7 @@ angular.module('nummapApp')
             markers: $scope.markersFiltered,
             defaults: {
                 scrollWheelZoom: true,
-                zoomControlPosition: 'bottomleft'
+                zoomControl: false
             }
         });
         
