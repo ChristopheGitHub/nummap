@@ -92,10 +92,6 @@ angular.module('nummapApp')
 
         $scope.load();
 
-
-        $scope.personSocialNetworkList = [];
-        $scope.companySocialNetworkList = [];
-
         $scope.addElement = function(list) {
             list.push({});
             console.log(list);
