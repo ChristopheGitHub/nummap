@@ -8,9 +8,9 @@ spring:
         mongodb:
             host: localhost
             port: 27017
-            database: nummap
-            username: nummap
-            password: nummap
+            username: nummapdev
+            database: nummapdev
+            password: nummapdev
 
     mail:
         baseUrl: http://localhost:8080

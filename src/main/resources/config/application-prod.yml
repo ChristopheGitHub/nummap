@@ -30,5 +30,3 @@ metrics:
         host: localhost
         port: 2003
         prefix: nummap
-
-
