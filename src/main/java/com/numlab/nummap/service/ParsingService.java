@@ -358,7 +358,7 @@ public class ParsingService {
                                             ":" +                                  // ":"
                                             ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getServerPort();               // "80"
 
-                                    mailService.sendActivationEmailWithPassword(user, baseUrl, userDTO.getPassword());
+                                    //mailService.sendActivationEmailWithPassword(user, baseUrl, userDTO.getPassword());
                                     return new ResponseEntity<>(HttpStatus.CREATED);
                                 })
                 );
