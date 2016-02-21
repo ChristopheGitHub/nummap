@@ -77,6 +77,17 @@ angular.module('nummapApp')
             });
         };
 
+        // Allow to create a user.
+        $scope.createUser = function () {
+            console.log('Create new user - 1');
+
+            var modalUser = $modal.open({
+                templateUrl: 'scripts/app/admin/users/user-detail-creation.html',
+                controller: 'RegisterController',
+                size: 'lg'
+            });
+        };
+
 
      });
 

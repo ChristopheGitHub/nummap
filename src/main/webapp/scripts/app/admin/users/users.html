@@ -28,13 +28,18 @@
 
     <!-- <span translate="user.search"> Recherche : </span> -->
 
-
+    <!-- Display of the users -->
     <div class="panel panel-default">
+        
+        <!-- Search and add a user button -->
         <div class="panel-heading">
             <input type="text" class="form-control" id="query" ng-model="query" placeholder="Search..."/>
+            <button class="btn btn-default" type="submit" ng-click="createUser()">Add a user</button>
         </div>
+        
         <div class="panel-body">
             <div class="table-responsive">
+                
                 <table class="table table-striped table-condensed table-bordered">
                     <thead>
                         <tr>
@@ -46,6 +51,7 @@
                         </tr>
                     </thead>
                 </table>
+
                 <div class="div-table-content-users">
                     <table class="table table-striped table-hover table-condensed table-bordered">
                         <tbody>
