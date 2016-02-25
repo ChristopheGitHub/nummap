@@ -144,6 +144,10 @@
                     "required": "Your company / association name is required.",
                     "minlength": "Your company / association name is required to be at least 1 characters.",
                     "maxlength": "Your company / association name cannot be longer than 50 characters."
+                },
+                "siren": {
+                    "required": "Your SIREN number is required.",
+                    "pattern": "Your SIREN number must be composed 9 numbers."
                 }
             }
         }

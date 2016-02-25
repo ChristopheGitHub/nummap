@@ -331,11 +331,8 @@
                     </div>
 
                     <!-- SIREN -->
-                    <div ng-if="registerAccount.category == 'FREELANCE' || registerAccount.category == 'COMPANY'"
-                    class="form-group">
-                      <label for="siren" translate="global.form.siren">SIREN</label>
-                      <input type="text" class="form-control" name="siren" placeholder="{{'global.form.siren.placeholder' | translate}}"
-                             ng-model="registerAccount.siren" ng-minlength=10 ng-maxlength=255 required>
+                    <div ng-if="registerAccount.category == 'FREELANCE' || registerAccount.category == 'COMPANY'" >
+                        <nm-siren ng-model="registerAccount.siren"></nm-siren>
                     </div>
 
                     <!-- Numéro déclaratif Association -->
