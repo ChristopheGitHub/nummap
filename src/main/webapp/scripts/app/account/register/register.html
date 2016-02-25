@@ -179,23 +179,7 @@
 
                             <!-- Phone -->
                             <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="companyPhone" translate="global.form.phone">Phone</label>
-                                <input type="text"
-                                  class="form-control"
-                                  name="companyPhone"
-                                  id="companyPhone"
-                                  placeholder="{{'global.form.phone.placeholder' | translate}}"
-                                  ng-pattern="/^[0-9]{10}$/"
-                                  ng-model="registerAccount.CompanyContactInformation.phone"
-                                  required>
-                              </div>
-                                <div ng-show="form.companyPhone.$dirty && form.companyPhone.$invalid">
-                                   <p class="help-block"
-                                       ng-show="form.companyPhone.$error.pattern" translate="global.messages.validate.companyPhone.pattern">
-                                        Your phone number is invalid.
-                                    </p>
-                                </div>
+                                <nm-phone ng-model="registerAccount.CompanyContactInformation.phone"></nm-phone>
                             </div>
                           </div>
                         </li>
@@ -464,24 +448,7 @@
 
                             <!-- Phone -->
                             <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="personPhone" translate="global.form.phone"></label>
-                                <input type="text"
-                                  class="form-control"
-                                  name="personPhone"
-                                  id="personPhone"
-                                  placeholder="{{'global.form.phone.placeholder' | translate}}"
-                                  ng-pattern="/^[0-9]{10}$/"
-                                  ng-model="registerAccount.PersonContactInformation.phone"
-                                  required>
-                                  <div ng-show="form.personPhone.$dirty && form.personPhone.$invalid">
-                                     <p class="help-block"
-                                         ng-show="form.personPhone.$error.pattern" translate="global.messages.validate.personPhone.pattern">
-                                          Your phone number is invalid.
-                                      </p>
-                                  </div>
-                              </div>
-                            </div>
+                                <nm-phone ng-model="registerAccount.PersonContactInformation.phone"></nm-phone>
                           </div>
                         </li>
                         <li class="list-group-item">

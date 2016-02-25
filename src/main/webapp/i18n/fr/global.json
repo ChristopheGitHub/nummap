@@ -131,7 +131,7 @@
                     "maxlength": "Votre e-mail de contact ne doit pas comporter plus de 50 caractères",
                     "invalid": "Votre email de contact n'est pas valide."
                 },
-                "personPhone": {
+                "phone": {
                     "pattern": "Votre numéro de téléphone doit être composé de chiffres uniquement."
                 },
                 "personPostOfficeBox": {

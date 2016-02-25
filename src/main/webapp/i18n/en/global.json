@@ -131,7 +131,7 @@
                     "maxlength": "Your contact e-mail cannot be longer than 50 characters",
                     "invalid": "Your contact e-mail is invalid."
                 },
-                "personPhone": {
+                "phone": {
                     "pattern": "Your phone number must be composed with numbers and spaces only."
                 },
                 "personPostOfficeBox": {
