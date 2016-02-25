@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('RegisterController', function ($scope, $translate, $timeout, Auth, Competencies) {
+    .controller('RegisterController', function ($scope, $translate, $timeout, Auth) {
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;
@@ -15,12 +15,6 @@ angular.module('nummapApp')
         $scope.domainsSelected = [];
         $scope.competenciesSelected = [];
 
-
-        Competencies.query(function(result) {
-            $scope.competencies = result;
-            console.log($scope.competencies);
-        });
-
         $scope.categories = [
             {value: 'STUDENT', translationKey: 'register.form.category.student'},
             {value: 'PROFESSOR', translationKey: 'register.form.category.professor'},
@@ -28,17 +22,6 @@ angular.module('nummapApp')
             {value: 'COMPANY', translationKey: 'register.form.category.company'},
             {value: 'ASSOCIATION', translationKey: 'register.form.category.association'}
         ];
-
-
-        $scope.loadTags = function(query) {
-            var res = [];
-            $scope.competencies.forEach(function(element) {
-                if (element.name.substr(0, query.length) === query) {
-                    res.push(element);
-                }
-            });
-            return res;
-        };
 
         $scope.addElement = function(list) {
             list.push({});

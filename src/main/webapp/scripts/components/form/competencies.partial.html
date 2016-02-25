@@ -1,0 +1,14 @@
+<div class="form-group">
+ <label>Competencies</label>
+  <tags-input ng-model="competenciesSelectedArray"
+    display-property="name"
+    placeholder="Add a competence / Ajouter une compétence"
+    add-on-space="true"
+    min-length="1"
+    add-from-autocomplete-only="true">
+    <auto-complete source="loadTags($query)"
+      display-property="name"
+      min-length="1"
+      max-results-to-show="5"></auto-complete>
+  </tags-input>
+</div>
