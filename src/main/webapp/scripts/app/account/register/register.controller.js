@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('RegisterController', function ($scope, $translate, $timeout, Auth, Domains, Competencies) {
+    .controller('RegisterController', function ($scope, $translate, $timeout, Auth, Competencies) {
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;
@@ -15,22 +15,12 @@ angular.module('nummapApp')
         $scope.domainsSelected = [];
         $scope.competenciesSelected = [];
 
-        // Récupère la liste de secteurs, compétences et écoles
-        Domains.query(function(result) {
-            $scope.sectors = result;
-            console.log($scope.sectors);
-        });
+
         Competencies.query(function(result) {
             $scope.competencies = result;
             console.log($scope.competencies);
         });
 
-        // Valeurs pour le questionnaire
-        $scope.fields = [
-            {name: 'Outsourcing', value: 'OUTSOURCING'},
-            {name: 'Consulting', value: 'CONSULTING'},
-            {name: 'System Integration', value: 'SYSTEM_INTEGRATION'}
-        ];
         $scope.categories = [
             {value: 'STUDENT', translationKey: 'register.form.category.student'},
             {value: 'PROFESSOR', translationKey: 'register.form.category.professor'},

@@ -1,0 +1,18 @@
+<div class="form-group">
+  <label>Sectors</label>
+  <div class="row">
+
+    <div ng-repeat="item in sectorArray">
+      <div class="col-md-4">
+        <span>{{ item.name }}</span><br/>
+      </div>
+
+      <div class="col-md-2">
+        <input type="checkbox"
+          ng-model="item.checked"
+          ng-true-value="true"
+          ng-false-value="false">
+      </div>
+    </div>
+  </div>
+</div>

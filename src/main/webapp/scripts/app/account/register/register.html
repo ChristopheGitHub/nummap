@@ -343,45 +343,12 @@
                     Informations professionnelles
                   </div>
                   <div class="panel-body">
+
                     <!-- Sectors -->
-                    <div class="form-group">
-                      <label>Sectors</label>
-                      <div class="row">
-
-                        <div ng-repeat="item in sectors">
-                          <div class="col-md-4">
-                            <span>{{ item.name }}</span><br/>
-                          </div>
-
-                          <div class="col-md-2">
-                            <input type="checkbox"
-                              ng-model="item.checked"
-                              ng-true-value="true"
-                              ng-false-value="false">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <nm-sector ng-model="sectors"></nm-sector>
 
                     <!-- Fields -->
-                    <div class="form-group">
-                      <label>Fields</label>
-                      <div class="row">
-
-                        <div ng-repeat="item in fields">
-                          <div class="col-md-4">
-                            <span>{{ item.name }}</span><br/>
-                          </div>
-
-                          <div class="col-md-2">
-                            <input type="checkbox"
-                              ng-model="item.checked"
-                              ng-true-value="true"
-                              ng-false-value="false">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <nm-field ng-model="fields"></nm-field>
 
                     <!-- Competencies -->
                     <div class="form-group">
