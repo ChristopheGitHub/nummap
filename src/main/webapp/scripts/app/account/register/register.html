@@ -173,36 +173,7 @@
                           <div class="row">
                             <!-- Mail -->
                             <div class="col-lg-6">
-                             <div class="form-group">
-                                <label for="companyMail" translate="global.form.mail">E-mail</label>
-                                <input type="email"
-                                   class="form-control"
-                                   name="companyMail"
-                                   id="companyMail"
-                                   placeholder="{{'global.form.mail.placeholder' | translate}}"
-                                   ng-model="registerAccount.CompanyContactInformation.email"
-                                   ng-minlength=5
-                                   ng-maxlength=50
-                                   required>
-                             </div>
-                                <div ng-show="form.companyMail.$dirty && form.companyMail.$invalid">
-                                    <p class="help-block"
-                                           ng-show="form.companyMail.$error.required" translate="global.messages.validate.personMail.required">
-                                        Your contact e-mail is required.
-                                    </p>
-                                    <p class="help-block"
-                                           ng-show="form.companyMail.$error.minlength" translate="global.messages.validate.personMail.minlength">
-                                        Your contact e-mail is required to be at least 5 characters
-                                    </p>
-                                    <p class="help-block"
-                                           ng-show="form.companyMail.$error.maxlength" translate="global.messages.validate.personMail.maxlength">
-                                        Your contact e-mail cannot be longer than 50 characters
-                                    </p>
-                                    <p class="help-block"
-                                       ng-show="form.companyMail.$error.email" translate="global.messages.validate.personMail.invalid">
-                                        Your contact e-mail is invalid.
-                                    </p>
-                                </div>
+                                <nm-mail ng-model="registerAccount.CompanyContactInformation.email"></nm-mail>
                             </div>
 
 
@@ -488,36 +459,7 @@
                           <div class="row">
                             <!-- Mail -->
                             <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="personMail" translate="global.form.mail"></label>
-                                <input type="email"
-                                  class="form-control"
-                                  name="personMail"
-                                  id="personMail"
-                                  placeholder="{{'global.form.mail.placeholder' | translate}}"
-                                  ng-model="registerAccount.PersonContactInformation.email"
-                                  ng-minlength=5
-                                  ng-maxlength=50
-                                  required>
-                                  <div ng-show="form.personMail.$dirty && form.personMail.$invalid">
-                                      <p class="help-block"
-                                             ng-show="form.personMail.$error.required" translate="global.messages.validate.personMail.required">
-                                          Your contact e-mail is required.
-                                      </p>
-                                      <p class="help-block"
-                                             ng-show="form.personMail.$error.minlength" translate="global.messages.validate.personMail.minlength">
-                                          Your contact e-mail is required to be at least 5 characters
-                                      </p>
-                                      <p class="help-block"
-                                             ng-show="form.personMail.$error.maxlength" translate="global.messages.validate.personMail.maxlength">
-                                          Your contact e-mail cannot be longer than 50 characters
-                                      </p>
-                                      <p class="help-block"
-                                         ng-show="form.personMail.$error.email" translate="global.messages.validate.personMail.invalid">
-                                          Your contact e-mail is invalid.
-                                      </p>
-                                  </div>
-                              </div>
+                                <nm-mail ng-model="registerAccount.PersonContactInformation.email"></nm-mail>
                             </div>
 
                             <!-- Phone -->

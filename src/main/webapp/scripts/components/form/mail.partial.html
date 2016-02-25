@@ -1,0 +1,30 @@
+<div ng-form = "mail" class="form-group">
+  <label for="companyMail" translate="global.form.mail">E-mail</label>
+  <input type="email"
+     class="form-control"
+     name="companyMail"
+     id="companyMail"
+     placeholder="{{'global.form.mail.placeholder' | translate}}"
+     ng-model="mailText"
+     ng-minlength=5
+     ng-maxlength=50
+     required>
+    <div ng-show="mail.$dirty && mail.$invalid">
+        <p class="help-block"
+               ng-show="mail.$error.required" translate="global.messages.validate.personMail.required">
+            Your contact e-mail is required.
+        </p>
+        <p class="help-block"
+               ng-show="mail.$error.minlength" translate="global.messages.validate.personMail.minlength">
+            Your contact e-mail is required to be at least 5 characters
+        </p>
+        <p class="help-block"
+               ng-show="mail.$error.maxlength" translate="global.messages.validate.personMail.maxlength">
+            Your contact e-mail cannot be longer than 50 characters
+        </p>
+        <p class="help-block"
+           ng-show="mail.$error.email" translate="global.messages.validate.personMail.invalid">
+            Your contact e-mail is invalid.
+        </p>
+    </div>
+</div>
