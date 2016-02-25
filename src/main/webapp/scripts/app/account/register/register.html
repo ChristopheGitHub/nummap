@@ -132,26 +132,8 @@
                     Ces informations seront visibles sur la carte par les visiteurs du site.
                   </div>
                   <div class="panel-body">
-                    <!-- Description -->
-                     <div class="form-group">
-                        <label translate="global.form.description">Description</label>
-                        <textarea class="form-control" name="description" placeholder="{{'global.form.description.placeholder' | translate}}"
-                               ng-model="registerAccount.description" ng-minlength=10 ng-maxlength=255 rows="5" required></textarea>
-                        <div ng-show="form.description.$dirty && form.description.$invalid">
-                            <p class="help-block"
-                                   ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
-                                Your description is required.
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
-                                Your description is required to be at least 255 characters
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
-                                Your description cannot be longer than 255 characters
-                            </p>
-                        </div>
-                    </div>
+                        <!-- Description -->
+                        <nm-description ng-model="registerAccount.description" /></nm-description>
 
                     <!-- Category -->
                     <div class="form-group">

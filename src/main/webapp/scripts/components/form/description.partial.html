@@ -1,0 +1,26 @@
+<div ng-form="description" class="form-group">
+    <label translate="global.form.description">Description</label>
+    <textarea
+        class="form-control"
+        name="description"
+        placeholder="{{'global.form.description.placeholder' | translate}}"
+        ng-model="descriptionText"
+        ng-minlength=10
+        ng-maxlength=255
+        rows="5"
+        required></textarea>
+    <div ng-show="description.$dirty && description.$invalid">
+        <p class="help-block"
+               ng-show="description.$error.required" translate="global.messages.validate.description.required">
+            Your description is required.
+        </p>
+        <p class="help-block"
+               ng-show="description.$error.minlength" translate="global.messages.validate.description.minlength">
+            Your description is required to be at least 255 characters
+        </p>
+        <p class="help-block"
+               ng-show="description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
+            Your description cannot be longer than 255 characters
+        </p>
+    </div>
+</div>
