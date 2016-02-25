@@ -54,7 +54,7 @@
                         </p>
                         </div>
                     </div>
-                    
+
                     <!-- E-mail -->
                     <div class="form-group">
                         <label translate="global.form.email">E-mail</label>
@@ -79,7 +79,7 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <!-- Password -->
                     <div class="form-group">
                         <label translate="global.form.newpassword">New password</label>
@@ -101,7 +101,7 @@
                         </div>
                         <password-strength-bar password-to-check="registerAccount.password"></password-strength-bar>
                     </div>
-                    
+
                     <!-- Password confirmation -->
                     <div class="form-group">
                         <label translate="global.form.confirmpassword">New password confirmation</label>
@@ -122,7 +122,7 @@
                             </p>
                         </div>
                     </div>
-                    
+
                   </div>
                 </div>
 
@@ -152,7 +152,7 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <!-- Category -->
                     <div class="form-group">
                         <label translate="global.form.category">Category</label><br/>
@@ -194,13 +194,13 @@
                              <div class="form-group">
                                 <label for="companyMail" translate="global.form.mail">E-mail</label>
                                 <input type="email"
-                                   class="form-control" 
-                                   name="companyMail" 
-                                   id="companyMail" 
+                                   class="form-control"
+                                   name="companyMail"
+                                   id="companyMail"
                                    placeholder="{{'global.form.mail.placeholder' | translate}}"
-                                   ng-model="registerAccount.CompanyContactInformation.email" 
-                                   ng-minlength=5 
-                                   ng-maxlength=50 
+                                   ng-model="registerAccount.CompanyContactInformation.email"
+                                   ng-minlength=5
+                                   ng-maxlength=50
                                    required>
                              </div>
                                 <div ng-show="form.companyMail.$dirty && form.companyMail.$invalid">
@@ -222,19 +222,19 @@
                                     </p>
                                 </div>
                             </div>
-                                                
-                                                
+
+
                             <!-- Phone -->
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="companyPhone" translate="global.form.phone">Phone</label>
-                                <input type="text" 
-                                  class="form-control" 
+                                <input type="text"
+                                  class="form-control"
                                   name="companyPhone"
                                   id="companyPhone"
                                   placeholder="{{'global.form.phone.placeholder' | translate}}"
-                                  ng-pattern="/^[0-9]{10}$/" 
-                                  ng-model="registerAccount.CompanyContactInformation.phone" 
+                                  ng-pattern="/^[0-9]{10}$/"
+                                  ng-model="registerAccount.CompanyContactInformation.phone"
                                   required>
                               </div>
                                 <div ng-show="form.companyPhone.$dirty && form.companyPhone.$invalid">
@@ -253,43 +253,43 @@
                               <div class="col-lg-6">
                                 <div class="form-group">
                                   <label for="companyAddress" translate="global.form.address">Address</label>
-                                  <input type="text" 
-                                    class="form-control" 
-                                    name="companyAddress" 
-                                    id="companyAddress" 
+                                  <input type="text"
+                                    class="form-control"
+                                    name="companyAddress"
+                                    id="companyAddress"
                                     placeholder="{{'global.form.address.placeholder' | translate}}"
-                                    ng-model="registerAccount.CompanyContactInformation.Address.street" 
-                                    ng-minlength=5 
+                                    ng-model="registerAccount.CompanyContactInformation.Address.street"
+                                    ng-minlength=5
                                     ng-maxlength=50>
                                 </div>
                               </div>
-                                                
+
                               <!-- Complement -->
                               <div class="col-lg-6">
                                 <div class="form-group">
                                   <label for="companyAdressComplement" translate="global.form.address.complement.placeholder">Address complement</label>
-                                  <input type="text" 
-                                    class="form-control" 
-                                    name="companyAdressComplement" 
-                                    id="companyAdressComplement" 
+                                  <input type="text"
+                                    class="form-control"
+                                    name="companyAdressComplement"
+                                    id="companyAdressComplement"
                                     placeholder="{{'global.form.address.complement.placeholder' | translate}}"
                                     ng-model="registerAccount.CompanyContactInformation.Address.adressComplement">
                                 </div>
                               </div>
                           </div>
-                                                
+
                           <!-- BP & Postal code -->
                           <div class="row">
                             <!-- BP -->
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="companyPostOfficeBox" translate="global.form.address.postOfficeBox">Post-office box</label>
-                                <input type="number" 
-                                  class="form-control" 
-                                  name="companyPostOfficeBox" 
-                                  id="companyPostOfficeBox" 
+                                <input type="number"
+                                  class="form-control"
+                                  name="companyPostOfficeBox"
+                                  id="companyPostOfficeBox"
                                   placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
-                                  ng-model="registerAccount.CompanyContactInformation.Address.postalBox" 
+                                  ng-model="registerAccount.CompanyContactInformation.Address.postalBox"
                                   ng-pattern="/^[0-9]{5}$/">
                               </div>
                               <div ng-show="form.companyPostOfficeBox.$dirty && form.companyPostOfficeBox.$invalid">
@@ -299,18 +299,18 @@
                                   </p>
                               </div>
                             </div>
-                                            
+
                             <!-- Postal code -->
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="companyPostalCode" translate="global.form.address.postalCode">Postal code</label>
-                                <input type="number" 
-                                  class="form-control" 
-                                  name="companyPostalCode" 
-                                  id="companyPostalCode" 
+                                <input type="number"
+                                  class="form-control"
+                                  name="companyPostalCode"
+                                  id="companyPostalCode"
                                   placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
-                                  ng-model="registerAccount.CompanyContactInformation.Address.postalCode" 
-                                  ng-pattern="/^[0-9]{5}$/" 
+                                  ng-model="registerAccount.CompanyContactInformation.Address.postalCode"
+                                  ng-pattern="/^[0-9]{5}$/"
                                   required>
                               </div>
                               <div ng-show="form.companyPostalCode.$dirty && form.companyPostalCode.$invalid">
@@ -321,21 +321,21 @@
                               </div>
                             </div>
                           </div>
-                                                                                          
-                                            
+
+
                           <!-- City -->
                           <div class="form-group">
                             <label for="companyCity" translate="global.form.address.city">City</label>
-                            <input type="text" 
-                              class="form-control" 
-                              name="companyCity" 
-                              id="companyCity" 
+                            <input type="text"
+                              class="form-control"
+                              name="companyCity"
+                              id="companyCity"
                               placeholder="{{'global.form.address.city.placeholder' | translate}}"
-                              ng-model="registerAccount.CompanyContactInformation.Address.city" 
+                              ng-model="registerAccount.CompanyContactInformation.Address.city"
                               required>
                           </div>
                         </li>
-                        <li class="list-group-item">                                                  
+                        <li class="list-group-item">
                           <div class="form-group">
                             <label translate="global.form.website">Web site</label>
                             <input type="url" class="form-control" name="companyWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
@@ -356,11 +356,11 @@
                             </div>
                           </div>
                         </li>
-                        <li class="list-group-item">                        
+                        <li class="list-group-item">
                           <!-- Social Networks -->
                           <div class="form-group">
                             <label translate="global.form.socialNetwork">Social Networks</label>
-                                                
+
                             <ul ng-form="itemsForm">
                                 <li ng-repeat="item in companySocialNetworkList" ng-form="itemForm">
                                     <label for="itemText">Entrée</label>
@@ -377,11 +377,11 @@
                                      </ul>
                                  </li>
                              </ul>
-                                                
+
                              <button ng-click="addElement(companySocialNetworkList)" ng-disabled="itemsForm.$invalid">Add an element</button>
                           </div>
                         </li>
-                      </ul>    
+                      </ul>
                     </div>
 
                     <!-- Personal information question -->
@@ -415,16 +415,16 @@
                         <p ng-if="registerAccount.category == 'STUDENT'">
                           Vous êtes étudiant. Indiquez vos informations de contact. L'adresse est optionnelle.
                         </p>
-                                          
+
                         <p ng-if="registerAccount.category == 'COMPANY'">
                           Contact dans l'entreprise (secrétaire, RH, patron...).
                         </p>
                       </div>
-                      
+
                       <ul class="list-group">
                         <li class="list-group-item" ng-show="registerAccount.category === 'STUDENT' ||
                           registerAccount.category === 'PROFESSOR'">
-                          
+
                            <!-- Ecole -->
                             <div class="form-group">
                                 <!-- <label translate="global.form.category">Ecole</label><br/> -->
@@ -444,12 +444,12 @@
                                 <div class="form-group">
                                   <label for="firstname" translate="global.form.firstname">First name</label>
                                   <input type="text"
-                                      class="form-control" 
+                                      class="form-control"
                                       name="firstname"
-                                      id="firstname" 
+                                      id="firstname"
                                       placeholder="{{'global.form.firstname.placeholder' | translate}}"
                                       ng-model="registerAccount.PersonContactInformation.firstName"
-                                      ng-minlength=2 
+                                      ng-minlength=2
                                       ng-maxlength=50
                                       required>
                                     <div ng-show="form.firstname.$dirty && form.firstname.$invalid">
@@ -468,20 +468,20 @@
                                     </div>
                                 </div>
                               </div>
-                              
+
                               <!-- Last name -->
                               <div class="col-lg-6">
                                 <div class="form-group">
                                   <label for="lastname" translate="global.form.lastname">Last name</label>
                                   <input
-                                    type="text" 
-                                    class="form-control" 
+                                    type="text"
+                                    class="form-control"
                                     name="lastname"
-                                    id="lastname" 
+                                    id="lastname"
                                     placeholder="{{'global.form.lastname.placeholder' | translate}}"
-                                    ng-model="registerAccount.PersonContactInformation.lastName" 
-                                    ng-minlength=2 
-                                    ng-maxlength=50 
+                                    ng-model="registerAccount.PersonContactInformation.lastName"
+                                    ng-minlength=2
+                                    ng-maxlength=50
                                     required>
                                     <div ng-show="form.lastname.$dirty && form.lastname.$invalid">
                                         <p class="help-block"
@@ -509,11 +509,11 @@
                               <div class="form-group">
                                 <label for="personMail" translate="global.form.mail"></label>
                                 <input type="email"
-                                  class="form-control" 
+                                  class="form-control"
                                   name="personMail"
-                                  id="personMail" 
+                                  id="personMail"
                                   placeholder="{{'global.form.mail.placeholder' | translate}}"
-                                  ng-model="registerAccount.PersonContactInformation.email" 
+                                  ng-model="registerAccount.PersonContactInformation.email"
                                   ng-minlength=5
                                   ng-maxlength=50
                                   required>
@@ -537,7 +537,7 @@
                                   </div>
                               </div>
                             </div>
-                                            
+
                             <!-- Phone -->
                             <div class="col-lg-6">
                               <div class="form-group">
@@ -545,7 +545,7 @@
                                 <input type="text"
                                   class="form-control"
                                   name="personPhone"
-                                  id="personPhone" 
+                                  id="personPhone"
                                   placeholder="{{'global.form.phone.placeholder' | translate}}"
                                   ng-pattern="/^[0-9]{10}$/"
                                   ng-model="registerAccount.PersonContactInformation.phone"
@@ -567,13 +567,13 @@
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="personAddress" translate="global.form.address"></label>
-                                <input 
-                                  type="text" 
-                                  class="form-control" 
+                                <input
+                                  type="text"
+                                  class="form-control"
                                   name="personAddress"
                                   id="personAddress"
                                   placeholder="{{'global.form.address.placeholder' | translate}}"
-                                  ng-model="registerAccount.PersonContactInformation.Address.street" 
+                                  ng-model="registerAccount.PersonContactInformation.Address.street"
                                   ng-minlength=5 ng-
                                   maxlength=50>
                               </div>
@@ -582,9 +582,9 @@
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="personAdressComplement" translate="global.form.address.complement"></label>
-                                <input 
-                                  type="text" 
-                                  class="form-control" 
+                                <input
+                                  type="text"
+                                  class="form-control"
                                   name="personAdressComplement"
                                   id="personAdressComplement"
                                   placeholder="{{'global.form.address.complement.placeholder' | translate}}"
@@ -594,18 +594,18 @@
                           </div>
                           <!-- BP & Postal code -->
                           <div class="row">
-                                        
+
                               <!-- BP -->
                               <div class="col-lg-6">
                                 <div class="form-group">
                                   <label for="personPostOfficeBox" translate="global.form.address.postOfficeBox">Post-office box</label>
-                                  <input 
-                                    type="number" 
-                                    class="form-control" 
+                                  <input
+                                    type="number"
+                                    class="form-control"
                                     name="personPostOfficeBox"
-                                    id="personPostOfficeBox" 
+                                    id="personPostOfficeBox"
                                     placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
-                                    ng-model="registerAccount.PersonContactInformation.Address.postalBox" 
+                                    ng-model="registerAccount.PersonContactInformation.Address.postalBox"
                                     ng-pattern="/^[0-9]{5}$/">
                                     <div ng-show="form.personPostOfficeBox.$dirty && form.personPostOfficeBox.$invalid">
                                         <p class="help-block"
@@ -621,13 +621,13 @@
                                 <div class="form-group">
                                   <label for="personPostalCode" translate="global.form.address.postalCode">Postal code</label>
                                   <input
-                                    type="number" 
-                                    class="form-control" 
+                                    type="number"
+                                    class="form-control"
                                     name="personPostalCode"
                                     id="personPostalCode"
                                     placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
-                                    ng-model="registerAccount.PersonContactInformation.Address.postalCode" 
-                                    ng-pattern="/^[0-9]{5}$/" 
+                                    ng-model="registerAccount.PersonContactInformation.Address.postalCode"
+                                    ng-pattern="/^[0-9]{5}$/"
                                     required>
                                   <div ng-show="form.personPostalCode.$dirty && form.personPostalCode.$invalid">
                                       <p class="help-block"
@@ -642,16 +642,16 @@
                           <div class="form-group">
                             <label for="personCity" translate="global.form.address.city"></label>
                             <input
-                              type="text" 
-                              class="form-control" 
+                              type="text"
+                              class="form-control"
                               name="personCity"
-                              id="personCity" 
+                              id="personCity"
                               placeholder="{{'global.form.address.city.placeholder' | translate}}"
                               ng-model="registerAccount.PersonContactInformation.Address.city"
                               required>
                           </div>
                         </li>
-                        <li class="list-group-item">                
+                        <li class="list-group-item">
                           <!-- Website -->
                           <div class="form-group">
                             <label translate="global.form.website">Web site</label>
@@ -677,7 +677,7 @@
                           <!-- Social Networks -->
                           <div class="form-group">
                               <label translate="global.form.socialNetwork">Social Networks</label>
-                        
+
                               <ul ng-form="itemsForm">
                                   <li ng-repeat="item in personSocialNetworkList" ng-form="itemForm">
                                       <label for="itemText">Entrée</label>
@@ -694,7 +694,7 @@
                                        </ul>
                                    </li>
                                </ul>
-                        
+
                                <button ng-click="addElement(personSocialNetworkList)" ng-disabled="itemsForm.$invalid">Add an element</button>
                           </div>
                         </li>
@@ -728,42 +728,42 @@
                     <div class="form-group">
                       <label>Sectors</label>
                       <div class="row">
-                        
+
                         <div ng-repeat="item in sectors">
                           <div class="col-md-4">
                             <span>{{ item.name }}</span><br/>
                           </div>
-                          
+
                           <div class="col-md-2">
                             <input type="checkbox"
-                              ng-model="item.checked" 
-                              ng-true-value="true" 
+                              ng-model="item.checked"
+                              ng-true-value="true"
                               ng-false-value="false">
                           </div>
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- Fields -->
                     <div class="form-group">
                       <label>Fields</label>
                       <div class="row">
-                        
+
                         <div ng-repeat="item in fields">
                           <div class="col-md-4">
                             <span>{{ item.name }}</span><br/>
                           </div>
-                          
+
                           <div class="col-md-2">
                             <input type="checkbox"
-                              ng-model="item.checked" 
-                              ng-true-value="true" 
+                              ng-model="item.checked"
+                              ng-true-value="true"
                               ng-false-value="false">
                           </div>
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- Competencies -->
                     <div class="form-group">
                      <label>Competencies</label>
