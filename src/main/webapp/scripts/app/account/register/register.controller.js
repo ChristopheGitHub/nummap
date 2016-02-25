@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('RegisterController', function ($scope, $translate, $timeout, Auth, Domains, Competencies, School) {
+    .controller('RegisterController', function ($scope, $translate, $timeout, Auth, Domains, Competencies) {
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;
@@ -23,11 +23,6 @@ angular.module('nummapApp')
         Competencies.query(function(result) {
             $scope.competencies = result;
             console.log($scope.competencies);
-        });
-
-        School.query(function(result) {
-            $scope.schools = result;
-            console.log($scope.schools);
         });
 
         // Valeurs pour le questionnaire
