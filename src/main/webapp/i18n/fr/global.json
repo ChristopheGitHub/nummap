@@ -139,6 +139,11 @@
                 },
                 "personPostalCode": {
                     "pattern": "Votre code postale doit être composé de 6 chiffres uniquement."
+                },
+                "name": {
+                    "required": "Votre compagnie / nom d'association est requis.",
+                    "minlength": "Votre compagnie / nom d'association doit comporter au moins 2 caractères.",
+                    "maxlength": "Votre compagnie / nom d'association ne doit pas comporter plus de 50 caractères."
                 }
             }
         }

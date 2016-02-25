@@ -1,0 +1,27 @@
+<div ng-form="firstname" class="form-group">
+  <label for="firstname" translate="global.form.firstname">First name</label>
+  <input
+      type="text"
+      class="form-control"
+      name="firstname"
+      id="firstname"
+      placeholder="{{'global.form.firstname.placeholder' | translate}}"
+      ng-model="firstnameText"
+      ng-minlength=2
+      ng-maxlength=50
+      required>
+    <div ng-show="firstname.$dirty && firstname.$invalid">
+        <p class="help-block"
+               ng-show="firstname.$error.required" translate="global.messages.validate.firstname.required">
+            Your firstname is required.
+        </p>
+        <p class="help-block"
+               ng-show="firstname.$error.minlength" translate="global.messages.validate.firstname.minlength">
+            Your firstname is required to be at least 2 characters
+        </p>
+        <p class="help-block"
+               ng-show="firstname.$error.maxlength" translate="global.messages.validate.firstname.maxlength">
+            Your firstname cannot be longer than 50 characters
+        </p>
+    </div>
+</div>

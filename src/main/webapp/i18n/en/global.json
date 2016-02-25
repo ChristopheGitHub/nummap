@@ -142,8 +142,8 @@
                 },
                 "name": {
                     "required": "Your company / association name is required.",
-                    "minlength": "Your company / association name is required to be at least 1 characters",
-                    "maxlength": "Your company / association name cannot be longer than 50 characters"
+                    "minlength": "Your company / association name is required to be at least 1 characters.",
+                    "maxlength": "Your company / association name cannot be longer than 50 characters."
                 }
             }
         }

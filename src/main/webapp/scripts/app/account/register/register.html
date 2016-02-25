@@ -132,8 +132,9 @@
                     Ces informations seront visibles sur la carte par les visiteurs du site.
                   </div>
                   <div class="panel-body">
-                        <!-- Description -->
-                        <nm-description ng-model="registerAccount.description" /></nm-description>
+
+                    <!-- Description -->
+                    <nm-description ng-model="registerAccount.description" /></nm-description>
 
                     <!-- Category -->
                     <div class="form-group">
@@ -151,36 +152,23 @@
                       </div>
                       <ul class="list-group">
                         <li class="list-group-item">
-                          <!-- Company name -->
-                          <div class="form-group">
-                             <label translate="global.form.name">Name</label>
-                             <input type="text" class="form-control" name="companyName" placeholder="{{'global.form.name.placeholder' | translate}}"
-                                    ng-model="registerAccount.CompanyContactInformation.name" ng-minlength=1 ng-maxlength=50 required>
-                             <div ng-show="form.companyName.$dirty && form.companyName.$invalid">
-                                 <p class="help-block"
-                                        ng-show="form.companyName.$error.required" translate="global.messages.validate.name.required">
-                                     Your company / association name is required.
-                                 </p>
-                                 <p class="help-block"
-                                        ng-show="form.companyName.$error.minlength" translate="global.messages.validate.name.minlength">
-                                     Your company / association name is required to be at maximum 50 characters.
-                                 </p>
-                             </div>
-                          </div>
+                             <nm-name ng-model="registerAccount.CompanyContactInformation.name"></nm-name>
                         </li>
                         <li class="list-group-item">
+
                           <!-- Mail & Phone -->
                           <div class="row">
+
                             <!-- Mail -->
                             <div class="col-lg-6">
                                 <nm-mail ng-model="registerAccount.CompanyContactInformation.email"></nm-mail>
                             </div>
 
-
                             <!-- Phone -->
                             <div class="col-lg-6">
                                 <nm-phone ng-model="registerAccount.CompanyContactInformation.phone"></nm-phone>
                             </div>
+
                           </div>
                         </li>
                         <li class="list-group-item">
@@ -378,63 +366,12 @@
                           <div class="row">
                               <!-- First name -->
                               <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label for="firstname" translate="global.form.firstname">First name</label>
-                                  <input type="text"
-                                      class="form-control"
-                                      name="firstname"
-                                      id="firstname"
-                                      placeholder="{{'global.form.firstname.placeholder' | translate}}"
-                                      ng-model="registerAccount.PersonContactInformation.firstName"
-                                      ng-minlength=2
-                                      ng-maxlength=50
-                                      required>
-                                    <div ng-show="form.firstname.$dirty && form.firstname.$invalid">
-                                        <p class="help-block"
-                                               ng-show="form.firstname.$error.required" translate="global.messages.validate.firstname.required">
-                                            Your firstname is required.
-                                        </p>
-                                        <p class="help-block"
-                                               ng-show="form.firstname.$error.minlength" translate="global.messages.validate.firstname.minlength">
-                                            Your firstname is required to be at least 2 characters
-                                        </p>
-                                        <p class="help-block"
-                                               ng-show="form.firstname.$error.maxlength" translate="global.messages.validate.firstname.maxlength">
-                                            Your firstname cannot be longer than 50 characters
-                                        </p>
-                                    </div>
-                                </div>
+                                <nm-firstname ng-model="registerAccount.PersonContactInformation.firstName"></nm-firstname>
                               </div>
 
                               <!-- Last name -->
                               <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label for="lastname" translate="global.form.lastname">Last name</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    name="lastname"
-                                    id="lastname"
-                                    placeholder="{{'global.form.lastname.placeholder' | translate}}"
-                                    ng-model="registerAccount.PersonContactInformation.lastName"
-                                    ng-minlength=2
-                                    ng-maxlength=50
-                                    required>
-                                    <div ng-show="form.lastname.$dirty && form.lastname.$invalid">
-                                        <p class="help-block"
-                                               ng-show="form.lastname.$error.required" translate="global.messages.validate.lastname.required">
-                                            Your lastname is required.
-                                        </p>
-                                        <p class="help-block"
-                                               ng-show="form.lastname.$error.minlength" translate="global.messages.validate.lastname.minlength">
-                                            Your lastname is required to be at least 2 characters
-                                        </p>
-                                        <p class="help-block"
-                                               ng-show="form.lastname.$error.maxlength" translate="global.messages.validate.lastname.maxlength">
-                                            Your lastname cannot be longer than 50 characters
-                                        </p>
-                                    </div>
-                                </div>
+                                <nm-lastname ng-model="registerAccount.PersonContactInformation.lastName"></nm-lastname>
                               </div>
                           </div>
                         </li>
