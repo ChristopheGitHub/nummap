@@ -57,27 +57,7 @@
 
                     <!-- E-mail -->
                     <div class="form-group">
-                        <label translate="global.form.email">E-mail</label>
-                        <input type="email" class="form-control" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
-                               ng-model="registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
-                        <div ng-show="form.email.$dirty && form.email.$invalid">
-                            <p class="help-block"
-                                   ng-show="form.email.$error.required" translate="global.messages.validate.email.required">
-                                Your e-mail is required.
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.email.$error.email" translate="global.messages.validate.email.invalid">
-                                Your e-mail is invalid.
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.email.$error.minlength" translate="global.messages.validate.email.minlength">
-                                Your e-mail is required to be at least 5 characters
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.email.$error.maxlength" translate="global.messages.validate.email.maxlength">
-                                Your e-mail cannot be longer than 100 characters
-                            </p>
-                        </div>
+                        <nm-mail ng-model="registerAccount.email"></nm-mail>
                     </div>
 
                     <!-- Password -->
@@ -176,30 +156,12 @@
                           <div class="row">
                               <!-- Address -->
                               <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label for="companyAddress" translate="global.form.address">Address</label>
-                                  <input type="text"
-                                    class="form-control"
-                                    name="companyAddress"
-                                    id="companyAddress"
-                                    placeholder="{{'global.form.address.placeholder' | translate}}"
-                                    ng-model="registerAccount.CompanyContactInformation.Address.street"
-                                    ng-minlength=5
-                                    ng-maxlength=50>
-                                </div>
+                                <nm-address ng-model="registerAccount.CompanyContactInformation.Address.street"></nm-address>
                               </div>
 
                               <!-- Complement -->
                               <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label for="companyAdressComplement" translate="global.form.address.complement.placeholder">Address complement</label>
-                                  <input type="text"
-                                    class="form-control"
-                                    name="companyAdressComplement"
-                                    id="companyAdressComplement"
-                                    placeholder="{{'global.form.address.complement.placeholder' | translate}}"
-                                    ng-model="registerAccount.CompanyContactInformation.Address.adressComplement">
-                                </div>
+                                <nm-complement ng-model="registerAccount.CompanyContactInformation.Address.adressComplement"></nm-complement>
                               </div>
                           </div>
 
@@ -207,58 +169,17 @@
                           <div class="row">
                             <!-- BP -->
                             <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="companyPostOfficeBox" translate="global.form.address.postOfficeBox">Post-office box</label>
-                                <input type="number"
-                                  class="form-control"
-                                  name="companyPostOfficeBox"
-                                  id="companyPostOfficeBox"
-                                  placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
-                                  ng-model="registerAccount.CompanyContactInformation.Address.postalBox"
-                                  ng-pattern="/^[0-9]{5}$/">
-                              </div>
-                              <div ng-show="form.companyPostOfficeBox.$dirty && form.companyPostOfficeBox.$invalid">
-                                  <p class="help-block"
-                                         ng-show="form.companyPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
-                                      Your post-office box must be 5 numbers.
-                                  </p>
-                              </div>
+                                <nm-bp ng-model="registerAccount.CompanyContactInformation.Address.postalBox"></nm-bp>
                             </div>
 
                             <!-- Postal code -->
                             <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="companyPostalCode" translate="global.form.address.postalCode">Postal code</label>
-                                <input type="number"
-                                  class="form-control"
-                                  name="companyPostalCode"
-                                  id="companyPostalCode"
-                                  placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
-                                  ng-model="registerAccount.CompanyContactInformation.Address.postalCode"
-                                  ng-pattern="/^[0-9]{5}$/"
-                                  required>
-                              </div>
-                              <div ng-show="form.companyPostalCode.$dirty && form.companyPostalCode.$invalid">
-                                  <p class="help-block"
-                                         ng-show="form.companyPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
-                                      Your BP must be 5 numbers.
-                                  </p>
-                              </div>
+                                <nm-postalcode ng-model="registerAccount.CompanyContactInformation.Address.postalCode"></nm-postalcode>
                             </div>
                           </div>
 
-
-                          <!-- City -->
-                          <div class="form-group">
-                            <label for="companyCity" translate="global.form.address.city">City</label>
-                            <input type="text"
-                              class="form-control"
-                              name="companyCity"
-                              id="companyCity"
-                              placeholder="{{'global.form.address.city.placeholder' | translate}}"
-                              ng-model="registerAccount.CompanyContactInformation.Address.city"
-                              required>
-                          </div>
+                            <!-- City -->
+                            <nm-city ng-model="registerAccount.CompanyContactInformation.Address.city"></nm-city>
                         </li>
                         <li class="list-group-item">
                           <div class="form-group">
@@ -393,31 +314,11 @@
                           <div class="row">
                             <!-- Address -->
                             <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="personAddress" translate="global.form.address"></label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  name="personAddress"
-                                  id="personAddress"
-                                  placeholder="{{'global.form.address.placeholder' | translate}}"
-                                  ng-model="registerAccount.PersonContactInformation.Address.street"
-                                  ng-minlength=5 ng-
-                                  maxlength=50>
-                              </div>
+                              <nm-address ng-model="registerAccount.PersonContactInformation.Address.street"></nm-address>
                             </div>
                             <!-- Complement -->
                             <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="personAdressComplement" translate="global.form.address.complement"></label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  name="personAdressComplement"
-                                  id="personAdressComplement"
-                                  placeholder="{{'global.form.address.complement.placeholder' | translate}}"
-                                  ng-model="registerAccount.PersonContactInformation.Address.adressComplement">
-                              </div>
+                                <nm-complement ng-model="registerAccount.PersonContactInformation.Address.adressComplement"></nm-complement>
                             </div>
                           </div>
                           <!-- BP & Postal code -->
@@ -425,59 +326,17 @@
 
                               <!-- BP -->
                               <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label for="personPostOfficeBox" translate="global.form.address.postOfficeBox">Post-office box</label>
-                                  <input
-                                    type="number"
-                                    class="form-control"
-                                    name="personPostOfficeBox"
-                                    id="personPostOfficeBox"
-                                    placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
-                                    ng-model="registerAccount.PersonContactInformation.Address.postalBox"
-                                    ng-pattern="/^[0-9]{5}$/">
-                                    <div ng-show="form.personPostOfficeBox.$dirty && form.personPostOfficeBox.$invalid">
-                                        <p class="help-block"
-                                               ng-show="form.personPostOfficeBox.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
-                                            Your post-office box must be 5 numbers.
-                                        </p>
-                                    </div>
-                                </div>
+                                <nm-bp ng-model="registerAccount.PersonContactInformation.Address.postalBox"></nm-bp>
                               </div>
 
                               <!-- Postal code -->
                               <div class="col-lg-6">
-                                <div class="form-group">
-                                  <label for="personPostalCode" translate="global.form.address.postalCode">Postal code</label>
-                                  <input
-                                    type="number"
-                                    class="form-control"
-                                    name="personPostalCode"
-                                    id="personPostalCode"
-                                    placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
-                                    ng-model="registerAccount.PersonContactInformation.Address.postalCode"
-                                    ng-pattern="/^[0-9]{5}$/"
-                                    required>
-                                  <div ng-show="form.personPostalCode.$dirty && form.personPostalCode.$invalid">
-                                      <p class="help-block"
-                                             ng-show="form.personPostalCode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
-                                          Your BP must be 5 numbers.
-                                      </p>
-                                  </div>
-                                </div>
+                                <nm-postalcode ng-model="registerAccount.PersonContactInformation.Address.postalCode"></nm-postalcode>
                               </div>
+
                           </div>
                           <!-- City -->
-                          <div class="form-group">
-                            <label for="personCity" translate="global.form.address.city"></label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              name="personCity"
-                              id="personCity"
-                              placeholder="{{'global.form.address.city.placeholder' | translate}}"
-                              ng-model="registerAccount.PersonContactInformation.Address.city"
-                              required>
-                          </div>
+                            <nm-city ng-model="registerAccount.PersonContactInformation.Address.city"></nm-city>
                         </li>
                         <li class="list-group-item">
                           <!-- Website -->

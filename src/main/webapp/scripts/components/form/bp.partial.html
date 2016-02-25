@@ -1,0 +1,17 @@
+<div ng-form="bp" class="form-group">
+  <label for="personPostOfficeBox" translate="global.form.address.postOfficeBox">Post-office box</label>
+  <input
+    type="number"
+    class="form-control"
+    name="personPostOfficeBox"
+    id="personPostOfficeBox"
+    placeholder="{{'global.form.address.postOfficeBox.placeholder' | translate}}"
+    ng-model="bpText"
+    ng-pattern="/^[0-9]{5}$/">
+    <div ng-show="bp.$dirty && bp.$invalid">
+        <p class="help-block"
+               ng-show="bp.$error.pattern" translate="global.messages.validate.personPostOfficeBox.pattern">
+            Your post-office box must be 5 numbers.
+        </p>
+    </div>
+</div>

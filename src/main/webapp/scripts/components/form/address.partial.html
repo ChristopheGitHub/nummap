@@ -1,0 +1,12 @@
+<div ng-form="address" class="form-group">
+  <label for="personAddress" translate="global.form.address"></label>
+  <input
+    type="text"
+    class="form-control"
+    name="personAddress"
+    id="personAddress"
+    placeholder="{{'global.form.address.placeholder' | translate}}"
+    ng-model="addressText"
+    ng-minlength=5
+    ng-maxlength=50>
+</div>

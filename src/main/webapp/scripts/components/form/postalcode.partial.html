@@ -1,0 +1,18 @@
+<div ng-form="postalcode"class="form-group">
+  <label for="personPostalCode" translate="global.form.address.postalCode">Postal code</label>
+  <input
+    type="number"
+    class="form-control"
+    name="personPostalCode"
+    id="personPostalCode"
+    placeholder="{{'global.form.address.postalCode.placeholder' | translate}}"
+    ng-model="postalcodeText"
+    ng-pattern="/^[0-9]{5}$/"
+    required>
+  <div ng-show="postalcode.$dirty && postalcode.$invalid">
+      <p class="help-block"
+             ng-show="postalcode.$error.pattern" translate="global.messages.validate.personPostalCode.pattern">
+          Your BP must be 5 numbers.
+      </p>
+  </div>
+</div>
