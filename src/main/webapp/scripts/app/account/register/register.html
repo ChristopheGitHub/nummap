@@ -160,25 +160,7 @@
                             <nm-city ng-model="registerAccount.CompanyContactInformation.Address.city"></nm-city>
                         </li>
                         <li class="list-group-item">
-                          <div class="form-group">
-                            <label translate="global.form.website">Web site</label>
-                            <input type="url" class="form-control" name="companyWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
-                                   ng-model="registerAccount.CompanyContactInformation.website" ng-minlength=10 ng-maxlength=255 required>
-                            <div ng-show="form.description.$dirty && form.description.$invalid">
-                                <p class="help-block"
-                                       ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
-                                    Your description is required.
-                                </p>
-                                <p class="help-block"
-                                       ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
-                                    Your description is required to be at least 255 characters
-                                </p>
-                                <p class="help-block"
-                                       ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
-                                    Your description cannot be longer than 255 characters
-                                </p>
-                            </div>
-                          </div>
+                            <nm-website ng-model="registerAccount.CompanyContactInformation.website"></nm-website>
                         </li>
                         <li class="list-group-item">
                           <!-- Social Networks -->
@@ -317,26 +299,8 @@
                             <nm-city ng-model="registerAccount.PersonContactInformation.Address.city"></nm-city>
                         </li>
                         <li class="list-group-item">
-                          <!-- Website -->
-                          <div class="form-group">
-                            <label translate="global.form.website">Web site</label>
-                            <input type="url" class="form-control" name="personWebsite" placeholder="{{'global.form.website.placeholder' | translate}}"
-                                   ng-model="registerAccount.PersonContactInformation.website" ng-minlength=10 ng-maxlength=255 required>
-                            <div ng-show="form.description.$dirty && form.description.$invalid">
-                                <p class="help-block"
-                                       ng-show="form.description.$error.required" translate="global.messages.validate.description.required">
-                                    Your description is required.
-                                </p>
-                                <p class="help-block"
-                                       ng-show="form.description.$error.minlength" translate="global.messages.validate.description.minlength">
-                                    Your description is required to be at least 255 characters
-                                </p>
-                                <p class="help-block"
-                                       ng-show="form.description.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
-                                    Your description cannot be longer than 255 characters
-                                </p>
-                            </div>
-                          </div>
+                            <!-- Website -->
+                            <nm-website ng-model="registerAccount.PersonContactInformation.website"></nm-website>
                         </li>
                         <li class="list-group-item">
                           <!-- Social Networks -->
