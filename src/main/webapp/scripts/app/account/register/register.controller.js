@@ -28,8 +28,8 @@ angular.module('nummapApp')
             {value: 'COMPANY', translationKey: 'register.form.category.company'},
             {value: 'ASSOCIATION', translationKey: 'register.form.category.association'}
         ];
-        
-        
+
+
         $scope.loadTags = function(query) {
             var res = [];
             $scope.competencies.forEach(function(element) {
@@ -74,7 +74,7 @@ angular.module('nummapApp')
                 // Ajout des compétences
                 $scope.registerAccount.competencies = [];
                 $scope.competenciesSelected.forEach(function (element) {
-                    $scope.registerAccount.competencies.push(element.name);                 
+                    $scope.registerAccount.competencies.push(element.name);
                 });
 
                 // Ajout des réseaux sociaux
