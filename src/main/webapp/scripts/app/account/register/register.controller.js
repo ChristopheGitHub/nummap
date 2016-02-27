@@ -15,14 +15,6 @@ angular.module('nummapApp')
         $scope.domainsSelected = [];
         $scope.competenciesSelected = [];
 
-        $scope.categories = [
-            {value: 'STUDENT', translationKey: 'register.form.category.student'},
-            {value: 'PROFESSOR', translationKey: 'register.form.category.professor'},
-            {value: 'FREELANCE', translationKey: 'register.form.category.freelance'},
-            {value: 'COMPANY', translationKey: 'register.form.category.company'},
-            {value: 'ASSOCIATION', translationKey: 'register.form.category.association'}
-        ];
-
         $scope.addElement = function(list) {
             list.push({});
             console.log(list);
