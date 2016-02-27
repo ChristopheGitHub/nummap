@@ -15,11 +15,6 @@ angular.module('nummapApp')
         $scope.domainsSelected = [];
         $scope.competenciesSelected = [];
 
-        $scope.addElement = function(list) {
-            list.push({});
-            console.log(list);
-        };
-
         $scope.register = function () {
             if ($scope.registerAccount.password !== $scope.confirmPassword) {
                 $scope.doNotMatch = 'ERROR';
