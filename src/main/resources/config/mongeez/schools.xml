@@ -1,0 +1,28 @@
+<mongoChangeLog>
+    <changeSet changeId="ChangeSet-5" author="christophe">
+        <script>
+            db.T_SCHOOL.insert(
+            {
+                "_id" : ObjectId("56cf7d5544ae4d64ccf0627b"),
+                "_class" : "com.numlab.nummap.domain.School",
+                "name" : "EISTI",
+                "completeName" : "Ecole des Sciences du Traitement de l'Information",
+                "description" : "L'École internationale des sciences du traitement de l'information est l'une des 210 écoles d'ingénieurs françaises habilitées à délivrer un diplôme d'ingénieur. Située à Cergy et à Pau, elle est membre de la Conférence des grandes écoles.",
+                "address" : {
+                    "city" : "Pau",
+                    "street" : "2 Boulevard Lucien Favre",
+                    "postalCode" : 64000,
+                    "postalBox" : 0
+                },
+                "location" : {
+                    "latitude" : 43.3189551,
+                    "longitude" : -0.3606027
+                },
+                "created_by" : "admin",
+                "created_date" : ISODate("2016-02-25T22:16:53.286Z"),
+                "last_modified_by" : "admin",
+                "last_modified_date  " : ISODate("2016-02-25T22:16:53.286Z")
+            });
+        </script>
+    </changeSet>
+</mongoChangeLog>
