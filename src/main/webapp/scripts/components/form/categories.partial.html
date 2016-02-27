@@ -1,0 +1,7 @@
+<div class="form-group">
+    <label translate="global.form.category">Category</label><br/>
+    <select class="form-control"
+      ng-model="categoryChoice"
+      ng-options="opt.value as opt.translationKey | translate for opt in categories">
+    </select>
+</div>

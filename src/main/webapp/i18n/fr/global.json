@@ -148,6 +148,11 @@
                 "siren": {
                     "required": "Votre numéro SIREN est requis.",
                     "pattern": "Votre numéro SIREN doit être composé de 9 chiffres uniquement."
+                },
+                "associationNumber": {
+                    "required": "Votre numéro d'association est requis.",
+                    "minlength": "Votre numéro d'association doit comporter au moins 10 caractères.",
+                    "maxlength": "Votre numéro d'association ne doit pas comporter plus de 255 caractères."
                 }
             }
         }

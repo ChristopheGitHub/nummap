@@ -1,0 +1,24 @@
+<div ng-form="associationNumber" class="form-group">
+    <label for="associationNumber" translate="global.form.associationNumber">Association number</label>
+    <input
+    type="text"
+    class="form-control"
+    name="associationNumber"
+    placeholder="{{'global.form.associationNumber.placeholder' | translate}}"
+    ng-model="registerAccount.associationNumber"
+    ng-minlength=10
+    ng-maxlength=255 required>
+    <div ng-show="associationNumber.$dirty && associationNumber.$invalid">
+        <p class="help-block"
+               ng-show="associationNumber.$error.required" translate="global.messages.validate.associationNumber.required">
+            Your association number is required.
+        </p>
+        <p class="help-block"
+               ng-show="associationNumber.$error.minlength" translate="global.messages.validate.associationNumber.minlength">
+            Your association number is required to be at least 10 characters
+        </p>
+        <p class="help-block"
+               ng-show="associationNumber.$error.maxlength" translate="global.messages.validate.associationNumber.maxlength">
+            Your association number cannot be longer than 255 characters
+        </p>
+</div>

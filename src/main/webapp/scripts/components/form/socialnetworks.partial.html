@@ -1,0 +1,22 @@
+<div class="form-group">
+    <label translate="global.form.socialNetwork">Social Networks</label>
+
+    <ul ng-form="itemsForm">
+        <li ng-repeat="item in socialNetworkList" ng-form="itemForm">
+        <label for="itemText">Entrée</label>
+          <select ng-model="item.type">
+            <option value="FACEBOOK">Facebook</option>
+            <option value="TWITTER">Twitter</option>
+            <option value="LINKEDIN">LinkedIn</option>
+            <option value="GOOGLE_PLUS">Google Plus</option>
+            <option value="VIADEO">Viadeo</option>
+        </select>
+        <input name="itemText" type="text" ng-model="item.address" required />
+        <ul ng-show="itemForm.$invalid && itemForm.$dirty">
+             <li ng-show="itemForm.itemText.$error.required">This field is required.</li>
+         </ul>
+        </li>
+    </ul>
+
+    <button ng-click="addElement(socialNetworkList)" ng-disabled="itemsForm.$invalid">Add an element</button>
+</div>

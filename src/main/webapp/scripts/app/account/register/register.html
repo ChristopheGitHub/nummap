@@ -39,47 +39,10 @@
                     </div>
 
                     <!-- Password -->
-                    <div class="form-group">
-                        <label translate="global.form.newpassword">New password</label>
-                        <input type="password" class="form-control" name="password" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
-                               ng-model="registerAccount.password" ng-minlength=5 ng-maxlength=50 required>
-                        <div ng-show="form.password.$dirty && form.password.$invalid">
-                            <p class="help-block"
-                                   ng-show="form.password.$error.required" translate="global.messages.validate.newpassword.required">
-                                Your password is required.
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.password.$error.minlength" translate="global.messages.validate.newpassword.minlength">
-                                Your password is required to be at least 5 characters
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.password.$error.maxlength" translate="global.messages.validate.newpassword.maxlength">
-                                Your password cannot be longer than 50 characters
-                            </p>
-                        </div>
-                        <password-strength-bar password-to-check="registerAccount.password"></password-strength-bar>
-                    </div>
+                    <nm-password ng-model="registerAccount.password"></nm-password>
 
                     <!-- Password confirmation -->
-                    <div class="form-group">
-                        <label translate="global.form.confirmpassword">New password confirmation</label>
-                        <input type="password" class="form-control" name="confirmPassword" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
-                               ng-model="confirmPassword" ng-minlength=5 ng-maxlength=50 required>
-                        <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
-                            <p class="help-block"
-                                   ng-show="form.confirmPassword.$error.required" translate="global.messages.validate.confirmpassword.required">
-                                Your password confirmation is required.
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.confirmPassword.$error.minlength" translate="global.messages.validate.confirmpassword.minlength">
-                                Your password confirmation is required to be at least 5 characters
-                            </p>
-                            <p class="help-block"
-                                   ng-show="form.confirmPassword.$error.maxlength" translate="global.messages.validate.confirmpassword.maxlength">
-                                Your password confirmation cannot be longer than 50 characters
-                            </p>
-                        </div>
-                    </div>
+                    <nm-password-confirmation ng-model="confirmPassword"></nm-password-confirmation>
 
                   </div>
                 </div>
@@ -95,13 +58,7 @@
                     <nm-description ng-model="registerAccount.description" /></nm-description>
 
                     <!-- Category -->
-                    <div class="form-group">
-                        <label translate="global.form.category">Category</label><br/>
-                        <select class="form-control"
-                          ng-model="registerAccount.category"
-                          ng-options="opt.value as opt.translationKey | translate for opt in categories">
-                        </select>
-                    </div>
+                    <nm-categories ng-model="registerAccount.category"></nm-categories>
 
                     <!-- Company contact -->
                     <div class="panel panel-default" ng-if="registerAccount.category == 'COMPANY' || registerAccount.category == 'ASSOCIATION'">
@@ -164,28 +121,7 @@
                         </li>
                         <li class="list-group-item">
                           <!-- Social Networks -->
-                          <div class="form-group">
-                            <label translate="global.form.socialNetwork">Social Networks</label>
-
-                            <ul ng-form="itemsForm">
-                                <li ng-repeat="item in companySocialNetworkList" ng-form="itemForm">
-                                    <label for="itemText">Entrée</label>
-                                      <select ng-model="item.type">
-                                        <option value="FACEBOOK">Facebook</option>
-                                        <option value="TWITTER">Twitter</option>
-                                        <option value="LINKEDIN">LinkedIn</option>
-                                        <option value="GOOGLE_PLUS">Google Plus</option>
-                                        <option value="VIADEO">Viadeo</option>
-                                    </select>
-                                    <input name="itemText" type="text" ng-model="item.address" required />
-                                    <ul ng-show="itemForm.$invalid && itemForm.$dirty">
-                                         <li ng-show="itemForm.itemText.$error.required">This field is required.</li>
-                                     </ul>
-                                 </li>
-                             </ul>
-
-                             <button ng-click="addElement(companySocialNetworkList)" ng-disabled="itemsForm.$invalid">Add an element</button>
-                          </div>
+                          <nm-social-networks ng-model="companySocialNetworkList"></nm-social-networks>
                         </li>
                       </ul>
                     </div>
@@ -297,28 +233,7 @@
                         </li>
                         <li class="list-group-item">
                           <!-- Social Networks -->
-                          <div class="form-group">
-                              <label translate="global.form.socialNetwork">Social Networks</label>
-
-                              <ul ng-form="itemsForm">
-                                  <li ng-repeat="item in personSocialNetworkList" ng-form="itemForm">
-                                      <label for="itemText">Entrée</label>
-                                        <select ng-model="item.type">
-                                          <option value="FACEBOOK">Facebook</option>
-                                          <option value="TWITTER">Twitter</option>
-                                          <option value="LINKEDIN">LinkedIn</option>
-                                          <option value="GOOGLE_PLUS">Google Plus</option>
-                                          <option value="VIADEO">Viadeo</option>
-                                      </select>
-                                      <input name="itemText" type="text" ng-model="item.address" required />
-                                      <ul ng-show="itemForm.$invalid && itemForm.$dirty">
-                                           <li ng-show="itemForm.itemText.$error.required">This field is required.</li>
-                                       </ul>
-                                   </li>
-                               </ul>
-
-                               <button ng-click="addElement(personSocialNetworkList)" ng-disabled="itemsForm.$invalid">Add an element</button>
-                          </div>
+                          <nm-social-networks ng-model="personSocialNetworkList"></nm-social-networks>
                         </li>
                       </ul>
                     </div>
@@ -329,11 +244,8 @@
                     </div>
 
                     <!-- Numéro déclaratif Association -->
-                    <div ng-if="registerAccount.category == 'ASSOCIATION'"
-                    class="form-group">
-                      <label for="associationNumber" translate="global.form.associationNumber">Association number</label>
-                      <input type="text" class="form-control" name="associationNumber" placeholder="{{'global.form.associationNumber.placeholder' | translate}}"
-                             ng-model="registerAccount.associationNumber" ng-minlength=10 ng-maxlength=255 required>
+                    <div ng-if="registerAccount.category == 'ASSOCIATION'">
+                        <nm-association-number ng-model="registerAccount.associationNumber"></nm-association-number>
                     </div>
                   </div>
                 </div>

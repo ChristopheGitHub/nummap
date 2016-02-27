@@ -3,4 +3,5 @@
     <file path="users.xml"/>
     <file path="competences.xml"/>
     <file path="domains.xml"/>
+    <file path="schools.xml"/>
 </changeFiles>

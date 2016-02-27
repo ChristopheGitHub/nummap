@@ -148,6 +148,11 @@
                 "siren": {
                     "required": "Your SIREN number is required.",
                     "pattern": "Your SIREN number must be composed 9 numbers."
+                },
+                "associationNumber": {
+                    "required": "Your association number is required.",
+                    "minlength": "Your association number is required to be at least 10 characters.",
+                    "maxlength": "Your association number cannot be longer than 255 characters."
                 }
             }
         }

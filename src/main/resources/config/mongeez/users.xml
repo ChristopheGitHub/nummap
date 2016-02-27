@@ -63,6 +63,286 @@
                 "authorities": [{"_id": "ROLE_USER"}],
                 "validatedByAdmin" : "false"
             });
+            db.T_USER.insert(
+            {
+                "_id" : ObjectId("56d1f7e544ae9a60f5072d5a"),
+                "_class" : "com.numlab.nummap.domain.User",
+                "login" : "utilisateurfreelancetest",
+                "password" : "$2a$10$5vufVuMRMawOxVsxW9bAQuM98GjGba9w8t7Ci5TSSXUn6voN.Kx9S",
+                "email" : "christophe.guillonnet@gmail.com",
+                "location" : {
+                    "latitude" : 43.3135352,
+                    "longitude" : -0.3598254
+                },
+                "category" : "FREELANCE",
+                "description" : "Je suis un utilisateur de test de type freelance.",
+                "personContactInformation" : {
+                    "firstName" : "Prenom Freelance",
+                    "lastName" : "Nom Freelance",
+                    "phone" : "0102030405",
+                    "email" : "christophe.guillonnet@gmail.com",
+                    "address" : {
+                        "city" : "Pau",
+                        "street" : "27 Rue Saint-Exupéry",
+                        "postalCode" : 64000,
+                        "postalBox" : 0
+                    },
+                    "socialNetworkList" : [
+                        {
+                            "type" : "FACEBOOK",
+                            "address" : "fbfreelance"
+                        },
+                        {
+                            "type" : "TWITTER",
+                            "address" : "twfreelance"
+                        }
+                    ]
+                },
+                "competencies" : [],
+                "sectors" : [
+                    "Various",
+                    "Web site design",
+                    "System integration"
+                ],
+                "fields" : [
+                    "OUTSOURCING"
+                ],
+                "activated" : true,
+                "validatedByAdmin" : true,
+                "lang_key" : "fr",
+                "activation_key" : "23723227520135372815",
+                "authorities" : [
+                    {
+                        "_id" : "ROLE_USER"
+                    }
+                ],
+                "created_by" : "anonymousUser",
+                "created_date" : ISODate("2016-02-27T19:24:21.058Z"),
+                "last_modified_by" : "admin",
+                "last_modified_date  " : ISODate("2016-02-27T19:40:56.889Z")
+            });
+            db.T_USER.insert(
+            {
+                "_id" : ObjectId("56d1f92044ae9a60f5072d5d"),
+                "_class" : "com.numlab.nummap.domain.User",
+                "login" : "utilisateuretudianttest",
+                "password" : "$2a$10$q.FulbTPlTtT8hvJ.L1W/.EgEdURydkcWkOyJcL1GDQ9RE/tVb4zW",
+                "email" : "christophe.guillonnet2@gmail.com",
+                "location" : {
+                    "latitude" : 43.3098515,
+                    "longitude" : -0.3696448
+                },
+                "category" : "STUDENT",
+                "description" : "Je suis un étudiant test, voici ma description.",
+                "personContactInformation" : {
+                    "firstName" : "Etudiant prénom",
+                    "lastName" : "Etudiant nom",
+                    "phone" : "0102030405",
+                    "email" : "christophe.guillonnet@gmail.com",
+                    "address" : {
+                        "city" : "Pau",
+                        "street" : "38 Boulevard Recteur Jean Sarrailh",
+                        "postalCode" : 64000,
+                        "postalBox" : 0
+                    },
+                    "socialNetworkList" : [
+                        {
+                            "type" : "LINKEDIN",
+                            "address" : "etudiant.linkedin.test"
+                        },
+                        {
+                            "type" : "VIADEO",
+                            "address" : "viadeo.de.etudiant.test"
+                        }
+                    ]
+                },
+                "schoolId" : "56cf7d5544ae4d64ccf0627b",
+                "competencies" : [],
+                "sectors" : [
+                    "Administration",
+                    "Computer science"
+                ],
+                "fields" : [
+                    "OUTSOURCING",
+                    "SYSTEM_INTEGRATION"
+                ],
+                "activated" : true,
+                "validatedByAdmin" : true,
+                "lang_key" : "fr",
+                "activation_key" : "89969819818787072200",
+                "authorities" : [
+                    {
+                        "_id" : "ROLE_USER"
+                    }
+                ],
+                "created_by" : "anonymousUser",
+                "created_date" : ISODate("2016-02-27T19:29:36.181Z"),
+                "last_modified_by" : "admin",
+                "last_modified_date  " : ISODate("2016-02-27T19:40:58.273Z")
+            });
+            db.T_USER.insert(
+            {
+                "_id" : ObjectId("56d1f9ee44ae9a60f5072d5e"),
+                "_class" : "com.numlab.nummap.domain.User",
+                "login" : "utilisateurprofesseurtest",
+                "password" : "$2a$10$jufPLM.eCpijW7fkQxJJpuO.iAG9GAgvH1SCBPGtPoCFnkLIiE3Qu",
+                "email" : "christophe.guillonnet3@gmail.com",
+                "location" : {
+                    "latitude" : 43.2995742,
+                    "longitude" : -0.3613599
+                },
+                "category" : "PROFESSOR",
+                "description" : "Je suis un professeur test, voici ma description",
+                "personContactInformation" : {
+                    "firstName" : "Prenom Professeur",
+                    "lastName" : "Nom Professeur",
+                    "phone" : "0102030405",
+                    "email" : "christophe.guillonnet@gmail.com",
+                    "address" : {
+                        "city" : "Pau",
+                        "street" : "11 rue Henri Faisans",
+                        "postalCode" : 64000,
+                        "postalBox" : 0
+                    },
+                    "socialNetworkList" : [
+                        {
+                            "type" : "GOOGLE_PLUS",
+                            "address" : "googleplus.professeur.test"
+                        }
+                    ]
+                },
+                "schoolId" : "56cf7d5544ae4d64ccf0627b",
+                "competencies" : [],
+                "sectors" : [
+                    "System integration",
+                    "Outsourcing"
+                ],
+                "fields" : [
+                    "CONSULTING"
+                ],
+                "activated" : true,
+                "validatedByAdmin" : true,
+                "lang_key" : "fr",
+                "activation_key" : "45822008062257953151",
+                "authorities" : [
+                    {
+                        "_id" : "ROLE_USER"
+                    }
+                ],
+                "created_by" : "anonymousUser",
+                "created_date" : ISODate("2016-02-27T19:33:02.364Z"),
+                "last_modified_by" : "admin",
+                "last_modified_date  " : ISODate("2016-02-27T19:40:59.167Z")
+            });
+            db.T_USER.insert(
+            {
+                "_id" : ObjectId("56d1fa9d44ae9a60f5072d60"),
+                "_class" : "com.numlab.nummap.domain.User",
+                "login" : "utilisateurentreprisetest",
+                "password" : "$2a$10$EsFvaVPddwzjif1yE2Y.3.oxf9BaNBTbyZV5hDm7g6IHApB7EPb3S",
+                "email" : "christophe.guillonnet4@gmail.com",
+                "location" : {
+                    "latitude" : 43.3143548,
+                    "longitude" : -0.3334233
+                },
+                "category" : "COMPANY",
+                "description" : "Je suis une entreprise test",
+                "companyContactInformation" : {
+                    "name" : "NomEntrepriseTest",
+                    "phone" : "0102030405",
+                    "email" : "christophe.guillonnet@gmail.com",
+                    "address" : {
+                        "city" : "Pau",
+                        "street" : "64 rue de la Paix",
+                        "postalCode" : 64000,
+                        "postalBox" : 0
+                    },
+                    "socialNetworkList" : [
+                        {
+                            "type" : "TWITTER",
+                            "address" : "tw.entreprise.test"
+                        }
+                    ]
+                },
+                "competencies" : [],
+                "sectors" : [
+                    "Various",
+                    "Administration",
+                    "Computer science",
+                    "Consulting"
+                ],
+                "fields" : [
+                    "OUTSOURCING",
+                    "SYSTEM_INTEGRATION"
+                ],
+                "activated" : true,
+                "validatedByAdmin" : true,
+                "lang_key" : "fr",
+                "activation_key" : "15561449918136584700",
+                "authorities" : [
+                    {
+                        "_id" : "ROLE_USER"
+                    }
+                ],
+                "created_by" : "anonymousUser",
+                "created_date" : ISODate("2016-02-27T19:35:57.988Z"),
+                "last_modified_by" : "admin",
+                "last_modified_date  " : ISODate("2016-02-27T19:41:00.039Z")
+            });
+            db.T_USER.insert(
+            {
+                "_id" : ObjectId("56d1fbba44ae9a60f5072d61"),
+                "_class" : "com.numlab.nummap.domain.User",
+                "login" : "utilisateurassociationtest",
+                "password" : "$2a$10$XXnzrnHk4.NH8w.yGgh4BOGITmhob/mNkvy.Zwmmonfyn5v9ttUoG",
+                "email" : "christophe.guillonnet5@gmail.com",
+                "location" : {
+                    "latitude" : 43.2968268,
+                    "longitude" : -0.369439
+                },
+                "category" : "ASSOCIATION",
+                "description" : "Je suis une association test",
+                "companyContactInformation" : {
+                    "name" : "NomAssociationTest",
+                    "email" : "christophe.guillonnet@gmail.com",
+                    "address" : {
+                        "city" : "Pau",
+                        "street" : "13 Rue Serviez, Pau",
+                        "postalCode" : 64000,
+                        "postalBox" : 0
+                    },
+                    "socialNetworkList" : [
+                        {
+                            "type" : "FACEBOOK",
+                            "address" : "fb.association.test"
+                        }
+                    ]
+                },
+                "competencies" : [],
+                "sectors" : [
+                    "Various",
+                    "Administration",
+                    "Computer science",
+                    "Consulting"
+                ],
+                "fields" : [
+                    "OUTSOURCING",
+                    "SYSTEM_INTEGRATION"
+                ],
+                "activated" : true,
+                "validatedByAdmin" : true,
+                "lang_key" : "fr",
+                "activation_key" : "25573589879891930426",
+                "authorities" : [
+                    {
+                        "_id" : "ROLE_USER"
+                    }
+                ],
+                "created_by" : "anonymousUser",
+                "created_date" : ISODate("2016-02-27T19:40:42.747Z"),
+                "last_modified_by" : "admin",
+                "last_modified_date  " : ISODate("2016-02-27T19:41:00.896Z")
+            });
         </script>
     </changeSet>
 </mongoChangeLog>
