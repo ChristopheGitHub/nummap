@@ -244,11 +244,8 @@
                     </div>
 
                     <!-- Numéro déclaratif Association -->
-                    <div ng-if="registerAccount.category == 'ASSOCIATION'"
-                    class="form-group">
-                      <label for="associationNumber" translate="global.form.associationNumber">Association number</label>
-                      <input type="text" class="form-control" name="associationNumber" placeholder="{{'global.form.associationNumber.placeholder' | translate}}"
-                             ng-model="registerAccount.associationNumber" ng-minlength=10 ng-maxlength=255 required>
+                    <div ng-if="registerAccount.category == 'ASSOCIATION'">
+                        <nm-association-number ng-model="registerAccount.associationNumber"></nm-association-number>
                     </div>
                   </div>
                 </div>
