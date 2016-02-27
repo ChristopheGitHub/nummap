@@ -1,0 +1,14 @@
+<div ng-form="name" class="form-group">
+    <label translate="global.form.name">Name</label>
+    <input type="text" class="form-control" name="companyName" placeholder="{{'global.form.name.placeholder' | translate}}"
+    ng-model="nameText" ng-minlength=1 ng-maxlength=50 required>
+    <div ng-show="name.$dirty && name.$invalid">
+        <p class="help-block"
+        ng-show="name.$error.required" translate="global.messages.validate.name.required">
+            Your company / association name is required.
+        </p>
+        <p class="help-block" ng-show="name.$error.minlength" translate="global.messages.validate.name.minlength">
+            Your company / association name is required to be at maximum 50 characters.
+        </p>
+    </div>
+</div>

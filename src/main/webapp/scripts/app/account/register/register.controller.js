@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nummapApp')
-    .controller('RegisterController', function ($scope, $translate, $timeout, Auth, Domains, Competencies, School) {
+    .controller('RegisterController', function ($scope, $translate, $timeout, Auth) {
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;
@@ -15,27 +15,6 @@ angular.module('nummapApp')
         $scope.domainsSelected = [];
         $scope.competenciesSelected = [];
 
-        // Récupère la liste de secteurs, compétences et écoles
-        Domains.query(function(result) {
-            $scope.sectors = result;
-            console.log($scope.sectors);
-        });
-        Competencies.query(function(result) {
-            $scope.competencies = result;
-            console.log($scope.competencies);
-        });
-
-        School.query(function(result) {
-            $scope.schools = result;
-            console.log($scope.schools);
-        });
-
-        // Valeurs pour le questionnaire
-        $scope.fields = [
-            {name: 'Outsourcing', value: 'OUTSOURCING'},
-            {name: 'Consulting', value: 'CONSULTING'},
-            {name: 'System Integration', value: 'SYSTEM_INTEGRATION'}
-        ];
         $scope.categories = [
             {value: 'STUDENT', translationKey: 'register.form.category.student'},
             {value: 'PROFESSOR', translationKey: 'register.form.category.professor'},
@@ -43,17 +22,6 @@ angular.module('nummapApp')
             {value: 'COMPANY', translationKey: 'register.form.category.company'},
             {value: 'ASSOCIATION', translationKey: 'register.form.category.association'}
         ];
-        
-        
-        $scope.loadTags = function(query) {
-            var res = [];
-            $scope.competencies.forEach(function(element) {
-                if (element.name.substr(0, query.length) === query) {
-                    res.push(element);
-                }
-            });
-            return res;
-        };
 
         $scope.addElement = function(list) {
             list.push({});
@@ -89,7 +57,7 @@ angular.module('nummapApp')
                 // Ajout des compétences
                 $scope.registerAccount.competencies = [];
                 $scope.competenciesSelected.forEach(function (element) {
-                    $scope.registerAccount.competencies.push(element.name);                 
+                    $scope.registerAccount.competencies.push(element.name);
                 });
 
                 // Ajout des réseaux sociaux

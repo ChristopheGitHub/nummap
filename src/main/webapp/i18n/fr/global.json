@@ -131,7 +131,7 @@
                     "maxlength": "Votre e-mail de contact ne doit pas comporter plus de 50 caractères",
                     "invalid": "Votre email de contact n'est pas valide."
                 },
-                "personPhone": {
+                "phone": {
                     "pattern": "Votre numéro de téléphone doit être composé de chiffres uniquement."
                 },
                 "personPostOfficeBox": {
@@ -139,6 +139,15 @@
                 },
                 "personPostalCode": {
                     "pattern": "Votre code postale doit être composé de 6 chiffres uniquement."
+                },
+                "name": {
+                    "required": "Votre compagnie / nom d'association est requis.",
+                    "minlength": "Votre compagnie / nom d'association doit comporter au moins 2 caractères.",
+                    "maxlength": "Votre compagnie / nom d'association ne doit pas comporter plus de 50 caractères."
+                },
+                "siren": {
+                    "required": "Votre numéro SIREN est requis.",
+                    "pattern": "Votre numéro SIREN doit être composé de 9 chiffres uniquement."
                 }
             }
         }

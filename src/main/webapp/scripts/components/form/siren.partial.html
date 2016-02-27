@@ -1,0 +1,21 @@
+<div ng-form="siren" class="form-group">
+    <label for="siren" translate="global.form.siren">SIREN</label>
+    <input
+        type="text"
+        class="form-control"
+        name="siren"
+        placeholder="{{'global.form.siren.placeholder' | translate}}"
+        ng-model="sirenText"
+        ng-pattern="/^[0-9]{10}$/"
+        required>
+    <div ng-show="siren.$dirty && siren.$invalid">
+        <p class="help-block"
+               ng-show="siren.$error.required" translate="global.messages.validate.siren.required">
+            Your SIREN number is required.
+        </p>
+        <p class="help-block"
+            ng-show="siren.$error.pattern" translate="global.messages.validate.siren.pattern">
+              Your SIREN number must be composed 9 numbers.
+        </p>
+    </div>
+</div>
